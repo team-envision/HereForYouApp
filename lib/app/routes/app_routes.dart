@@ -4,9 +4,11 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
+  static const PASSWORD_VIEW = _Paths.PASSWORD_VIEW;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
+  static const PASSWORD_VIEW = '/password-view';
 }
