@@ -5,7 +5,18 @@ import 'app/modules/password_view/bindings/password_view_binding.dart';
 import 'app/modules/password_view/views/password_view_view.dart';
 
 void main() {
-  runApp(PasswordViewApp());
+
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Application",
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+    ),
+  );
+
+
 }
 
 class PasswordViewApp extends StatelessWidget {
