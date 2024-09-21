@@ -6,18 +6,17 @@ import 'package:get/get.dart';
 import '../../../models/questions.dart';
 
 class QuestionController extends GetxController {
-  RxList<Question> questions = <Question>[].obs; // Store questions
-  RxInt currentQuestionIndex = 0.obs; // Track current question
+  RxList<Question> questions = <Question>[].obs;
+  RxInt currentQuestionIndex = 0.obs;
   RxInt selectedOptionIndex = (-1).obs;
   var selectedIndex = (-1).obs;
 
-  // Getter for current question
   Question get currentQuestion => questions[currentQuestionIndex.value];
 
   @override
   void onInit() {
     super.onInit();
-    loadQuestionnaire(); // Load data on controller initialization
+    loadQuestionnaire();
   }
 
 
@@ -30,14 +29,14 @@ class QuestionController extends GetxController {
     String jsonString = await rootBundle.loadString('lib/assets/json/questions.json');
     Map<String, dynamic> jsonData = jsonDecode(jsonString);
     Questionnaire questionnaire = Questionnaire.fromJson(jsonData);
-    questions.value = questionnaire.questions; // Populate the questions list
+    questions.value = questionnaire.questions;
   }
 
-  // Move to next question
+
   void nextQuestion() {
     if (currentQuestionIndex.value < questions.length - 1) {
       currentQuestionIndex.value++;
-      selectedOptionIndex.value = -1; // Reset selected option
+      selectedOptionIndex.value = -1;
     } else {
       Get.snackbar("End", "You have completed the assessment");
     }
