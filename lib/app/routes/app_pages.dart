@@ -6,6 +6,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/mentalScore/bindings/mental_score_binding.dart';
+import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/password_view/bindings/password_view_binding.dart';
 import '../modules/password_view/views/password_view_view.dart';
 
@@ -14,7 +16,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.QUESTION_SCREEN;
+  static const INITIAL = Routes.MENTAL_SCORE;
 
   static final routes = [
     GetPage(
@@ -34,8 +36,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QUESTION_SCREEN,
-      page: () =>  QuestionView(),
+      page: () => QuestionView(),
       binding: QuestionBinding(),
+    ),
+    GetPage(
+      name: _Paths.MENTAL_SCORE,
+      page: () => const MentalScoreView(),
+      binding: MentalScoreBinding(),
     ),
   ];
 }
