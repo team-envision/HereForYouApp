@@ -59,4 +59,5 @@ flutter:
   assets:
     - 'lib/assets/icons/'
     - 'lib/assets/images/'
+    - 'lib/assets/json/questions.json'
 
