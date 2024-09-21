@@ -8,6 +8,7 @@ abstract class Routes {
   static const PASSWORD_VIEW = _Paths.PASSWORD_VIEW;
   static const QUESTION_SCREEN = _Paths.QUESTION_SCREEN;
   static const MENTAL_SCORE = _Paths.MENTAL_SCORE;
+  static const MIND_TEST = _Paths.MindTestScreenView;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const PASSWORD_VIEW = '/password-view';
   static const QUESTION_SCREEN = '/question-screen';
   static const MENTAL_SCORE = '/mental-score';
+  static const MindTestScreenView = '/mind-test';
 }
