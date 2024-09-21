@@ -23,7 +23,7 @@ class ChangePasswordView extends GetView<PasswordViewController> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Get.back();
           },
@@ -35,12 +35,12 @@ class ChangePasswordView extends GetView<PasswordViewController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'New Password',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 color: scaffoldBackgroundColor,
@@ -50,31 +50,31 @@ class ChangePasswordView extends GetView<PasswordViewController> {
                     color: Colors.grey.withOpacity(0.4),
                     spreadRadius: 3,
                     blurRadius: 6,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
               child: TextField(
                 controller: controller.newPasswordController,
                 obscureText: true,
-                style: TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: 14),
                 decoration: InputDecoration(
                   hintText: 'Enter New Password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  contentPadding: EdgeInsets.all(16),
+                  contentPadding: const EdgeInsets.all(16),
                   filled: true,
                   fillColor: scaffoldBackgroundColor,
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Confirm Password',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 color: scaffoldBackgroundColor,
@@ -84,33 +84,33 @@ class ChangePasswordView extends GetView<PasswordViewController> {
                     color: Colors.grey.withOpacity(0.4),
                     spreadRadius: 3,
                     blurRadius: 6,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
               child: TextField(
                 controller: controller.confirmPasswordController,
                 obscureText: true,
-                style: TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: 14),
                 decoration: InputDecoration(
                   hintText: 'Confirm New Password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  contentPadding: EdgeInsets.all(16),
+                  contentPadding: const EdgeInsets.all(16),
                   filled: true,
                   fillColor: scaffoldBackgroundColor,
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 40.0),
               child: ElevatedButton(
                 onPressed: () {
                   controller.saveNewPassword();
                 },
-                child: Text(
+                child: const Text(
                   'Save',
                   style: TextStyle(
                     fontSize: 20,
@@ -119,7 +119,7 @@ class ChangePasswordView extends GetView<PasswordViewController> {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   backgroundColor: Colors.black,
                 ),
               ),
