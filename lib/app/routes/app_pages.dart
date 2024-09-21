@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/views/views/mind_test_screen_view.dart';
 
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/question_screen_view.dart';
@@ -16,7 +17,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.MENTAL_SCORE;
+  static const INITIAL = Routes.MIND_TEST;
 
   static final routes = [
     GetPage(
@@ -43,6 +44,10 @@ class AppPages {
       name: _Paths.MENTAL_SCORE,
       page: () => const MentalScoreView(),
       binding: MentalScoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.MindTestScreenView,
+      page: () => const MindTestScreenView(),
     ),
   ];
 }

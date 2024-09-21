@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
 import '../controllers/question_screen_controller.dart';
 
@@ -165,25 +166,9 @@ class QuestionView extends StatelessWidget {
                     ],
                   ),
               const Spacer(),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: const StadiumBorder(),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 100),
-                  backgroundColor: Colors.black,
-                ),
-                onPressed: () {
-                  controller.nextQuestion();
-                },
-                child: Text(
-                  "Next →",
-                  style: Get.theme.textTheme.titleLarge?.copyWith(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              kElevatedButton(text: "Next", onPressed: () {
+                controller.nextQuestion();
+              }),
               const SizedBox(height: 20),
             ],
           ),
