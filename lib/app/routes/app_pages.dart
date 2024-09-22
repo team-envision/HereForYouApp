@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:here_for_you_app/app/views/views/mind_test_screen_view.dart';
 
+import '../modules/AiChatBotScreen/bindings/ai_chat_bot_screen_binding.dart';
+import '../modules/AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/question_screen_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -11,13 +12,14 @@ import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/password_view/bindings/password_view_binding.dart';
 import '../modules/password_view/views/password_view_view.dart';
+import '../views/views/mind_test_screen_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.MIND_TEST;
+  static const INITIAL = Routes.AI_CHAT_BOT_SCREEN;
 
   static final routes = [
     GetPage(
@@ -48,6 +50,11 @@ class AppPages {
     GetPage(
       name: _Paths.MindTestScreenView,
       page: () => const MindTestScreenView(),
+    ),
+    GetPage(
+      name: _Paths.AI_CHAT_BOT_SCREEN,
+      page: () => const AiChatBotScreenView(),
+      binding: AiChatBotScreenBinding(),
     ),
   ];
 }
