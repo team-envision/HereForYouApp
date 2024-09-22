@@ -4,6 +4,8 @@ import '../modules/AiChatBotScreen/bindings/ai_chat_bot_screen_binding.dart';
 import '../modules/AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/question_screen_view.dart';
+import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
+import '../modules/basicInfoPage/views/basic_info_page_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -19,7 +21,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.AI_CHAT_BOT_SCREEN;
+  static const INITIAL = Routes.BASIC_INFO_PAGE;
 
   static final routes = [
     GetPage(
@@ -55,6 +57,11 @@ class AppPages {
       name: _Paths.AI_CHAT_BOT_SCREEN,
       page: () => const AiChatBotScreenView(),
       binding: AiChatBotScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.BASIC_INFO_PAGE,
+      page: () => const BasicInfoView(),
+      binding: BasicInfoPageBinding(),
     ),
   ];
 }

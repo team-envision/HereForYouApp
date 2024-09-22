@@ -10,6 +10,7 @@ abstract class Routes {
   static const MENTAL_SCORE = _Paths.MENTAL_SCORE;
   static const MIND_TEST = _Paths.MindTestScreenView;
   static const AI_CHAT_BOT_SCREEN = _Paths.AI_CHAT_BOT_SCREEN;
+  static const BASIC_INFO_PAGE = _Paths.BASIC_INFO_PAGE;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const MENTAL_SCORE = '/mental-score';
   static const MindTestScreenView = '/mind-test';
   static const AI_CHAT_BOT_SCREEN = '/ai-chat-bot-screen';
+  static const BASIC_INFO_PAGE = '/basic-info-page';
 }
