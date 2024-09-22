@@ -137,38 +137,39 @@ class QuestionView extends StatelessWidget {
                       },
                     )
                   : Column(
-                    children: [
-                      ...List.generate(currentQuestion.options.length,
-                          (index) {
-                        return Card(
-                          color: Colors.white,
-                          shadowColor: Colors.black45,
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          child: ListTile(
-                            title: Text(currentQuestion.options[index]),
-                            titleTextStyle:
-                                Get.theme.textTheme.titleLarge?.copyWith(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                      children: [
+                        ...List.generate(currentQuestion.options.length,
+                            (index) {
+                          return Card(
+                            color: Colors.white,
+                            shadowColor: Colors.black45,
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            child: ListTile(
+                              title: Text(currentQuestion.options[index]),
+                              titleTextStyle:
+                                  Get.theme.textTheme.titleLarge?.copyWith(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              trailing: Radio<int>(
+                                value: index,
+                                groupValue:
+                                    controller.selectedOptionIndex.value,
+                                onChanged: (value) {
+                                  controller.selectedOptionIndex.value = value!;
+                                },
+                              ),
                             ),
-                            trailing: Radio<int>(
-                              value: index,
-                              groupValue:
-                                  controller.selectedOptionIndex.value,
-                              onChanged: (value) {
-                                controller.selectedOptionIndex.value =
-                                    value!;
-                              },
-                            ),
-                          ),
-                        );
-                      }),
-                    ],
-                  ),
+                          );
+                        }),
+                      ],
+                    ),
               const Spacer(),
-              kElevatedButton(text: "Next", onPressed: () {
-                controller.nextQuestion();
-              }),
+              kElevatedButton(
+                  text: "Next",
+                  onPressed: () {
+                    controller.nextQuestion();
+                  }),
               const SizedBox(height: 20),
             ],
           ),

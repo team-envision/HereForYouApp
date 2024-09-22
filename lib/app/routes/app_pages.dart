@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/AiChatBotScreen/bindings/ai_chat_bot_screen_binding.dart';
 import '../modules/AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
+import '../modules/ProfilePage/bindings/profile_page_binding.dart';
+import '../modules/ProfilePage/views/profile_page_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/question_screen_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
@@ -21,7 +23,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.BASIC_INFO_PAGE;
+  static const INITIAL = Routes.PROFILE_PAGE;
 
   static final routes = [
     GetPage(
@@ -62,6 +64,11 @@ class AppPages {
       name: _Paths.BASIC_INFO_PAGE,
       page: () => const BasicInfoView(),
       binding: BasicInfoPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_PAGE,
+      page: () => const ProfilePageView(),
+      binding: ProfilePageBinding(),
     ),
   ];
 }
