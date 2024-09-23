@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'app/routes/app_pages.dart';
-import 'app/views/views/mind_test_screen_view.dart';
+import 'package:here_for_you_app/Components/kBottomBar.dart';
+
 
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    GetMaterialApp(
+     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
+      home: bottomNavigation(),
     ),
   );
 

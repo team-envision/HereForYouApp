@@ -1,5 +1,4 @@
 import 'package:dash_chat_2/dash_chat_2.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/ai_chat_bot_screen_controller.dart';
@@ -9,6 +8,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AiChatBotScreenController());
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,

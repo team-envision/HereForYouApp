@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/views/views/articles_view.dart';
 
 class MenuPopup extends StatelessWidget {
   const MenuPopup({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class MenuPopup extends StatelessWidget {
           ),
           // Menu options
           const SizedBox(height: 0),
-          _buildMenuItem("Articles", Icons.article),
+          _buildMenuItem("Articles", Icons.article,onTap: (){Get.to(()=>ArticlesView());}),
           _buildMenuItem("Change Password", Icons.lock),
           _buildMenuItem("Emergency Contact", Icons.phone),
           _buildMenuItem("Feedback", Icons.feedback),
@@ -31,13 +32,11 @@ class MenuPopup extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem(String title, IconData icon, {Color? color}) {
+  Widget _buildMenuItem(String title, IconData icon, {Color? color,dynamic? onTap}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
-        onTap: () {
-          Get.back();
-        },
+        onTap: onTap,
         child: Text(
           title,
           style: Get.textTheme.titleLarge?.copyWith(
