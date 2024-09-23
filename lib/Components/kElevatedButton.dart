@@ -16,7 +16,7 @@ class kElevatedButton extends StatelessWidget {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 100),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 110),
           backgroundColor: Colors.black,
         ),
         onPressed: onPressed,

@@ -8,14 +8,24 @@ import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/question_screen_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/views/basic_info_page_view.dart';
+import '../modules/feedBack/bindings/feed_back_binding.dart';
+import '../modules/feedBack/views/feed_back_view.dart';
+import '../modules/genderPage/bindings/gender_page_binding.dart';
+import '../modules/genderPage/views/gender_page_view.dart';
+import '../modules/getStarted/bindings/get_started_binding.dart';
+import '../modules/getStarted/views/get_started_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
+import '../modules/moodQuality/bindings/mood_quality_binding.dart';
+import '../modules/moodQuality/views/mood_quality_view.dart';
 import '../modules/password_view/bindings/password_view_binding.dart';
 import '../modules/password_view/views/password_view_view.dart';
+import '../modules/splashScreen/bindings/splash_screen_binding.dart';
+import '../modules/splashScreen/views/splash_screen_view.dart';
 import '../views/views/mind_test_screen_view.dart';
 
 part 'app_routes.dart';
@@ -23,7 +33,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PROFILE_PAGE;
+  static const INITIAL = Routes.GET_STARTED;
 
   static final routes = [
     GetPage(
@@ -69,6 +79,31 @@ class AppPages {
       name: _Paths.PROFILE_PAGE,
       page: () => const ProfilePageView(),
       binding: ProfilePageBinding(),
+    ),
+    GetPage(
+      name: _Paths.MOOD_QUALITY,
+      page: () => const MoodQualityView(),
+      binding: MoodQualityBinding(),
+    ),
+    GetPage(
+      name: _Paths.GENDER_PAGE,
+      page: () => const GenderPageView(),
+      binding: GenderPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.FEED_BACK,
+      page: () => const FeedBackView(),
+      binding: FeedBackBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH_SCREEN,
+      page: () => const SplashScreenView(),
+      binding: SplashScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.GET_STARTED,
+      page: () => const GetStartedView(),
+      binding: GetStartedBinding(),
     ),
   ];
 }

@@ -169,6 +169,7 @@ class MentalScoreView extends GetView<MentalScoreController> {
                   ),
                 ),
               ),
+               SizedBox(height: 36),
               Flexible(
                 child: TextButton(
                   onPressed: () {
@@ -184,6 +185,7 @@ class MentalScoreView extends GetView<MentalScoreController> {
                   ),
                 ),
               ),
+
             ],
           ),
         ),
