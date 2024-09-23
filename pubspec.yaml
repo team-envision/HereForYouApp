@@ -41,6 +41,7 @@ dependencies:
   fl_chart: ^0.69.0
   dash_chat_2: ^0.0.21
   flutter_keyboard_visibility: ^6.0.0
+  any_link_preview: ^3.0.2
 
 dev_dependencies:
   flutter_test:

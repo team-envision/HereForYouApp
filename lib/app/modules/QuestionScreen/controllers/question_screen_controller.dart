@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 
 import '../../../models/questions.dart';
 
@@ -39,6 +40,7 @@ class QuestionController extends GetxController {
       selectedOptionIndex.value = -1;
     } else {
       Get.snackbar("End", "You have completed the assessment");
+      Get.to(()=>MentalScoreView());
     }
   }
 

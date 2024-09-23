@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
+import 'package:here_for_you_app/app/modules/QuestionScreen/views/question_screen_view.dart';
 
 class MindTestScreenView extends GetView {
   const MindTestScreenView({super.key});
@@ -23,9 +24,9 @@ class MindTestScreenView extends GetView {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 8.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,mainAxisSize: MainAxisSize.min,
             children: [
               SvgPicture.asset(
                 "lib/assets/images/ClockImage.svg",
@@ -46,6 +47,7 @@ class MindTestScreenView extends GetView {
                   textAlign: TextAlign.center,
                 ),
               ),
+              Spacer(),
               Wrap(
                 runSpacing: 16,
                 children: [
@@ -61,9 +63,10 @@ class MindTestScreenView extends GetView {
                                   "There are no right or wrong answers.\nAnswer honestly without overthinking..")
                         ]),
                   ),
-                  kElevatedButton(text: "Start", onPressed: () {})
+                  kElevatedButton(text: "Start", onPressed: () {Get.off(()=>QuestionView());})
                 ],
-              )
+              ),
+              Spacer()
             ],
           ),
         ),

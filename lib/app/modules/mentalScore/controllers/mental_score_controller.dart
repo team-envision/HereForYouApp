@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class MentalScoreController extends GetxController {
@@ -11,10 +13,29 @@ class MentalScoreController extends GetxController {
       "all aspects of your life. Depression is a medical condition, not an emotion.";
 
 
+  final ScrollController scrollController = ScrollController();
+
+  RxBool isScrollingUp = false.obs;
+
+
+  double previousScrollOffset = 0.0;
+
+  void scrollListener() {
+    if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
+      isScrollingUp.value = false;
+    } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+      isScrollingUp.value = true;
+    }
+
+    previousScrollOffset = scrollController.offset;
+  }
+
+
 
   @override
   void onInit() {
     super.onInit();
+    scrollController.addListener(scrollListener);
   }
 
   @override
@@ -25,6 +46,7 @@ class MentalScoreController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    scrollController.removeListener(scrollListener);
   }
 
 }
