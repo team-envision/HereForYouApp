@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kBottomBar.dart';
+import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
 import 'package:here_for_you_app/app/views/views/articles_view.dart';
 import '../controllers/mental_score_controller.dart';
 
@@ -29,7 +29,7 @@ class MentalScoreView extends GetView<MentalScoreController> {
                   title: const Text("Mental Score"),
                   leading: IconButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Get.off(()=>HomeView());
                     },
                     icon: const Icon(Icons.arrow_back),
                   ),
@@ -55,21 +55,13 @@ class MentalScoreView extends GetView<MentalScoreController> {
                             ),
                           ),
                           Container(
-                            height: 200,
                             width: 200,
                             alignment: Alignment.center,
                             decoration: const BoxDecoration(
                               color: Color.fromRGBO(118, 90, 72, 1),
                               shape: BoxShape.circle,
                             ),
-                            child: Text(
-                              "79",
-                              style: Get.textTheme.headlineLarge?.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 100,
-                              ),
-                            ),
+                            child: Obx(()=>Image.asset(controller.imgUrl.value,fit: BoxFit.contain)),
                           ),
                         ],
                       ),
@@ -95,14 +87,14 @@ class MentalScoreView extends GetView<MentalScoreController> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    controller.Textdata,
+                  Obx(()=>Text(
+                    (controller.msg.value+"\n"+controller.endMsg.value),
                     style: Get.theme.textTheme.bodyLarge?.copyWith(
                       fontSize: 16,
                       height: 1.4,
                     ),
                     textAlign: TextAlign.center,
-                  ),
+                  )),
                   const SizedBox(height: 16),
                   Obx(
                     () => controller.isScrollingUp.value
@@ -195,12 +187,12 @@ class MentalScoreView extends GetView<MentalScoreController> {
                               ],
                             ),
                         )
-                        : SizedBox.shrink(),
+                        : const SizedBox.shrink(),
                   ),
                   Flexible(
                     child: TextButton(
                       onPressed: () {
-                        Get.to(()=>ArticlesView());
+                        Get.to(()=>const ArticlesView());
                       },
                       child: Text(
                         "Need Help? Refer to our Articles",

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../Components/customField1.dart';
+
 import '../../../../Components/kElevatedButton.dart';
+
+import '../../../../Components/kTextField.dart';
+
 import '../controllers/feed_back_controller.dart';
 
 class FeedBackView extends GetView<FeedBackController> {

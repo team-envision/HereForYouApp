@@ -1,5 +1,6 @@
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 
@@ -14,52 +15,66 @@ class AiChatBotScreenController extends GetxController {
       "provide helpful insights.";
 
 
-  RxList<ChatMessage> messages=<ChatMessage>[].obs;
+  final gemini = Gemini.instance;
+  var scrollController;
+  RxList<ChatMessage> messages = <ChatMessage>[].obs;
   ChatUser user = ChatUser(
-    id: '1',
-    firstName: 'Charles',
-    lastName: 'Leclerc',
+    id: '0',
+    firstName: 'User',
   );
 
-
-  var scrollController;
+  final ChatUser geminiUser = ChatUser(
+    id: '1',
+    firstName: 'MentAid',
+    profileImage: "lib/assets/icons/botIcon.png"
+  );
 
   @override
   void onInit() {
     super.onInit();
     scrollController = ScrollController();
-    ChatUser user = ChatUser(
-      id: '1',
-      firstName: 'Charles',
-      lastName: 'Leclerc',
-    );
 
-     messages.value = <ChatMessage> [
-      ChatMessage(
-        text: 'Hey!',
-        user: user,
-        createdAt: DateTime.now(),
-      ),
-    ];
-
-     KeyboardVisibilityController().onChange.listen((isVisible){
-       print("listened");
-       print(isVisible);
-         scrollToSpecificPosition();
-     });
+    KeyboardVisibilityController().onChange.listen((isVisible) {
+      print("listened");
+      print(isVisible);
+      scrollToSpecificPosition();
+    });
   }
 
   void scrollToSpecificPosition() {
     print("called");
     scrollController.jumpTo(
       scrollController.position.maxScrollExtent,
-
     );
-
   }
 
 
+  void sendMessage(ChatMessage chatMessage) {
+    messages.value= [chatMessage,...messages];
 
+    try {
+      String Question =chatMessage.text;
+      gemini.streamGenerateContent(Question).listen((event){
+        ChatMessage? lastMsg = messages.firstOrNull;
+        if(lastMsg !=null && lastMsg.user== geminiUser){
+          lastMsg = messages.removeAt(0);
+          String response = event.content?.parts?.fold("", (previous,Current)=>"$previous${Current.text}")??"";
+          lastMsg.text += response;
+          messages.value =[lastMsg,...messages];
+
+        }
+        else{
+          String response = event.content?.parts?.fold("", (previous,Current)=>"$previous${Current.text}")??"";
+          ChatMessage message =ChatMessage(user: geminiUser, createdAt: DateTime.now(),text: response);
+          messages.value= [message,...messages];
+        }
+      }
+      );
+
+    } catch (error) {
+      print("Error in streaming response: $error");
+    }
+  }
   @override
   void onReady() {
     super.onReady();

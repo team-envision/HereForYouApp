@@ -16,7 +16,9 @@ class MoodQualityView extends GetView<MoodQualityController> {
     return Scaffold(
 
       body:  NestedScrollView(
+
         physics: const NeverScrollableScrollPhysics(),
+
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
@@ -40,7 +42,9 @@ class MoodQualityView extends GetView<MoodQualityController> {
                   clipper: ArcClipper(),
                   child: Stack(
                     alignment: Alignment.center,
+
                     children: [
+
                       Container(
                         color: const Color(0xFFFFEBC2),
                         child: SvgPicture.asset(
@@ -184,6 +188,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
     return [
       BarChartGroupData(
         x: 0,
+
         barRods: [BarChartRodData(toY: 10,  color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
@@ -205,6 +210,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
       BarChartGroupData(
         x: 5,
         barRods: [BarChartRodData(toY: 50,  color: const Color.fromRGBO(247, 206, 69, 1))],
+
       ),
       BarChartGroupData(
         x: 6,
@@ -212,4 +218,6 @@ class MoodQualityView extends GetView<MoodQualityController> {
       ),
     ];
   }
+
 }
+

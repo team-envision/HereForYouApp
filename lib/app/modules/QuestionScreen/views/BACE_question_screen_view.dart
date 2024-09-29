@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
-import '../controllers/question_screen_controller.dart';
+import '../../../../Components/kBottomBar.dart';
+import '../controllers/BACE_question_screen_controller.dart';
 
-class QuestionView extends StatelessWidget {
+class BACEQuestionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final QuestionController controller = Get.put(QuestionController());
+    final BACEQuestionController controller = Get.put(BACEQuestionController());
 
     return Scaffold(
       appBar: AppBar(
@@ -20,7 +21,7 @@ class QuestionView extends StatelessWidget {
         centerTitle: true,
         title: OutlinedButton(
           onPressed: () {
-            Get.offAll(() => const HomeView());
+            Get.offAll(() =>  bottomNavigation());
           },
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
@@ -37,7 +38,7 @@ class QuestionView extends StatelessWidget {
             child: Center(
               child: Obx(() {
                 return Text(
-                  "${controller.currentQuestionIndex.value + 1}/${controller.questions.length}",
+                  "${controller.currentQuestionIndex.value + 1}/${controller.BACEquestions.length}",
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -52,14 +53,14 @@ class QuestionView extends StatelessWidget {
         elevation: 0,
       ),
       body: Obx(() {
-        if (controller.questions.isEmpty) {
+        if (controller.BACEquestions.isEmpty) {
           return const Center(
             child: Text('No questions available'),
           );
         }
 
-        final currentQuestion = controller.currentQuestion;
-        if (currentQuestion.options.isEmpty) {
+        final currentQuestion = controller.currentOptions;
+        if (currentQuestion.isEmpty) {
           return const Center(
             child: Text('No options available for this question'),
           );
@@ -72,13 +73,13 @@ class QuestionView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                currentQuestion.question,
+                controller.currentQuestion,
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 40),
-              currentQuestion.options.length <= 4
+              controller.currentOptions.length <= 4
                   ? GridView.builder(
                       shrinkWrap: true,
                       gridDelegate:
@@ -89,7 +90,7 @@ class QuestionView extends StatelessWidget {
                         crossAxisSpacing: 20,
                         childAspectRatio: 1.5,
                       ),
-                      itemCount: currentQuestion.options.length,
+                      itemCount: controller.currentOptions.length,
                       itemBuilder: (context, index) {
                         return Obx(() {
                           return GestureDetector(
@@ -115,7 +116,7 @@ class QuestionView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      currentQuestion.options[index].toString(),
+                                      controller.currentOptions[index].toString(),
                                       style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
@@ -138,14 +139,14 @@ class QuestionView extends StatelessWidget {
                     )
                   : Column(
                       children: [
-                        ...List.generate(currentQuestion.options.length,
+                        ...List.generate(controller.currentOptions.length,
                             (index) {
                           return Card(
                             color: Colors.white,
                             shadowColor: Colors.black45,
                             margin: const EdgeInsets.symmetric(vertical: 10),
                             child: ListTile(
-                              title: Text(currentQuestion.options[index]),
+                              title: Text(controller.currentOptions[index]),
                               titleTextStyle:
                                   Get.theme.textTheme.titleLarge?.copyWith(
                                 fontSize: 18,

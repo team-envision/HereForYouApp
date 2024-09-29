@@ -1,640 +1,122 @@
 {
-  "questions": [
-    {
-      "question": "I found it hard to wind down",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I was aware of dryness of my mouth",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I couldn’t seem to experience any positive feeling at all",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I experienced breathing difficulty",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I found it difficult to work up the initiative to do things",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I tended to over-react to situations",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I experienced trembling (eg, in the hands)",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt that I was using a lot of nervous energy",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I was worried about situations in which I might panic and make a fool of myself",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt that I had nothing to look forward to",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I found myself getting agitated",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I found it difficult to relax",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt down-hearted and blue",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I was intolerant of anything that kept me from getting on with what I was doing",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt I was close to panic",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I was unable to become enthusiastic about anything",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt I wasn’t worth much as a person",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt that I was rather touchy",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I was aware of the action of my heart in the absence of physical exertion",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt scared without any good reason",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "I felt that life was meaningless",
-      "options": [
-        "Never",
-        "Sometimes",
-        "Often",
-        "Always"
-      ]
-    },
-    {
-      "question": "Feeling nervous, anxious or on edge",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Not being able to stop or control worrying",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Worrying too much about different things",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Trouble relaxing",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Being so restless that it is hard to sit still",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Becoming easily annoyed or irritable",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Feeling afraid as if something awful might happen",
-      "options": [
-        "Not at all",
-        "Several Days",
-        "More than half the days",
-        "Nearly every day"
-      ]
-    },
-    {
-      "question": "Little interest or pleasure in doing things",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Feeling down, depressed, or hopeless",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Trouble falling or staying asleep, or sleeping too much",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Feeling tired or having little energy",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Poor appetite or overeating",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Feeling bad about yourself — or that you are a failure or have let yourself or your family down",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Trouble concentrating on things, such as reading the newspaper or watching television",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Moving or speaking so slowly that other people could",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Have you noticed? Or the opposite — being fidgety",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Thoughts that you would be better off dead or of hurting yourself in some way",
-      "options": [
-        "Not at all difficult",
-        "Somewhat difficult",
-        "Very Difficult",
-        "Extremely Difficult"
-      ]
-    },
-    {
-      "question": "Being unsure where to go to get professional care",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Wanting to solve the problem on my own",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern that I might be seen as weak for having a mental health problem",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Fear of being put in hospital against my will",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern that it might harm my chances when applying for jobs",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Problems with transport or traveling to appointments",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Thinking the problem would get better by itself",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern about what my family might think, say, do or feel",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Feeling embarrassed or ashamed",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Preferring to get alternative forms of care (e.g. traditional / religious healing or alternative / complementary therapies)",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Not being able to afford the financial costs involved",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern that I might be seen as ‘crazy’",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Thinking that professional care probably would not help",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Professionals from my own ethnic or cultural group not being available",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Being too unwell to ask for help",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern that people I know might find out",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Dislike of talking about my feelings, emotions or thoughts",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern that people might not take me seriously if they found out I was having professional care",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concerns about the treatments available (e.g. medication side effects)",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Not wanting a mental health problem to be on my medical records",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Having had previous bad experiences with professional care for mental health",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Preferring to get help from family or friends",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Thinking I did not have a problem",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern about what my friends might think, say or do",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Difficulty taking time off work",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Concern about what people at work might think, say or do",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "Having no one who could help me get professional care",
-      "options": [
-        "Not at all",
-        "A Little",
-        "Quite a Lot",
-        "A Lot"
-      ]
-    },
-    {
-      "question": "I am always courteous even to people who are disagreeable",
-      "options": [
-        "Definitely True",
-        "Mostly True",
-        "Don’t Know",
-        "Mostly False",
-        "Definitely False"
-      ]
-    },
-    {
-      "question": "There have been occasions when I took advantage of someone",
-      "options": [
-        "Definitely True",
-        "Mostly True",
-        "Don’t Know",
-        "Mostly False",
-        "Definitely False"
-      ]
-    },
-    {
-      "question": "I sometimes try to get even rather than forgive and forget",
-      "options": [
-        "Definitely True",
-        "Mostly True",
-        "Don’t Know",
-        "Mostly False",
-        "Definitely False"
-      ]
-    },
-    {
-      "question": "I sometimes feel resentful when I don’t get my way",
-      "options": [
-        "Definitely True",
-        "Mostly True",
-        "Don’t Know",
-        "Mostly False",
-        "Definitely False"
-      ]
-    },
-    {
-      "question": "No matter who I’m talking to, I am always a good listener",
-      "options": [
-        "Definitely True",
-        "Mostly True",
-        "Don’t Know",
-        "Mostly False",
-        "Definitely False"
-      ]
-    }
-  ]
+  "DASS_21": {
+    "questions": [
+      "I found it hard to wind down",
+      "I was aware of dryness of my mouth",
+      "I couldn’t seem to experience any positive feeling at all",
+      "I experienced breathing difficulty",
+      "I found it difficult to work up the initiative to do things",
+      "I tended to over-react to situations",
+      "I experienced trembling (eg, in the hands)",
+      "I felt that I was using a lot of nervous energy",
+      "I was worried about situations in which I might panic and make a fool of myself",
+      "I felt that I had nothing to look forward to",
+      "I found myself getting agitated",
+      "I found it difficult to relax",
+      "I felt down-hearted and blue",
+      "I was intolerant of anything that kept me from getting on with what I was doing",
+      "I felt I was close to panic",
+      "I was unable to become enthusiastic about anything",
+      "I felt I wasn’t worth much as a person",
+      "I felt that I was rather touchy",
+      "I was aware of the action of my heart in the absence of physical exertion",
+      "I felt scared without any good reason",
+      "I felt that life was meaningless"
+    ],
+    "options": [
+      "Never",
+      "Sometimes",
+      "Often",
+      "Always"
+    ]
+  },
+  "GAD_7": {
+    "questions": [
+      "Feeling nervous, anxious or on edge",
+      "Not being able to stop or control worrying",
+      "Worrying too much about different things",
+      "Trouble relaxing",
+      "Being so restless that it is hard to sit still",
+      "Becoming easily annoyed or irritable",
+      "Feeling afraid as if something awful might happen"
+    ],
+    "options": [
+      "Not at all",
+      "Several Days",
+      "More than half the days",
+      "Nearly every day"
+    ]
+  },
+  "PHQ_9": {
+    "questions": [
+      "Little interest or pleasure in doing things",
+      "Feeling down, depressed, or hopeless",
+      "Trouble falling or staying asleep, or sleeping too much",
+      "Feeling tired or having little energy",
+      "Poor appetite or overeating",
+      "Feeling bad about yourself — or that you are a failure or have let yourself or your family down",
+      "Trouble concentrating on things, such as reading the newspaper or watching television",
+      "Moving or speaking so slowly that other people could notice",
+      "Thoughts that you would be better off dead or of hurting yourself in some way"
+    ],
+    "options": [
+      "Not at all",
+      "Several Days",
+      "More than half the days",
+      "Nearly every day"
+    ]
+  },
+  "BACE": {
+    "questions": [
+      "Being unsure where to go to get professional care",
+      "Wanting to solve the problem on my own",
+      "Concern that I might be seen as weak for having a mental health problem",
+      "Fear of being put in hospital against my will",
+      "Concern that it might harm my chances when applying for jobs",
+      "Problems with transport or traveling to appointments",
+      "Thinking the problem would get better by itself",
+      "Concern about what my family might think, say, do or feel",
+      "Feeling embarrassed or ashamed",
+      "Preferring to get alternative forms of care (e.g. traditional / religious healing or alternative / complementary therapies)",
+      "Not being able to afford the financial costs involved",
+      "Concern that I might be seen as ‘crazy’",
+      "Thinking that professional care probably would not help",
+      "Professionals from my own ethnic or cultural group not being available",
+      "Being too unwell to ask for help",
+      "Concern that people I know might find out",
+      "Dislike of talking about my feelings, emotions or thoughts",
+      "Concern that people might not take me seriously if they found out I was having professional care",
+      "Concerns about the treatments available (e.g. medication side effects)",
+      "Not wanting a mental health problem to be on my medical records",
+      "Having had previous bad experiences with professional care for mental health",
+      "Preferring to get help from family or friends",
+      "Thinking I did not have a problem",
+      "Concern about what my friends might think, say or do",
+      "Difficulty taking time off work",
+      "Concern about what people at work might think, say or do",
+      "Having no one who could help me get professional care"
+    ],
+    "options": [
+      "Not at all",
+      "A Little",
+      "Quite a Lot",
+      "A lot"
+    ]
+  },
+  "SDRS": {
+    "questions": [
+      "I am always courteous even to people who are disagreeable",
+      "There have been occasions when I took advantage of someone",
+      "I sometimes try to get even rather than forgive and forget",
+      "I sometimes feel resentful when I don’t get my way",
+      "No matter who I’m talking to, I am always a good listener"
+    ],
+    "options": [
+      "Definitely True",
+      "Mostly True",
+      "Don’t Know",
+      "Mostly False",
+      "Definitely False"
+    ]
+  }
 }
-

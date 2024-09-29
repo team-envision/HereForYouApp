@@ -1,42 +1,155 @@
-class Questionnaire {
-  final List<Question> questions;
+class QuestionnaireModel {
+  final DASS21 dass21;
+  final GAD7 gad7;
+  final PHQ9 phq9;
+  final BACE bace;
+  final SDRS sdrs;
 
-  Questionnaire({required this.questions});
+  QuestionnaireModel({
+    required this.dass21,
+    required this.gad7,
+    required this.phq9,
+    required this.bace,
+    required this.sdrs,
+  });
 
-  // Factory constructor to create an instance from a JSON object
-  factory Questionnaire.fromJson(Map<String, dynamic> json) {
-    var questionsList = json['questions'] as List;
-    List<Question> questions = questionsList.map((q) => Question.fromJson(q)).toList();
-    return Questionnaire(questions: questions);
+  factory QuestionnaireModel.fromJson(Map<String, dynamic> json) {
+    return QuestionnaireModel(
+      dass21: DASS21.fromJson(json['DASS_21']),
+      gad7: GAD7.fromJson(json['GAD_7']),
+      phq9: PHQ9.fromJson(json['PHQ_9']),
+      bace: BACE.fromJson(json['BACE']),
+      sdrs: SDRS.fromJson(json['SDRS']),
+    );
   }
 
-  // Method to convert the Questionnaire object back to JSON
   Map<String, dynamic> toJson() {
     return {
-      'questions': questions.map((q) => q.toJson()).toList(),
+      'DASS_21': dass21.toJson(),
+      'GAD_7': gad7.toJson(),
+      'PHQ_9': phq9.toJson(),
+      'BACE': bace.toJson(),
+      'SDRS': sdrs.toJson(),
     };
   }
 }
 
-class Question {
-  final String question;
+class DASS21 {
+  final List<String> questions;
   final List<String> options;
 
-  Question({required this.question, required this.options});
+  DASS21({
+    required this.questions,
+    required this.options,
+  });
 
-  // Factory constructor to create an instance from a JSON object
-  factory Question.fromJson(Map<String, dynamic> json) {
-    var optionsList = List<String>.from(json['options']);
-    return Question(
-      question: json['question'],
-      options: optionsList,
+  factory DASS21.fromJson(Map<String, dynamic> json) {
+    return DASS21(
+      questions: List<String>.from(json['questions']),
+      options: List<String>.from(json['options']),
     );
   }
 
-  // Method to convert the Question object back to JSON
   Map<String, dynamic> toJson() {
     return {
-      'question': question,
+      'questions': questions,
+      'options': options,
+    };
+  }
+}
+
+class GAD7 {
+  final List<String> questions;
+  final List<String> options;
+
+
+  GAD7({
+    required this.questions,
+    required this.options,
+  });
+
+  factory GAD7.fromJson(Map<String, dynamic> json) {
+    return GAD7(
+      questions: List<String>.from(json['questions']),
+      options: List<String>.from(json['options']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'questions': questions,
+      'options': options,
+    };
+  }
+}
+
+class PHQ9 {
+  final List<String> questions;
+  final List<String> options;
+
+  PHQ9({
+    required this.questions,
+    required this.options,
+  });
+
+  factory PHQ9.fromJson(Map<String, dynamic> json) {
+    return PHQ9(
+      questions: List<String>.from(json['questions']),
+      options: List<String>.from(json['options']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'questions': questions,
+      'options': options,
+    };
+  }
+}
+
+class BACE {
+  final List<String> questions;
+  final List<String> options;
+
+  BACE({
+    required this.questions,
+    required this.options,
+  });
+
+  factory BACE.fromJson(Map<String, dynamic> json) {
+    return BACE(
+      questions: List<String>.from(json['questions']),
+      options: List<String>.from(json['options']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'questions': questions,
+      'options': options,
+    };
+  }
+}
+
+class SDRS {
+  final List<String> questions;
+  final List<String> options;
+
+  SDRS({
+    required this.questions,
+    required this.options,
+  });
+
+  factory SDRS.fromJson(Map<String, dynamic> json) {
+    return SDRS(
+      questions: List<String>.from(json['questions']),
+      options: List<String>.from(json['options']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'questions': questions,
       'options': options,
     };
   }

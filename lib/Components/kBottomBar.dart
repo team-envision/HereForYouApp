@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/ProfilePage/views/profile_page_view.dart';
 import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
-import 'package:here_for_you_app/app/views/views/mind_test_screen_view.dart';
+import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 
 class bottomNavigation extends StatelessWidget {
   bottomNavigation({super.key});

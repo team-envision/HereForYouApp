@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/feedBack/views/feed_back_view.dart';
 import 'package:here_for_you_app/app/views/views/articles_view.dart';
 
 class MenuPopup extends StatelessWidget {
@@ -25,7 +26,7 @@ class MenuPopup extends StatelessWidget {
           _buildMenuItem("Articles", Icons.article,onTap: (){Get.to(()=>ArticlesView());}),
           _buildMenuItem("Change Password", Icons.lock),
           _buildMenuItem("Emergency Contact", Icons.phone),
-          _buildMenuItem("Feedback", Icons.feedback),
+          _buildMenuItem("Feedback", Icons.feedback,onTap: (){Get.to(()=>FeedBackView());}),
           _buildMenuItem("Delete Account", Icons.delete, color: Colors.red),
         ],
       ),
