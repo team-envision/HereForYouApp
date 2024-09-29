@@ -2,10 +2,14 @@ import 'package:get/get.dart';
 
 import '../modules/AiChatBotScreen/bindings/ai_chat_bot_screen_binding.dart';
 import '../modules/AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
+import '../modules/MindAnchorMainScreen/bindings/mind_anchor_main_screen_binding.dart';
+import '../modules/MindAnchorMainScreen/views/mind_anchor_main_screen_view.dart';
 import '../modules/ProfilePage/bindings/profile_page_binding.dart';
 import '../modules/ProfilePage/views/profile_page_view.dart';
+import '../modules/QuestionCountDown/bindings/question_count_down_binding.dart';
+import '../modules/QuestionCountDown/views/question_count_down_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
-import '../modules/QuestionScreen/views/question_screen_view.dart';
+import '../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/views/basic_info_page_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
@@ -26,13 +30,12 @@ import '../modules/password_view/bindings/password_view_binding.dart';
 import '../modules/password_view/views/password_view_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
 import '../modules/splashScreen/views/splash_screen_view.dart';
-import '../views/views/mind_test_screen_view.dart';
+import '../views/views/mind_test_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-
 
   static const INITIAL = Routes.HOME;
 
@@ -54,7 +57,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QUESTION_SCREEN,
-      page: () => QuestionView(),
+      page: () => DASS21QuestionView(),
       binding: QuestionBinding(),
     ),
     GetPage(
@@ -105,6 +108,16 @@ class AppPages {
       name: _Paths.GET_STARTED,
       page: () => const GetStartedView(),
       binding: GetStartedBinding(),
+    ),
+    GetPage(
+      name: _Paths.MIND_ANCHOR_MAIN_SCREEN,
+      page: () => const MindAnchorMainScreenView(),
+      binding: MindAnchorMainScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.QUESTION_COUNT_DOWN,
+      page: () =>  QuestionCountdownView(),
+      binding: QuestionCountDownBinding(),
     ),
   ];
 }

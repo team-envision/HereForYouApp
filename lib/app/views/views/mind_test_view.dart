@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/views/question_screen_view.dart';
+import 'package:here_for_you_app/app/modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 
 class MindTestScreenView extends GetView {
   const MindTestScreenView({super.key});
@@ -63,7 +63,7 @@ class MindTestScreenView extends GetView {
                                   "There are no right or wrong answers.\nAnswer honestly without overthinking..")
                         ]),
                   ),
-                  kElevatedButton(text: "Start", onPressed: () {Get.off(()=>QuestionView());})
+                  kElevatedButton(text: "Start", onPressed: () {Get.off(()=>DASS21QuestionView());})
                 ],
               ),
               Spacer()
