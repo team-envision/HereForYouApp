@@ -39,7 +39,7 @@ class AppPages {
 
 
 
-  static const INITIAL = Routes.MOOD_QUALITY;
+  static const INITIAL = Routes.GENDER_PAGE;
 
 
   static final routes = [
