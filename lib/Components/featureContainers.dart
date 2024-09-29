@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-Widget kCard({required Color backGroundColor,required Color borderColor,required String text, required bool IsSvg,required String ImagePath,required String iconPath, String? subText,  Alignment? alignment, dynamic? onTap}){
+Widget kCard({required Color backGroundColor,required Color borderColor,
+  required String text, required bool IsSvg,required String ImagePath,required String iconPath, String? subText,  Alignment? alignment, dynamic? onTap}){
   return  GestureDetector(
     onTap: onTap,
     child: Container(

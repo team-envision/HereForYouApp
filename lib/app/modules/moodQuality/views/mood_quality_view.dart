@@ -16,7 +16,9 @@ class MoodQualityView extends GetView<MoodQualityController> {
     return Scaffold(
 
       body:  NestedScrollView(
-       physics: NeverScrollableScrollPhysics(),
+
+        physics: const NeverScrollableScrollPhysics(),
+
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
@@ -40,7 +42,9 @@ class MoodQualityView extends GetView<MoodQualityController> {
                   clipper: ArcClipper(),
                   child: Stack(
                     alignment: Alignment.center,
-                     children: [
+
+                    children: [
+
                       Container(
                         color: const Color(0xFFFFEBC2),
                         child: SvgPicture.asset(
@@ -74,10 +78,10 @@ class MoodQualityView extends GetView<MoodQualityController> {
           ];
         },
         body: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft:Radius.circular(34) ,topRight: Radius.circular(34) ),
-                color: Colors.white
-            ),
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft:Radius.circular(34) ,topRight: Radius.circular(34) ),
+              color: Colors.white
+          ),
           child: Padding(
             padding: const EdgeInsets.only(top: 16.0, right: 16, left: 16),
             child: Column(
@@ -170,7 +174,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 36),
+                const SizedBox(height: 36),
 
 
               ],
@@ -184,33 +188,36 @@ class MoodQualityView extends GetView<MoodQualityController> {
     return [
       BarChartGroupData(
         x: 0,
-        barRods: [BarChartRodData(toY: 10,  color: Color.fromRGBO(247, 206, 69, 1))],
+
+        barRods: [BarChartRodData(toY: 10,  color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 1,
-        barRods: [BarChartRodData(toY: 20, color: Color.fromRGBO(247, 206, 69, 1),)],
+        barRods: [BarChartRodData(toY: 20, color: const Color.fromRGBO(247, 206, 69, 1),)],
       ),
       BarChartGroupData(
         x: 2,
-        barRods: [BarChartRodData(toY: 30,  color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 30,  color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 3,
-        barRods: [BarChartRodData(toY: 40, color: Color.fromRGBO(247, 206, 69, 1)),],
+        barRods: [BarChartRodData(toY: 40, color: const Color.fromRGBO(247, 206, 69, 1)),],
       ),
       BarChartGroupData(
         x: 4,
-        barRods: [BarChartRodData(toY: 50, color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 50, color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 5,
-        barRods: [BarChartRodData(toY: 50,  color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 50,  color: const Color.fromRGBO(247, 206, 69, 1))],
+
       ),
       BarChartGroupData(
         x: 6,
-        barRods: [BarChartRodData(toY: 20, color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 20, color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
     ];
   }
+
 }
 
