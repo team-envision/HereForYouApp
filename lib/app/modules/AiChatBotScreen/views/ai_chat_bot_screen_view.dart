@@ -49,6 +49,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 10),
                     Text(
                       "Your Mental Health Companion",
                       style: Get.theme.textTheme.titleLarge?.copyWith(
@@ -56,7 +57,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                         fontSize: 22,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 20),
                     Text(
                       controller.Textdata,
                       style: Get.theme.textTheme.bodyLarge?.copyWith(
@@ -71,18 +72,18 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
             ),
           ];
         },
-        body: DashChat(
-          currentUser: controller.user,
+        body: Obx(()=>DashChat(
+          currentUser: controller.user,messageOptions: MessageOptions(showOtherUsersAvatar: true,avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) => CircleAvatar(backgroundColor: Colors.transparent,child: Image.asset("lib/assets/icons/botIcon.png"),)),
           inputOptions: InputOptions(
             sendOnEnter: true,
             alwaysShowSend: false,
             inputToolbarMargin: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
-            inputToolbarPadding: const EdgeInsets.all(0),
+            inputToolbarPadding: const EdgeInsets.only(right: 20),
             inputToolbarStyle: BoxDecoration(
               color: Colors.white70,shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(50),
               border: Border.all(
-                color: Colors.white
+                  color: Colors.white
               ),
               boxShadow: const [BoxShadow(color: Colors.black38)],
             ),
@@ -91,7 +92,6 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
               hintText: "Ask Your Question",
               hintStyle: const TextStyle(color: Colors.black38),
               prefixIconColor: Colors.black38,
-              suffixIcon: const Icon(Icons.send),
               prefixIcon: const Icon(Icons.file_upload_outlined),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
@@ -113,11 +113,9 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
               ),
             ),
           ),
-          onSend: (ChatMessage m) {
-            // Handle sending messages
-          },
+          onSend: controller.sendMessage,
           messages: controller.messages.value,
-        ),
+        )),
       ),
     );
   }
@@ -128,7 +126,7 @@ class ArcClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
     path.lineTo(0.0, size.height);
-    path.quadraticBezierTo(size.width / 2, 380.0, size.width, size.height);
+    path.quadraticBezierTo(size.width / 2, 350.0, size.width, size.height);
     path.lineTo(size.width, 0.0);
     path.close();
     return path;

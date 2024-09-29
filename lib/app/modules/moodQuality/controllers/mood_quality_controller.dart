@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class MoodQualityController extends GetxController {
   //TODO: Implement MoodQualityController
 
-  final count = 0.obs;
+  final emojis = ["🙁", "😐", "🙂", "😃", "😆"];
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +19,4 @@ class MoodQualityController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }

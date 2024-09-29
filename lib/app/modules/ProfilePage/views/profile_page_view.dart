@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/featureContainers.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/popUpMenu.dart';
+import '../../mentalScore/views/mental_score_view.dart';
+import '../../moodQuality/views/mood_quality_view.dart';
 import '../controllers/profile_page_controller.dart';
 
 class ProfilePageView extends GetView<ProfilePageController> {
@@ -148,6 +150,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           kContainer(
                               color: const Color.fromRGBO(118, 90, 72, 1),
                               text: "Mental\nScore",
+                              onTap: (){  Get.to(() => const MentalScoreView());},
                               icon: SvgPicture.asset(
                                   "lib/assets/icons/mentalScoreIcon.svg")),
                           kContainer(
@@ -158,6 +161,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           kContainer(
                               color: const Color.fromRGBO(255, 148, 76, 1),
                               text: "Mood\nQuality",
+                              onTap: () {Get.to(()=>const MoodQualityView());},
                               icon: SvgPicture.asset(
                                   "lib/assets/icons/moodQulatiyIcon.svg")),
                         ],
@@ -180,7 +184,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                             iconPath: 'lib/assets/icons/emergency.png',
                             subText: "Click to Alert Now!"),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 100,
                   ),
                 ],

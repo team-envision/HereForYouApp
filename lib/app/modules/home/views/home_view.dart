@@ -1,15 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kBottomBar.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/views/question_screen_view.dart';
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
-import 'package:here_for_you_app/app/views/views/mind_test_screen_view.dart';
-
+import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
+import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
+import '../../../views/views/MindAnchorView.dart';
 import '../../AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
 import '../controllers/home_controller.dart';
 
@@ -29,19 +26,32 @@ class HomeView extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(238, 229, 255, 1),
         title: Row(
           children: [
-            CachedNetworkImage(
-              imageUrl:
-                  "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png",
-              progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  CircularProgressIndicator(value: downloadProgress.progress),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-              height: 50,
-              width: 50,
+            CircleAvatar(
+              radius: 25,
+              backgroundColor:
+              const Color.fromRGBO(155, 131, 200, 1),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  "lib/assets/images/avatar.png",
+                  scale: 0.8,
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
             ),
+            // CachedNetworkImage(
+            //   imageUrl:
+            //       "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png",
+            //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+            //       CircularProgressIndicator(value: downloadProgress.progress),
+            //   errorWidget: (context, url, error) => const Icon(Icons.error),
+            //   height: 50,
+            //   width: 50,
+            // ),
             const SizedBox(
               width: 20,
             ),
-            Text("Hi, Rhythm Gupta!",
+            Text("Hi, Priya!",
                 style: Get.theme.textTheme.titleLarge
                     ?.copyWith(fontWeight: FontWeight.w600))
           ],
@@ -97,7 +107,7 @@ class HomeView extends StatelessWidget {
                                       ? Colors.yellow
                                       : Colors.transparent,
                                   shape: BoxShape
-                                      .circle, // make the background circular
+                                      .circle,
                                 ),
                                 child: Text(
                                   controller.emojis[index],
@@ -132,11 +142,12 @@ class HomeView extends StatelessWidget {
                       kContainer(
                           color: const Color.fromRGBO(140, 108, 201, 1),
                           text: "Mind\nAnchor",
+                          onTap: () {Get.to(()=>Mindanchorview());},
                           icon: SvgPicture.asset(
                               "lib/assets/icons/AnchorIcon.svg")),
                       kContainer(
                           color: const Color.fromRGBO(255, 148, 76, 1),
-                          onTap: () {},
+                          onTap: () {Get.to(()=>MoodQualityView());},
                           text: "Mood\nQuality",
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),

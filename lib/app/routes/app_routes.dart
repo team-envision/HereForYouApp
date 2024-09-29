@@ -19,6 +19,8 @@ abstract class Routes {
   static const FEED_BACK = _Paths.FEED_BACK;
   static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
   static const GET_STARTED = _Paths.GET_STARTED;
+  static const MIND_ANCHOR_MAIN_SCREEN = _Paths.MIND_ANCHOR_MAIN_SCREEN;
+  static const QUESTION_COUNT_DOWN = _Paths.QUESTION_COUNT_DOWN;
 }
 
 abstract class _Paths {
@@ -39,4 +41,6 @@ abstract class _Paths {
   static const FEED_BACK = '/feed-back';
   static const SPLASH_SCREEN = '/splash-screen';
   static const GET_STARTED = '/get-started';
+  static const MIND_ANCHOR_MAIN_SCREEN = '/mind-anchor-main-screen';
+  static const QUESTION_COUNT_DOWN = '/question-count-down';
 }
