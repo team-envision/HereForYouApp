@@ -16,6 +16,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
     return Scaffold(
 
       body:  NestedScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
@@ -39,15 +40,15 @@ class MoodQualityView extends GetView<MoodQualityController> {
                   clipper: ArcClipper(),
                   child: Stack(
                     alignment: Alignment.center,
-                     children: [
-                    //   Container(
-                    //     color: const Color(0xFFFFEBC2),
-                    //     child: SvgPicture.asset(
-                    //       "lib/assets/images/moodqualitypageBgrnd.svg",
-                    //       fit: BoxFit.fitWidth,
-                    //       alignment: const Alignment(0, -0.9),
-                    //     ),
-                    //   ),
+                    children: [
+                      Container(
+                        color: const Color(0xFFFFEBC2),
+                        child: SvgPicture.asset(
+                          "lib/assets/images/moodqualitypageBgrnd.svg",
+                          fit: BoxFit.fitWidth,
+                          alignment: const Alignment(0, -0.9),
+                        ),
+                      ),
                       Container(
                         height: 200,
                         width: 200,
@@ -73,10 +74,10 @@ class MoodQualityView extends GetView<MoodQualityController> {
           ];
         },
         body: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft:Radius.circular(34) ,topRight: Radius.circular(34) ),
-                color: Colors.white
-            ),
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft:Radius.circular(34) ,topRight: Radius.circular(34) ),
+              color: Colors.white
+          ),
           child: Padding(
             padding: const EdgeInsets.only(top: 16.0, right: 16, left: 16),
             child: Column(
@@ -86,7 +87,6 @@ class MoodQualityView extends GetView<MoodQualityController> {
               children: [
 
                 const SizedBox(height: 16),
-
 
                 Center(
                   child: Text(
@@ -98,7 +98,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Flexible(
+                SizedBox(height: 200,
                   child: BarChart(
                     BarChartData(
                       alignment: BarChartAlignment.spaceAround,
@@ -140,16 +140,23 @@ class MoodQualityView extends GetView<MoodQualityController> {
                         ),
                         leftTitles: AxisTitles(
                           sideTitles: SideTitles(
-                            showTitles: true,
-                            interval: 20,
+                            showTitles: true,minIncluded: true,
+                            interval: 1,
                             getTitlesWidget: (double value, TitleMeta meta) {
-                              return value % 20 == 0
-                                  ? Text(value.toInt().toString(),
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ))
-                                  : const SizedBox();
+                              switch (value) {
+                                case 10:
+                                  return const Text("🙁");
+                                case 20:
+                                  return const Text("😐",);
+                                case 30:
+                                  return const Text("🙂",);
+                                case 40:
+                                  return const Text("😃",);
+                                case 50:
+                                  return const Text("😆");
+                                default:
+                                  return const SizedBox();
+                              }
                             },
                           ),
                         ),
@@ -163,7 +170,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 36),
+                const SizedBox(height: 36),
 
 
               ],
@@ -177,62 +184,32 @@ class MoodQualityView extends GetView<MoodQualityController> {
     return [
       BarChartGroupData(
         x: 0,
-        barRods: [BarChartRodData(toY: 30,  color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 10,  color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 1,
-        barRods: [BarChartRodData(toY: 40, color: Color.fromRGBO(247, 206, 69, 1),)],
+        barRods: [BarChartRodData(toY: 20, color: const Color.fromRGBO(247, 206, 69, 1),)],
       ),
       BarChartGroupData(
         x: 2,
-        barRods: [BarChartRodData(toY: 80,  color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 30,  color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 3,
-        barRods: [BarChartRodData(toY: 50, color: Color.fromRGBO(247, 206, 69, 1)),],
+        barRods: [BarChartRodData(toY: 40, color: const Color.fromRGBO(247, 206, 69, 1)),],
       ),
       BarChartGroupData(
         x: 4,
-        barRods: [BarChartRodData(toY: 40, color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 50, color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 5,
-        barRods: [BarChartRodData(toY: 70,  color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 50,  color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
       BarChartGroupData(
         x: 6,
-        barRods: [BarChartRodData(toY: 20, color: Color.fromRGBO(247, 206, 69, 1))],
+        barRods: [BarChartRodData(toY: 20, color: const Color.fromRGBO(247, 206, 69, 1))],
       ),
     ];
   }
-}
-List<Widget> _buildImageBars() {
-  // Image heights based on your data
-  return [
-    Positioned(
-      left: 50, // Adjust based on your layout
-      bottom: 30, // Adjust based on your data values
-      child: Image.asset(
-        'lib/assets/images/neutral_face.png', // Path to your image
-        height: 30, // Adjust the height as needed
-      ),
-    ),
-    Positioned(
-      left: 130,
-      bottom: 40,
-      child: Image.asset(
-        'lib/assets/images/saddest.png',
-        height: 40,
-      ),
-    ),
-    Positioned(
-      left: 210,
-      bottom: 80,
-      child: Image.asset(
-        'lib/assets/images/image_wed.png',
-        height: 80,
-      ),
-    ),
-    // Continue for other days...
-  ];
 }

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kBottomBar.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/views/question_screen_view.dart';
+
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
+import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_screen_view.dart';
 
 import '../../../../Components/featureCards.dart';
@@ -136,7 +136,7 @@ class HomeView extends StatelessWidget {
                               "lib/assets/icons/AnchorIcon.svg")),
                       kContainer(
                           color: const Color.fromRGBO(255, 148, 76, 1),
-                          onTap: () {},
+                          onTap: () { Get.to(() => MoodQualityView());},
                           text: "Mood\nQuality",
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
