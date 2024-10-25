@@ -48,56 +48,57 @@ class MentalScoreController extends GetxController {
 
   void getFinalMessage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _DepressionResult.value = prefs.getString("DepressionResult")!;
-    _AnxietyResult.value = prefs.getString("AnxietyResult")!;
-    _StressResult.value = prefs.getString("StressResult")!;
+    _DepressionResult.value = prefs.getString("DepressionResult") ?? "None";
+    _AnxietyResult.value = prefs.getString("AnxietyResult") ?? "None";
+    _StressResult.value = prefs.getString("StressResult") ?? "None";
+
+    print(_DepressionResult.value);
+    print(_AnxietyResult.value);
+    print(_StressResult.value);
+
+    msg.value = "According to our screening assessment, we have identified the following:";
+    endMsg.value = "";
+
     if (_DepressionResult.value == "Moderate" ||
         _DepressionResult.value == "Moderately severe" ||
         _DepressionResult.value == "Severe") {
-      msg.value =
-          "According to our screening assessment you have symptoms suggestive of Depression.";
+      msg.value += "\n\n**Depression**: Symptoms suggestive of Depression have been identified.";
+      endMsg.value +=
+      "\nSadness is a natural human emotion, but depression differs. Depression is a medical condition, not just sadness.";
+    }
 
-      endMsg.value =
-          "Sadness is a human emotion that all people feel at certain times during their lives."
-          " Feeling sad is a natural reaction to situations that cause emotional upset or pain."
-          " Depression differs from sadness. The feelings you have will affect all aspects of your life."
-          " Depression is a medical condition, not an emotion.";
-      title.value = "Depression";
-      imgUrl.value = "lib/assets/images/icon_depression.png";
-    } else if (_AnxietyResult.value == "Moderate anxiety" ||
+
+    if (_AnxietyResult.value == "Moderate anxiety" ||
         _AnxietyResult.value == "Severe anxiety") {
-      msg.value =
-          "According to our screening assessment you  may have symptoms suggestive of an Anxiety disorder.";
+      msg.value += "\n\n**Anxiety**: Symptoms suggestive of an Anxiety disorder have been identified.";
+      endMsg.value +=
+      "\nIt's normal to feel anxious, but it becomes a problem when symptoms are constant or intense, even without a present danger.";
+    }
 
-      endMsg.value =
-          "It’s normal to feel Anxious when faced with a potentially dangerous situation or worrying triggers,"
-          " our “nerves” become the warning signs we need to navigate the dangers around us."
-          " The problem starts when you start experiencing  these symptoms constantly or intensely even without a present danger.";
 
-      title.value = "Anxiety";
-      imgUrl.value = "lib/assets/images/icon_anxiety.png";
-    } else if (_StressResult.value == "Moderate" ||
+    if (_StressResult.value == "Moderate" ||
         _StressResult.value == "Severe" ||
         _StressResult.value == "Extremely Severe") {
+      msg.value += "\n\n**Stress**: High stress levels that may be challenging to cope with have been identified.";
+      endMsg.value +=
+      "\nStress is natural and important for growth, but it becomes problematic when it exceeds your ability to cope.";
+    }
+
+
+    if (msg.value == "According to our screening assessment, we have identified the following:") {
       msg.value =
-          "Our screening assessment suggests that you may be under stress, which you’re unable to cope with.";
-
+      "According to our screening assessment, you show no significant symptoms of depression, anxiety, or stress.";
       endMsg.value =
-          "We all go through stress in our lives, it’s important for your growth."
-          " Stress becomes a problem when it exceeds your ability to cope with them.";
-
-      title.value = "Stress";
-      imgUrl.value = "lib/assets/images/icon_stress.png";
-    } else {
-      msg.value =
-          "According to our screening assessment you don’t have any symptoms suggestive of depression, anxiety disorder or stress.";
-
-      endMsg.value =
-          "Strong mental health isn’t just the absence of mental health problems. Being mentally or emotionally healthy is much more than being free of depression, anxiety, or other psychological issues. Rather than the absence of mental illness, mental health refers to the presence of positive characteristics.";
+      "Strong mental health is more than the absence of mental health problems; it’s about the presence of positive characteristics.";
       title.value = "No Issues";
       imgUrl.value = "lib/assets/images/icon_noProblems.png";
+    } else {
+      title.value = "Assessment Results";
+      imgUrl.value = "lib/assets/images/brightsmile.png";
     }
   }
+
+
 
   @override
   void onReady() {
