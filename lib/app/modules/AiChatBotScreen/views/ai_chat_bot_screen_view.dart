@@ -27,7 +27,8 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                 },
                 icon: const Icon(Icons.arrow_back),
               ),
-              floating: true,snap: true,
+              floating: true,
+              snap: true,
               pinned: true,
               centerTitle: true,
               backgroundColor: Colors.white,
@@ -73,67 +74,76 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
             ),
           ];
         },
-        body: Obx(()=>DashChat(
-          currentUser: controller.user,
-          messageOptions: MessageOptions(messageTextBuilder: (msg,prevMsg,nextMsg){
-    if (msg != null && msg.user.id == controller.geminiUser.id) {
-    return MarkdownBody(
-    data: msg.text,
-    styleSheet: MarkdownStyleSheet(
-    p: const TextStyle(fontSize: 16),
-    strong: const TextStyle(fontWeight: FontWeight.bold),
-    blockquote: const TextStyle(fontStyle: FontStyle.italic),
-    listBullet: const TextStyle(fontSize: 16),
-    ),
-    );
-    }
-    return Text(msg.text);
-    },
-
-              showOtherUsersAvatar: true,avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) => CircleAvatar(backgroundColor: Colors.transparent,child: Image.asset("lib/assets/icons/botIcon.png"),)),
-          inputOptions: InputOptions(
-            sendOnEnter: true,
-            alwaysShowSend: false,
-            inputToolbarMargin: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
-            inputToolbarPadding: const EdgeInsets.only(right: 20),
-            inputToolbarStyle: BoxDecoration(
-              color: Colors.white70,shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(
-                  color: Colors.white
-              ),
-              boxShadow: const [BoxShadow(color: Colors.black38)],
-            ),
-            inputDecoration: InputDecoration(
-              fillColor: Colors.white,
-              hintText: "Ask Your Question",
-              hintStyle: const TextStyle(color: Colors.black38),
-              prefixIconColor: Colors.black38,
-              prefixIcon: const Icon(Icons.file_upload_outlined),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-                borderSide: const BorderSide(
-                  color: Colors.transparent,
+        body: Obx(() => DashChat(
+              currentUser: controller.user,
+              messageOptions: MessageOptions(
+                  messageTextBuilder: (msg, prevMsg, nextMsg) {
+                    if (msg != null &&
+                        msg.user.id == controller.geminiUser.id) {
+                      return MarkdownBody(
+                        data: msg.text,
+                        styleSheet: MarkdownStyleSheet(
+                          p: const TextStyle(fontSize: 16),
+                          strong: const TextStyle(fontWeight: FontWeight.bold),
+                          blockquote:
+                              const TextStyle(fontStyle: FontStyle.italic),
+                          listBullet: const TextStyle(fontSize: 16),
+                        ),
+                      );
+                    }
+                    return Text(msg.text);
+                  },
+                  showOtherUsersAvatar: true,
+                  avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) =>
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        child: Image.asset("lib/assets/icons/botIcon.png"),
+                      )),
+              inputOptions: InputOptions(
+                sendOnEnter: true,
+                alwaysShowSend: false,
+                inputToolbarMargin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                inputToolbarPadding: const EdgeInsets.only(right: 20),
+                inputToolbarStyle: BoxDecoration(
+                  color: Colors.white70,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(color: Colors.white),
+                  boxShadow: const [BoxShadow(color: Colors.black38)],
+                ),
+                inputDecoration: InputDecoration(
+                  fillColor: Colors.white,
+                  hintText: "Ask Your Question",
+                  hintStyle: const TextStyle(color: Colors.black38),
+                  prefixIconColor: Colors.black38,
+                  prefixIcon: const Icon(Icons.file_upload_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                    ),
+                  ),
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-                borderSide: const BorderSide(
-                  color: Colors.transparent,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-                borderSide: const BorderSide(
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ),
-          onSend: controller.sendMessage,
-          messages: controller.messages.value,
-          messageListOptions: MessageListOptions(typingBuilder: (val)=>const Text("MentAid is typing..."),loadEarlierBuilder: const Text("MentAid is typing...")),
-        )),
+              onSend: controller.sendMessage,
+              messages: controller.messages.value,
+              messageListOptions: MessageListOptions(
+                  typingBuilder: (val) => const Text("MentAid is typing..."),
+                  loadEarlierBuilder: const Text("MentAid is typing...")),
+            )),
       ),
     );
   }
