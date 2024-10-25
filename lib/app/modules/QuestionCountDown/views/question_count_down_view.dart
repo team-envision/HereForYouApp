@@ -30,12 +30,12 @@ final controller = Get.put(QuestionCountDownController());
                   ),
                   Padding(
                     padding: const EdgeInsets.all( 5.0),
-                    child: Text(
-                      // " ${controller.CurrentPage.value.toString()} Down ${controller.TotalPage.value.toString()} more to go!",
-                      " Few More To Go!",
+                    child: Obx(()=>Text(
+                      "${controller.TotalPage.value.toString()} more to go!",
+                      // " Few More To Go!",
                       style: Get.textTheme.titleLarge
                           ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
+                    )),
                   ),
                   const Spacer(),
                   Padding(

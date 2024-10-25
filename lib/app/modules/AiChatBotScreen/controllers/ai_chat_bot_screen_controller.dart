@@ -35,14 +35,12 @@ class AiChatBotScreenController extends GetxController {
     scrollController = ScrollController();
 
     KeyboardVisibilityController().onChange.listen((isVisible) {
-      print("listened");
-      print(isVisible);
+
       scrollToSpecificPosition();
     });
   }
 
   void scrollToSpecificPosition() {
-    print("called");
     scrollController.jumpTo(
       scrollController.position.maxScrollExtent,
     );
@@ -50,31 +48,46 @@ class AiChatBotScreenController extends GetxController {
 
 
   void sendMessage(ChatMessage chatMessage) {
-    messages.value= [chatMessage,...messages];
+    messages.value = [chatMessage, ...messages];
 
     try {
-      String Question =chatMessage.text;
-      gemini.streamGenerateContent(Question).listen((event){
-        ChatMessage? lastMsg = messages.firstOrNull;
-        if(lastMsg !=null && lastMsg.user== geminiUser){
-          lastMsg = messages.removeAt(0);
-          String response = event.content?.parts?.fold("", (previous,Current)=>"$previous${Current.text}")??"";
-          lastMsg.text += response;
-          messages.value =[lastMsg,...messages];
+      String question = chatMessage.text.toLowerCase();
 
-        }
-        else{
-          String response = event.content?.parts?.fold("", (previous,Current)=>"$previous${Current.text}")??"";
-          ChatMessage message =ChatMessage(user: geminiUser, createdAt: DateTime.now(),text: response);
-          messages.value= [message,...messages];
-        }
+
+      List<String> relevantTopics = ["stress", "depression", "anxiety","mental health","mental"];
+
+
+      bool isRelevant = relevantTopics.any((topic) => question.contains(topic));
+
+      if (isRelevant) {
+
+        gemini.streamGenerateContent(question).listen((event) {
+          ChatMessage? lastMsg = messages.firstOrNull;
+          if (lastMsg != null && lastMsg.user == geminiUser) {
+            lastMsg = messages.removeAt(0);
+            String response = event.content?.parts?.fold("", (previous, current) => "$previous${current.text}") ?? "";
+            lastMsg.text += response;
+            messages.value = [lastMsg, ...messages];
+          } else {
+            String response = event.content?.parts?.fold("", (previous, current) => "$previous${current.text}") ?? "";
+            ChatMessage message = ChatMessage(user: geminiUser, createdAt: DateTime.now(), text: response);
+            messages.value = [message, ...messages];
+          }
+        });
+      } else {
+
+        ChatMessage message = ChatMessage(
+          user: geminiUser,
+          createdAt: DateTime.now(),
+          text: "I can assist you with information related to stress, depression, and anxiety. Please ask me about these topics.",
+        );
+        messages.value = [message, ...messages];
       }
-      );
-
     } catch (error) {
       print("Error in streaming response: $error");
     }
   }
+
   @override
   void onReady() {
     super.onReady();
