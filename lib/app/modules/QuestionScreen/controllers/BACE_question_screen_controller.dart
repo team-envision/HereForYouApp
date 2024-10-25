@@ -15,14 +15,12 @@ class BACEQuestionController extends GetxController {
   RxInt selectedOptionIndex = (-1).obs;
   var selectedIndex = (-1).obs;
 
-  RxMap<int,int> BACEIndex = <int,int>{}.obs;
+  RxMap<int, int> BACEIndex = <int, int>{}.obs;
   String get currentQuestion => BACEquestions[currentQuestionIndex.value];
   List<String> get currentOptions => BACEoptions;
 
-  RxInt totalScore=(0).obs;
-  RxString result="".obs;
-
-
+  RxInt totalScore = (0).obs;
+  RxString result = "".obs;
 
   @override
   void onInit() {
@@ -35,11 +33,13 @@ class BACEQuestionController extends GetxController {
   }
 
   Future<void> loadQuestionnaire() async {
-    String jsonString = await rootBundle.loadString('lib/assets/json/questions.json');
+    String jsonString =
+        await rootBundle.loadString('lib/assets/json/questions.json');
     if (jsonString.isNotEmpty) {
       Map<String, dynamic>? jsonData = jsonDecode(jsonString);
       if (jsonData != null) {
-        QuestionnaireModel questionnaire = QuestionnaireModel.fromJson(jsonData);
+        QuestionnaireModel questionnaire =
+            QuestionnaireModel.fromJson(jsonData);
         BACEquestions.value = questionnaire.bace.questions;
         BACEoptions.value = questionnaire.bace.options;
       } else {
@@ -50,7 +50,7 @@ class BACEQuestionController extends GetxController {
     }
   }
 
-  Future<void> SaveToPreference(String  result) async {
+  Future<void> SaveToPreference(String result) async {
     SharedPreferences prefs;
 
     prefs = await SharedPreferences.getInstance();
@@ -58,21 +58,19 @@ class BACEQuestionController extends GetxController {
   }
 
   void nextQuestion() {
-   if(selectedIndex.value!=-1){
-     if (currentQuestionIndex.value < BACEquestions.length - 1) {
-        BACEIndex[currentQuestionIndex.value]=selectedIndex.value;
-       currentQuestionIndex.value++;
-       selectedOptionIndex.value = -1;
-     } else {
-       getResult();
-       SaveToPreference(result.value);
-       finishBACE();
-
-     }
-   }
-   else{
-     Get.snackbar("Error", "Select an Option");
-   }
+    if (selectedIndex.value != -1) {
+      if (currentQuestionIndex.value < BACEquestions.length - 1) {
+        BACEIndex[currentQuestionIndex.value] = selectedIndex.value;
+        currentQuestionIndex.value++;
+        selectedOptionIndex.value = -1;
+      } else {
+        getResult();
+        SaveToPreference(result.value);
+        finishBACE();
+      }
+    } else {
+      Get.snackbar("Error", "Select an Option");
+    }
   }
 
   String getOptionIcon(int index) {
@@ -90,29 +88,26 @@ class BACEQuestionController extends GetxController {
     }
   }
 
-   getResult(){
-     totalScore.value=BACEIndex.values.reduce((sum, element) => sum + element);
+  getResult() {
+    totalScore.value = BACEIndex.values.reduce((sum, element) => sum + element);
 
-     if (totalScore.value >= 50) {
-      result.value= "You are facing significant barriers to accessing care. Consider anonymous helplines or telepsychiatry services.";
-     } else if (totalScore.value >= 30) {
-       result.value="You may be facing some barriers to accessing care. It's important to explore online resources or community support services.";
-     } else if (totalScore.value >= 10) {
-       result.value= "You have few barriers to accessing care, but some challenges may exist. Look for easily accessible services like online consultations.";
-     } else {
-       result.value=  "You have minimal barriers to accessing care. Please reach out to mental health services confidently.";
-     }
-
+    if (totalScore.value >= 50) {
+      result.value =
+          "You are facing significant barriers to accessing care. Consider anonymous helplines or telepsychiatry services.";
+    } else if (totalScore.value >= 30) {
+      result.value =
+          "You may be facing some barriers to accessing care. It's important to explore online resources or community support services.";
+    } else if (totalScore.value >= 10) {
+      result.value =
+          "You have few barriers to accessing care, but some challenges may exist. Look for easily accessible services like online consultations.";
+    } else {
+      result.value =
+          "You have minimal barriers to accessing care. Please reach out to mental health services confidently.";
+    }
   }
   void finishBACE() {
     String next = Get.arguments['nextToNext'] ?? '';
-
       Get.to(() => QuestionCountdownView(), arguments: {'next': next,'TotalPage':1});
 
   }
-
-
-
-
-
 }

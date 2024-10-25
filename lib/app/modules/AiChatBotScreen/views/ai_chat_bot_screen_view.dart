@@ -1,5 +1,6 @@
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import '../controllers/ai_chat_bot_screen_controller.dart';
 
@@ -73,7 +74,23 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
           ];
         },
         body: Obx(()=>DashChat(
-          currentUser: controller.user,messageOptions: MessageOptions(showOtherUsersAvatar: true,avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) => CircleAvatar(backgroundColor: Colors.transparent,child: Image.asset("lib/assets/icons/botIcon.png"),)),
+          currentUser: controller.user,
+          messageOptions: MessageOptions(messageTextBuilder: (msg,prevMsg,nextMsg){
+    if (msg != null && msg.user.id == controller.geminiUser.id) {
+    return MarkdownBody(
+    data: msg.text,
+    styleSheet: MarkdownStyleSheet(
+    p: const TextStyle(fontSize: 16),
+    strong: const TextStyle(fontWeight: FontWeight.bold),
+    blockquote: const TextStyle(fontStyle: FontStyle.italic),
+    listBullet: const TextStyle(fontSize: 16),
+    ),
+    );
+    }
+    return Text(msg.text);
+    },
+
+              showOtherUsersAvatar: true,avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) => CircleAvatar(backgroundColor: Colors.transparent,child: Image.asset("lib/assets/icons/botIcon.png"),)),
           inputOptions: InputOptions(
             sendOnEnter: true,
             alwaysShowSend: false,
@@ -115,6 +132,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
           ),
           onSend: controller.sendMessage,
           messages: controller.messages.value,
+          messageListOptions: MessageListOptions(typingBuilder: (val)=>const Text("MentAid is typing..."),loadEarlierBuilder: const Text("MentAid is typing...")),
         )),
       ),
     );
