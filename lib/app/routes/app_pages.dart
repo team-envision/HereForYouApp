@@ -12,6 +12,8 @@ import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/views/basic_info_page_view.dart';
+import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
+import '../modules/emergency_contact/views/emergency_contact_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
 import '../modules/genderPage/bindings/gender_page_binding.dart';
@@ -37,10 +39,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-
-
   static const INITIAL = Routes.GENDER_PAGE;
-
 
   static final routes = [
     GetPage(
@@ -119,8 +118,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QUESTION_COUNT_DOWN,
-      page: () =>  QuestionCountdownView(),
+      page: () => QuestionCountdownView(),
       binding: QuestionCountDownBinding(),
+    ),
+    GetPage(
+      name: _Paths.EMERGENCY_CONTACT,
+      page: () => EmergencyContactView(),
+      binding: EmergencyContactBinding(),
     ),
   ];
 }
