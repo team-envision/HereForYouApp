@@ -15,9 +15,12 @@ class FeedBackView extends GetView<FeedBackController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back,
-          weight: 23,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: ()
+          {
+            Get.back();
+          },
         ),
         title: const Text('FeedBack',
             style: TextStyle(
