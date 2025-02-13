@@ -15,10 +15,9 @@ void main() {
      GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      home: bottomNavigation(),
-       // getPages: AppPages.routes,
        // initialRoute: AppPages.INITIAL,
-
+       // getPages: AppPages.routes,
+      home: bottomNavigation(),
     ),
   );
 

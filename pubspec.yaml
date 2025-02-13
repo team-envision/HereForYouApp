@@ -13,7 +13,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   cached_network_image: ^3.4.1
-  flutter_svg: ^2.0.10+1
   fl_chart: ^0.69.0
   dash_chat_2: ^0.0.21
   flutter_keyboard_visibility: ^6.0.0
@@ -21,6 +20,8 @@ dependencies:
   flutter_gemini: ^2.0.5
   shared_preferences: ^2.3.2
   flutter_markdown: ^0.7.3+2
+  flutter_native_splash: ^2.4.4
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
