@@ -21,6 +21,7 @@ abstract class Routes {
   static const GET_STARTED = _Paths.GET_STARTED;
   static const MIND_ANCHOR_MAIN_SCREEN = _Paths.MIND_ANCHOR_MAIN_SCREEN;
   static const QUESTION_COUNT_DOWN = _Paths.QUESTION_COUNT_DOWN;
+  static const EMERGENCY_CONTACT = _Paths.EMERGENCY_CONTACT;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const GET_STARTED = '/get-started';
   static const MIND_ANCHOR_MAIN_SCREEN = '/mind-anchor-main-screen';
   static const QUESTION_COUNT_DOWN = '/question-count-down';
+  static const EMERGENCY_CONTACT = '/emergency-contact';
 }
