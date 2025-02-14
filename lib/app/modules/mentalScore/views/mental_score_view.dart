@@ -30,7 +30,7 @@ class MentalScoreView extends GetView<MentalScoreController> {
                   title: const Text("Mental Score"),
                   leading: IconButton(
                     onPressed: () {
-                      Get.off(()=>HomeView());
+                      Get.back();
                     },
                     icon: const Icon(Icons.arrow_back),
                   ),

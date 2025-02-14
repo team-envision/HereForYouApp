@@ -19,7 +19,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              expandedHeight: Get.height * 0.7,
+              expandedHeight: Get.height * 0.6,
               title: const Text("A.I Chat Bot"),
               leading: IconButton(
                 onPressed: () {
@@ -37,17 +37,18 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                   ?.copyWith(fontWeight: FontWeight.bold),
               flexibleSpace: FlexibleSpaceBar(
                 background: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     ClipPath(
                       clipper: ArcClipper(),
                       child: Container(
-                        padding: const EdgeInsets.only(top: 22),
-                        height: Get.height * 0.5,
+                        width: double.infinity,
+                        height: Get.height * 0.4,
                         color: const Color.fromRGBO(229, 229, 228, 1),
                         child: Image.asset(
                           "lib/assets/images/AiChatBotImage.png",
-                          fit: BoxFit.fitWidth,
-                          alignment: const Alignment(0, 0),
+                          fit: BoxFit.cover,
+                          alignment: Alignment.center,
                         ),
                       ),
                     ),
@@ -58,15 +59,19 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 20),
-                    Text(
-                      controller.Textdata,
-                      style: Get.theme.textTheme.bodyLarge?.copyWith(
-                        fontSize: 16,
-                        height: 1.4,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        controller.Textdata,
+                        style: Get.theme.textTheme.bodyLarge?.copyWith(
+                          fontSize: 16,
+                          height: 1.4,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
@@ -75,75 +80,74 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
           ];
         },
         body: Obx(() => DashChat(
-              currentUser: controller.user,
-              messageOptions: MessageOptions(
-                  messageTextBuilder: (msg, prevMsg, nextMsg) {
-                    if (msg != null &&
-                        msg.user.id == controller.geminiUser.id) {
-                      return MarkdownBody(
-                        data: msg.text,
-                        styleSheet: MarkdownStyleSheet(
-                          p: const TextStyle(fontSize: 16),
-                          strong: const TextStyle(fontWeight: FontWeight.bold),
-                          blockquote:
-                              const TextStyle(fontStyle: FontStyle.italic),
-                          listBullet: const TextStyle(fontSize: 16),
-                        ),
-                      );
-                    }
-                    return Text(msg.text);
-                  },
-                  showOtherUsersAvatar: true,
-                  avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) =>
-                      CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: Image.asset("lib/assets/icons/botIcon.png"),
-                      )),
-              inputOptions: InputOptions(
-                sendOnEnter: true,
-                alwaysShowSend: false,
-                inputToolbarMargin:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                inputToolbarPadding: const EdgeInsets.only(right: 20),
-                inputToolbarStyle: BoxDecoration(
-                  color: Colors.white70,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(50),
-                  border: Border.all(color: Colors.white),
-                  boxShadow: const [BoxShadow(color: Colors.black38)],
+          currentUser: controller.user,
+          messageOptions: MessageOptions(
+            messageTextBuilder: (msg, prevMsg, nextMsg) {
+              if (msg != null && msg.user.id == controller.geminiUser.id) {
+                return MarkdownBody(
+                  data: msg.text,
+                  styleSheet: MarkdownStyleSheet(
+                    p: const TextStyle(fontSize: 16),
+                    strong: const TextStyle(fontWeight: FontWeight.bold),
+                    blockquote: const TextStyle(fontStyle: FontStyle.italic),
+                    listBullet: const TextStyle(fontSize: 16),
+                  ),
+                );
+              }
+              return Text(msg.text);
+            },
+            showOtherUsersAvatar: true,
+            avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) =>
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Image.asset("lib/assets/icons/botIcon.png"),
                 ),
-                inputDecoration: InputDecoration(
-                  fillColor: Colors.white,
-                  hintText: "Ask Your Question",
-                  hintStyle: const TextStyle(color: Colors.black38),
-                  prefixIconColor: Colors.black38,
-                  prefixIcon: const Icon(Icons.file_upload_outlined),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                    ),
-                  ),
+          ),
+          inputOptions: InputOptions(
+            sendOnEnter: true,
+            alwaysShowSend: false,
+            inputToolbarMargin:
+            const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            inputToolbarPadding: const EdgeInsets.only(right: 20),
+            inputToolbarStyle: BoxDecoration(
+              color: Colors.white70,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: Colors.white),
+              boxShadow: const [BoxShadow(color: Colors.black38)],
+            ),
+            inputDecoration: InputDecoration(
+              fillColor: Colors.white,
+              hintText: "Ask Your Question",
+              hintStyle: const TextStyle(color: Colors.black38),
+              prefixIconColor: Colors.black38,
+              prefixIcon: const Icon(Icons.file_upload_outlined),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
                 ),
               ),
-              onSend: controller.sendMessage,
-              messages: controller.messages.value,
-              messageListOptions: MessageListOptions(
-                  typingBuilder: (val) => const Text("MentAid is typing..."),
-                  loadEarlierBuilder: const Text("MentAid is typing...")),
-            )),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+          ),
+          onSend: controller.sendMessage,
+          messages: controller.messages.value,
+          messageListOptions: MessageListOptions(
+              typingBuilder: (val) => const Text("MentAid is typing..."),
+              loadEarlierBuilder: const Text("MentAid is typing...")),
+        )),
       ),
     );
   }
@@ -154,7 +158,7 @@ class ArcClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
     path.lineTo(0.0, size.height);
-    path.quadraticBezierTo(size.width / 2, 350.0, size.width, size.height);
+    path.quadraticBezierTo(size.width / 2, size.height * 0.7, size.width, size.height);
     path.lineTo(size.width, 0.0);
     path.close();
     return path;
