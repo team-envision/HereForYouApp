@@ -47,7 +47,7 @@ class MindTestScreenView extends GetView {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Wrap(
                 runSpacing: 16,
                 children: [
@@ -66,7 +66,7 @@ class MindTestScreenView extends GetView {
                   kElevatedButton(text: "Start", onPressed: () {Get.off(()=>DASS21QuestionView());})
                 ],
               ),
-              Spacer()
+              const Spacer()
             ],
           ),
         ),

@@ -10,6 +10,8 @@ import '../modules/QuestionCountDown/bindings/question_count_down_binding.dart';
 import '../modules/QuestionCountDown/views/question_count_down_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
+import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
+import '../modules/SleepDiary/views/sleep_diary_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/views/basic_info_page_view.dart';
 import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
@@ -125,6 +127,11 @@ class AppPages {
       name: _Paths.EMERGENCY_CONTACT,
       page: () => EmergencyContactView(),
       binding: EmergencyContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.SLEEP_DIARY,
+      page: () => const SleepDiaryView(),
+      binding: SleepDiaryBinding(),
     ),
   ];
 }
