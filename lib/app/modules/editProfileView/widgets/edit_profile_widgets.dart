@@ -6,14 +6,16 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final String? Function(String?)? validator;
 
   const CustomTextField({
     super.key,
     required this.label,
-   this.labelColor = Colors.black,
+    this.labelColor = Colors.black,
     required this.hintText,
     required this.controller,
     this.keyboardType = TextInputType.text,
+    this.validator,
   });
 
   @override
@@ -25,8 +27,8 @@ class CustomTextField extends StatelessWidget {
           label,
           style: TextStyle(
             color: labelColor,
-              fontWeight: FontWeight.bold,
-            fontSize: 16
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
           ),
         ),
         const SizedBox(height: 8),
@@ -42,7 +44,7 @@ class CustomTextField extends StatelessWidget {
               ),
             ],
           ),
-          child: TextField(
+          child: TextFormField(
             controller: controller,
             keyboardType: keyboardType,
             decoration: InputDecoration(
@@ -53,6 +55,7 @@ class CustomTextField extends StatelessWidget {
                 vertical: 16,
               ),
             ),
+            validator: validator,
           ),
         ),
         const SizedBox(height: 8),
@@ -66,6 +69,7 @@ class CustomDropdown extends StatelessWidget {
   final String? value;
   final List<String> items;
   final void Function(String?) onChanged;
+  final String? Function(String?)? validator;
 
   const CustomDropdown({
     super.key,
@@ -73,6 +77,7 @@ class CustomDropdown extends StatelessWidget {
     required this.value,
     required this.items,
     required this.onChanged,
+    this.validator,
   });
 
   @override
@@ -83,8 +88,9 @@ class CustomDropdown extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-             fontSize: 16,
-              fontWeight: FontWeight.bold),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 8),
         Container(
@@ -110,6 +116,7 @@ class CustomDropdown extends StatelessWidget {
             )
                 .toList(),
             onChanged: onChanged,
+            validator: validator,
             decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.symmetric(
@@ -117,13 +124,13 @@ class CustomDropdown extends StatelessWidget {
                 vertical: 12,
               ),
             ),
-    icon: const Icon(
-    Icons.keyboard_arrow_down_outlined,
-    color: Colors.black,
-    size: 24,
-    ),
-    ),
+            icon: const Icon(
+              Icons.keyboard_arrow_down_outlined,
+              color: Colors.black,
+              size: 24,
+            ),
           ),
+        ),
         const SizedBox(height: 16),
       ],
     );
