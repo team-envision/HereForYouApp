@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
@@ -71,7 +72,7 @@ class HomeView extends StatelessWidget {
                     backGroundColor: const Color.fromRGBO(223, 242, 186, 1),
                     borderColor: const Color.fromRGBO(177, 212, 114, 1),
                     onTap: () {
-                      Get.to(() => MindTestScreenView());
+                      Get.to(() => const MindTestScreenView());
                     },
                     text: "Start Your\nMind Test",
                     IsSvg: true,
@@ -136,22 +137,30 @@ class HomeView extends StatelessWidget {
                           color: const Color.fromRGBO(118, 90, 72, 1),
                           text: "Mental\nScore",
                           onTap: () {
-                            Get.to(() => MentalScoreView());
+                            Get.to(() => const MentalScoreView());
                           },
                           icon: SvgPicture.asset(
                               "lib/assets/icons/mentalScoreIcon.svg")),
                       kContainer(
                           color: const Color.fromRGBO(140, 108, 201, 1),
                           text: "Mind\nAnchor",
-                          onTap: () {Get.to(()=>Mindanchorview());},
+                          onTap: () {Get.to(()=>const Mindanchorview());},
                           icon: SvgPicture.asset(
                               "lib/assets/icons/AnchorIcon.svg")),
                       kContainer(
                           color: const Color.fromRGBO(255, 148, 76, 1),
 
-                          onTap: () {Get.to(()=>MoodQualityView());},
+                          onTap: () {Get.to(()=>const MoodQualityView());},
 
                           text: "Mood\nQuality",
+                          icon: SvgPicture.asset(
+                              "lib/assets/icons/moodQulatiyIcon.svg")),
+                      kContainer(
+                          color: const Color.fromRGBO(255, 148, 76, 1),
+
+                          onTap: () {Get.toNamed(Routes.SLEEP_DIARY);},
+
+                          text: "Sleep Diary\nQuality",
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
                     ],
@@ -161,7 +170,7 @@ class HomeView extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: kCard(
                       onTap: () {
-                      Get.to(()=>AiChatBotScreenView());
+                      Get.to(()=>const AiChatBotScreenView());
                       },
                       backGroundColor: const Color.fromRGBO(229, 229, 228, 1),
                       borderColor: const Color.fromRGBO(131, 131, 131, 1),
@@ -170,7 +179,7 @@ class HomeView extends StatelessWidget {
                       ImagePath: "lib/assets/images/AiChatBotCard.png",
                       iconPath: 'lib/assets/icons/roboIcon.png'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 )
               ],

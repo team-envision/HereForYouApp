@@ -10,10 +10,14 @@ import '../modules/QuestionCountDown/bindings/question_count_down_binding.dart';
 import '../modules/QuestionCountDown/views/question_count_down_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
+import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
+import '../modules/SleepDiary/views/sleep_diary_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/views/basic_info_page_view.dart';
 import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
 import '../modules/editProfileView/views/edit_profile_view.dart';
+import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
+import '../modules/emergency_contact/views/emergency_contact_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
 import '../modules/genderPage/bindings/gender_page_binding.dart';
@@ -39,7 +43,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.EDIT_PROFILE_VIEW;
+  static const INITIAL = Routes.GENDER_PAGE;
 
   static final routes = [
     GetPage(
@@ -125,6 +129,16 @@ class AppPages {
       name: _Paths.EDIT_PROFILE_VIEW,
       page: () =>  EditProfile(),
       binding: EditProfileViewBinding(),
+      ),
+    GetPage(  
+      name: _Paths.EMERGENCY_CONTACT,
+      page: () => EmergencyContactView(),
+      binding: EmergencyContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.SLEEP_DIARY,
+      page: () => const SleepDiaryView(),
+      binding: SleepDiaryBinding(),
     ),
   ];
 }

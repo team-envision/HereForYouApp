@@ -12,12 +12,12 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(
-     GetMaterialApp(
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-       initialRoute: AppPages.INITIAL,
-       getPages: AppPages.routes,
-      // home: bottomNavigation(),
+      home: bottomNavigation(),
+      getPages: AppPages.routes,
+      // initialRoute: AppPages.INITIAL,
     ),
   );
 
