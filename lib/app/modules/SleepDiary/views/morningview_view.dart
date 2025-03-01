@@ -181,7 +181,7 @@ class SleepDiaryMorningView extends GetView<SleepDiaryController> {
                 child: kElevatedButton(
                   text: "Save",
                   onPressed: () {
-                    controller.saveDiaryEntry();
+                    controller.saveMorningDiaryEntry();
                   },
                 ),
               ),

@@ -13,6 +13,11 @@ class SleepDiaryController extends GetxController {
   var timesWokeUpToday = 0.obs;
   var fallAsleepHours = ''.obs;
   var fallAsleepMinutes = ''.obs;
+  var isNapSelected = false.obs;
+  var isExerciseSelected = false.obs;
+  var drinksConsumed = 0.obs;
+  var alcoholicDrinks = 0.obs;
+  var lastDrinkTime = '10:00 PM'.obs;
 
   static const String _hasSetReminderKey = 'has_set_reminder';
 
@@ -118,11 +123,45 @@ class SleepDiaryController extends GetxController {
     }
   }
 
+  Future<void> selectLastDrinkTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null) {
+      final formattedTime = picked.format(context);
+      lastDrinkTime.value = formattedTime;
+    }
+  }
+
+  void toggleNap(bool value) {
+    isNapSelected.value = value;
+  }
+
+  void toggleExercise(bool value) {
+    isExerciseSelected.value = value;
+  }
+
+  void updateDrinksConsumed(String value) {
+    drinksConsumed.value = int.tryParse(value) ?? 0;
+  }
+
+  void updateAlcoholicDrinks(String value) {
+    alcoholicDrinks.value = int.tryParse(value) ?? 0;
+  }
+
   void save() {
     Get.snackbar('Success', 'Sleep diary settings saved!');
   }
 
-  void saveDiaryEntry() {
+  void saveMorningDiaryEntry() {
     if (sleepTime.value.isEmpty || wakeUpTime.value.isEmpty) {
       Get.snackbar('Error', 'Please select both sleep and wake-up times.');
       return;
@@ -134,6 +173,26 @@ class SleepDiaryController extends GetxController {
     }
     if (timesWokeUpToday.value < 0) {
       Get.snackbar('Error', 'Number of times woken up cannot be negative.');
+      return;
+    }
+
+    Get.snackbar('Success', 'Diary entry saved successfully!');
+    Get.offAll(()=>bottomNavigation());
+  }
+
+  void saveEveningDiaryEntry() {
+    if (drinksConsumed.value < 0) {
+      Get.snackbar('Error', 'Number of drinks consumed cannot be negative.');
+      return;
+    }
+
+    if (alcoholicDrinks.value < 0) {
+      Get.snackbar('Error', 'Number of alcoholic drinks cannot be negative.');
+      return;
+    }
+
+    if (alcoholicDrinks.value > 0 && lastDrinkTime.value.isEmpty) {
+      Get.snackbar('Error', 'Please select the last alcoholic drink time.');
       return;
     }
     Get.snackbar('Success', 'Diary entry saved successfully!');

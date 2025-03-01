@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.dart';
 
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
@@ -168,8 +169,7 @@ class HomeView extends StatelessWidget {
                             } else {
                               Get.to(SleepDiaryView());
                             }
-
-                          },
+                            },
 
                           text: "Sleep Diary\nQuality",
                           icon: SvgPicture.asset(
