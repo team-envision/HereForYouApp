@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/featureContainers.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/popUpMenu.dart';
+import '../../editProfileView/views/edit_profile_view.dart';
 import '../../mentalScore/views/mental_score_view.dart';
 import '../../moodQuality/views/mood_quality_view.dart';
 import '../controllers/profile_page_controller.dart';
@@ -70,7 +71,9 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           child: SizedBox(
                             height: 30,
                             child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(() => EditProfile());
+                              },
                               style: ButtonStyle(
                                 padding: WidgetStateProperty.all(
                                     const EdgeInsets.symmetric(
