@@ -22,42 +22,46 @@ class SleepDiaryReminderView extends GetView<SleepDiaryController> {
         actions: const [
           SizedBox(width: 48),
         ],
+        backgroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Let us fill this sleep diary for a week. Choose the Start Date',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'fontmain',
-                fontWeight: FontWeight.w800,
-                fontSize: 25,
-                color: Colors.black,
+      body: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Let us fill this sleep diary for a week. Choose the Start Date',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'fontmain',
+                  fontWeight: FontWeight.w800,
+                  fontSize: 25,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            const DateField(),
-            const SizedBox(height: 16),
-            TimeField(
-              label: 'Morning Reminder',
-              time: controller.morningReminderTime,
-              onTap: controller.selectMorningTime,
-            ),
-            const SizedBox(height: 16),
-            TimeField(
-              label: 'Evening Reminder',
-              time: controller.eveningReminderTime,
-              onTap: controller.selectEveningTime,
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: kElevatedButton(text: "Save", onPressed: (){controller.save();})
-            ),
-          ],
+              const SizedBox(height: 32),
+              const DateField(),
+              const SizedBox(height: 16),
+              TimeField(
+                label: 'Morning Reminder',
+                time: controller.morningReminderTime,
+                onTap: controller.selectMorningTime,
+              ),
+              const SizedBox(height: 16),
+              TimeField(
+                label: 'Evening Reminder',
+                time: controller.eveningReminderTime,
+                onTap: controller.selectEveningTime,
+              ),
+              const Spacer(),
+              SizedBox(
+                width: double.infinity,
+                child: kElevatedButton(text: "Save", onPressed: (){controller.save();})
+              ),
+            ],
+          ),
         ),
       ),
     );

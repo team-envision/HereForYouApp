@@ -43,7 +43,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.GENDER_PAGE;
+  static const INITIAL = Routes.SLEEP_DIARY;
 
   static final routes = [
     GetPage(
@@ -127,10 +127,10 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_PROFILE_VIEW,
-      page: () =>  EditProfile(),
+      page: () => EditProfile(),
       binding: EditProfileViewBinding(),
-      ),
-    GetPage(  
+    ),
+    GetPage(
       name: _Paths.EMERGENCY_CONTACT,
       page: () => EmergencyContactView(),
       binding: EmergencyContactBinding(),

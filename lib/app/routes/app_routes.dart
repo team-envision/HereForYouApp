@@ -25,7 +25,6 @@ abstract class Routes {
   static const EDIT_PROFILE_VIEW = _Paths.EDIT_PROFILE_VIEW;
   static const EMERGENCY_CONTACT = _Paths.EMERGENCY_CONTACT;
   static const SLEEP_DIARY = _Paths.SLEEP_DIARY;
-
 }
 
 abstract class _Paths {

@@ -29,48 +29,52 @@ class SleepDiaryView extends GetView<SleepDiaryController> {
 
         leadingWidth: 90,
         centerTitle: true,
+        backgroundColor: Colors.white
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
 
-              const Spacer(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16.0),
-                child: Text(
-                  "Fill out the sleep diary daily, ideally within an hour of waking and before bed. Note anything that affects your sleep or wakefulness. If you miss a day, leave it blank. Exact times aren’t necessary—your best recall will do, and reflecting on your sleep won’t keep you awake.",
-                  style: Get.textTheme.titleMedium,
-                  textAlign: TextAlign.center,
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16.0),
+                  child: Text(
+                    "Fill out the sleep diary daily, ideally within an hour of waking and before bed. Note anything that affects your sleep or wakefulness. If you miss a day, leave it blank. Exact times aren’t necessary—your best recall will do, and reflecting on your sleep won’t keep you awake.",
+                    style: Get.textTheme.titleMedium,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              const Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text.rich(
-                  TextSpan(
-                      text: "Note:",
-                      style: Get.textTheme.labelLarge
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                      children: [
-                        TextSpan(
-                            style: Get.textTheme.labelLarge,
-                            text:
-                            "There are no right or wrong answers.\nAnswer honestly without overthinking..")
-                      ]),
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text.rich(
+                    TextSpan(
+                        text: "Note:",
+                        style: Get.textTheme.labelLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                        children: [
+                          TextSpan(
+                              style: Get.textTheme.labelLarge,
+                              text:
+                              "There are no right or wrong answers.\nAnswer honestly without overthinking..")
+                        ]),
+                  ),
                 ),
-              ),
-              kElevatedButton(
-                  text: "Start",
-                  onPressed: () {
-                    Get.off(() => const SleepDiaryReminderView());
-                  }),
-const Spacer(),
+                kElevatedButton(
+                    text: "Start",
+                    onPressed: () {
+                      Get.off(() => const SleepDiaryHomeView());
+                    }),
+        const Spacer(),
 
-            ],
+              ],
+            ),
           ),
         ),
       ),
