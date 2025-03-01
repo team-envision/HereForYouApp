@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/morningview_view.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/reminderview_view.dart';
 import '../../../../Components/custom_widgets.dart';
 import '../controllers/sleep_diary_controller.dart';
@@ -58,7 +60,7 @@ class EnterDiaryView extends StatelessWidget {
                     title: "Morning",
                     icon: Icons.wb_sunny_outlined,
                     onTap: () {
-                      Get.toNamed('/morningEntry');
+                      Get.to(() => const SleepDiaryMorningView());
                     },
                   ),
                 ),
@@ -68,7 +70,7 @@ class EnterDiaryView extends StatelessWidget {
                     title: "Evening",
                     icon: Icons.nightlight_round_outlined,
                     onTap: () {
-                      Get.toNamed('/eveningEntry');
+                      Get.to(() => const SleepDiaryEveningView());
                     },
                   ),
                 ),
