@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/reminderview_view.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/sleepDiaryHomeView.dart';
 import 'package:here_for_you_app/app/views/views/mind_anchor_begin_view.dart';
 
@@ -65,7 +66,7 @@ class SleepDiaryView extends GetView<SleepDiaryController> {
               kElevatedButton(
                   text: "Start",
                   onPressed: () {
-                    Get.off(() => const SleepDiaryHomeView());
+                    Get.off(() => const SleepDiaryReminderView());
                   }),
 const Spacer(),
 
