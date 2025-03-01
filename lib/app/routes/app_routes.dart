@@ -21,8 +21,11 @@ abstract class Routes {
   static const GET_STARTED = _Paths.GET_STARTED;
   static const MIND_ANCHOR_MAIN_SCREEN = _Paths.MIND_ANCHOR_MAIN_SCREEN;
   static const QUESTION_COUNT_DOWN = _Paths.QUESTION_COUNT_DOWN;
+
+  static const EDIT_PROFILE_VIEW = _Paths.EDIT_PROFILE_VIEW;
   static const EMERGENCY_CONTACT = _Paths.EMERGENCY_CONTACT;
   static const SLEEP_DIARY = _Paths.SLEEP_DIARY;
+
 }
 
 abstract class _Paths {
@@ -45,6 +48,7 @@ abstract class _Paths {
   static const GET_STARTED = '/get-started';
   static const MIND_ANCHOR_MAIN_SCREEN = '/mind-anchor-main-screen';
   static const QUESTION_COUNT_DOWN = '/question-count-down';
+  static const EDIT_PROFILE_VIEW = '/edit-profile-view';
   static const EMERGENCY_CONTACT = '/emergency-contact';
   static const SLEEP_DIARY = '/sleep-diary';
 }

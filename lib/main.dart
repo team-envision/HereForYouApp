@@ -18,7 +18,6 @@ void main() {
       home: bottomNavigation(),
       getPages: AppPages.routes,
       // initialRoute: AppPages.INITIAL,
-
     ),
   );
 
