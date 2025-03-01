@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
-import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
 import '../../../views/views/MindAnchorView.dart';
 import '../../AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
+import '../../SleepDiary/controllers/sleep_diary_controller.dart';
+import '../../SleepDiary/views/sleepDiaryHomeView.dart';
+import '../../SleepDiary/views/sleep_diary_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends StatelessWidget {
@@ -156,13 +158,22 @@ class HomeView extends StatelessWidget {
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
-                          color: const Color.fromRGBO(255, 148, 76, 1),
+                          color: const Color.fromRGBO(118, 90, 72, 1.0),
 
-                          onTap: () {Get.toNamed(Routes.SLEEP_DIARY);},
+                          onTap: () async {
+                            final sleepcontroller = Get.put(SleepDiaryController());
+                            bool hasSetReminder = await sleepcontroller.hasSetReminder();
+                            if (hasSetReminder){
+                              Get.to(SleepDiaryHomeView());
+                            } else {
+                              Get.to(SleepDiaryView());
+                            }
+
+                          },
 
                           text: "Sleep Diary\nQuality",
                           icon: SvgPicture.asset(
-                              "lib/assets/icons/moodQulatiyIcon.svg")),
+                              "lib/assets/icons/sleepdiaryicon.svg")),
                     ],
                   ),
                 ),
