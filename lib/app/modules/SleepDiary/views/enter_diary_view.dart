@@ -4,6 +4,7 @@ import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.d
 import 'package:here_for_you_app/app/modules/SleepDiary/views/morningview_view.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/reminderview_view.dart';
 import '../../../../Components/custom_widgets.dart';
+import '../../../../Components/kBottomBar.dart';
 import '../controllers/sleep_diary_controller.dart';
 
 
@@ -34,7 +35,7 @@ class EnterDiaryView extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.home, color: Colors.black),
             onPressed: () {
-              Get.offNamed('/home');
+              Get.offAll(() => bottomNavigation());
             },
           ),
         ],

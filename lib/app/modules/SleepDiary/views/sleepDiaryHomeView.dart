@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/Components/kBottomBar.dart';
 import 'enter_diary_view.dart';
 
 class SleepDiaryHomeView extends StatelessWidget {
@@ -28,7 +29,7 @@ class SleepDiaryHomeView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Get.toNamed('/home'); // Ensure this route is properly registered
+              Get.offAll(() => bottomNavigation()); 
             },
             icon: const Icon(
               Icons.home,
@@ -48,7 +49,7 @@ class SleepDiaryHomeView extends StatelessWidget {
             "Enter Your Diary",
             const Icon(Icons.inventory_rounded),
             onTap: () {
-              Get.to(() => EnterDiaryView()); // Navigate to EnterDiaryView
+              Get.to(() => EnterDiaryView()); 
             },
           ),
         ],
@@ -56,10 +57,9 @@ class SleepDiaryHomeView extends StatelessWidget {
     );
   }
 
-  // Reusable widget for the sleep result container
   Widget _buildSleepResultContainer(String text, Icon icon, {VoidCallback? onTap}) {
     return GestureDetector(
-      onTap: onTap, // Makes the container tappable
+      onTap: onTap, 
       child: Container(
         height: 150,
         margin: const EdgeInsets.all(15),
