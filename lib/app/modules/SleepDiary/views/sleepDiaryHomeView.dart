@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kBottomBar.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/sleep_score.dart';
 import 'enter_diary_view.dart';
 
 class SleepDiaryHomeView extends StatelessWidget {
@@ -43,7 +44,10 @@ class SleepDiaryHomeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(height: 40),
-          _buildSleepResultContainer("Sleep Results", const Icon(Icons.receipt)),
+          _buildSleepResultContainer("Sleep Results", const Icon(Icons.receipt),
+            onTap: () {
+              Get.to(() => const SleepScoreView());
+            },),
           const SizedBox(height: 20),
           _buildSleepResultContainer(
             "Enter Your Diary",
