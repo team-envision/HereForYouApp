@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kBottomBar.dart';
-import 'package:here_for_you_app/app/modules/SleepDiary/views/sleep_score.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/sleep_score_view.dart';
 import 'enter_diary_view.dart';
 
 class SleepDiaryHomeView extends StatelessWidget {
