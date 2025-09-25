@@ -1,0 +1,2 @@
+/Users/architabansal/Desktop/HereForYouApp/android/app/.cxx/RelWithDebInfo/5v234y5u/x86/CMakeFiles/edit_cache.dir
+/Users/architabansal/Desktop/HereForYouApp/android/app/.cxx/RelWithDebInfo/5v234y5u/x86/CMakeFiles/rebuild_cache.dir
