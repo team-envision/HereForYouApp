@@ -47,6 +47,11 @@ class kInputField extends StatelessWidget {
             child: TextFormField(
               keyboardType: inputType,
               onChanged: onChanged,
+              style: GoogleFonts.urbanist(
+                fontWeight: FontWeight.w700,
+                fontSize: 14.sp,
+                color: Colors.black,
+              ),
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.r),
