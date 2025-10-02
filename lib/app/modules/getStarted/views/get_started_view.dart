@@ -149,13 +149,16 @@ class GetStartedView extends GetView<GetStartedController> {
                         bottomText: "Sign in"),
                   ),
                   SizedBox(height: 5.h),
-                  Text(
-                    "Don't have an account. Sign up",
-                    style: GoogleFonts.urbanist(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 13.33.sp,
-                        letterSpacing: -0.3),
-                  )
+                  TextButton(
+                    onPressed: (){},
+                    child: Text("Don't have an account. Sign up",
+                      style: GoogleFonts.urbanist(
+                        color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 13.33.sp,
+                          letterSpacing: -0.3),
+                    ))
+
 
                 ],
               ),
