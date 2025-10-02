@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OutLinedGender extends StatelessWidget {
   const OutLinedGender({
@@ -15,49 +17,48 @@ class OutLinedGender extends StatelessWidget {
   final Color backColor;
   final Color borderColor;
 
-
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 16),
-        child: Container(
-          height: 69,
-          child: OutlinedButton(
-            onPressed: () {
-              // Define your action here
-            },
-            style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              backgroundColor: backColor, // Background color
-              side: BorderSide(
-                color:borderColor, // Outline color
-                width: 2.0, // Outline width
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32), // Rounded corners
-              ),
-            ),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  svgPic,
-                  fit: BoxFit.fitWidth,
-                  alignment: const Alignment(0, -0.9),
-                ),
-                const SizedBox(width: 20),
-                Text(
-                  text,
-                  style: const TextStyle(
-                    color: Colors.black, // Text color
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'fontmain',
-                  ),
-                ),
-              ],
-            ),
+    return SizedBox(
+      height: 77.9.h,
+      width: double.infinity,
+      child: OutlinedButton(
+        onPressed: () {},
+        style: OutlinedButton.styleFrom(
+          backgroundColor: backColor,
+          side: BorderSide(
+            color: borderColor, // Outline color
+            width: 0.84.w, // Outline width
           ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(41.04.r), // Rounded corners
+          ),
+        ),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SvgPicture.asset(
+                svgPic,
+                fit: BoxFit.fitWidth,
+                height: 30.15.h,
+                width: 30.15.w,
+              ),
+            ),
+            const SizedBox(width: 20),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                textAlign: TextAlign.center,
+                text,
+                style: GoogleFonts.urbanist(
+                    color: const Color(0xFF3F3C36),
+                    fontWeight: FontWeight.w800,
+                    fontSize: 24.56.sp,
+                    letterSpacing: -0.3),
+              ),
+            ),
+          ],
         ),
       ),
     );
