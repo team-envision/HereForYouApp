@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/Components/kElevatedButton.dart';
+import 'package:here_for_you_app/Components/kInputField.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -35,104 +37,16 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
               SizedBox(height: 12.h),
-              SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Email",
-                      style: GoogleFonts.urbanist(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 14.86.sp,
-                        letterSpacing: -0.3,
-                      ),
-                    ),
-                    SizedBox(height: 5.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color(0x2B000000),
-                            offset: Offset(0, 0),
-                            blurRadius: 11.9,
-                            spreadRadius: 0,
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.r),
-                              borderSide: BorderSide.none,
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 22.w,
-                              vertical: 13.h,
-                            ),
-                            hintText: 'Enter email',
-                            hintStyle: GoogleFonts.urbanist(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14.sp,
-                              color: Color(0x7D201A25),
-                            )),
-                      ),
-                    )
-                  ],
-                ),
+              kInputField(
+                title: "Email",
+                hint: "Enter email",
+                onChanged: (String value) {},
               ),
               SizedBox(height: 18.h),
-              SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Password",
-                      style: GoogleFonts.urbanist(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 14.86.sp,
-                        letterSpacing: -0.3,
-                      ),
-                    ),
-                    SizedBox(height: 5.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color(0x2B000000),
-                            offset: Offset(0, 0),
-                            blurRadius: 11.9,
-                            spreadRadius: 0,
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.r),
-                              borderSide: BorderSide.none,
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 22.w,
-                              vertical: 13.h,
-                            ),
-                            hintText: 'Enter password',
-                            hintStyle: GoogleFonts.urbanist(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14.sp,
-                              color: Color(0x7D201A25),
-                            )),
-                      ),
-                    )
-                  ],
-                ),
+              kInputField(
+                title: "Password",
+                hint: "Enter password",
+                onChanged: (String value) {},
               ),
               Align(
                 alignment: Alignment.centerRight,
@@ -153,22 +67,11 @@ class LoginView extends GetView<LoginController> {
               ),
               SizedBox(height: 10.h),
               SizedBox(
-                height: 47.h,
+                height: 49.h,
                 width: double.infinity,
-                child: ElevatedButton(
+                child: kElevatedButton(
+                  text: "Sign in",
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                  ),
-                  child: Text(
-                    "Sign in",
-                    style: GoogleFonts.urbanist(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 19.sp,
-                      letterSpacing: -0.4,
-                    ),
-                  ),
                 ),
               ),
               SizedBox(height: 18.h),
@@ -201,23 +104,13 @@ class LoginView extends GetView<LoginController> {
               ),
               SizedBox(height: 18.h),
               SizedBox(
-                height: 47.h,
+                height: 49.h,
                 width: double.infinity,
-                child: ElevatedButton(
+                child: kElevatedButton(
+                  text: "Sign up",
+                  backgroundColor: Colors.white,
+                  borderColor: Colors.black,
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    side: BorderSide(color: Colors.black, width: 1.h),
-                  ),
-                  child: Text(
-                    "Sign in",
-                    style: GoogleFonts.urbanist(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 19.sp,
-                      letterSpacing: -0.4,
-                    ),
-                  ),
                 ),
               ),
             ],

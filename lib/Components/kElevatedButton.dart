@@ -7,12 +7,17 @@ class kElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final String? leadingIcon;
+  final Color backgroundColor;
+  final Color borderColor;
 
   const kElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.leadingIcon,
+    this.backgroundColor = Colors.black,
+    this.borderColor = Colors.white,
+
   });
 
   @override
@@ -20,17 +25,17 @@ class kElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
+        backgroundColor: backgroundColor,
+        foregroundColor: borderColor,
         elevation: 0,
         padding: EdgeInsets.symmetric(vertical: 10.h),
         textStyle: GoogleFonts.urbanist(
           fontWeight: FontWeight.w800,
-          fontSize: 21.07.sp,
+          fontSize: 19.sp,
           letterSpacing: -0.4,
         ),
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.black),
+          side: BorderSide(color: borderColor),
           borderRadius: BorderRadius.circular(30.r),
         ),
       ),
