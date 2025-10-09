@@ -14,6 +14,7 @@ class GenderPageView extends GetView<GenderPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
         body: Container(
       margin: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(

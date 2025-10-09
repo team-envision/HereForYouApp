@@ -49,7 +49,7 @@ class kElevatedButton extends StatelessWidget {
                 SvgPicture.asset(
                   leadingIcon!,
                   color: AppColors.white,
-                  height: 16.06.h,
+                  height: 13.06.h,
                   width: 12.53.w,
                 ),
               ],

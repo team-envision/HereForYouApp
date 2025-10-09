@@ -43,7 +43,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.GET_STARTED;
+  static const INITIAL = Routes.GENDER_PAGE;
 
   static final routes = [
     GetPage(

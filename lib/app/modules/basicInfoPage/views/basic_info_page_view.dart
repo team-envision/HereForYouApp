@@ -72,10 +72,12 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
             const SizedBox(height: 80),
 
             SizedBox(
+              height: 47.h,
               width: double.infinity,
               child: kElevatedButton(
                 onPressed: () {},
                 text: "Next",
+                leadingIcon: "lib/assets/images/forward.svg",
               ),
             )
           ],
