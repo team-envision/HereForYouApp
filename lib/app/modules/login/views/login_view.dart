@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/Components/kInputField.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -14,7 +15,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.0.w),
           child: Column(
@@ -56,7 +57,7 @@ class LoginView extends GetView<LoginController> {
                     "Forgot password?",
                     textAlign: TextAlign.right,
                     style: GoogleFonts.urbanist(
-                      color: Colors.black,
+                      color: AppColors.black,
                       fontWeight: FontWeight.w800,
                       fontSize: 12.63.sp,
                       letterSpacing: -0.3,
@@ -108,8 +109,8 @@ class LoginView extends GetView<LoginController> {
                 width: double.infinity,
                 child: kElevatedButton(
                   text: "Sign up",
-                  backgroundColor: Colors.white,
-                  borderColor: Colors.black,
+                  backgroundColor: AppColors.white,
+                  borderColor: AppColors.black,
                   onPressed: () {},
                 ),
               ),

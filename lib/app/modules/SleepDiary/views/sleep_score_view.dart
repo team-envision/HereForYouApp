@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/views/views/articles_view.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/sleep_score_controller.dart';
 
@@ -15,7 +16,7 @@ class SleepScoreView extends GetView<SleepScoreController> {
   Widget build(BuildContext context) {
     final controller = Get.put(SleepScoreController());
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         body: NotificationListener(
           onNotification: (scrollNotification) {
             controller.scrollListener();
@@ -38,8 +39,8 @@ class SleepScoreView extends GetView<SleepScoreController> {
                   floating: true,
                   titleTextStyle: Get.theme.textTheme.titleLarge
                       ?.copyWith(fontWeight: FontWeight.bold),
-                  backgroundColor: Colors.white,
-                  surfaceTintColor: Colors.white,
+                  backgroundColor: AppColors.white,
+                  surfaceTintColor: AppColors.white,
                   pinned: true,
                   centerTitle: true,
                   flexibleSpace: FlexibleSpaceBar(
@@ -49,7 +50,7 @@ class SleepScoreView extends GetView<SleepScoreController> {
                         alignment: Alignment.center,
                         children: [
                           Container(
-                            color: const Color.fromRGBO(237, 222, 212, 1),
+                            color: AppColors.mentalScoreBg,
                             child: SvgPicture.asset(
                               "lib/assets/images/mentalScorepageBgrnd.svg",
                               fit: BoxFit.fitWidth,
@@ -60,7 +61,7 @@ class SleepScoreView extends GetView<SleepScoreController> {
                             width: 200,
                             alignment: Alignment.center,
                             decoration: const BoxDecoration(
-                              color: Color.fromRGBO(118, 90, 72, 1),
+                              color: AppColors.mentalScoreCard,
                               shape: BoxShape.circle,
                             ),
                             child: Obx(()=>Image.asset(controller.imgUrl.value,fit: BoxFit.contain)),
@@ -130,7 +131,7 @@ class SleepScoreView extends GetView<SleepScoreController> {
                                         getTitlesWidget:
                                             (double value, TitleMeta meta) {
                                           const style = TextStyle(
-                                            color: Colors.black,
+                                            color: AppColors.black,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 14,
                                           );
@@ -182,7 +183,7 @@ class SleepScoreView extends GetView<SleepScoreController> {
                                   ),
                                   borderData: FlBorderData(
                                     border: const Border(
-                                      bottom: BorderSide(color: Colors.brown),
+                                      bottom: BorderSide(color: AppColors.chartBorder),
                                     ),
                                   ),
                                   barGroups: _buildBarGroups(),
@@ -221,31 +222,31 @@ class SleepScoreView extends GetView<SleepScoreController> {
     return [
       BarChartGroupData(
         x: 0,
-        barRods: [BarChartRodData(toY: 30, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 30, color: AppColors.chartBorder)],
       ),
       BarChartGroupData(
         x: 1,
-        barRods: [BarChartRodData(toY: 40, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 40, color: AppColors.chartBorder)],
       ),
       BarChartGroupData(
         x: 2,
-        barRods: [BarChartRodData(toY: 80, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 80, color: AppColors.chartBorder)],
       ),
       BarChartGroupData(
         x: 3,
-        barRods: [BarChartRodData(toY: 50, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 50, color: AppColors.chartBorder)],
       ),
       BarChartGroupData(
         x: 4,
-        barRods: [BarChartRodData(toY: 40, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 40, color: AppColors.chartBorder)],
       ),
       BarChartGroupData(
         x: 5,
-        barRods: [BarChartRodData(toY: 70, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 70, color: AppColors.chartBorder)],
       ),
       BarChartGroupData(
         x: 6,
-        barRods: [BarChartRodData(toY: 20, color: Colors.brown)],
+        barRods: [BarChartRodData(toY: 20, color: AppColors.chartBorder)],
       ),
     ];
   }

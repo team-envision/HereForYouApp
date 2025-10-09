@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 class OutLinedGender extends StatelessWidget {
   const OutLinedGender({
@@ -52,7 +53,7 @@ class OutLinedGender extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text,
                 style: GoogleFonts.urbanist(
-                    color: const Color(0xFF3F3C36),
+                    color: AppColors.textPrimaryDark,
                     fontWeight: FontWeight.w800,
                     fontSize: 24.56.sp,
                     letterSpacing: -0.3),

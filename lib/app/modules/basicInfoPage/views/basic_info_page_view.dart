@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/Components/kInputField.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/basic_info_page_controller.dart';
 
@@ -14,9 +15,9 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         elevation: 0,
         leading: IconButton(
           icon: Transform.flip(

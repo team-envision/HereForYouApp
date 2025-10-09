@@ -16,9 +16,9 @@ void main() {
       builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Application",
-        //home: bottomNavigation(),
+        home: bottomNavigation(),
         getPages: AppPages.routes,
-        initialRoute: AppPages.INITIAL,
+        //initialRoute: AppPages.INITIAL,
       ),
     ),
   );

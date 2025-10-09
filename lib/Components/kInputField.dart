@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 class kInputField extends StatelessWidget {
   final String title;
@@ -37,7 +38,7 @@ class kInputField extends StatelessWidget {
               borderRadius: BorderRadius.circular(30.r),
               boxShadow: const [
                 BoxShadow(
-                  color: Color(0x2B000000),
+                  color: AppColors.genericShadow,
                   offset: Offset(0, 0),
                   blurRadius: 11.9,
                   spreadRadius: 0,
@@ -50,7 +51,7 @@ class kInputField extends StatelessWidget {
               style: GoogleFonts.urbanist(
                 fontWeight: FontWeight.w700,
                 fontSize: 14.sp,
-                color: Colors.black,
+                color: AppColors.black,
               ),
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -58,7 +59,7 @@ class kInputField extends StatelessWidget {
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.white,
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 22.w,
                     vertical: 13.h,
@@ -67,7 +68,7 @@ class kInputField extends StatelessWidget {
                   hintStyle: GoogleFonts.urbanist(
                     fontWeight: FontWeight.w700,
                     fontSize: 14.sp,
-                    color: Color(0x7D201A25),
+                    color: AppColors.textHintMuted,
                   )),
             ),
           )

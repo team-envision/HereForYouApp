@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../Components/kElevatedButton.dart';
 import '../../../../Components/kOutlinedButton.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../controllers/gender_page_controller.dart';
 
 class GenderPageView extends GetView<GenderPageController> {
@@ -31,22 +32,22 @@ class GenderPageView extends GetView<GenderPageController> {
           const OutLinedGender(
             text: 'I am male',
             svgPic: 'lib/assets/images/Solidarrowrightm.svg',
-            backColor: Color(0xFFE6F0FA),
-            borderColor: Color(0xFF3C7CBC),
+            backColor: AppColors.maleBg,
+            borderColor: AppColors.maleBorder,
           ),
           SizedBox(height: 30.h),
           const OutLinedGender(
             text: 'I am female',
             svgPic: 'lib/assets/images/Solidarrowrightsm.svg',
-            backColor: Color(0xFFEEE9F7),
-            borderColor: Color(0xFF704EAF),
+            backColor: AppColors.femaleBg,
+            borderColor: AppColors.femaleBorder,
           ),
           SizedBox(height: 30.h),
           const OutLinedGender(
             text: 'Others',
             svgPic: 'lib/assets/images/Solidarrowrightsm.svg',
-            backColor: Color(0xFFE8FFBD),
-            borderColor: Color(0xFF91BB43),
+            backColor: AppColors.otherBg,
+            borderColor: AppColors.otherBorder,
           ),
           SizedBox(height: 70.h),
           SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 class kElevatedButton extends StatelessWidget {
   final String text;
@@ -15,8 +16,8 @@ class kElevatedButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.leadingIcon,
-    this.backgroundColor = Colors.black,
-    this.borderColor = Colors.white,
+    this.backgroundColor = AppColors.black,
+    this.borderColor = AppColors.white,
 
   });
 
@@ -47,7 +48,7 @@ class kElevatedButton extends StatelessWidget {
                 SizedBox(width: 10.w),
                 SvgPicture.asset(
                   leadingIcon!,
-                  color: Colors.white,
+                  color: AppColors.white,
                   height: 16.06.h,
                   width: 12.53.w,
                 ),

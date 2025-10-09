@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/Components/featureContainers.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../../../routes/app_pages.dart';
 import '../controllers/get_started_controller.dart';
@@ -14,7 +15,7 @@ class GetStartedView extends GetView<GetStartedController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFDFBFF),
+      backgroundColor: AppColors.backgroundScaffold,
       body: Stack(
         children: [
           Positioned(
@@ -66,40 +67,40 @@ class GetStartedView extends GetView<GetStartedController> {
               height: 971.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(1265.27.r),
-                color: Colors.white,
+                color: AppColors.white,
                 boxShadow: const [
                   BoxShadow(
-                    color: Color(0x0D4B3425), // #4B34250D
+                    color: AppColors.shadowCloudLevel1, // #4B34250D
                     offset: Offset(0, 0),
                     blurRadius: 0,
                     spreadRadius: 0,
                   ),
                   BoxShadow(
-                    color: Color(0x0D4B3425), // #4B34250D
+                    color: AppColors.shadowCloudLevel1, // #4B34250D
                     offset: Offset(0, -17.43),
                     blurRadius: 38.96,
                     spreadRadius: 0,
                   ),
                   BoxShadow(
-                    color: Color(0x0A4B3425), // #4B34250A
+                    color: AppColors.shadowCloudLevel3, // #4B34250A
                     offset: Offset(0, -70.75),
                     blurRadius: 70.75,
                     spreadRadius: 0,
                   ),
                   BoxShadow(
-                    color: Color(0x084B3425), // #4B342508
+                    color: AppColors.shadowCloudLevel4, // #4B342508
                     offset: Offset(0, -157.9),
                     blurRadius: 95.36,
                     spreadRadius: 0,
                   ),
                   BoxShadow(
-                    color: Color(0x034B3425), // #4B342503
+                    color: AppColors.shadowCloudLevel5, // #4B342503
                     offset: Offset(0, -280.94),
                     blurRadius: 112.79,
                     spreadRadius: 0,
                   ),
                   BoxShadow(
-                    color: Color(0x004B3425), // #4B342500
+                    color: AppColors.shadowCloudLevel6, // #4B342500
                     offset: Offset(0, -438.85),
                     blurRadius: 123.04,
                     spreadRadius: 0,
@@ -141,8 +142,8 @@ class GetStartedView extends GetView<GetStartedController> {
                         onTap: () {
                           Get.toNamed(Routes.LOGIN);
                         },
-                        backGroundColor: Colors.white,
-                        borderColor: Colors.black,
+                        backGroundColor: AppColors.white,
+                        borderColor: AppColors.black,
                         text: "Get Started",
                         IsSvg: true,
                         ImagePath: "lib/assets/images/GetStartedCard.svg",
@@ -153,7 +154,7 @@ class GetStartedView extends GetView<GetStartedController> {
                     onPressed: (){},
                     child: Text("Don't have an account. Sign up",
                       style: GoogleFonts.urbanist(
-                        color: Colors.black,
+                        color: AppColors.black,
                           fontWeight: FontWeight.w800,
                           fontSize: 13.33.sp,
                           letterSpacing: -0.3),
