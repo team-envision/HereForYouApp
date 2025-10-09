@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../controllers/edit_profile_controller.dart';
 import '../widgets/edit_profile_widgets.dart';
 
@@ -13,7 +14,7 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 35),
           onPressed: () => Navigator.pop(context),
@@ -23,7 +24,7 @@ class EditProfile extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         child: SingleChildScrollView(

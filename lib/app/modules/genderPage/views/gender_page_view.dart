@@ -1,36 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../../../../Components/kElevatedButton.dart';
 import '../../../../Components/kOutlinedButton.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../controllers/gender_page_controller.dart';
 
 class GenderPageView extends GetView<GenderPageController> {
   const GenderPageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        centerTitle: true,
-      ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.start,
+      backgroundColor: AppColors.white,
+        body: Container(
+      margin: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 18,right: 18),
-            child: Text('what is your official gender ?',style: TextStyle(fontSize: 35,color: Colors.black,fontWeight: FontWeight.w900,fontFamily:'fontmain',),textAlign: TextAlign.center,),
+          Text(
+            "What's your official gender?",
+            style: GoogleFonts.urbanist(
+              fontWeight: FontWeight.w800,
+              fontSize: 37.5.sp,
+              letterSpacing: -1,
+            ),
+            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 30,),
-         const OutLinedGender(text: 'I am male', svgPic: 'lib/assets/images/Solidarrowrightm.svg', backColor: Color.fromRGBO(230, 240, 250, 1), borderColor:   Color.fromRGBO(60, 124, 188, 1),),
-
-          const SizedBox(height: 13,),
-          const OutLinedGender(text: 'I am female', svgPic: 'lib/assets/images/Solidarrowrightsm.svg',backColor: Color.fromRGBO(238, 233, 247, 1), borderColor:   Color.fromRGBO(112, 78, 175, 1),),
-          const SizedBox(height: 20,),
-          const OutLinedGender(text: 'Others', svgPic: 'lib/assets/images/Solidarrowrightsm.svg',backColor: Color.fromRGBO(232, 255, 189, 1), borderColor:   Color.fromRGBO(145, 187, 67, 1),),
-          const SizedBox(height: 21),
-          kElevatedButton(text: 'Next', onPressed: () {  },)
-
+          SizedBox(height: 80.h),
+          const OutLinedGender(
+            text: 'I am male',
+            svgPic: 'lib/assets/images/Solidarrowrightm.svg',
+            backColor: AppColors.maleBg,
+            borderColor: AppColors.maleBorder,
+          ),
+          SizedBox(height: 30.h),
+          const OutLinedGender(
+            text: 'I am female',
+            svgPic: 'lib/assets/images/Solidarrowrightsm.svg',
+            backColor: AppColors.femaleBg,
+            borderColor: AppColors.femaleBorder,
+          ),
+          SizedBox(height: 30.h),
+          const OutLinedGender(
+            text: 'Others',
+            svgPic: 'lib/assets/images/Solidarrowrightsm.svg',
+            backColor: AppColors.otherBg,
+            borderColor: AppColors.otherBorder,
+          ),
+          SizedBox(height: 70.h),
+          SizedBox(
+            height: 56.49.h,
+            width: double.infinity,
+            child: kElevatedButton(
+              leadingIcon: "lib/assets/images/forward.svg",
+              text: 'Next',
+              onPressed: () {},
+            ),
+          )
         ],
-      )
-    );
+      ),
+    ));
   }
 }

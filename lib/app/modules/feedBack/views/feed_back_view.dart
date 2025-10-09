@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../../../../Components/kElevatedButton.dart';
 
 import '../../../../Components/kTextField.dart';
@@ -25,7 +25,7 @@ class FeedBackView extends GetView<FeedBackController> {
         title: const Text('FeedBack',
             style: TextStyle(
               fontSize: 25,
-              color: Colors.black,
+              color: AppColors.black,
               fontWeight: FontWeight.w900,
               fontFamily: 'fontmain',
             )),
@@ -38,7 +38,7 @@ class FeedBackView extends GetView<FeedBackController> {
             child: Text('Got Any Feedback for us ?',
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.black,
+                  color: AppColors.black,
                   fontWeight: FontWeight.w900,
                   fontFamily: 'fontmain',
                 )),

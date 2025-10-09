@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String label;
@@ -11,7 +12,7 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.label,
-    this.labelColor = Colors.black,
+    this.labelColor = AppColors.black,
     required this.hintText,
     required this.controller,
     this.keyboardType = TextInputType.text,
@@ -34,11 +35,11 @@ class CustomTextField extends StatelessWidget {
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: AppColors.grey.withOpacity(0.5),
                 blurRadius: 20,
                 offset: const Offset(0, 4),
               ),
@@ -95,11 +96,11 @@ class CustomDropdown extends StatelessWidget {
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
+                color: AppColors.grey.withOpacity(0.3),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -126,7 +127,7 @@ class CustomDropdown extends StatelessWidget {
             ),
             icon: const Icon(
               Icons.keyboard_arrow_down_outlined,
-              color: Colors.black,
+              color: AppColors.black,
               size: 24,
             ),
           ),

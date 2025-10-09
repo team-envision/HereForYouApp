@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/emergency_contact/controllers/emergency_contact_controller.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../../../../Components/kCustomtextfield.dart';
 import '../../../../Components/kElevatedButton.dart';
 
@@ -27,10 +28,10 @@ class EmergencyContactView extends StatelessWidget {
             fontFamily: 'fontmain',
             fontWeight: FontWeight.w900,
             fontSize: 25,
-            color: Colors.black,
+            color: AppColors.black,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transparent,
         elevation: 0,
       ),
       body: SingleChildScrollView(

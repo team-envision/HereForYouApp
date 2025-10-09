@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/ProfilePage/views/profile_page_view.dart';
 import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 class bottomNavigation extends StatelessWidget {
   bottomNavigation({super.key});
@@ -18,14 +19,14 @@ class bottomNavigation extends StatelessWidget {
         extendBody: true,
         body: _screens[_selectedIndex.value],
         bottomNavigationBar: BottomAppBar(
-            shadowColor: Colors.transparent,
-            color: Colors.transparent,
+            shadowColor: AppColors.transparent,
+            color: AppColors.transparent,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             shape: const CircularNotchedRectangle(),
             child: Container(
               padding: EdgeInsets.zero,
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(50)),
+                  color: AppColors.white, borderRadius: BorderRadius.circular(50)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -40,7 +41,7 @@ class bottomNavigation extends StatelessWidget {
                             height: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color.fromRGBO(238, 229, 255, 1)),
+                                color: AppColors.appBarBg),
                             child: SvgPicture.asset(
                               "lib/assets/icons/homeIcon.svg",
                               fit: BoxFit.scaleDown,
@@ -57,7 +58,7 @@ class bottomNavigation extends StatelessWidget {
                             height: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.transparent),
+                                color: AppColors.transparent),
                             child: SvgPicture.asset(
                               "lib/assets/icons/homeIcon.svg",
                               fit: BoxFit.scaleDown,
@@ -77,7 +78,7 @@ class bottomNavigation extends StatelessWidget {
                             height: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color.fromRGBO(238, 229, 255, 1)),
+                                color: AppColors.appBarBg),
                             child: SvgPicture.asset(
                               "lib/assets/icons/MindTestIcon.svg",
                               fit: BoxFit.scaleDown,
@@ -94,7 +95,7 @@ class bottomNavigation extends StatelessWidget {
                             height: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.transparent),
+                                color: AppColors.transparent),
                             child: SvgPicture.asset(
                               "lib/assets/icons/MindTestIcon.svg",
                               fit: BoxFit.scaleDown,
@@ -114,7 +115,7 @@ class bottomNavigation extends StatelessWidget {
                             height: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color.fromRGBO(238, 229, 255, 1)),
+                                color: AppColors.appBarBg),
                             child: SvgPicture.asset(
                               "lib/assets/icons/profileIcon.svg",
                               fit: BoxFit.scaleDown,
@@ -131,7 +132,7 @@ class bottomNavigation extends StatelessWidget {
                             height: 65,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.transparent),
+                                color: AppColors.transparent),
                             child: SvgPicture.asset(
                               "lib/assets/icons/profileIcon.svg",
                               fit: BoxFit.scaleDown,
