@@ -10,6 +10,7 @@ class kElevatedButton extends StatelessWidget {
   final String? leadingIcon;
   final Color backgroundColor;
   final Color borderColor;
+  final double fontSize;
 
   const kElevatedButton({
     super.key,
@@ -18,7 +19,7 @@ class kElevatedButton extends StatelessWidget {
     this.leadingIcon,
     this.backgroundColor = AppColors.black,
     this.borderColor = AppColors.white,
-
+    this.fontSize = 19,
   });
 
   @override
@@ -32,7 +33,7 @@ class kElevatedButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 10.h),
         textStyle: GoogleFonts.urbanist(
           fontWeight: FontWeight.w800,
-          fontSize: 19.sp,
+          fontSize: fontSize,
           letterSpacing: -0.4,
         ),
         shape: RoundedRectangleBorder(

@@ -25,6 +25,7 @@ abstract class Routes {
   static const EDIT_PROFILE_VIEW = _Paths.EDIT_PROFILE_VIEW;
   static const EMERGENCY_CONTACT = _Paths.EMERGENCY_CONTACT;
   static const SLEEP_DIARY = _Paths.SLEEP_DIARY;
+  static const NEW_PASSWORD = _Paths.NEW_PASSWORD;
 }
 
 abstract class _Paths {
@@ -50,4 +51,5 @@ abstract class _Paths {
   static const EDIT_PROFILE_VIEW = '/edit-profile-view';
   static const EMERGENCY_CONTACT = '/emergency-contact';
   static const SLEEP_DIARY = '/sleep-diary';
+  static const NEW_PASSWORD = '/new-password';
 }

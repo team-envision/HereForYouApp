@@ -32,6 +32,8 @@ import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/moodQuality/bindings/mood_quality_binding.dart';
 import '../modules/moodQuality/views/mood_quality_view.dart';
+import '../modules/newPassword/bindings/new_password_binding.dart';
+import '../modules/newPassword/views/new_password_view.dart';
 import '../modules/password_view/bindings/password_view_binding.dart';
 import '../modules/password_view/views/password_view_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
@@ -43,7 +45,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.GENDER_PAGE;
+  static const INITIAL = Routes.NEW_PASSWORD;
 
   static final routes = [
     GetPage(
@@ -139,6 +141,11 @@ class AppPages {
       name: _Paths.SLEEP_DIARY,
       page: () => const SleepDiaryView(),
       binding: SleepDiaryBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_PASSWORD,
+      page: () => const NewPasswordView(),
+      binding: NewPasswordBinding(),
     ),
   ];
 }
