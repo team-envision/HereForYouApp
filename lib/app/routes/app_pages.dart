@@ -20,6 +20,8 @@ import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
 import '../modules/emergency_contact/views/emergency_contact_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
+import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
+import '../modules/forgotPassword/views/forgot_password_view.dart';
 import '../modules/genderPage/bindings/gender_page_binding.dart';
 import '../modules/genderPage/views/gender_page_view.dart';
 import '../modules/getStarted/bindings/get_started_binding.dart';
@@ -32,8 +34,8 @@ import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/moodQuality/bindings/mood_quality_binding.dart';
 import '../modules/moodQuality/views/mood_quality_view.dart';
-import '../modules/password_view/bindings/password_view_binding.dart';
-import '../modules/password_view/views/password_view_view.dart';
+import '../modules/changePassword/bindings/change_password_binding.dart';
+import '../modules/changePassword/views/change_password_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
 import '../modules/splashScreen/views/splash_screen_view.dart';
 import '../views/views/mind_test_view.dart';
@@ -43,7 +45,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.GENDER_PAGE;
+  static const INITIAL = Routes.CHANGE_PASSWORD;
 
   static final routes = [
     GetPage(
@@ -57,9 +59,9 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.PASSWORD_VIEW,
-      page: () => const ChangePasswordView(),
-      binding: PasswordViewBinding(),
+      name: _Paths.FORGOT_PASSWORD,
+      page: () => const ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: _Paths.QUESTION_SCREEN,
@@ -139,6 +141,11 @@ class AppPages {
       name: _Paths.SLEEP_DIARY,
       page: () => const SleepDiaryView(),
       binding: SleepDiaryBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
     ),
   ];
 }
