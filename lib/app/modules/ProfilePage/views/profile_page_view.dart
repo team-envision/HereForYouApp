@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/Components/customPopup.dart';
 import 'package:here_for_you_app/Components/featureContainers.dart';
+import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
+
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/popUpMenu.dart';
 import '../../editProfileView/views/edit_profile_view.dart';
@@ -12,6 +16,7 @@ import '../controllers/profile_page_controller.dart';
 
 class ProfilePageView extends GetView<ProfilePageController> {
   const ProfilePageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -153,7 +158,9 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           kContainer(
                               color: AppColors.mentalScoreCard,
                               text: "Mental\nScore",
-                              onTap: (){  Get.to(() => const MentalScoreView());},
+                              onTap: () {
+                                Get.to(() => const MentalScoreView());
+                              },
                               icon: SvgPicture.asset(
                                   "lib/assets/icons/mentalScoreIcon.svg")),
                           kContainer(
@@ -164,7 +171,9 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           kContainer(
                               color: AppColors.moodQualityCard,
                               text: "Mood\nQuality",
-                              onTap: () {Get.to(()=>const MoodQualityView());},
+                              onTap: () {
+                                Get.to(() => const MoodQualityView());
+                              },
                               icon: SvgPicture.asset(
                                   "lib/assets/icons/moodQulatiyIcon.svg")),
                         ],
@@ -176,8 +185,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: kCard(
-                            backGroundColor:
-                                AppColors.profileCard4,
+                            backGroundColor: AppColors.profileCard4,
                             borderColor: Colors.red,
                             text: 'Emergency?',
                             IsSvg: true,
@@ -187,9 +195,23 @@ class ProfilePageView extends GetView<ProfilePageController> {
                             iconPath: 'lib/assets/icons/emergency.png',
                             subText: "Click to Alert Now!"),
                       )),
-                  const SizedBox(
-                    height: 100,
+                  SizedBox(
+                    height: 8.h,
                   ),
+                  Container(
+                    width: double.infinity,
+                    height: 55.h,
+                    margin: EdgeInsets.symmetric(horizontal: 28.w),
+                    child: kElevatedButton(
+                      text: "Logout",
+                      onPressed: () {
+                        CustomPopup.show(
+                            title: 'Are you sure want to logout?',
+                            onCancel: () => Get.back());
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
                 ],
               ),
             ),

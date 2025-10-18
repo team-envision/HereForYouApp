@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/Components/customPopup.dart';
 import 'package:here_for_you_app/app/modules/emergency_contact/views/emergency_contact_view.dart';
 import 'package:here_for_you_app/app/modules/feedBack/views/feed_back_view.dart';
 import 'package:here_for_you_app/app/views/views/articles_view.dart';
@@ -24,17 +25,30 @@ class MenuPopup extends StatelessWidget {
           ),
           // Menu options
           const SizedBox(height: 0),
-          _buildMenuItem("Articles", Icons.article,onTap: (){Get.to(()=>ArticlesView());}),
+          _buildMenuItem("Articles", Icons.article, onTap: () {
+            Get.to(() => ArticlesView());
+          }),
           _buildMenuItem("Change Password", Icons.lock),
-          _buildMenuItem("Emergency Contact", Icons.phone, onTap: (){Get.to(()=>EmergencyContactView());}),
-          _buildMenuItem("Feedback", Icons.feedback,onTap: (){Get.to(()=>FeedBackView());}),
-          _buildMenuItem("Delete Account", Icons.delete, color: Colors.red),
+          _buildMenuItem("Emergency Contact", Icons.phone, onTap: () {
+            Get.to(() => EmergencyContactView());
+          }),
+          _buildMenuItem("Feedback", Icons.feedback, onTap: () {
+            Get.to(() => FeedBackView());
+          }),
+          _buildMenuItem("Delete Account", Icons.delete, color: Colors.red,
+              onTap: () {
+            CustomPopup.show(
+                title:
+                    'Are you sure you want to permanently delete your account?',
+                onCancel: () => Get.back());
+          }),
         ],
       ),
     );
   }
 
-  Widget _buildMenuItem(String title, IconData icon, {Color? color,dynamic? onTap}) {
+  Widget _buildMenuItem(String title, IconData icon,
+      {Color? color, dynamic? onTap}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
