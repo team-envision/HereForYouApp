@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/customPopup.dart';
 import 'package:here_for_you_app/Components/featureContainers.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
+import 'package:here_for_you_app/Components/popUpMenu.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../../../../Components/featureCards.dart';
-import '../../../../Components/popUpMenu.dart';
 import '../../editProfileView/views/edit_profile_view.dart';
 import '../../mentalScore/views/mental_score_view.dart';
 import '../../moodQuality/views/mood_quality_view.dart';
@@ -109,20 +110,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           style: Get.textTheme.headlineSmall
                               ?.copyWith(fontSize: 23),
                         ),
-                        IconButton(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                context: context,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                backgroundColor: AppColors.white,
-                                builder: (BuildContext context) {
-                                  return const MenuPopup(); // The custom menu popup
-                                },
-                              );
-                            },
-                            icon: const Icon(Icons.menu))
+                        MenuPopup(),
                       ],
                     ),
                   ),
@@ -207,7 +195,9 @@ class ProfilePageView extends GetView<ProfilePageController> {
                       onPressed: () {
                         CustomPopup.show(
                             title: 'Are you sure want to logout?',
-                            onCancel: () => Get.back());
+                            onCancel: () => Get.back(),
+                            onAccept: () =>
+                                Get.offAllNamed(Routes.GET_STARTED));
                       },
                     ),
                   ),

@@ -26,7 +26,7 @@ class CustomPopup {
             color: AppColors.white,
             boxShadow: const [
               BoxShadow(
-                color: Color(0x40000000), // #00000040
+                color: AppColors.popupShadow, // #00000040
                 offset: Offset(0, 0),
                 blurRadius: 5.9,
                 spreadRadius: 0,
