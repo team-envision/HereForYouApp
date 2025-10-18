@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/password_view_controller.dart';
+import '../controllers/forgot_password_controller.dart';
 
-class OTPView extends GetView<PasswordViewController> {
+class OTPView extends GetView<ForgotPasswordController> {
   const OTPView({super.key});
 
   @override

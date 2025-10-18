@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/password_view_controller.dart';
+import '../controllers/forgot_password_controller.dart';
 
-class ChangePasswordView extends GetView<PasswordViewController> {
-  const ChangePasswordView({super.key});
+class ForgotPasswordView extends GetView<ForgotPasswordController> {
+  const ForgotPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
