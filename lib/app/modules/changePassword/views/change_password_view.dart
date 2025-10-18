@@ -31,7 +31,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
         leading: IconButton(
           padding: EdgeInsets.zero,
           constraints: BoxConstraints(),
-          onPressed: () {},
+          onPressed: () => Get.back(),
           icon: Transform.flip(
             flipX: true,
             child: SvgPicture.asset(

@@ -21,6 +21,8 @@ class AppColors {
   // Common shadows and borders
   static const Color genericShadow = Color(0x2B000000);
   static const Color black12 = Colors.black12;
+  static const Color popupShadow = Color(0x40000000); // Add this
+
 
   // Text
   static const Color textPrimaryDark = Color(0xFF3F3C36);
