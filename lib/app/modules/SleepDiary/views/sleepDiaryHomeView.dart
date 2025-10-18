@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kBottomBar.dart';
+import 'package:here_for_you_app/app/modules/SleepDiary/views/sleep_score_view.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import 'enter_diary_view.dart';
 
 class SleepDiaryHomeView extends StatelessWidget {
@@ -9,9 +11,9 @@ class SleepDiaryHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         title: const Text("Sleep Diary"),
         titleTextStyle: Get.theme.textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.bold,
@@ -21,7 +23,7 @@ class SleepDiaryHomeView extends StatelessWidget {
           icon: const Icon(
             Icons.arrow_back_rounded,
             size: 36,
-            color: Colors.black,
+            color: AppColors.black,
           ),
         ),
         leadingWidth: 90,
@@ -34,7 +36,7 @@ class SleepDiaryHomeView extends StatelessWidget {
             icon: const Icon(
               Icons.home,
               size: 28,
-              color: Colors.black,
+              color: AppColors.black,
             ),
           ),
         ],
@@ -43,7 +45,10 @@ class SleepDiaryHomeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(height: 40),
-          _buildSleepResultContainer("Sleep Results", const Icon(Icons.receipt)),
+          _buildSleepResultContainer("Sleep Results", const Icon(Icons.receipt),
+            onTap: () {
+              Get.to(() => const SleepScoreView());
+            },),
           const SizedBox(height: 20),
           _buildSleepResultContainer(
             "Enter Your Diary",
@@ -64,10 +69,10 @@ class SleepDiaryHomeView extends StatelessWidget {
         height: 150,
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
-            color: Colors.grey.shade400,
+            color: AppColors.grey,
             width: 2,
           ),
         ),

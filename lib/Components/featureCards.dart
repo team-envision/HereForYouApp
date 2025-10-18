@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 Widget kContainer(
     {required Color color, required String text, required Widget icon,  dynamic? onTap}) {
@@ -18,7 +19,7 @@ Widget kContainer(
             child: Text(
               text,
               style: Get.theme.textTheme.titleLarge
-                  ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  ?.copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
             ),
           ),
           icon

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/featureContainers.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/popUpMenu.dart';
 import '../../editProfileView/views/edit_profile_view.dart';
@@ -14,7 +15,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,7 +27,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
               children: [
                 Container(
                   decoration: const BoxDecoration(
-                      color: Color.fromRGBO(235, 255, 196, 1),
+                      color: AppColors.profileBg,
                       borderRadius: BorderRadius.vertical(
                           bottom: Radius.elliptical(350, 200))),
                   child: Padding(
@@ -45,8 +46,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                       children: [
                         CircleAvatar(
                           radius: 70,
-                          backgroundColor:
-                              const Color.fromRGBO(155, 131, 200, 1),
+                          backgroundColor: AppColors.avatarBg,
                           child: Align(
                             alignment: Alignment.bottomCenter,
                             child: Image.asset(
@@ -82,7 +82,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                               child: const Text(
                                 "Edit Details",
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 17),
+                                    color: AppColors.black, fontSize: 17),
                               ),
                             ),
                           ),
@@ -111,7 +111,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
-                                backgroundColor: Colors.white,
+                                backgroundColor: AppColors.white,
                                 builder: (BuildContext context) {
                                   return const MenuPopup(); // The custom menu popup
                                 },
@@ -151,18 +151,18 @@ class ProfilePageView extends GetView<ProfilePageController> {
                         scrollDirection: Axis.horizontal,
                         children: [
                           kContainer(
-                              color: const Color.fromRGBO(118, 90, 72, 1),
+                              color: AppColors.mentalScoreCard,
                               text: "Mental\nScore",
                               onTap: (){  Get.to(() => const MentalScoreView());},
                               icon: SvgPicture.asset(
                                   "lib/assets/icons/mentalScoreIcon.svg")),
                           kContainer(
-                              color: const Color.fromRGBO(140, 108, 201, 1),
+                              color: AppColors.mindAnchorCard,
                               text: "Mind\nAnchor",
                               icon: SvgPicture.asset(
                                   "lib/assets/icons/AnchorIcon.svg")),
                           kContainer(
-                              color: const Color.fromRGBO(255, 148, 76, 1),
+                              color: AppColors.moodQualityCard,
                               text: "Mood\nQuality",
                               onTap: () {Get.to(()=>const MoodQualityView());},
                               icon: SvgPicture.asset(
@@ -177,7 +177,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                         padding: const EdgeInsets.all(16.0),
                         child: kCard(
                             backGroundColor:
-                                const Color.fromRGBO(255, 216, 193, 1),
+                                AppColors.profileCard4,
                             borderColor: Colors.red,
                             text: 'Emergency?',
                             IsSvg: true,

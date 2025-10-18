@@ -8,6 +8,7 @@ import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
+import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../../../views/views/MindAnchorView.dart';
 import '../../AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
 import '../../SleepDiary/controllers/sleep_diary_controller.dart';
@@ -28,13 +29,12 @@ class HomeView extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(22),
                 bottomRight: Radius.circular(22))),
-        backgroundColor: const Color.fromRGBO(238, 229, 255, 1),
+        backgroundColor: AppColors.appBarBg,
         title: Row(
           children: [
             CircleAvatar(
               radius: 25,
-              backgroundColor:
-              const Color.fromRGBO(155, 131, 200, 1),
+              backgroundColor: AppColors.avatarBg,
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
@@ -72,8 +72,8 @@ class HomeView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 kCard(
-                    backGroundColor: const Color.fromRGBO(223, 242, 186, 1),
-                    borderColor: const Color.fromRGBO(177, 212, 114, 1),
+                    backGroundColor: AppColors.mindTestBg,
+                    borderColor: AppColors.mindTestBorder,
                     onTap: () {
                       Get.to(() => const MindTestScreenView());
                     },
@@ -92,9 +92,9 @@ class HomeView extends StatelessWidget {
                 Container(
                     height: 60,
                     decoration: BoxDecoration(
-                        color: const Color.fromRGBO(255, 241, 193, 1),
+                        color: AppColors.moodBg,
                         border: Border.all(
-                            color: const Color.fromRGBO(255, 218, 95, 1)),
+                            color: AppColors.moodBorder),
                         borderRadius: BorderRadius.circular(50)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -109,8 +109,8 @@ class HomeView extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 decoration: BoxDecoration(
                                   color: controller.selectedIndex.value == index
-                                      ? Colors.yellow
-                                      : Colors.transparent,
+                                      ? AppColors.moodSelected
+                                      : AppColors.transparent,
                                   shape: BoxShape
                                       .circle,
                                 ),
@@ -137,7 +137,7 @@ class HomeView extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       kContainer(
-                          color: const Color.fromRGBO(118, 90, 72, 1),
+                          color: AppColors.mentalScoreCard,
                           text: "Mental\nScore",
                           onTap: () {
                             Get.to(() => const MentalScoreView());
@@ -145,13 +145,13 @@ class HomeView extends StatelessWidget {
                           icon: SvgPicture.asset(
                               "lib/assets/icons/mentalScoreIcon.svg")),
                       kContainer(
-                          color: const Color.fromRGBO(140, 108, 201, 1),
+                          color: AppColors.mindAnchorCard,
                           text: "Mind\nAnchor",
                           onTap: () {Get.to(()=>const Mindanchorview());},
                           icon: SvgPicture.asset(
                               "lib/assets/icons/AnchorIcon.svg")),
                       kContainer(
-                          color: const Color.fromRGBO(255, 148, 76, 1),
+                          color: AppColors.moodQualityCard,
 
                           onTap: () {Get.to(()=>const MoodQualityView());},
 
@@ -159,7 +159,7 @@ class HomeView extends StatelessWidget {
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
-                          color: const Color.fromRGBO(118, 90, 72, 1.0),
+                          color: AppColors.mentalScoreCard,
 
                           onTap: () async {
                             final sleepcontroller = Get.put(SleepDiaryController());
@@ -183,8 +183,8 @@ class HomeView extends StatelessWidget {
                       onTap: () {
                       Get.to(()=>const AiChatBotScreenView());
                       },
-                      backGroundColor: const Color.fromRGBO(229, 229, 228, 1),
-                      borderColor: const Color.fromRGBO(131, 131, 131, 1),
+                      backGroundColor: AppColors.aiChatBg,
+                      borderColor: AppColors.aiChatBorder,
                       text: "Chat with\nA.I Bot",
                       IsSvg: false,
                       ImagePath: "lib/assets/images/AiChatBotCard.png",
