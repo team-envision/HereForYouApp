@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/Components/customPopup.dart';
+import 'package:here_for_you_app/app/modules/emergency_contact/views/emergency_contact_view.dart';
+import 'package:here_for_you_app/app/modules/feedBack/views/feed_back_view.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
+import 'package:here_for_you_app/app/views/views/articles_view.dart';
 
 import '../resources/app_resources/app_colors.dart';
 
@@ -19,6 +22,13 @@ class MenuPopup extends StatelessWidget {
             Get.back();
             break;
           case 'Articles':
+            Get.to(() => ArticlesView());
+            break;
+          case 'Feedback':
+            Get.to(() => FeedBackView());
+            break;
+          case 'Emergency Contact':
+            Get.to(() => EmergencyContactView());
             break;
           case 'Change Password':
             Get.toNamed(Routes.CHANGE_PASSWORD);

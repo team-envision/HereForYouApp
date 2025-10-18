@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
+
 import '../../../../Components/kElevatedButton.dart';
-
 import '../../../../Components/kTextField.dart';
-
 import '../controllers/feed_back_controller.dart';
 
 class FeedBackView extends GetView<FeedBackController> {
   const FeedBackView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: ()
-          {
+          onPressed: () {
             Get.back();
           },
         ),
@@ -52,9 +50,12 @@ class FeedBackView extends GetView<FeedBackController> {
             ),
           ),
           const Spacer(),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 34),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 25.w),
+            width: double.infinity,
+            height: 49.h,
             child: kElevatedButton(
+              fontSize: 21.07.sp,
               text: 'Save Details',
               onPressed: () {},
             ),
