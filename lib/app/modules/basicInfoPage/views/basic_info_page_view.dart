@@ -77,7 +77,7 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
               child: kElevatedButton(
                 onPressed: () {},
                 text: "Next",
-                leadingIcon: "lib/assets/images/forward.svg",
+                trailingIcon: "lib/assets/images/forward.svg",
               ),
             )
           ],

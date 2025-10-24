@@ -14,6 +14,8 @@ import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
 import '../modules/SleepDiary/views/sleep_diary_view.dart';
 import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/views/basic_info_page_view.dart';
+import '../modules/changePassword/bindings/change_password_binding.dart';
+import '../modules/changePassword/views/change_password_view.dart';
 import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
 import '../modules/editProfileView/views/edit_profile_view.dart';
 import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
@@ -34,8 +36,8 @@ import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/moodQuality/bindings/mood_quality_binding.dart';
 import '../modules/moodQuality/views/mood_quality_view.dart';
-import '../modules/changePassword/bindings/change_password_binding.dart';
-import '../modules/changePassword/views/change_password_view.dart';
+import '../modules/signup/bindings/signup_binding.dart';
+import '../modules/signup/views/signup_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
 import '../modules/splashScreen/views/splash_screen_view.dart';
 import '../views/views/mind_test_view.dart';
@@ -45,7 +47,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PROFILE_PAGE;
+  static const INITIAL = Routes.SIGNUP;
 
   static final routes = [
     GetPage(
@@ -146,6 +148,11 @@ class AppPages {
       name: _Paths.CHANGE_PASSWORD,
       page: () => const ChangePasswordView(),
       binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGNUP,
+      page: () => const SignupView(),
+      binding: SignupBinding(),
     ),
   ];
 }

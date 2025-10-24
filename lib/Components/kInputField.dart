@@ -6,7 +6,7 @@ import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 class kInputField extends StatefulWidget {
   final String title;
   final String hint;
-  final Function(String) onChanged;
+  final Function(String)? onChanged;
   final TextInputType inputType;
   final TextEditingController? controller;
   final bool isPasswordField;
@@ -16,7 +16,7 @@ class kInputField extends StatefulWidget {
     super.key,
     required this.title,
     required this.hint,
-    required this.onChanged,
+    this.onChanged,
     this.inputType = TextInputType.text,
     this.controller,
     this.isPasswordField = false,

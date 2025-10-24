@@ -55,7 +55,7 @@ class GenderPageView extends GetView<GenderPageController> {
             height: 56.49.h,
             width: double.infinity,
             child: kElevatedButton(
-              leadingIcon: "lib/assets/images/forward.svg",
+              trailingIcon: "lib/assets/images/forward.svg",
               text: 'Next',
               onPressed: () {},
             ),
