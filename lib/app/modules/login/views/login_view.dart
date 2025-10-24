@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/Components/kInputField.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/login_controller.dart';
@@ -77,7 +78,7 @@ class LoginView extends GetView<LoginController> {
                   width: double.infinity,
                   child: kElevatedButton(
                     text: "Sign in",
-                    onPressed: () {},
+                    onPressed: () => Get.offAllNamed(Routes.HOME),
                   ),
                 ),
                 SizedBox(height: 18.h),

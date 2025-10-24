@@ -159,8 +159,14 @@ class HomeView extends StatelessWidget {
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
+                          color: AppColors.stressLevelCard,
+                          text: "Stress\nLevel",
+                          onTap: () {Get.to(()=>const Mindanchorview());},
+                          icon: SvgPicture.asset(
+                              "lib/assets/icons/AnchorIcon.svg")),
+                      kContainer(
                           color: AppColors.mentalScoreCard,
-
+                          text: "Sleep Diary\nQuality",
                           onTap: () async {
                             final sleepcontroller = Get.put(SleepDiaryController());
                             bool hasSetReminder = await sleepcontroller.hasSetReminder();
@@ -170,8 +176,6 @@ class HomeView extends StatelessWidget {
                               Get.to(SleepDiaryView());
                             }
                             },
-
-                          text: "Sleep Diary\nQuality",
                           icon: SvgPicture.asset(
                               "lib/assets/icons/sleepdiaryicon.svg")),
                     ],
