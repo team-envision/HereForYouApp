@@ -26,6 +26,7 @@ abstract class Routes {
   static const EMERGENCY_CONTACT = _Paths.EMERGENCY_CONTACT;
   static const SLEEP_DIARY = _Paths.SLEEP_DIARY;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const STRESS_LEVEL = _Paths.STRESS_LEVEL;
 }
 
 abstract class _Paths {
@@ -52,4 +53,5 @@ abstract class _Paths {
   static const EMERGENCY_CONTACT = '/emergency-contact';
   static const SLEEP_DIARY = '/sleep-diary';
   static const CHANGE_PASSWORD = '/change-password';
+  static const STRESS_LEVEL = '/stress-level';
 }
