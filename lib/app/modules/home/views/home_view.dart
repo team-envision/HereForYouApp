@@ -5,6 +5,7 @@ import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.d
 
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
+import 'package:here_for_you_app/app/modules/stressLevel/views/stress_level_view.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
@@ -152,10 +153,14 @@ class HomeView extends StatelessWidget {
                               "lib/assets/icons/AnchorIcon.svg")),
                       kContainer(
                           color: AppColors.moodQualityCard,
-
                           onTap: () {Get.to(()=>const MoodQualityView());},
-
                           text: "Mood\nQuality",
+                          icon: SvgPicture.asset(
+                              "lib/assets/icons/moodQulatiyIcon.svg")),
+                      kContainer(
+                          color: AppColors.stressLevelCard,
+                          onTap: () {Get.to(()=>const StressLevelView());},
+                          text: "Stress\nLevel",
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
                       kContainer(

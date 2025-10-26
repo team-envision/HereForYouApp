@@ -49,6 +49,7 @@ class AppColors {
   static const Color moodQualityCard = Color.fromRGBO(255, 148, 76, 1);
   static const Color aiChatBg = Color.fromRGBO(229, 229, 228, 1);
   static const Color aiChatBorder = Color.fromRGBO(131, 131, 131, 1);
+  static const Color stressLevelCard = Color(0xFF7D984A);
 
   // Mental score screen colors
   static const Color mentalScoreBg = Color.fromRGBO(237, 222, 212, 1);
