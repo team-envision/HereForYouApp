@@ -49,7 +49,6 @@ class AppColors {
   static const Color moodQualityCard = Color.fromRGBO(255, 148, 76, 1);
   static const Color aiChatBg = Color.fromRGBO(229, 229, 228, 1);
   static const Color aiChatBorder = Color.fromRGBO(131, 131, 131, 1);
-  static const Color stressLevelCard = Color(0xFF7D984A);
 
   // Mental score screen colors
   static const Color mentalScoreBg = Color.fromRGBO(237, 222, 212, 1);
@@ -61,4 +60,16 @@ class AppColors {
   // Profile page colors
   static const Color profileBg = Color.fromRGBO(235, 255, 196, 1);
   static const Color profileCard4 = Color.fromRGBO(255, 216, 193, 1);
+
+  // Stress level screen colors
+  static const Color stressBgLight = Color(0xFFE8EDDF);
+  static const Color stressPrimary = Color(0xFF4E7309);
+  static const Color stressSecondary = Color(0xFF7D984A);
+  static const Color stressLight = Color(0xFFC6D2B0);
+  static const Color stressText = Color(0xFF618C10);
+  static const Color stressSecondaryTransparent = Color(0xD17D984A);
+  
+  // Stress level circle colors (opacity variants of stressPrimary)
+  static const Color stressCircleSemiTransparent = Color.fromRGBO(78, 115, 9, 0.61);
+  static const Color stressCircleTransparent = Color.fromRGBO(78, 115, 9, 0.32);
 }

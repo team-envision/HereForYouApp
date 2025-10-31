@@ -158,7 +158,7 @@ class HomeView extends StatelessWidget {
                           icon: SvgPicture.asset(
                               "lib/assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
-                          color: AppColors.stressLevelCard,
+                          color: AppColors.stressSecondary,
                           onTap: () {Get.to(()=>const StressLevelView());},
                           text: "Stress\nLevel",
                           icon: SvgPicture.asset(
