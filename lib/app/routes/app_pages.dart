@@ -40,6 +40,8 @@ import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
 import '../modules/splashScreen/views/splash_screen_view.dart';
+import '../modules/stressLevel/bindings/stress_level_binding.dart';
+import '../modules/stressLevel/views/stress_level_view.dart';
 import '../views/views/mind_test_view.dart';
 
 part 'app_routes.dart';
@@ -47,7 +49,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.AI_CHAT_BOT_SCREEN;
+  static const INITIAL = Routes.STRESS_LEVEL;
 
   static final routes = [
     GetPage(
@@ -153,6 +155,11 @@ class AppPages {
       name: _Paths.SIGNUP,
       page: () => const SignupView(),
       binding: SignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.STRESS_LEVEL,
+      page: () => const StressLevelView(),
+      binding: StressLevelBinding(),
     ),
   ];
 }
