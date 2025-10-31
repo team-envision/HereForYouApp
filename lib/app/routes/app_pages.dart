@@ -36,6 +36,8 @@ import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/moodQuality/bindings/mood_quality_binding.dart';
 import '../modules/moodQuality/views/mood_quality_view.dart';
+import '../modules/signup/bindings/signup_binding.dart';
+import '../modules/signup/views/signup_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
 import '../modules/splashScreen/views/splash_screen_view.dart';
 import '../modules/stressLevel/bindings/stress_level_binding.dart';
@@ -148,6 +150,11 @@ class AppPages {
       name: _Paths.CHANGE_PASSWORD,
       page: () => const ChangePasswordView(),
       binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGNUP,
+      page: () => const SignupView(),
+      binding: SignupBinding(),
     ),
     GetPage(
       name: _Paths.STRESS_LEVEL,

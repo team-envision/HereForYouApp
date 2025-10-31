@@ -7,7 +7,7 @@ import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 class kElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final String? leadingIcon;
+  final String? trailingIcon;
   final Color backgroundColor;
   final Color borderColor;
   final double fontSize;
@@ -16,7 +16,7 @@ class kElevatedButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.leadingIcon,
+    this.trailingIcon,
     this.backgroundColor = AppColors.black,
     this.borderColor = AppColors.white,
     this.fontSize = 19,
@@ -41,14 +41,14 @@ class kElevatedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.r),
         ),
       ),
-      child: leadingIcon != null
+      child: trailingIcon != null
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(text),
                 SizedBox(width: 10.w),
                 SvgPicture.asset(
-                  leadingIcon!,
+                  trailingIcon!,
                   color: AppColors.white,
                   height: 13.06.h,
                   width: 12.53.w,

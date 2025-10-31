@@ -8,6 +8,7 @@ import 'package:here_for_you_app/Components/kInputField.dart';
 import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -119,7 +120,7 @@ class LoginView extends GetView<LoginController> {
                     text: "Sign up",
                     backgroundColor: AppColors.white,
                     borderColor: AppColors.black,
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(Routes.SIGNUP),
                   ),
                 ),
               ],
