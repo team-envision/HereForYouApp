@@ -9,11 +9,11 @@ class SplashScreenView extends GetView<SplashScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,  // Full width of the screen
         height: double.infinity, // Full height of the screen
-        child: SvgPicture.asset(
-          "assets/images/landingpage.svg",
+        child: Image.asset(
+          "assets/images/splash.png",
           fit: BoxFit.cover, // Ensures the SVG covers the entire screen
         ),
       ),
