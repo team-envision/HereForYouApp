@@ -63,6 +63,7 @@ class MainView extends GetView<MainController> {
               ),
               backgroundColor: Colors.white,
               currentIndex: controller.currentIndex.value,
+              type: BottomNavigationBarType.fixed,
               items: [
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
@@ -71,11 +72,22 @@ class MainView extends GetView<MainController> {
                     width: 19.12.w,
                   ),
                   label: "Home",
-                  backgroundColor: Colors.blue,
                 ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: "Person",
+                BottomNavigationBarItem(
+                  icon: Image.asset(
+                    "assets/icons/BookIcon.png",
+                    height: 19.12.h,
+                    width: 19.12.w,
+                  ),
+                  label: "Mind Test",
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/icons/profile.svg",
+                    height: 19.12.h,
+                    width: 19.12.w,
+                  ),
+                  label: "Profile",
                 ),
               ],
             ),
