@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
     return Scaffold(
+      backgroundColor: AppColors.white,
       extendBody: true,
       appBar: AppBar(
         toolbarHeight: 100,

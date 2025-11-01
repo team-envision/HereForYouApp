@@ -28,6 +28,7 @@ abstract class Routes {
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const SIGNUP = _Paths.SIGNUP;
   static const STRESS_LEVEL = _Paths.STRESS_LEVEL;
+  static const MAIN = _Paths.MAIN;
 }
 
 abstract class _Paths {
@@ -56,4 +57,5 @@ abstract class _Paths {
   static const CHANGE_PASSWORD = '/change-password';
   static const SIGNUP = '/signup';
   static const STRESS_LEVEL = '/stress-level';
+  static const MAIN = '/main';
 }
