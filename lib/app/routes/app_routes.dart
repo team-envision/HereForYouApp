@@ -30,6 +30,7 @@ abstract class Routes {
   static const STRESS_LEVEL = _Paths.STRESS_LEVEL;
   static const MAIN = _Paths.MAIN;
   static const FACE_LOADING = _Paths.FACE_LOADING;
+  static const STRESS_INDICATOR = _Paths.STRESS_INDICATOR;
 }
 
 abstract class _Paths {
@@ -60,4 +61,5 @@ abstract class _Paths {
   static const STRESS_LEVEL = '/stress-level';
   static const MAIN = '/main';
   static const FACE_LOADING = '/face-loading';
+  static const STRESS_INDICATOR = '/stress-indicator';
 }

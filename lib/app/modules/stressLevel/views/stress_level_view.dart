@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/widgets/custom_circle.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/widgets/custom_heading.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/stress_level_controller.dart';
@@ -26,7 +27,7 @@ class StressLevelView extends GetView<StressLevelController> {
           ),
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () => Get.offAllNamed(Routes.MAIN),
           icon: Image.asset(
             "assets/images/backward_arrow.png",
             width: 34.18.w,

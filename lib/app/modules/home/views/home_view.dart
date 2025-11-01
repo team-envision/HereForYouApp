@@ -6,6 +6,7 @@ import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.d
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/views/stress_level_view.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
@@ -78,7 +79,7 @@ class HomeView extends StatelessWidget {
                     backGroundColor: AppColors.mindTestBg,
                     borderColor: AppColors.mindTestBorder,
                     onTap: () {
-                      Get.to(() => const MindTestScreenView());
+                      Get.toNamed(Routes.MIND_TEST);
                     },
                     text: "Start Your\nMind Test",
                     IsSvg: true,
@@ -161,7 +162,7 @@ class HomeView extends StatelessWidget {
                               "assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
                           color: AppColors.stressSecondary,
-                          onTap: () {Get.to(()=>const StressLevelView());},
+                          onTap: () => Get.toNamed(Routes.STRESS_INDICATOR),
                           text: "Stress\nLevel",
                           icon: SvgPicture.asset(
                               "assets/icons/moodQulatiyIcon.svg")),
