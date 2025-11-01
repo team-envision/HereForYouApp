@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpState extends GetXState {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+class LoginState extends GetXState {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 }

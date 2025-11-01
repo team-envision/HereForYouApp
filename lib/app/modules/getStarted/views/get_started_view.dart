@@ -139,32 +139,32 @@ class GetStartedView extends GetView<GetStartedController> {
                     width: 351.71.w,
                     height: 169.42.h,
                     child: kCard(
-                        onTap: () {
-                          Get.toNamed(Routes.LOGIN);
-                        },
-                        backGroundColor: AppColors.white,
-                        borderColor: AppColors.black,
-                        text: "Get Started",
-                        IsSvg: true,
-                        ImagePath: "assets/images/GetStartedCard.svg",
-                        bottomText: "Sign in"),
+                      onTap: () => Get.toNamed(Routes.LOGIN),
+                      backGroundColor: AppColors.white,
+                      borderColor: AppColors.black,
+                      text: "Get Started",
+                      IsSvg: true,
+                      ImagePath: "assets/images/GetStartedCard.svg",
+                      bottomText: "Sign in",
+                    ),
                   ),
                   SizedBox(height: 5.h),
                   TextButton(
-                    onPressed: (){},
-                    child: Text("Don't have an account. Sign up",
+                    onPressed: () => Get.toNamed(Routes.SIGNUP),
+                    child: Text(
+                      "Don't have an account. Sign up",
                       style: GoogleFonts.urbanist(
                         color: AppColors.black,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 13.33.sp,
-                          letterSpacing: -0.3),
-                    ))
-
-
+                        fontWeight: FontWeight.w800,
+                        fontSize: 13.33.sp,
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -47,51 +47,87 @@ class MainView extends GetView<MainController> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(44.r),
           child: Obx(
-            () => BottomNavigationBar(
-              onTap: controller.changePage,
-              unselectedLabelStyle: GoogleFonts.urbanist(
-                fontWeight: FontWeight.w800,
-                fontSize: 10.59.sp,
-                letterSpacing: -0.3,
-                color: AppColors.black,
+            () => Container(
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildNavItem(
+                    index: 0,
+                    icon: "assets/icons/home.svg",
+                    label: "Home",
+                    isSvg: true,
+                  ),
+                  _buildNavItem(
+                    index: 1,
+                    icon: "assets/icons/BookIcon.png",
+                    label: "Mind Test",
+                    isSvg: false,
+                  ),
+                  _buildNavItem(
+                    index: 2,
+                    icon: "assets/icons/profile.svg",
+                    label: "Profile",
+                    isSvg: true,
+                  ),
+                ],
               ),
-              selectedLabelStyle: GoogleFonts.urbanist(
-                fontWeight: FontWeight.w800,
-                fontSize: 10.59.sp,
-                letterSpacing: -0.3,
-                color: AppColors.black,
-              ),
-              backgroundColor: Colors.white,
-              currentIndex: controller.currentIndex.value,
-              type: BottomNavigationBarType.fixed,
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/icons/home.svg",
-                    height: 19.12.h,
-                    width: 19.12.w,
-                  ),
-                  label: "Home",
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    "assets/icons/BookIcon.png",
-                    height: 19.12.h,
-                    width: 19.12.w,
-                  ),
-                  label: "Mind Test",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/icons/profile.svg",
-                    height: 19.12.h,
-                    width: 19.12.w,
-                  ),
-                  label: "Profile",
-                ),
-              ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem({
+    required int index,
+    required String icon,
+    required String label,
+    required bool isSvg,
+  }) {
+    final isSelected = controller.currentIndex.value == index;
+
+    return GestureDetector(
+      onTap: () => controller.changePage(index),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color.fromRGBO(238, 229, 255, 1)
+              : Colors.transparent,
+          shape: BoxShape.circle,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            isSvg
+                ? SvgPicture.asset(
+                    icon,
+                    height: 19.12.h,
+                    width: 19.12.w,
+                    colorFilter: ColorFilter.mode(
+                      AppColors.black,
+                      BlendMode.srcIn,
+                    ),
+                  )
+                : Image.asset(
+                    icon,
+                    height: 19.12.h,
+                    width: 19.12.w,
+                    color: AppColors.black,
+                  ),
+            SizedBox(height: 4.h),
+            Text(
+              label,
+              style: GoogleFonts.urbanist(
+                fontWeight: FontWeight.w800,
+                fontSize: 10.59.sp,
+                letterSpacing: -0.3,
+                color: AppColors.black,
+              ),
+            ),
+          ],
         ),
       ),
     );

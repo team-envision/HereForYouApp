@@ -1,14 +1,17 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/basicInfoPage/states/basic_info_page_state.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 
 class BasicInfoPageController extends GetxController {
-  //TODO: Implement BasicInfoPageController
+  final BasicInfoPageState state;
 
-  var age = ''.obs;
-  var weight = ''.obs;
-  var height = ''.obs;
+  BasicInfoPageController({required this.state});
 
-
-  bool get isNextEnabled => age.isNotEmpty && weight.isNotEmpty && height.isNotEmpty;
+  void handleNext() {
+    if (state.formKey.currentState?.validate() ?? false) {
+      Get.offAllNamed(Routes.MAIN);
+    }
+  }
 
   @override
   void onInit() {
@@ -24,5 +27,4 @@ class BasicInfoPageController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
 }

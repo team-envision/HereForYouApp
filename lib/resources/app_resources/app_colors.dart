@@ -23,7 +23,6 @@ class AppColors {
   static const Color black12 = Colors.black12;
   static const Color popupShadow = Color(0x40000000); // Add this
 
-
   // Text
   static const Color textPrimaryDark = Color(0xFF3F3C36);
   static const Color textHintMuted = Color(0x7D201A25);
@@ -68,8 +67,15 @@ class AppColors {
   static const Color stressLight = Color(0xFFC6D2B0);
   static const Color stressText = Color(0xFF618C10);
   static const Color stressSecondaryTransparent = Color(0xD17D984A);
-  
+
   // Stress level circle colors (opacity variants of stressPrimary)
-  static const Color stressCircleSemiTransparent = Color.fromRGBO(78, 115, 9, 0.61);
+  static const Color stressCircleSemiTransparent = Color.fromRGBO(
+    78,
+    115,
+    9,
+    0.61,
+  );
   static const Color stressCircleTransparent = Color.fromRGBO(78, 115, 9, 0.32);
+
+  static const Color red = Colors.red;
 }

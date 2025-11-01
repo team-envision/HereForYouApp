@@ -20,6 +20,8 @@ import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
 import '../modules/editProfileView/views/edit_profile_view.dart';
 import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
 import '../modules/emergency_contact/views/emergency_contact_view.dart';
+import '../modules/faceLoading/bindings/face_loading_binding.dart';
+import '../modules/faceLoading/views/face_loading_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
@@ -167,6 +169,11 @@ class AppPages {
       name: _Paths.MAIN,
       page: () => const MainView(),
       binding: MainBinding(),
+    ),
+    GetPage(
+      name: _Paths.FACE_LOADING,
+      page: () => const FaceLoadingView(),
+      binding: FaceLoadingBinding(),
     ),
   ];
 }

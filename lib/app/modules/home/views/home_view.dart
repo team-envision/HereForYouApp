@@ -26,6 +26,7 @@ class HomeView extends StatelessWidget {
       backgroundColor: AppColors.white,
       extendBody: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 100,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(

@@ -29,6 +29,7 @@ abstract class Routes {
   static const SIGNUP = _Paths.SIGNUP;
   static const STRESS_LEVEL = _Paths.STRESS_LEVEL;
   static const MAIN = _Paths.MAIN;
+  static const FACE_LOADING = _Paths.FACE_LOADING;
 }
 
 abstract class _Paths {
@@ -58,4 +59,5 @@ abstract class _Paths {
   static const SIGNUP = '/signup';
   static const STRESS_LEVEL = '/stress-level';
   static const MAIN = '/main';
+  static const FACE_LOADING = '/face-loading';
 }

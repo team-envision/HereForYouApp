@@ -1,9 +1,18 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/genderPage/states/gender_page_state.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 
 class GenderPageController extends GetxController {
-  //TODO: Implement GenderPageController
+  final GenderPageState state;
 
-  final count = 0.obs;
+  GenderPageController({required this.state});
+
+  void handleNext() {
+    state.selected.value == ""
+        ? Get.snackbar("Oops", "Please select your gender")
+        : Get.toNamed(Routes.BASIC_INFO_PAGE);
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +27,4 @@ class GenderPageController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
