@@ -28,7 +28,7 @@ class StressLevelView extends GetView<StressLevelController> {
         leading: IconButton(
           onPressed: () {},
           icon: Image.asset(
-            "lib/assets/images/backward_arrow.png",
+            "assets/images/backward_arrow.png",
             width: 34.18.w,
             height: 29.91.h,
           ),

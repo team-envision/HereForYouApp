@@ -25,7 +25,7 @@ class GetStartedView extends GetView<GetStartedController> {
             top: 78.h,
             child: Transform.flip(
               flipX: true,
-              child: SvgPicture.asset("lib/assets/images/getStarted_cloud.svg"),
+              child: SvgPicture.asset("assets/images/getStarted_cloud.svg"),
             ),
           ),
           Positioned(
@@ -35,7 +35,7 @@ class GetStartedView extends GetView<GetStartedController> {
             top: 309.h,
             child: Transform.flip(
               flipX: true,
-              child: SvgPicture.asset("lib/assets/images/getStarted_cloud.svg"),
+              child: SvgPicture.asset("assets/images/getStarted_cloud.svg"),
             ),
           ),
           Positioned(
@@ -43,21 +43,21 @@ class GetStartedView extends GetView<GetStartedController> {
             height: 71.h,
             left: 225.w,
             top: 88.h,
-            child: SvgPicture.asset("lib/assets/images/getStarted_cloud.svg"),
+            child: SvgPicture.asset("assets/images/getStarted_cloud.svg"),
           ),
           Positioned(
             width: 248.w,
             height: 105.h,
             left: 230.w,
             top: 218.h,
-            child: SvgPicture.asset("lib/assets/images/getStarted_cloud.svg"),
+            child: SvgPicture.asset("assets/images/getStarted_cloud.svg"),
           ),
           Positioned(
             width: 370.65.w,
             height: 363.03.h,
             top: 142.97.h,
             left: 11.w,
-            child: SvgPicture.asset("lib/assets/images/getStarted_figure.svg"),
+            child: SvgPicture.asset("assets/images/getStarted_figure.svg"),
           ),
           Positioned(
             top: 461.h,
@@ -146,7 +146,7 @@ class GetStartedView extends GetView<GetStartedController> {
                         borderColor: AppColors.black,
                         text: "Get Started",
                         IsSvg: true,
-                        ImagePath: "lib/assets/images/GetStartedCard.svg",
+                        ImagePath: "assets/images/GetStartedCard.svg",
                         bottomText: "Sign in"),
                   ),
                   SizedBox(height: 5.h),

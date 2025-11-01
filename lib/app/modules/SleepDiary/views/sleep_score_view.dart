@@ -52,7 +52,7 @@ class SleepScoreView extends GetView<SleepScoreController> {
                           Container(
                             color: AppColors.mentalScoreBg,
                             child: SvgPicture.asset(
-                              "lib/assets/images/mentalScorepageBgrnd.svg",
+                              "assets/images/mentalScorepageBgrnd.svg",
                               fit: BoxFit.fitWidth,
                               alignment: const Alignment(0, -0.9),
                             ),

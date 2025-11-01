@@ -38,7 +38,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  "lib/assets/images/backward_arrow.png",
+                  "assets/images/backward_arrow.png",
                   height: 22.43.h,
                   width: 17.5.w,
                 ),
@@ -65,7 +65,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                             top: 113.h,
                             left: -11.w,
                             child: Image.asset(
-                              "lib/assets/images/AiChatBotImage.png",
+                              "assets/images/AiChatBotImage.png",
                             ),
                           ),
                           Positioned(

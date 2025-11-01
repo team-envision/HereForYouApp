@@ -13,7 +13,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
         width: double.infinity,  // Full width of the screen
         height: double.infinity, // Full height of the screen
         child: SvgPicture.asset(
-          "lib/assets/images/landingpage.svg",
+          "assets/images/landingpage.svg",
           fit: BoxFit.cover, // Ensures the SVG covers the entire screen
         ),
       ),

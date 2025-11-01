@@ -29,7 +29,7 @@ class MindTestScreenView extends GetView {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,mainAxisSize: MainAxisSize.min,
             children: [
               SvgPicture.asset(
-                "lib/assets/images/ClockImage.svg",
+                "assets/images/ClockImage.svg",
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),

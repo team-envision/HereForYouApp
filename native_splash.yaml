@@ -4,5 +4,5 @@ flutter_native_splash:
   web: false
 
   color: "FFFFFF"
-  image: "lib/assets/images/Untitled.png"
+  image: "assets/images/Untitled.png"
 

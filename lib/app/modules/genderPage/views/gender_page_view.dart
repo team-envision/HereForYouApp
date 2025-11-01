@@ -32,21 +32,21 @@ class GenderPageView extends GetView<GenderPageController> {
           SizedBox(height: 80.h),
           const OutLinedGender(
             text: 'I am male',
-            svgPic: 'lib/assets/images/Solidarrowrightm.svg',
+            svgPic: 'assets/images/Solidarrowrightm.svg',
             backColor: AppColors.maleBg,
             borderColor: AppColors.maleBorder,
           ),
           SizedBox(height: 30.h),
           const OutLinedGender(
             text: 'I am female',
-            svgPic: 'lib/assets/images/Solidarrowrightsm.svg',
+            svgPic: 'assets/images/Solidarrowrightsm.svg',
             backColor: AppColors.femaleBg,
             borderColor: AppColors.femaleBorder,
           ),
           SizedBox(height: 30.h),
           const OutLinedGender(
             text: 'Others',
-            svgPic: 'lib/assets/images/Solidarrowrightsm.svg',
+            svgPic: 'assets/images/Solidarrowrightsm.svg',
             backColor: AppColors.otherBg,
             borderColor: AppColors.otherBorder,
           ),
@@ -55,7 +55,7 @@ class GenderPageView extends GetView<GenderPageController> {
             height: 56.49.h,
             width: double.infinity,
             child: kElevatedButton(
-              trailingIcon: "lib/assets/images/forward.svg",
+              trailingIcon: "assets/images/forward.svg",
               text: 'Next',
               onPressed: () {},
             ),

@@ -30,7 +30,7 @@ class LoginView extends GetView<LoginController> {
                 SvgPicture.asset(
                   width: 230.75.w,
                   height: 248.43.h,
-                  'lib/assets/images/loginBanner.svg',
+                  'assets/images/loginBanner.svg',
                 ),
                 SizedBox(height: 10.h),
                 Text(

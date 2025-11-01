@@ -34,7 +34,7 @@ class BACEQuestionController extends GetxController {
 
   Future<void> loadQuestionnaire() async {
     String jsonString =
-        await rootBundle.loadString('lib/assets/json/questions.json');
+        await rootBundle.loadString('assets/json/questions.json');
     if (jsonString.isNotEmpty) {
       Map<String, dynamic>? jsonData = jsonDecode(jsonString);
       if (jsonData != null) {
@@ -76,13 +76,13 @@ class BACEQuestionController extends GetxController {
   String getOptionIcon(int index) {
     switch (index) {
       case 0:
-        return "lib/assets/icons/neverIcon.png";
+        return "assets/icons/neverIcon.png";
       case 1:
-        return "lib/assets/icons/SometimesIcon.png";
+        return "assets/icons/SometimesIcon.png";
       case 2:
-        return "lib/assets/icons/OftenIcon.png";
+        return "assets/icons/OftenIcon.png";
       case 3:
-        return "lib/assets/icons/alwaysIcon.png";
+        return "assets/icons/alwaysIcon.png";
       default:
         return "";
     }

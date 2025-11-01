@@ -23,7 +23,7 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
           icon: Transform.flip(
             flipX: true,
             child: SvgPicture.asset(
-              "lib/assets/images/forward.svg",
+              "assets/images/forward.svg",
               height: 20.h,
             ),
           ),
@@ -77,7 +77,7 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
               child: kElevatedButton(
                 onPressed: () {},
                 text: "Next",
-                trailingIcon: "lib/assets/images/forward.svg",
+                trailingIcon: "assets/images/forward.svg",
               ),
             )
           ],

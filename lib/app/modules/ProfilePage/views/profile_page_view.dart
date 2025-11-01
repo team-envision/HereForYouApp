@@ -41,7 +41,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                       left: 32.0,
                     ),
                     child: SvgPicture.asset(
-                      "lib/assets/images/clouds.svg",
+                      "assets/images/clouds.svg",
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -56,7 +56,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           child: Align(
                             alignment: Alignment.bottomCenter,
                             child: Image.asset(
-                              "lib/assets/images/avatar.png",
+                              "assets/images/avatar.png",
                               alignment: Alignment.bottomCenter,
                               scale: 0.8,
                               fit: BoxFit.fitHeight,
@@ -150,12 +150,12 @@ class ProfilePageView extends GetView<ProfilePageController> {
                                 Get.to(() => const MentalScoreView());
                               },
                               icon: SvgPicture.asset(
-                                  "lib/assets/icons/mentalScoreIcon.svg")),
+                                  "assets/icons/mentalScoreIcon.svg")),
                           kContainer(
                               color: AppColors.mindAnchorCard,
                               text: "Mind\nAnchor",
                               icon: SvgPicture.asset(
-                                  "lib/assets/icons/AnchorIcon.svg")),
+                                  "assets/icons/AnchorIcon.svg")),
                           kContainer(
                               color: AppColors.moodQualityCard,
                               text: "Mood\nQuality",
@@ -163,7 +163,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                                 Get.to(() => const MoodQualityView());
                               },
                               icon: SvgPicture.asset(
-                                  "lib/assets/icons/moodQulatiyIcon.svg")),
+                                  "assets/icons/moodQulatiyIcon.svg")),
                         ],
                       ),
                     ),
@@ -179,8 +179,8 @@ class ProfilePageView extends GetView<ProfilePageController> {
                             IsSvg: true,
                             alignment: Alignment.centerRight,
                             ImagePath:
-                                'lib/assets/images/emergencyCardImage.svg',
-                            iconPath: 'lib/assets/icons/emergency.png',
+                                'assets/images/emergencyCardImage.svg',
+                            iconPath: 'assets/icons/emergency.png',
                             subText: "Click to Alert Now!"),
                       )),
                   SizedBox(

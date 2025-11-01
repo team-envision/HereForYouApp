@@ -24,7 +24,7 @@ class AiChatBotScreenController extends GetxController {
   final ChatUser geminiUser = ChatUser(
     id: '1',
     firstName: 'MentAid',
-    profileImage: "lib/assets/icons/botIcon.png",
+    profileImage: "assets/icons/botIcon.png",
   );
 
   Future<void> onSend(ChatMessage message) async {

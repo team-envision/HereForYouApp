@@ -29,7 +29,7 @@ class MainView extends GetView<MainController> {
         },
       ),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(bottom: 10.h,left: 10.w, right: 10.w),
+        margin: EdgeInsets.only(bottom: 10.h, left: 10.w, right: 10.w),
         width: 375.w,
         height: 75.h,
         decoration: BoxDecoration(
@@ -49,17 +49,31 @@ class MainView extends GetView<MainController> {
           child: Obx(
             () => BottomNavigationBar(
               onTap: controller.changePage,
-              unselectedLabelStyle: GoogleFonts.urbanist(fontWeight: FontWeight.w800, fontSize: 10.59.sp, letterSpacing: -0.3),
-              selectedLabelStyle: GoogleFonts.urbanist(fontWeight: FontWeight.w800, fontSize: 10.59.sp, letterSpacing: -0.3),
+              unselectedLabelStyle: GoogleFonts.urbanist(
+                fontWeight: FontWeight.w800,
+                fontSize: 10.59.sp,
+                letterSpacing: -0.3,
+                color: AppColors.black,
+              ),
+              selectedLabelStyle: GoogleFonts.urbanist(
+                fontWeight: FontWeight.w800,
+                fontSize: 10.59.sp,
+                letterSpacing: -0.3,
+                color: AppColors.black,
+              ),
               backgroundColor: Colors.white,
               currentIndex: controller.currentIndex.value,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: SvgPicture.asset(
+                    "assets/icons/home.svg",
+                    height: 19.12.h,
+                    width: 19.12.w,
+                  ),
                   label: "Home",
                   backgroundColor: Colors.blue,
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.person),
                   label: "Person",
                 ),

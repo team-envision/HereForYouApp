@@ -105,7 +105,7 @@ class SignupView extends GetView<SignupController> {
                     ),
                   ),
                   icon: SvgPicture.asset(
-                    "lib/assets/icons/googleIcon.svg",
+                    "assets/icons/googleIcon.svg",
                     width: 20.w,
                     height: 20.h,
                   ),
