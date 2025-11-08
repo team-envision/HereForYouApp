@@ -137,8 +137,6 @@ class MainView extends GetView<MainController> {
     switch (route) {
       case Routes.HOME:
         return HomeView();
-      case Routes.MIND_TEST:
-        return MindTestScreenView();
       case Routes.PROFILE_PAGE:
         return ProfilePageView();
       default:
