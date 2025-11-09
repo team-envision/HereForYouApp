@@ -45,6 +45,7 @@ app.*.map.json
 /android/app/release
 
 lib/CONSTS.dart
+lib/firebase_options.dart
 
 # FVM Version Cache
 .fvm/
