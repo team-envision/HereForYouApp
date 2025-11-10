@@ -20,9 +20,9 @@ Future<void> main() async {
       builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Application",
-        home: bottomNavigation(),
-        // getPages: AppPages.routes,
-        // initialRoute: AppPages.INITIAL
+        // home: bottomNavigation(),
+        getPages: AppPages.routes,
+        initialRoute: AppPages.INITIAL
       ),
     ),
   );
