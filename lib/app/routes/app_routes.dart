@@ -5,7 +5,7 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
-  static const PASSWORD_VIEW = _Paths.PASSWORD_VIEW;
+  static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   static const QUESTION_SCREEN = _Paths.QUESTION_SCREEN;
   static const MENTAL_SCORE = _Paths.MENTAL_SCORE;
   static const MIND_TEST = _Paths.MindTestScreenView;
@@ -25,13 +25,19 @@ abstract class Routes {
   static const EDIT_PROFILE_VIEW = _Paths.EDIT_PROFILE_VIEW;
   static const EMERGENCY_CONTACT = _Paths.EMERGENCY_CONTACT;
   static const SLEEP_DIARY = _Paths.SLEEP_DIARY;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const SIGNUP = _Paths.SIGNUP;
+  static const STRESS_LEVEL = _Paths.STRESS_LEVEL;
+  static const MAIN = _Paths.MAIN;
+  static const FACE_LOADING = _Paths.FACE_LOADING;
+  static const STRESS_INDICATOR = _Paths.STRESS_INDICATOR;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const LOGIN = '/login';
-  static const PASSWORD_VIEW = '/password-view';
+  static const FORGOT_PASSWORD = '/forgot-password';
   static const QUESTION_SCREEN = '/question-screen';
   static const MENTAL_SCORE = '/mental-score';
   static const MindTestScreenView = '/mind-test';
@@ -50,4 +56,10 @@ abstract class _Paths {
   static const EDIT_PROFILE_VIEW = '/edit-profile-view';
   static const EMERGENCY_CONTACT = '/emergency-contact';
   static const SLEEP_DIARY = '/sleep-diary';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const SIGNUP = '/signup';
+  static const STRESS_LEVEL = '/stress-level';
+  static const MAIN = '/main';
+  static const FACE_LOADING = '/face-loading';
+  static const STRESS_INDICATOR = '/stress-indicator';
 }

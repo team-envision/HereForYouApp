@@ -21,6 +21,7 @@ class AppColors {
   // Common shadows and borders
   static const Color genericShadow = Color(0x2B000000);
   static const Color black12 = Colors.black12;
+  static const Color popupShadow = Color(0x40000000); // Add this
 
   // Text
   static const Color textPrimaryDark = Color(0xFF3F3C36);
@@ -58,4 +59,23 @@ class AppColors {
   // Profile page colors
   static const Color profileBg = Color.fromRGBO(235, 255, 196, 1);
   static const Color profileCard4 = Color.fromRGBO(255, 216, 193, 1);
+
+  // Stress level screen colors
+  static const Color stressBgLight = Color(0xFFE8EDDF);
+  static const Color stressPrimary = Color(0xFF4E7309);
+  static const Color stressSecondary = Color(0xFF7D984A);
+  static const Color stressLight = Color(0xFFC6D2B0);
+  static const Color stressText = Color(0xFF618C10);
+  static const Color stressSecondaryTransparent = Color(0xD17D984A);
+
+  // Stress level circle colors (opacity variants of stressPrimary)
+  static const Color stressCircleSemiTransparent = Color.fromRGBO(
+    78,
+    115,
+    9,
+    0.61,
+  );
+  static const Color stressCircleTransparent = Color.fromRGBO(78, 115, 9, 0.32);
+
+  static const Color red = Colors.red;
 }

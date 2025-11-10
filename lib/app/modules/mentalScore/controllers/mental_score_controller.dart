@@ -17,7 +17,7 @@ class MentalScoreController extends GetxController {
   RxString msg = "Please take a test to see the score".obs;
   RxString title = ''.obs;
   RxString endMsg = ''.obs;
-  RxString imgUrl = 'lib/assets/images/brightsmile.png'.obs;
+  RxString imgUrl = 'assets/images/brightsmile.png'.obs;
   RxString _StressResult = ''.obs;
   RxString _AnxietyResult = ''.obs;
 
@@ -91,10 +91,10 @@ class MentalScoreController extends GetxController {
       endMsg.value =
       "Strong mental health is more than the absence of mental health problems; it’s about the presence of positive characteristics.";
       title.value = "No Issues";
-      imgUrl.value = "lib/assets/images/icon_noProblems.png";
+      imgUrl.value = "assets/images/icon_noProblems.png";
     } else {
       title.value = "Assessment Results";
-      imgUrl.value = "lib/assets/images/brightsmile.png";
+      imgUrl.value = "assets/images/brightsmile.png";
     }
   }
 

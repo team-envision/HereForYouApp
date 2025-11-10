@@ -14,7 +14,7 @@ class MindAnchorOnCompleteView extends GetView {
       body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset("lib/assets/images/mindAnchorComplete.png",scale: 1.7,),
+          Image.asset("assets/images/mindAnchorComplete.png",scale: 1.7,),
           const SizedBox(
             height: 20,
           ),

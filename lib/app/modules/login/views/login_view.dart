@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/Components/kInputField.dart';
+import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -15,8 +17,10 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.white,
-        body: Padding(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: AppColors.white,
+      body: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.0.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -26,7 +30,7 @@ class LoginView extends GetView<LoginController> {
               SvgPicture.asset(
                 width: 230.75.w,
                 height: 248.43.h,
-                'lib/assets/images/loginBanner.svg',
+                'assets/images/loginBanner.svg',
               ),
               SizedBox(height: 10.h),
               Text(
@@ -38,21 +42,33 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
               SizedBox(height: 12.h),
-              kInputField(
-                title: "Email",
-                hint: "Enter email",
-                onChanged: (String value) {},
-              ),
-              SizedBox(height: 18.h),
-              kInputField(
-                title: "Password",
-                hint: "Enter password",
-                onChanged: (String value) {},
+              Form(
+                key: controller.state.formKey,
+                child: Column(
+                  children: [
+                    kInputField(
+                      controller: controller.state.emailController,
+                      inputType: TextInputType.emailAddress,
+                      validator: Helpers.validateEmail,
+                      title: "Email",
+                      hint: "Enter email",
+                    ),
+                    SizedBox(height: 18.h),
+                    kInputField(
+                      validator: Helpers.validateLoginPassword,
+                      controller: controller.state.passwordController,
+                      inputType: TextInputType.visiblePassword,
+                      isPasswordField: true,
+                      title: "Password",
+                      hint: "Enter password",
+                    ),
+                  ],
+                ),
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
                   child: Text(
                     "Forgot password?",
                     textAlign: TextAlign.right,
@@ -72,7 +88,7 @@ class LoginView extends GetView<LoginController> {
                 width: double.infinity,
                 child: kElevatedButton(
                   text: "Sign in",
-                  onPressed: () {},
+                  onPressed: controller.handleSignIn,
                 ),
               ),
               SizedBox(height: 18.h),
@@ -81,11 +97,7 @@ class LoginView extends GetView<LoginController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 1.5.h,
-                      ),
-                    ),
+                    Expanded(child: Divider(thickness: 1.5.h)),
                     SizedBox(width: 10.w),
                     Text(
                       "OR",
@@ -95,11 +107,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     SizedBox(width: 10.w),
-                    Expanded(
-                      child: Divider(
-                        thickness: 1.5.h,
-                      ),
-                    ),
+                    Expanded(child: Divider(thickness: 1.5.h)),
                   ],
                 ),
               ),
@@ -111,11 +119,13 @@ class LoginView extends GetView<LoginController> {
                   text: "Sign up",
                   backgroundColor: AppColors.white,
                   borderColor: AppColors.black,
-                  onPressed: () {},
+                  onPressed: () => Get.offNamed(Routes.SIGNUP),
                 ),
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

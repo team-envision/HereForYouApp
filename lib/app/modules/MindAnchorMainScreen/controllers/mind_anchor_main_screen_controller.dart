@@ -22,11 +22,11 @@ class MindAnchorMainScreenController extends GetxController {
 
   // List of images
   final List<String> imagePaths = [
-    'lib/assets/images/observer1.png',
-    'lib/assets/images/observer2.png',
-    'lib/assets/images/observer2.png',
-    'lib/assets/images/observer4.png',
-    'lib/assets/images/observer5.png',
+    'assets/images/observer1.png',
+    'assets/images/observer2.png',
+    'assets/images/observer2.png',
+    'assets/images/observer4.png',
+    'assets/images/observer5.png',
   ];
 
   void startTimer() {

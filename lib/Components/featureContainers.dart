@@ -80,7 +80,7 @@ Widget kCard(
                         ),
                         SizedBox(width: 5.w),
                         SvgPicture.asset(
-                          "lib/assets/images/forward.svg",
+                          "assets/images/forward.svg",
                           width: 9.29.w,
                           height: 11.91.h,
                         )

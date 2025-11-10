@@ -11,12 +11,16 @@ class OutLinedGender extends StatelessWidget {
     required this.svgPic,
     required this.backColor,
     required this.borderColor,
+    required this.onPressed,
+    this.isSelected = false,
   });
 
+  final VoidCallback onPressed;
   final String text;
   final String svgPic;
   final Color backColor;
   final Color borderColor;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +28,11 @@ class OutLinedGender extends StatelessWidget {
       height: 77.9.h,
       width: double.infinity,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          backgroundColor: backColor,
+          backgroundColor: isSelected ? AppColors.black : backColor,
           side: BorderSide(
-            color: borderColor, // Outline color
+            color: isSelected ? AppColors.black : borderColor, // Outline color
             width: 0.84.w, // Outline width
           ),
           shape: RoundedRectangleBorder(
@@ -44,6 +48,10 @@ class OutLinedGender extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 height: 30.15.h,
                 width: 30.15.w,
+                colorFilter: ColorFilter.mode(
+                  isSelected ? AppColors.white : AppColors.black,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             const SizedBox(width: 20),
@@ -53,10 +61,13 @@ class OutLinedGender extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text,
                 style: GoogleFonts.urbanist(
-                    color: AppColors.textPrimaryDark,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 24.56.sp,
-                    letterSpacing: -0.3),
+                  color: isSelected
+                      ? AppColors.white
+                      : AppColors.textPrimaryDark,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 24.56.sp,
+                  letterSpacing: -0.3,
+                ),
               ),
             ),
           ],

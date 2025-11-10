@@ -7,27 +7,38 @@ import 'package:get/get.dart';
 class AiChatBotScreenController extends GetxController {
   //TODO: Implement AiChatBotScreenController
 
-  String Textdata = "Our AI Chatbot is here to help you navigate "
+  String Textdata =
+      "Our AI Chatbot is here to help you navigate "
       "through mental health challenges with instant "
       "support, guidance, and resources. Whether "
       "you’re feeling stressed, anxious, or just need "
       "someone to talk to, our AI is ready to listen and "
       "provide helpful insights.";
 
-
   final gemini = Gemini.instance;
   var scrollController;
   RxList<ChatMessage> messages = <ChatMessage>[].obs;
-  ChatUser user = ChatUser(
-    id: '0',
-    firstName: 'User',
-  );
+  RxBool isGeminiTyping = false.obs;
+  ChatUser user = ChatUser(id: '0', firstName: 'User');
 
   final ChatUser geminiUser = ChatUser(
     id: '1',
     firstName: 'MentAid',
-    profileImage: "lib/assets/icons/botIcon.png"
+    profileImage: "assets/icons/botIcon.png",
   );
+
+  Future<void> onSend(ChatMessage message) async {
+    messages.insert(0, message);
+    isGeminiTyping.value = true;
+    ChatMessage reply = ChatMessage(
+      user: geminiUser,
+      createdAt: DateTime.now(),
+      text: "Hello",
+    );
+    await Future.delayed(Duration(seconds: 5));
+    isGeminiTyping.value = false;
+    messages.insert(0, reply);
+  }
 
   @override
   void onInit() {
@@ -35,17 +46,13 @@ class AiChatBotScreenController extends GetxController {
     scrollController = ScrollController();
 
     KeyboardVisibilityController().onChange.listen((isVisible) {
-
       scrollToSpecificPosition();
     });
   }
 
   void scrollToSpecificPosition() {
-    scrollController.jumpTo(
-      scrollController.position.maxScrollExtent,
-    );
+    scrollController.jumpTo(scrollController.position.maxScrollExtent);
   }
-
 
   void sendMessage(ChatMessage chatMessage) {
     messages.value = [chatMessage, ...messages];
@@ -53,33 +60,50 @@ class AiChatBotScreenController extends GetxController {
     try {
       String question = chatMessage.text.toLowerCase();
 
-
-      List<String> relevantTopics = ["stress", "depression", "anxiety","mental health","mental"];
-
+      List<String> relevantTopics = [
+        "stress",
+        "depression",
+        "anxiety",
+        "mental health",
+        "mental",
+      ];
 
       bool isRelevant = relevantTopics.any((topic) => question.contains(topic));
 
       if (isRelevant) {
-
         gemini.streamGenerateContent(question).listen((event) {
           ChatMessage? lastMsg = messages.firstOrNull;
           if (lastMsg != null && lastMsg.user == geminiUser) {
             lastMsg = messages.removeAt(0);
-            String response = event.content?.parts?.fold("", (previous, current) => "$previous${current.text}") ?? "";
+            String response =
+                event.content?.parts?.fold(
+                  "",
+                  (previous, current) => "$previous${current.text}",
+                ) ??
+                "";
             lastMsg.text += response;
             messages.value = [lastMsg, ...messages];
           } else {
-            String response = event.content?.parts?.fold("", (previous, current) => "$previous${current.text}") ?? "";
-            ChatMessage message = ChatMessage(user: geminiUser, createdAt: DateTime.now(), text: response);
+            String response =
+                event.content?.parts?.fold(
+                  "",
+                  (previous, current) => "$previous${current.text}",
+                ) ??
+                "";
+            ChatMessage message = ChatMessage(
+              user: geminiUser,
+              createdAt: DateTime.now(),
+              text: response,
+            );
             messages.value = [message, ...messages];
           }
         });
       } else {
-
         ChatMessage message = ChatMessage(
           user: geminiUser,
           createdAt: DateTime.now(),
-          text: "I can assist you with information related to stress, depression, and anxiety. Please ask me about these topics.",
+          text:
+              "I can assist you with information related to stress, depression, and anxiety. Please ask me about these topics.",
         );
         messages.value = [message, ...messages];
       }

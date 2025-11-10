@@ -1,12 +1,22 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 
 class SplashScreenController extends GetxController {
-  //TODO: Implement SplashScreenController
+  bool isLoggedIn = false;
 
-  final count = 0.obs;
+  Future<void> check()
+  async {
+    await Future.delayed(const Duration(seconds: 1));
+    if(isLoggedIn)
+      Get.offAllNamed(Routes.MAIN);
+    else
+      Get.offAllNamed(Routes.GET_STARTED);
+  }
+
   @override
   void onInit() {
     super.onInit();
+    check();
   }
 
   @override
@@ -19,5 +29,4 @@ class SplashScreenController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }

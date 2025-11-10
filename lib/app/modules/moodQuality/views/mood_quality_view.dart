@@ -48,7 +48,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
                       Container(
                         color: const Color(0xFFFFEBC2),
                         child: SvgPicture.asset(
-                          "lib/assets/images/moodqualitypageBgrnd.svg",
+                          "assets/images/moodqualitypageBgrnd.svg",
                           fit: BoxFit.fitWidth,
                           alignment: const Alignment(0, -0.9),
                         ),
@@ -62,7 +62,7 @@ class MoodQualityView extends GetView<MoodQualityController> {
                           shape: BoxShape.circle,
                         ),
                         child: SvgPicture.asset(
-                          "lib/assets/images/uiw_smile.svg",
+                          "assets/images/uiw_smile.svg",
                           fit: BoxFit.fitWidth,
                           alignment: const Alignment(0, -0.9),
                         ),
