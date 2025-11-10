@@ -20,6 +20,8 @@ import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
 import '../modules/editProfileView/views/edit_profile_view.dart';
 import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
 import '../modules/emergency_contact/views/emergency_contact_view.dart';
+import '../modules/faceLoading/bindings/face_loading_binding.dart';
+import '../modules/faceLoading/views/face_loading_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
@@ -32,6 +34,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/main/bindings/main_binding.dart';
+import '../modules/main/views/main_view.dart';
 import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/moodQuality/bindings/mood_quality_binding.dart';
@@ -40,6 +44,8 @@ import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 import '../modules/splashScreen/bindings/splash_screen_binding.dart';
 import '../modules/splashScreen/views/splash_screen_view.dart';
+import '../modules/stressIndicator/bindings/stress_indicator_binding.dart';
+import '../modules/stressIndicator/views/stress_indicator_view.dart';
 import '../modules/stressLevel/bindings/stress_level_binding.dart';
 import '../modules/stressLevel/views/stress_level_view.dart';
 import '../views/views/mind_test_view.dart';
@@ -49,7 +55,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.STRESS_LEVEL;
+  static const INITIAL = Routes.MAIN;
 
   static final routes = [
     GetPage(
@@ -160,6 +166,21 @@ class AppPages {
       name: _Paths.STRESS_LEVEL,
       page: () => const StressLevelView(),
       binding: StressLevelBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAIN,
+      page: () => const MainView(),
+      binding: MainBinding(),
+    ),
+    GetPage(
+      name: _Paths.FACE_LOADING,
+      page: () => const FaceLoadingView(),
+      binding: FaceLoadingBinding(),
+    ),
+    GetPage(
+      name: _Paths.STRESS_INDICATOR,
+      page: () => const StressIndicatorView(),
+      binding: StressIndicatorBinding(),
     ),
   ];
 }

@@ -60,6 +60,7 @@ class kInputFieldState extends State<kInputField> {
             ),
             child: TextFormField(
               validator: widget.validator,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               obscureText: widget.isPasswordField && !isPasswordVisible,
               controller: widget.controller,
               keyboardType: widget.inputType,
@@ -71,11 +72,19 @@ class kInputFieldState extends State<kInputField> {
                 color: AppColors.black,
               ),
               decoration: InputDecoration(
+                errorStyle: GoogleFonts.urbanist(
+                  decoration: TextDecoration.none,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14.sp,
+                  color: AppColors.red,
+                ),
                 suffixIcon: widget.isPasswordField
                     ? IconButton(
-                        icon: Icon(isPasswordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility),
+                        icon: Icon(
+                          isPasswordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
                         onPressed: () {
                           setState(() {
                             isPasswordVisible = !(isPasswordVisible);
@@ -101,7 +110,7 @@ class kInputFieldState extends State<kInputField> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

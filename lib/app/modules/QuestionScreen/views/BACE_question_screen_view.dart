@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import '../../../../Components/kBottomBar.dart';
@@ -163,11 +164,16 @@ class BACEQuestionView extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Center(
-                  child: kElevatedButton(
-                    text: "Next",
-                    onPressed: () {
-                      controller.nextQuestion();
-                    },
+                  child: SizedBox(
+                    width: 345.99.w,
+                    height: 56.49.h,
+                    child: kElevatedButton(
+                      trailingIcon: "assets/images/forward.svg",
+                      text: "Next",
+                      onPressed: () {
+                        controller.nextQuestion();
+                      },
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),

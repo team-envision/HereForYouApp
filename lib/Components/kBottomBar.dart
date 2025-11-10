@@ -43,7 +43,7 @@ class bottomNavigation extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: AppColors.appBarBg),
                             child: SvgPicture.asset(
-                              "lib/assets/icons/homeIcon.svg",
+                              "assets/icons/homeIcon.svg",
                               fit: BoxFit.scaleDown,
                             ),
                           ),
@@ -60,7 +60,7 @@ class bottomNavigation extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: AppColors.transparent),
                             child: SvgPicture.asset(
-                              "lib/assets/icons/homeIcon.svg",
+                              "assets/icons/homeIcon.svg",
                               fit: BoxFit.scaleDown,
                             ),
                           ),
@@ -80,7 +80,7 @@ class bottomNavigation extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: AppColors.appBarBg),
                             child: SvgPicture.asset(
-                              "lib/assets/icons/MindTestIcon.svg",
+                              "assets/icons/MindTestIcon.svg",
                               fit: BoxFit.scaleDown,
                             ),
                           ),
@@ -97,7 +97,7 @@ class bottomNavigation extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: AppColors.transparent),
                             child: SvgPicture.asset(
-                              "lib/assets/icons/MindTestIcon.svg",
+                              "assets/icons/MindTestIcon.svg",
                               fit: BoxFit.scaleDown,
                             ),
                           ),
@@ -117,7 +117,7 @@ class bottomNavigation extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: AppColors.appBarBg),
                             child: SvgPicture.asset(
-                              "lib/assets/icons/profileIcon.svg",
+                              "assets/icons/profileIcon.svg",
                               fit: BoxFit.scaleDown,
                             ),
                           ),
@@ -134,7 +134,7 @@ class bottomNavigation extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: AppColors.transparent),
                             child: SvgPicture.asset(
-                              "lib/assets/icons/profileIcon.svg",
+                              "assets/icons/profileIcon.svg",
                               fit: BoxFit.scaleDown,
                             ),
                           ),

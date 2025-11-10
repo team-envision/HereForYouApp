@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/app/views/views/articles_view.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
+
 import '../controllers/mental_score_controller.dart';
 
 class MentalScoreView extends GetView<MentalScoreController> {
@@ -15,206 +16,245 @@ class MentalScoreView extends GetView<MentalScoreController> {
   Widget build(BuildContext context) {
     final controller = Get.put(MentalScoreController());
     return Scaffold(
-        backgroundColor: AppColors.white,
-        body: NotificationListener(
-          onNotification: (scrollNotification) {
-            controller.scrollListener();
-            return true;
-          },
-          child: NestedScrollView(
-            controller: controller.scrollController,
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
-                  expandedHeight: Get.height * 0.5,
-                  title: const Text("Mental Score"),
-                  leading: IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: const Icon(Icons.arrow_back),
-                  ),
-                  floating: true,
-                  titleTextStyle: Get.theme.textTheme.titleLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                  backgroundColor: AppColors.white,
-                  surfaceTintColor: AppColors.white,
-                  pinned: true,
-                  centerTitle: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: ClipPath(
-                      clipper: ArcClipper(),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            color: AppColors.mentalScoreBg,
-                            child: SvgPicture.asset(
-                              "lib/assets/images/mentalScorepageBgrnd.svg",
-                              fit: BoxFit.fitWidth,
-                              alignment: const Alignment(0, -0.9),
+      backgroundColor: AppColors.white,
+      body: NotificationListener(
+        onNotification: (scrollNotification) {
+          controller.scrollListener();
+          return true;
+        },
+        child: NestedScrollView(
+          controller: controller.scrollController,
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                expandedHeight: Get.height * 0.5,
+                title: const Text("Mental Score"),
+                leading: IconButton(
+                  onPressed: () {
+                    Get.offAllNamed(Routes.MAIN);
+                  },
+                  icon: const Icon(Icons.arrow_back),
+                ),
+                floating: true,
+                titleTextStyle: Get.theme.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+                backgroundColor: AppColors.white,
+                surfaceTintColor: AppColors.white,
+                pinned: true,
+                centerTitle: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: ClipPath(
+                    clipper: ArcClipper(),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          color: AppColors.mentalScoreBg,
+                          child: SvgPicture.asset(
+                            "assets/images/mentalScorepageBgrnd.svg",
+                            fit: BoxFit.fitWidth,
+                            alignment: const Alignment(0, -0.9),
+                          ),
+                        ),
+                        Container(
+                          width: 200,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                            color: AppColors.mentalScoreCard,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Obx(
+                            () => Image.asset(
+                              controller.imgUrl.value,
+                              fit: BoxFit.contain,
                             ),
                           ),
-                          Container(
-                            width: 200,
-                            alignment: Alignment.center,
-                            decoration: const BoxDecoration(
-                              color: AppColors.mentalScoreCard,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Obx(()=>Image.asset(controller.imgUrl.value,fit: BoxFit.contain)),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ];
-            },
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 16.0, right: 16, left: 16),
-                child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Center(
-                      child: Text(
-                        "Mental Assessment",
-                        style: Get.theme.textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                        ),
+              ),
+            ];
+          },
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 16.0, right: 16, left: 16),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Center(
+                    child: Text(
+                      "Mental Assessment",
+                      style: Get.theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    Obx(()=>MarkdownBody(
-                      data:(controller.msg.value+"\n"+controller.endMsg.value),
+                  ),
+                  const SizedBox(height: 16),
+                  Obx(
+                    () => MarkdownBody(
+                      data:
+                          (controller.msg.value +
+                          "\n" +
+                          controller.endMsg.value),
                       styleSheet: MarkdownStyleSheet(
                         p: const TextStyle(fontSize: 16),
                         strong: const TextStyle(fontWeight: FontWeight.bold),
-                        blockquote:
-                        const TextStyle(fontStyle: FontStyle.italic),
+                        blockquote: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                        ),
                         listBullet: const TextStyle(fontSize: 16),
                       ),
-                    )),
-                    const SizedBox(height: 16),
-                    Obx(
-                      () => controller.isScrollingUp.value
-                          ? Flexible(
-                            child: Wrap(alignment: WrapAlignment.start,crossAxisAlignment: WrapCrossAlignment.start,runSpacing: 32,
-                                children: [
-                                  Text(
-                                    "Previous Results",
-                                    style:
-                                        Get.theme.textTheme.titleMedium?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                  SizedBox(height: 200,width: Get.width-50,
-                                    child: BarChart(
-                                      BarChartData(
-                                        alignment: BarChartAlignment.spaceAround,
-                                        barTouchData: BarTouchData(enabled: true),
-                                        titlesData: FlTitlesData(
-                                          show: true,
-                                          topTitles: const AxisTitles(),
-                                          rightTitles: const AxisTitles(),
-                                          bottomTitles: AxisTitles(
-                                            sideTitles: SideTitles(
-                                              showTitles: true,
-                                              interval: 1,
-                                              getTitlesWidget:
-                                                  (double value, TitleMeta meta) {
-                                                const style = TextStyle(
-                                                  color: AppColors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14,
-                                                );
-                                                switch (value.toInt()) {
-                                                  case 0:
-                                                    return const Text('Mon',
-                                                        style: style);
-                                                  case 1:
-                                                    return const Text('Tue',
-                                                        style: style);
-                                                  case 2:
-                                                    return const Text('Wed',
-                                                        style: style);
-                                                  case 3:
-                                                    return const Text('Thu',
-                                                        style: style);
-                                                  case 4:
-                                                    return const Text('Fri',
-                                                        style: style);
-                                                  case 5:
-                                                    return const Text('Sat',
-                                                        style: style);
-                                                  case 6:
-                                                    return const Text('Sun',
-                                                        style: style);
-                                                  default:
-                                                    return const SizedBox();
-                                                }
-                                              },
-                                            ),
-                                          ),
-                                          leftTitles: AxisTitles(
-                                            sideTitles: SideTitles(
-                                              showTitles: true,
-                                              interval: 20,
-                                              getTitlesWidget:
-                                                  (double value, TitleMeta meta) {
-                                                return value % 20 == 0
-                                                    ? Text(value.toInt().toString(),
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ))
-                                                    : const SizedBox();
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        borderData: FlBorderData(
-                                            border: const Border(
-                                            bottom: BorderSide(color: AppColors.chartBorder),
-                                          ),
-                                        ),
-                                        barGroups: _buildBarGroups(),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                          )
-                          : const SizedBox.shrink(),
                     ),
-                    Flexible(
-                      child: TextButton(
-                        onPressed: () {
-                          Get.to(()=>const ArticlesView());
-                        },
-                        child: Text(
-                          "Need Help? Refer to our Articles",
-                          style: Get.theme.textTheme.bodyLarge?.copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          ),
+                  ),
+                  const SizedBox(height: 16),
+                  Obx(
+                    () => controller.isScrollingUp.value
+                        ? Flexible(
+                            child: Wrap(
+                              alignment: WrapAlignment.start,
+                              crossAxisAlignment: WrapCrossAlignment.start,
+                              runSpacing: 32,
+                              children: [
+                                Text(
+                                  "Previous Results",
+                                  style: Get.theme.textTheme.titleMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22,
+                                      ),
+                                ),
+                                SizedBox(
+                                  height: 200,
+                                  width: Get.width - 50,
+                                  child: BarChart(
+                                    BarChartData(
+                                      alignment: BarChartAlignment.spaceAround,
+                                      barTouchData: BarTouchData(enabled: true),
+                                      titlesData: FlTitlesData(
+                                        show: true,
+                                        topTitles: const AxisTitles(),
+                                        rightTitles: const AxisTitles(),
+                                        bottomTitles: AxisTitles(
+                                          sideTitles: SideTitles(
+                                            showTitles: true,
+                                            interval: 1,
+                                            getTitlesWidget:
+                                                (double value, TitleMeta meta) {
+                                                  const style = TextStyle(
+                                                    color: AppColors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14,
+                                                  );
+                                                  switch (value.toInt()) {
+                                                    case 0:
+                                                      return const Text(
+                                                        'Mon',
+                                                        style: style,
+                                                      );
+                                                    case 1:
+                                                      return const Text(
+                                                        'Tue',
+                                                        style: style,
+                                                      );
+                                                    case 2:
+                                                      return const Text(
+                                                        'Wed',
+                                                        style: style,
+                                                      );
+                                                    case 3:
+                                                      return const Text(
+                                                        'Thu',
+                                                        style: style,
+                                                      );
+                                                    case 4:
+                                                      return const Text(
+                                                        'Fri',
+                                                        style: style,
+                                                      );
+                                                    case 5:
+                                                      return const Text(
+                                                        'Sat',
+                                                        style: style,
+                                                      );
+                                                    case 6:
+                                                      return const Text(
+                                                        'Sun',
+                                                        style: style,
+                                                      );
+                                                    default:
+                                                      return const SizedBox();
+                                                  }
+                                                },
+                                          ),
+                                        ),
+                                        leftTitles: AxisTitles(
+                                          sideTitles: SideTitles(
+                                            showTitles: true,
+                                            interval: 20,
+                                            getTitlesWidget:
+                                                (double value, TitleMeta meta) {
+                                                  return value % 20 == 0
+                                                      ? Text(
+                                                          value
+                                                              .toInt()
+                                                              .toString(),
+                                                          style:
+                                                              const TextStyle(
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        )
+                                                      : const SizedBox();
+                                                },
+                                          ),
+                                        ),
+                                      ),
+                                      borderData: FlBorderData(
+                                        border: const Border(
+                                          bottom: BorderSide(
+                                            color: AppColors.chartBorder,
+                                          ),
+                                        ),
+                                      ),
+                                      barGroups: _buildBarGroups(),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                  Flexible(
+                    child: TextButton(
+                      onPressed: () {
+                        Get.to(() => const ArticlesView());
+                      },
+                      child: Text(
+                        "Need Help? Refer to our Articles",
+                        style: Get.theme.textTheme.bodyLarge?.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   List<BarChartGroupData> _buildBarGroups() {
@@ -257,7 +297,11 @@ class ArcClipper extends CustomClipper<Path> {
     final path = Path();
     path.lineTo(0.0, size.height); // Start at bottom left
     path.quadraticBezierTo(
-        size.width / 2, 380.0, size.width, size.height); // Create arc
+      size.width / 2,
+      380.0,
+      size.width,
+      size.height,
+    ); // Create arc
     path.lineTo(size.width, 0.0); // Draw right side
     path.close(); // Close the path
     return path;

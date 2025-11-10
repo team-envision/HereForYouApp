@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
+
 import '../../../../Components/kBottomBar.dart';
 import '../controllers/SDRS_question_screen_controller.dart';
 
@@ -24,7 +26,8 @@ class SDRSQuestionView extends StatelessWidget {
           },
           style: ButtonStyle(
             padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 0, horizontal: 7)),
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            ),
           ),
           child: const Text(
             "Go Home",
@@ -54,9 +57,7 @@ class SDRSQuestionView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Obx(() {
           if (controller.SDRSquestions.isEmpty) {
-            return const Center(
-              child: Text('No questions available'),
-            );
+            return const Center(child: Text('No questions available'));
           }
 
           final currentQuestion = controller.currentOptions;
@@ -76,7 +77,9 @@ class SDRSQuestionView extends StatelessWidget {
                 Text(
                   controller.currentQuestion,
                   style: const TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
@@ -84,106 +87,110 @@ class SDRSQuestionView extends StatelessWidget {
                 // Options Grid or List
                 controller.currentOptions.length <= 4
                     ? GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisExtent: 160,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 20,
-                    childAspectRatio: 1.5,
-                  ),
-                  itemCount: controller.currentOptions.length,
-                  itemBuilder: (context, index) {
-                    return Obx(() {
-                      return GestureDetector(
-                        onTap: () {
-                          controller.selectOption(index);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: controller.selectedIndex.value == index
-                                ? Colors.grey.shade300
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(22),
-                            border: Border.all(
-                              color: Colors.grey.shade400,
-                              width: 2,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisExtent: 160,
+                              mainAxisSpacing: 20,
+                              crossAxisSpacing: 20,
+                              childAspectRatio: 1.5,
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  controller.currentOptions[index]
-                                      .toString(),
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Image.asset(
-                                    controller.getOptionIcon(index),
-                                    scale: 1.7,
-                                    color: Colors.black,
+                        itemCount: controller.currentOptions.length,
+                        itemBuilder: (context, index) {
+                          return Obx(() {
+                            return GestureDetector(
+                              onTap: () {
+                                controller.selectOption(index);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: controller.selectedIndex.value == index
+                                      ? Colors.grey.shade300
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(22),
+                                  border: Border.all(
+                                    color: Colors.grey.shade400,
+                                    width: 2,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    });
-                  },
-                )
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        controller.currentOptions[index]
+                                            .toString(),
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: Image.asset(
+                                          controller.getOptionIcon(index),
+                                          scale: 1.7,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          });
+                        },
+                      )
                     : Column(
-                  children: [
-                    ...List.generate(controller.currentOptions.length,
-                            (index) {
-                          return Card(
-                            color: Colors.white,
-                            shadowColor: Colors.black45,
-                            margin:
-                            const EdgeInsets.symmetric(vertical: 10),
-                            child: ListTile(
-                              title: Text(
-                                controller.currentOptions[index],
+                        children: [
+                          ...List.generate(controller.currentOptions.length, (
+                            index,
+                          ) {
+                            return Card(
+                              color: Colors.white,
+                              shadowColor: Colors.black45,
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: ListTile(
+                                title: Text(controller.currentOptions[index]),
+                                titleTextStyle: Get.theme.textTheme.titleLarge
+                                    ?.copyWith(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                trailing: Radio<int>(
+                                  value: index,
+                                  groupValue:
+                                      controller.selectedOptionIndex.value,
+                                  onChanged: (value) {
+                                    controller.selectedOptionIndex.value =
+                                        value!;
+                                  },
+                                ),
                               ),
-                              titleTextStyle: Get.theme.textTheme.titleLarge
-                                  ?.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              trailing: Radio<int>(
-                                value: index,
-                                groupValue:
-                                controller.selectedOptionIndex.value,
-                                onChanged: (value) {
-                                  controller.selectedOptionIndex.value =
-                                  value!;
-                                },
-                              ),
-                            ),
-                          );
-                        }),
-                  ],
-                ),
+                            );
+                          }),
+                        ],
+                      ),
                 const SizedBox(height: 20),
 
                 // "Next" button centered
                 Center(
-                  child: kElevatedButton(
-                    text: "Next",
-                    onPressed: () {
-                      controller.nextQuestion();
-                    },
+                  child: SizedBox(
+                    width: 345.99.w,
+                    height: 56.49.h,
+                    child: kElevatedButton(
+                      trailingIcon: "assets/images/forward.svg",
+                      text: "Next",
+                      onPressed: () {
+                        controller.nextQuestion();
+                      },
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),

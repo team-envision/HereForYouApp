@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/Components/kElevatedButton.dart';
-import 'package:here_for_you_app/app/models/questions.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/controllers/PHQ9_question_screen_controller.dart';
-import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
+
 import '../../../../Components/kBottomBar.dart';
-import '../controllers/DASS21_question_screen_controller.dart';
 import '../controllers/GAD7_question_screen_controller.dart';
 
 class GAD7QuestionView extends StatelessWidget {
@@ -24,11 +22,12 @@ class GAD7QuestionView extends StatelessWidget {
         centerTitle: true,
         title: OutlinedButton(
           onPressed: () {
-            Get.offAll(() =>  bottomNavigation());
+            Get.offAll(() => bottomNavigation());
           },
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 0, horizontal: 7)),
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            ),
           ),
           child: const Text(
             "Go Home",
@@ -57,9 +56,7 @@ class GAD7QuestionView extends StatelessWidget {
       ),
       body: Obx(() {
         if (controller.GAD7questions.isEmpty) {
-          return const Center(
-            child: Text('No questions available'),
-          );
+          return const Center(child: Text('No questions available'));
         }
 
         final currentQuestion = controller.currentOptions;
@@ -77,8 +74,10 @@ class GAD7QuestionView extends StatelessWidget {
             children: [
               Text(
                 controller.currentQuestion,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 40),
@@ -87,12 +86,12 @@ class GAD7QuestionView extends StatelessWidget {
                       shrinkWrap: true,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisExtent: 160,
-                        mainAxisSpacing: 20,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 1.5,
-                      ),
+                            crossAxisCount: 2,
+                            mainAxisExtent: 160,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 20,
+                            childAspectRatio: 1.5,
+                          ),
                       itemCount: controller.currentOptions.length,
                       itemBuilder: (context, index) {
                         return Obx(() {
@@ -119,10 +118,12 @@ class GAD7QuestionView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      controller.currentOptions[index].toString(),
+                                      controller.currentOptions[index]
+                                          .toString(),
                                       style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     Align(
                                       alignment: Alignment.bottomRight,
@@ -142,19 +143,20 @@ class GAD7QuestionView extends StatelessWidget {
                     )
                   : Column(
                       children: [
-                        ...List.generate(controller.currentOptions.length,
-                            (index) {
+                        ...List.generate(controller.currentOptions.length, (
+                          index,
+                        ) {
                           return Card(
                             color: Colors.white,
                             shadowColor: Colors.black45,
                             margin: const EdgeInsets.symmetric(vertical: 10),
                             child: ListTile(
                               title: Text(controller.currentOptions[index]),
-                              titleTextStyle:
-                                  Get.theme.textTheme.titleLarge?.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              titleTextStyle: Get.theme.textTheme.titleLarge
+                                  ?.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                               trailing: Radio<int>(
                                 value: index,
                                 groupValue:
@@ -169,11 +171,17 @@ class GAD7QuestionView extends StatelessWidget {
                       ],
                     ),
               const Spacer(),
-              kElevatedButton(
+              SizedBox(
+                height: 56.49.h,
+                width: 345.99.w,
+                child: kElevatedButton(
+                  trailingIcon: "assets/images/forward.svg",
                   text: "Next",
                   onPressed: () {
                     controller.nextQuestion();
-                  }),
+                  },
+                ),
+              ),
               const SizedBox(height: 20),
             ],
           ),

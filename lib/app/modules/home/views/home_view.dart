@@ -6,6 +6,7 @@ import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.d
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/views/stress_level_view.dart';
+import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
@@ -23,8 +24,10 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
     return Scaffold(
+      backgroundColor: AppColors.white,
       extendBody: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 100,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -39,7 +42,7 @@ class HomeView extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
-                  "lib/assets/images/avatar.png",
+                  "assets/images/avatar.png",
                   scale: 0.8,
                   fit: BoxFit.fitHeight,
                 ),
@@ -76,12 +79,12 @@ class HomeView extends StatelessWidget {
                     backGroundColor: AppColors.mindTestBg,
                     borderColor: AppColors.mindTestBorder,
                     onTap: () {
-                      Get.to(() => const MindTestScreenView());
+                      Get.toNamed(Routes.MIND_TEST);
                     },
                     text: "Start Your\nMind Test",
                     IsSvg: true,
-                    ImagePath: "lib/assets/images/StartYourMindCard.svg",
-                    iconPath: "lib/assets/icons/BookIcon.png"),
+                    ImagePath: "assets/images/StartYourMindCard.svg",
+                    iconPath: "assets/icons/BookIcon.png"),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0, top: 15),
                   child: Text(
@@ -144,25 +147,25 @@ class HomeView extends StatelessWidget {
                             Get.to(() => const MentalScoreView());
                           },
                           icon: SvgPicture.asset(
-                              "lib/assets/icons/mentalScoreIcon.svg")),
+                              "assets/icons/mentalScoreIcon.svg")),
                       kContainer(
                           color: AppColors.mindAnchorCard,
                           text: "Mind\nAnchor",
                           onTap: () {Get.to(()=>const Mindanchorview());},
                           icon: SvgPicture.asset(
-                              "lib/assets/icons/AnchorIcon.svg")),
+                              "assets/icons/AnchorIcon.svg")),
                       kContainer(
                           color: AppColors.moodQualityCard,
                           onTap: () {Get.to(()=>const MoodQualityView());},
                           text: "Mood\nQuality",
                           icon: SvgPicture.asset(
-                              "lib/assets/icons/moodQulatiyIcon.svg")),
+                              "assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
                           color: AppColors.stressSecondary,
-                          onTap: () {Get.to(()=>const StressLevelView());},
+                          onTap: () => Get.toNamed(Routes.STRESS_INDICATOR),
                           text: "Stress\nLevel",
                           icon: SvgPicture.asset(
-                              "lib/assets/icons/moodQulatiyIcon.svg")),
+                              "assets/icons/moodQulatiyIcon.svg")),
                       kContainer(
                           color: AppColors.mentalScoreCard,
 
@@ -178,7 +181,7 @@ class HomeView extends StatelessWidget {
 
                           text: "Sleep Diary\nQuality",
                           icon: SvgPicture.asset(
-                              "lib/assets/icons/sleepdiaryicon.svg")),
+                              "assets/icons/sleepdiaryicon.svg")),
                     ],
                   ),
                 ),
@@ -192,8 +195,8 @@ class HomeView extends StatelessWidget {
                       borderColor: AppColors.aiChatBorder,
                       text: "Chat with\nA.I Bot",
                       IsSvg: false,
-                      ImagePath: "lib/assets/images/AiChatBotCard.png",
-                      iconPath: 'lib/assets/icons/roboIcon.png'),
+                      ImagePath: "assets/images/AiChatBotCard.png",
+                      iconPath: 'assets/icons/roboIcon.png'),
                 ),
                 const SizedBox(
                   height: 100,

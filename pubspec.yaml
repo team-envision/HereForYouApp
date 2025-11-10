@@ -35,10 +35,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/assets/icons/
-    - lib/assets/images/
-    - lib/assets/json/questions.json
+    - assets/icons/
+    - assets/images/
+    - assets/animations/
+    - assets/json/questions.json
   fonts:
     - family: fontmain
       fonts:
-        - asset: lib/assets/fonts/Urbanist-Bold.ttf
+        - asset: assets/fonts/Urbanist-Bold.ttf

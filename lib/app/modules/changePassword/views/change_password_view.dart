@@ -35,7 +35,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
           icon: Transform.flip(
             flipX: true,
             child: SvgPicture.asset(
-              "lib/assets/images/forward.svg",
+              "assets/images/forward.svg",
               height: 22.43.h,
               width: 17.5.w,
               fit: BoxFit.contain,
