@@ -26,6 +26,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.3.0
   firebase_core: ^4.2.0
+  syncfusion_flutter_gauges: ^31.2.5
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +40,4 @@ flutter:
     - assets/images/
     - assets/animations/
     - assets/json/questions.json
-  fonts:
-    - family: fontmain
-      fonts:
-        - asset: assets/fonts/Urbanist-Bold.ttf
+    - assets/google_fonts/
