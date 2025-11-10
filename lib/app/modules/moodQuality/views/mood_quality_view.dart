@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 
 
-import '../../AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
+import '../../AiChatBotScreen/presentation/views/ai_chat_bot_screen_view.dart';
 import '../controllers/mood_quality_controller.dart';
 
 class MoodQualityView extends GetView<MoodQualityController> {

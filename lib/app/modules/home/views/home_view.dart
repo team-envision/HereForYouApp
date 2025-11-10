@@ -12,7 +12,6 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../../../Components/featureCards.dart';
 import '../../../../Components/featureContainers.dart';
 import '../../../views/views/MindAnchorView.dart';
-import '../../AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
 import '../../SleepDiary/controllers/sleep_diary_controller.dart';
 import '../../SleepDiary/views/sleepDiaryHomeView.dart';
 import '../../SleepDiary/views/sleep_diary_view.dart';
@@ -214,9 +213,7 @@ class HomeView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: kCard(
-                    onTap: () {
-                      Get.to(() => const AiChatBotScreenView());
-                    },
+                    onTap: () => Get.toNamed(Routes.AI_CHAT_BOT_SCREEN),
                     backGroundColor: AppColors.aiChatBg,
                     borderColor: AppColors.aiChatBorder,
                     text: "Chat with\nA.I Bot",

@@ -3,23 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/app/modules/AiChatBotScreen/widgets/snap_scroll_physics.dart';
 
-import '../../../../resources/app_resources/app_colors.dart';
+import '../../../../../resources/app_resources/app_colors.dart';
 import '../controllers/ai_chat_bot_screen_controller.dart';
+import '../widgets/snap_scroll_physics.dart';
 
 class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
   const AiChatBotScreenView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AiChatBotScreenController());
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       body: NestedScrollView(
         physics: const SnapScrollPhysics(),
-        controller: controller.scrollController,
+        controller: controller.state.scrollController,
         floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -160,12 +159,12 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
               Expanded(
                 child: Obx(
                   () => DashChat(
-                    currentUser: controller.user,
-                    typingUsers: controller.isGeminiTyping.value
-                        ? [controller.geminiUser]
+                    currentUser: controller.state.user,
+                    typingUsers: controller.state.isGeminiTyping.value
+                        ? [controller.state.geminiUser]
                         : [],
                     onSend: controller.onSend,
-                    messages: controller.messages.toList(),
+                    messages: controller.state.messages.toList(),
                     inputOptions: InputOptions(
                       inputTextStyle: GoogleFonts.urbanist(
                         fontWeight: FontWeight.w600,
@@ -231,7 +230,8 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                               style: GoogleFonts.urbanist(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15.sp,
-                                color: message.user.id == controller.user.id
+                                color:
+                                    message.user.id == controller.state.user.id
                                     ? AppColors.white
                                     : AppColors.black,
                               ),
