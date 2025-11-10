@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'CONSTS.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Components/kBottomBar.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -19,9 +20,9 @@ Future<void> main() async {
       builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Application",
-        //home: bottomNavigation(),
+        // home: bottomNavigation(),
         getPages: AppPages.routes,
-        initialRoute: AppPages.INITIAL,
+        initialRoute: AppPages.INITIAL
       ),
     ),
   );
