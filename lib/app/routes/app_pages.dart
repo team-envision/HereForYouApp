@@ -139,7 +139,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_PROFILE_VIEW,
-      page: () => EditProfile(),
+      page: () => EditProfileView(),
       binding: EditProfileViewBinding(),
     ),
     GetPage(

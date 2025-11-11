@@ -4,10 +4,10 @@ import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import '../controllers/edit_profile_controller.dart';
 import '../widgets/edit_profile_widgets.dart';
 
-class EditProfile extends StatelessWidget {
-  EditProfile({super.key});
+class EditProfileView extends StatelessWidget {
+  EditProfileView({super.key});
 
-  final controller = Get.find<EditProfileController>();
+  final controller = Get.find<EditProfileViewController>();
   final _formKey = GlobalKey<FormState>();
 
   @override
