@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 
-import '../../../../Components/kElevatedButton.dart';
+import '../../../../common/Components/kElevatedButton.dart';
 import '../../../../resources/app_resources/app_colors.dart';
 import '../controllers/question_count_down_controller.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
-import 'package:here_for_you_app/Components/sleepdiaryreminderWidgets.dart';
+import '../../../../common/Components/kElevatedButton.dart';
+import '../../../../common/Components/sleepdiaryreminderWidgets.dart';
 import '../controllers/sleep_diary_controller.dart';
 
 class SleepDiaryReminderView extends GetView<SleepDiaryController> {

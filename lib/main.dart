@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'CONSTS.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Components/kBottomBar.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

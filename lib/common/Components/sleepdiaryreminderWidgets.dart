@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../app/modules/SleepDiary/controllers/sleep_diary_controller.dart';
+import '../../app/modules/SleepDiary/controllers/sleep_diary_controller.dart';
 import 'kBottomBar.dart';
 
 class GoHomeButton extends StatelessWidget {

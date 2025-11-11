@@ -9,8 +9,8 @@ import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import '../../../../Components/featureCards.dart';
-import '../../../../Components/featureContainers.dart';
+import '../../../../common/Components/featureCards.dart';
+import '../../../../common/Components/featureContainers.dart';
 import '../../../views/views/MindAnchorView.dart';
 import '../../SleepDiary/controllers/sleep_diary_controller.dart';
 import '../../SleepDiary/views/sleepDiaryHomeView.dart';

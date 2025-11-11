@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/emergency_contact/controllers/emergency_contact_controller.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
-import '../../../../Components/kCustomtextfield.dart';
-import '../../../../Components/kElevatedButton.dart';
+import '../../../../common/Components/kCustomtextfield.dart';
+import '../../../../common/Components/kElevatedButton.dart';
 
 class EmergencyContactView extends StatelessWidget {
   final EmergencyContactController _controller = Get.put(EmergencyContactController());
@@ -11,6 +12,7 @@ class EmergencyContactView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -104,8 +106,9 @@ class EmergencyContactView extends StatelessWidget {
               const SizedBox(height: 30),
 
               Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: SizedBox(
+                  width: 345.99.w,
+                  height: 56.49.h,
                   child: kElevatedButton(
                     text: 'Save Details',
                     onPressed: () {

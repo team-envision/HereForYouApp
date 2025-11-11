@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/Components/custom_divider.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
-import 'package:here_for_you_app/Components/kInputField.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
+import '../../../../common/Components/custom_divider.dart';
+import '../../../../common/Components/kElevatedButton.dart';
+import '../../../../common/Components/kInputField.dart';
 import '../controllers/signup_controller.dart';
 
 class SignupView extends GetView<SignupController> {

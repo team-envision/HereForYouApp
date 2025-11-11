@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/Components/featureContainers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
+import '../../../../common/Components/featureContainers.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/get_started_controller.dart';
 

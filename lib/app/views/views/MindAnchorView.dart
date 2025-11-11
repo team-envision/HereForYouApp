@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 
+import '../../../common/Components/kElevatedButton.dart';
 import 'mind_anchor_begin_view.dart';
 
 class Mindanchorview extends GetView {
@@ -52,7 +52,16 @@ class Mindanchorview extends GetView {
                 ),
               ),
               Spacer(),
-              kElevatedButton(text: "Start", onPressed: () {Get.off(()=>MindAnchorBeginView());}),
+
+               SizedBox(
+                width: 345.99.w,
+                height: 56.49.h,
+                child: kElevatedButton(
+                  trailingIcon: "assets/images/forward.svg",
+                  text: "Start",
+                  onPressed: () => Get.off(() => const MindAnchorBeginView()),
+                ),
+              ),
               Spacer()
             ],
           ),

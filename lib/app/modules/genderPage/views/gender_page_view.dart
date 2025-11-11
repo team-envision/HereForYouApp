@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
-
-import '../../../../Components/kElevatedButton.dart';
-import '../../../../Components/kOutlinedButton.dart';
+import '../../../../common/Components/kElevatedButton.dart';
+import '../../../../common/Components/kOutlinedButton.dart';
 import '../controllers/gender_page_controller.dart';
 
 class GenderPageView extends GetView<GenderPageController> {

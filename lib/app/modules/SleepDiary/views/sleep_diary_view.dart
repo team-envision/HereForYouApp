@@ -6,8 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/sleepDiaryHomeView.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
-
-import '../../../../Components/kElevatedButton.dart';
+import '../../../../common/Components/kElevatedButton.dart';
 import '../controllers/sleep_diary_controller.dart';
 
 class SleepDiaryView extends GetView<SleepDiaryController> {
