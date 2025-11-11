@@ -83,7 +83,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           height: 30,
                           child: OutlinedButton(
                             onPressed: () {
-                              Get.to(() => EditProfile());
+                              Get.toNamed(Routes.EDIT_PROFILE_VIEW);
                             },
                             style: ButtonStyle(
                               padding: WidgetStateProperty.all(
@@ -244,21 +244,6 @@ class ProfilePageView extends GetView<ProfilePageController> {
                     ),
                   ),
                   SizedBox(height: 8.h),
-                  Container(
-                    width: double.infinity,
-                    height: 55.h,
-                    margin: EdgeInsets.symmetric(horizontal: 28.w),
-                    child: kElevatedButton(
-                      text: "Logout",
-                      onPressed: () {
-                        CustomPopup.show(
-                          title: 'Are you sure want to logout?',
-                          onCancel: () => Get.back(),
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 20.h),
                 ],
               ),
             ),

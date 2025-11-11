@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -52,7 +53,16 @@ class Mindanchorview extends GetView {
                 ),
               ),
               Spacer(),
-              kElevatedButton(text: "Start", onPressed: () {Get.off(()=>MindAnchorBeginView());}),
+
+               SizedBox(
+                width: 345.99.w,
+                height: 56.49.h,
+                child: kElevatedButton(
+                  trailingIcon: "assets/images/forward.svg",
+                  text: "Start",
+                  onPressed: () => Get.off(() => const MindAnchorBeginView()),
+                ),
+              ),
               Spacer()
             ],
           ),
