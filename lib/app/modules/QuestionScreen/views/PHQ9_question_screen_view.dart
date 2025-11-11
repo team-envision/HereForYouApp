@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/app/modules/QuestionScreen/controllers/PHQ9_question_screen_controller.dart';
 
-import '../../../../Components/kBottomBar.dart';
+import '../../../../common/Components/kBottomBar.dart';
+import '../../../../common/Components/kElevatedButton.dart';
 
 class PHQ9QuestionView extends StatelessWidget {
   @override

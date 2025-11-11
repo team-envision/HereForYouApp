@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
-
-import '../../../../Components/kBottomBar.dart';
+import '../../../../common/Components/kBottomBar.dart';
+import '../../../../common/Components/kElevatedButton.dart';
 import '../controllers/GAD7_question_screen_controller.dart';
 
 class GAD7QuestionView extends StatelessWidget {

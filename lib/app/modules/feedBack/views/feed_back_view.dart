@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
-import '../../../../Components/kElevatedButton.dart';
-import '../../../../Components/kTextField.dart';
+import '../../../../common/Components/kElevatedButton.dart';
+import '../../../../common/Components/kTextField.dart';
 import '../controllers/feed_back_controller.dart';
 
 class FeedBackView extends GetView<FeedBackController> {

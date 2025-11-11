@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
 
+import '../../../common/Components/kElevatedButton.dart';
 import '../../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 
 class MindTestScreenView extends GetView {

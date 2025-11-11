@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/Components/customPopup.dart';
 import 'package:here_for_you_app/app/modules/emergency_contact/views/emergency_contact_view.dart';
 import 'package:here_for_you_app/app/modules/feedBack/views/feed_back_view.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/app/views/views/articles_view.dart';
 
-import '../resources/app_resources/app_colors.dart';
+import '../../resources/app_resources/app_colors.dart';
+import 'customPopup.dart';
 
 class MenuPopup extends StatelessWidget {
   const MenuPopup({super.key});

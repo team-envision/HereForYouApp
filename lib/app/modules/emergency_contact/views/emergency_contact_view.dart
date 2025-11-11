@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/emergency_contact/controllers/emergency_contact_controller.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
-import '../../../../Components/kCustomtextfield.dart';
-import '../../../../Components/kElevatedButton.dart';
+import '../../../../common/Components/kCustomtextfield.dart';
+import '../../../../common/Components/kElevatedButton.dart';
 
 class EmergencyContactView extends StatelessWidget {
   final EmergencyContactController _controller = Get.put(EmergencyContactController());

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
 
+import '../../../../common/Components/kElevatedButton.dart';
 import '../controllers/sleep_diary_controller.dart';
 
 class SleepDiaryMorningView extends GetView<SleepDiaryController> {

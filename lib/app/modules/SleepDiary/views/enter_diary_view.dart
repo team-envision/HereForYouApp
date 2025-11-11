@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/eveningview_view.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/morningview_view.dart';
 import 'package:here_for_you_app/app/modules/SleepDiary/views/reminderview_view.dart';
-import '../../../../Components/custom_widgets.dart';
-import '../../../../Components/kBottomBar.dart';
+import '../../../../common/Components/custom_widgets.dart';
+import '../../../../common/Components/kBottomBar.dart';
 import '../controllers/sleep_diary_controller.dart';
 
 

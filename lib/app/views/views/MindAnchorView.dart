@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:here_for_you_app/Components/kElevatedButton.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 
+import '../../../common/Components/kElevatedButton.dart';
 import 'mind_anchor_begin_view.dart';
 
 class Mindanchorview extends GetView {
