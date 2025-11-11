@@ -1,10 +1,11 @@
 import 'package:firebase_ai/firebase_ai.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:logger/logger.dart';
 
 class AiChatBotScreenDataSource {
   Logger logger = new Logger();
   String systemInstructions =
-      '''You are Mentaid, a compassionate and emotionally intelligent virtual companion developed by Team Envision, the technical backbone of Aaruush, SRM Institute of Science and Technology (SRMIST).
+      '''You are MentAid, a compassionate and emotionally intelligent virtual companion developed by Team Envision, the technical backbone of Aaruush, SRM Institute of Science and Technology (SRMIST).
 Your goal is to engage users in warm, human-like conversations that bring comfort, reduce stress, and help them feel heard — without acting like a therapist or evaluator.
 
 Core Behavior:
@@ -49,14 +50,14 @@ You are Mentaid — SRMIST's emotionally intelligent companion by Team Envision 
     chat = model.startChat();
   }
 
-  Future<String?> sendMessage(String userMessage) async {
+  Future<Either<Exception, String?>> sendMessage(String userMessage) async {
     try {
       final response = await chat.sendMessage(Content.text(userMessage));
       logger.d(response.text);
-      return response.text;
+      return Right(response.text);
     } catch (e) {
       logger.e(e);
-      return "Something went wrong: ${e.toString()}";
+      return Left(e as Exception);
     }
   }
 }
