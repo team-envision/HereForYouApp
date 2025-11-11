@@ -63,7 +63,7 @@ class AppColors {
   // Stress level screen colors
   static const Color stressBgLight = Color(0xFFE8EDDF);
   static const Color stressPrimary = Color(0xFF4E7309);
-  static const Color stressSecondary = Color(0xFF7D984A);
+  static const Color stressSecondary = Color(0xFFB2D472);
   static const Color stressLight = Color(0xFFC6D2B0);
   static const Color stressText = Color(0xFF618C10);
   static const Color stressSecondaryTransparent = Color(0xD17D984A);

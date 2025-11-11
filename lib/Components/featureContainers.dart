@@ -15,7 +15,7 @@ Widget kCard(
     String? bottomText,
     String? subText,
     Alignment? alignment,
-    dynamic? onTap}) {
+    VoidCallback? onTap}) {
   return GestureDetector(
     onTap: onTap,
     child: Container(

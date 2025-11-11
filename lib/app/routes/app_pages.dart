@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../modules/AiChatBotScreen/bindings/ai_chat_bot_screen_binding.dart';
-import '../modules/AiChatBotScreen/views/ai_chat_bot_screen_view.dart';
+import '../modules/AiChatBotScreen/presentation/bindings/ai_chat_bot_screen_binding.dart';
+import '../modules/AiChatBotScreen/presentation/views/ai_chat_bot_screen_view.dart';
 import '../modules/MindAnchorMainScreen/bindings/mind_anchor_main_screen_binding.dart';
 import '../modules/MindAnchorMainScreen/views/mind_anchor_main_screen_view.dart';
 import '../modules/ProfilePage/bindings/profile_page_binding.dart';
