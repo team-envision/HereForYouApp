@@ -12,8 +12,8 @@ import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
 import '../modules/SleepDiary/views/sleep_diary_view.dart';
-import '../modules/basicInfoPage/bindings/basic_info_page_binding.dart';
-import '../modules/basicInfoPage/views/basic_info_page_view.dart';
+import '../modules/basicInfoPage/presentation/bindings/basic_info_page_binding.dart';
+import '../modules/basicInfoPage/presentation/views/basic_info_page_view.dart';
 import '../modules/changePassword/bindings/change_password_binding.dart';
 import '../modules/changePassword/views/change_password_view.dart';
 import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
@@ -26,24 +26,24 @@ import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/forgotPassword/views/forgot_password_view.dart';
-import '../modules/genderPage/bindings/gender_page_binding.dart';
-import '../modules/genderPage/views/gender_page_view.dart';
+import '../modules/genderPage/presentation/bindings/gender_page_binding.dart';
+import '../modules/genderPage/presentation/views/gender_page_view.dart';
 import '../modules/getStarted/bindings/get_started_binding.dart';
 import '../modules/getStarted/views/get_started_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/login/bindings/login_binding.dart';
-import '../modules/login/views/login_view.dart';
+import '../modules/login/presentation/bindings/login_binding.dart';
+import '../modules/login/presentation/views/login_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
 import '../modules/mentalScore/bindings/mental_score_binding.dart';
 import '../modules/mentalScore/views/mental_score_view.dart';
 import '../modules/moodQuality/bindings/mood_quality_binding.dart';
 import '../modules/moodQuality/views/mood_quality_view.dart';
-import '../modules/signup/bindings/signup_binding.dart';
-import '../modules/signup/views/signup_view.dart';
-import '../modules/splashScreen/bindings/splash_screen_binding.dart';
-import '../modules/splashScreen/views/splash_screen_view.dart';
+import '../modules/signup/presentation/bindings/signup_binding.dart';
+import '../modules/signup/presentation/views/signup_view.dart';
+import '../modules/splashScreen/presentation/bindings/splash_screen_binding.dart';
+import '../modules/splashScreen/presentation/views/splash_screen_view.dart';
 import '../modules/stressIndicator/bindings/stress_indicator_binding.dart';
 import '../modules/stressIndicator/views/stress_indicator_view.dart';
 import '../modules/stressLevel/bindings/stress_level_binding.dart';
@@ -55,7 +55,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PROFILE_PAGE;
+  static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
     GetPage(

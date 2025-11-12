@@ -8,13 +8,10 @@ class MainController extends GetxController {
   final count = 0.obs;
 
   void changePage(int index) {
-    // Special handling for Mind Test - navigate outside the nested navigation
     if (index == 1) {
-      Get.toNamed(Routes.MIND_TEST); // Navigate to Mind Test outside nested navigator
+      Get.toNamed(Routes.MIND_TEST);
       return;
     }
-
-    // For Home (index 0) and Profile (index 2)
     if (index == 0) {
       currentIndex.value = 0;
       Get.offAllNamed(Routes.HOME, id: 1);

@@ -1,37 +1,52 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:logger/logger.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Logger logger = Logger();
+
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
+
+  Future<void> reloadUser() async {
+    try {
+      await _auth.currentUser?.reload();
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
+
+  Future<User> getUser() async {
+    try {
+      await reloadUser();
+      return _auth.currentUser!;
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
 
   ///user signup
   Future<User?> signUp({
-    required String name,
     required String email,
     required String password,
-    required String phone,
   }) async {
     try {
       final userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      ///store data in firestore
-      final user = userCredential.user;
-      if (user != null) {
-        await _firestore.collection('users').doc(user.uid).set({
-          'name': name,
-          'email': email,
-          'phone': phone,
-          'createdAt': DateTime.now(),
-        });
-      }
-
-      return user;
+      logger.d("User created: ${userCredential.user?.uid}");
+      return userCredential.user;
     } catch (e) {
-      print('Signup error: $e');
+      logger.e(e);
       rethrow;
     }
   }
@@ -43,15 +58,12 @@ class FirebaseAuthService {
         email: email,
         password: password,
       );
+      logger.d("User logged in: ${userCredential.user?.uid}");
       return userCredential.user;
     } catch (e) {
-      print('Login error: $e');
+      logger.e(e);
       rethrow;
     }
-  }
-
-  Future<void> logout() async {
-    await _auth.signOut();
   }
 
   User? get currentUser => _auth.currentUser;

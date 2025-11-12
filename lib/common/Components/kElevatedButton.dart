@@ -11,10 +11,12 @@ class kElevatedButton extends StatelessWidget {
   final Color backgroundColor;
   final Color borderColor;
   final double fontSize;
+  final bool isLoading;
 
   const kElevatedButton({
     super.key,
     required this.text,
+    this.isLoading = false,
     required this.onPressed,
     this.trailingIcon,
     this.backgroundColor = AppColors.black,
@@ -41,7 +43,15 @@ class kElevatedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.r),
         ),
       ),
-      child: trailingIcon != null
+      child: isLoading
+          ? SizedBox(
+              width: 30.w,
+              child: const CircularProgressIndicator(
+                color: AppColors.white,
+                strokeWidth: 2,
+              ),
+            )
+          : trailingIcon != null
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
