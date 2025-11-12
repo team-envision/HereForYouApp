@@ -9,7 +9,6 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Gemini.init(apiKey: GEMINI_API_KEY);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

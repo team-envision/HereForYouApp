@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/modules/editProfileView/views/edit_profile_view.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
-import 'package:here_for_you_app/resources/app_resources/app_sizes.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../../../common/Components/customPopup.dart';
@@ -57,7 +56,11 @@ class ProfilePageView extends GetView<ProfilePageController> {
 
                 // Top title row
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
+                  padding: const EdgeInsets.only(
+                    top: 20.0,
+                    left: 20,
+                    right: 20,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -105,27 +108,29 @@ class ProfilePageView extends GetView<ProfilePageController> {
                         padding: const EdgeInsets.only(top: 8.0),
                         child: SizedBox(
                           height: 34.h,
-                            child: OutlinedButton(
-                              onPressed: () {
-                                // print("Edit Details button pressed ");
-                                Get.to(() => EditProfileView());
-                              },
-                              style: OutlinedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 0, horizontal: 10),
-                                side: BorderSide(color: AppColors.black),
+                          child: OutlinedButton(
+                            onPressed: () {
+                              // print("Edit Details button pressed ");
+                              Get.to(() => EditProfileView());
+                            },
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 0,
+                                horizontal: 10,
                               ),
-                              child: const Text(
-                                "Edit Details",
-                                style: TextStyle(
-                                  color: AppColors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              side: BorderSide(color: AppColors.black),
+                            ),
+                            child: const Text(
+                              "Edit Details",
+                              style: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
                         ),
+                      ),
                     ],
                   ),
                 ),
@@ -167,13 +172,16 @@ class ProfilePageView extends GetView<ProfilePageController> {
                             text: "Mental\nScore",
                             onTap: () => Get.to(() => const MentalScoreView()),
                             icon: SvgPicture.asset(
-                                "assets/icons/mentalScoreIcon.svg"),
+                              "assets/icons/mentalScoreIcon.svg",
+                            ),
                           ),
                           kContainer(
                             color: AppColors.mindAnchorCard,
                             text: "Mind\nAnchor",
                             onTap: () => Get.to(() => const Mindanchorview()),
-                            icon: SvgPicture.asset("assets/icons/AnchorIcon.svg"),
+                            icon: SvgPicture.asset(
+                              "assets/icons/AnchorIcon.svg",
+                            ),
                           ),
                           kContainer(
                             color: AppColors.moodQualityCard,
@@ -192,10 +200,11 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           kContainer(
                             color: AppColors.mentalScoreCard,
                             onTap: () async {
-                              final sleepcontroller =
-                              Get.put(SleepDiaryController());
-                              bool hasSetReminder =
-                              await sleepcontroller.hasSetReminder();
+                              final sleepcontroller = Get.put(
+                                SleepDiaryController(),
+                              );
+                              bool hasSetReminder = await sleepcontroller
+                                  .hasSetReminder();
                               if (hasSetReminder) {
                                 Get.to(() => const SleepDiaryHomeView());
                               } else {
@@ -240,7 +249,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           CustomPopup.show(
                             title: 'Are you sure want to logout?',
                             onCancel: () => Get.back(),
-                            onAccept: () => Get.offAllNamed(Routes.GET_STARTED),
+                            onAccept: controller.logout,
                           );
                         },
                       ),

@@ -5,6 +5,6 @@ import '../controllers/main_controller.dart';
 class MainBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(MainController()); // Changed from lazyPut to put
+    Get.put(MainController(), permanent: true); // Changed from lazyPut to put
   }
 }
