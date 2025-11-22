@@ -29,11 +29,7 @@ class Snackbars {
                 color: textColor.withOpacity(0.15),
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                icon,
-                color: textColor,
-                size: 22.sp,
-              ),
+              child: Icon(icon, color: textColor, size: 22.sp),
             ),
             SizedBox(width: 12.w),
             Expanded(
@@ -98,10 +94,7 @@ class Snackbars {
   }
 
   /// Success snackbar - Green theme
-  static void success({
-    required String title,
-    required String message,
-  }) {
+  static void success({required String title, required String message}) {
     _show(
       title: title,
       message: message,
@@ -112,10 +105,7 @@ class Snackbars {
   }
 
   /// Error snackbar - Red theme
-  static void error({
-    required String title,
-    required String message,
-  }) {
+  static void error({required String title, required String message}) {
     _show(
       title: title,
       message: message,
@@ -126,10 +116,7 @@ class Snackbars {
   }
 
   /// Warning snackbar - Orange theme
-  static void warning({
-    required String title,
-    required String message,
-  }) {
+  static void warning({required String title, required String message}) {
     _show(
       title: title,
       message: message,
@@ -140,10 +127,7 @@ class Snackbars {
   }
 
   /// Info snackbar - Blue theme
-  static void info({
-    required String title,
-    required String message,
-  }) {
+  static void info({required String title, required String message}) {
     _show(
       title: title,
       message: message,

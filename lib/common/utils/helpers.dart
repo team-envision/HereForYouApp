@@ -45,23 +45,6 @@ class Helpers {
     if (value == null || value.isEmpty) {
       return "Name is required";
     }
-
-    // Updated pattern to allow:
-    // - Letters (a-z, A-Z)
-    // - Spaces
-    // - Periods/dots (.)
-    String pattern = r"^[a-zA-Z\s\.]+$";
-    RegExp regex = RegExp(pattern);
-
-    if (!regex.hasMatch(value)) {
-      return "Name should only contain letters, spaces, and periods";
-    }
-
-    // Optional: Additional validation to ensure it's not just punctuation
-    if (value.trim().replaceAll(RegExp(r'[\s\.]'), '').isEmpty) {
-      return "Please enter a valid name";
-    }
-
     return null;
   }
 

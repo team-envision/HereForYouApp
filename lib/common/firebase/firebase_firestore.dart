@@ -72,6 +72,24 @@ class FirebaseFirestoreService {
     }
   }
 
+  Future<void> addDocument({
+    required String collection,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await setDocument(
+        collection: collection,
+        doc: auth.currentUser!.uid,
+        data: data,
+      );
+      logger.d(
+        "Document Added: \n$collection \n${auth.currentUser!.uid} \n$data",
+      );
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
   Future<DocumentSnapshot> getProfileDocument() async {
     try {
       return getDocument(collection: "profile", doc: auth.currentUser!.uid);

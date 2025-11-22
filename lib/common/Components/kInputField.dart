@@ -11,6 +11,7 @@ class kInputField extends StatefulWidget {
   final TextEditingController? controller;
   final bool isPasswordField;
   final String? Function(String?)? validator;
+  final bool enabled;
 
   const kInputField({
     super.key,
@@ -21,6 +22,7 @@ class kInputField extends StatefulWidget {
     this.controller,
     this.isPasswordField = false,
     this.validator,
+    this.enabled = true,
   });
 
   @override
@@ -59,6 +61,7 @@ class kInputFieldState extends State<kInputField> {
               ],
             ),
             child: TextFormField(
+              enabled: widget.enabled,
               validator: widget.validator,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               obscureText: widget.isPasswordField && !isPasswordVisible,
