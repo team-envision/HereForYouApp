@@ -8,11 +8,14 @@ class GenderPageDataSource {
 
   GenderPageDataSource({required this.firebaseFirestoreService});
 
-  Future<Either<CustomException, bool>> updateGender(
-    Map<String, dynamic> data,
-  ) async {
+  Future<Either<CustomException, bool>> updateGender({
+    required String gender,
+  }) async {
     try {
-      await firebaseFirestoreService.updateProfile(data: data);
+      await firebaseFirestoreService.updateDocument(data: {
+        'gender': gender,
+        'status': 'basicInfo',
+      }, collection: 'profile');
       return right(true);
     } on FirebaseException catch (e) {
       return left(CustomException(message: e.message.toString()));

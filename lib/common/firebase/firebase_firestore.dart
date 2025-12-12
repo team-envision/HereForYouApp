@@ -34,29 +34,29 @@ class FirebaseFirestoreService {
     required Map<String, dynamic> data,
     bool merge = false,
   }) async {
-    try {
-      await firestore
-          .collection(collection)
-          .doc(doc)
-          .set(data, SetOptions(merge: merge));
-    } catch (e) {
-      logger.e(e);
-      rethrow;
-    }
+    await firestore
+        .collection(collection)
+        .doc(doc)
+        .set(data, SetOptions(merge: merge));
   }
 
-  Future<void> updateProfile({required Map<String, dynamic> data}) async {
+  Future<void> updateDocument({
+    required String collection,
+    String? document,
+    required Map<String, dynamic> data,
+  }) async {
     try {
       await setDocument(
-        collection: "profile",
-        doc: auth.currentUser!.uid,
+        collection: collection,
+        doc: document ?? auth.currentUser!.uid,
         data: data,
         merge: true,
       );
-      logger.d("Profile Updated (merged) \n$data");
+      logger.d(
+        "Document Updated: \n$collection \n${auth.currentUser!.uid} \n$data",
+      );
     } catch (e) {
       logger.e(e);
-      rethrow;
     }
   }
 
@@ -74,12 +74,13 @@ class FirebaseFirestoreService {
 
   Future<void> addDocument({
     required String collection,
+    String? document,
     required Map<String, dynamic> data,
   }) async {
     try {
       await setDocument(
         collection: collection,
-        doc: auth.currentUser!.uid,
+        doc: document ?? auth.currentUser!.uid,
         data: data,
       );
       logger.d(

@@ -21,173 +21,70 @@ class SignupController extends GetxController {
     super.onClose();
   }
 
-  Future<void> handleSignUp() async {
-    // Prevent double submission
-    if (state.isGoogleSigningIn.value || state.isSigningUp.value) {
+  Future<void> signUp() async {
+    if (state.isSigningUp.value) {
       Snackbars.info(title: "Please wait...", message: "We are signing you in");
       return;
     }
-
-    // Validate form
     if (!(state.formKey.currentState?.validate() ?? false)) {
       return;
     }
-
     state.isSigningUp.value = true;
-
-    try {
-      final email = state.emailController.text.trim();
-      final password = state.passwordController.text;
-      final name = state.nameController.text.trim();
-      final phone = state.phoneController.text.trim();
-
-      if (state.isGoogleSignUpMode.value) {
-        // Complete Google sign-up by linking password
-        await finishGoogleSignUp(
-          password: password,
-          name: name,
-          phone: phone,
-          email: email,
-        );
-      } else {
-        // Regular email/password sign-up
-        await signUp(
-          email: email,
-          password: password,
-          name: name,
-          phone: phone,
-        );
-      }
-    } finally {
-      state.isSigningUp.value = false;
-    }
-  }
-
-  Future<void> signUp({
-    required String email,
-    required String password,
-    required String name,
-    required String phone,
-  }) async {
-    final result = await signupDataSources.signup(
+    final email = state.emailController.text.trim();
+    final password = state.passwordController.text.trim();
+    final name = state.nameController.text.trim();
+    final phone = state.phoneController.text.trim();
+    final result = await signupDataSources.signUp(
       email: email,
       password: password,
-      name: name,
-      phone: phone,
     );
     result.fold(
       (error) {
-        Snackbars.error(title: "Error", message: error.message);
+        Snackbars.error(title: "Couldn't sign up", message: error.message);
+        state.isSigningUp.value = false;
       },
       (user) async {
-        final emailResult = await signupDataSources.sendVerificationEmail();
-        emailResult.fold(
-          (error) {
-            Snackbars.error(
-              title: "Unable to send verification email",
-              message: error.message,
-            );
-          },
-          (_) {
-            CustomPopup.show(
-              barrierDismissible: false,
-              title: "Link sent! Verify through your email.",
-              acceptTitle: "Done",
-              cancelTitle: "Resend",
-              onAccept: isVerified,
-              onCancel: sendVerificationEmail,
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Future<void> finishGoogleSignUp({
-    required String password,
-    required String name,
-    required String phone,
-    required String email,
-  }) async {
-    // Link password credential to Google account
-    final linkResult = await signupDataSources.linkPassword(password: password);
-
-    await linkResult.fold(
-      (error) async {
-        Snackbars.error(title: "Error", message: error.message);
-      },
-      (userCredential) async {
-        // Add user profile data to Firestore
-        final addUserResult = await signupDataSources.addUser(
-          email: email,
+        final result = await signupDataSources.createUserDocument(
           name: name,
+          email: email,
           phone: phone,
         );
-
-        addUserResult.fold(
+        result.fold(
           (error) {
-            Snackbars.error(title: "Error", message: error.message);
-          },
-          (_) {
-            // Google accounts are already verified, go directly to next step
-            Snackbars.success(
-              title: "Success",
-              message: "Account created successfully",
+            //TODO: Logout user, how to handle at login, ask didi
+            Snackbars.error(
+              title: "Couldn't create your account",
+              message: "Please contact admin to sort out",
             );
-            Get.offAllNamed(Routes.GENDER_PAGE);
+            state.isSigningUp.value = false;
+          },
+          (_) async {
+            final result = await signupDataSources.sendVerificationEmail();
+            result.fold(
+              (error) {
+                Snackbars.error(
+                  title:
+                      "Account created, could send verification mail, please login again.",
+                  message: error.message,
+                );
+                //TODO: Logout user
+                state.isSigningUp.value = false;
+              },
+              (_) {
+                CustomPopup.show(
+                  title: "Please click the link sent to your mail",
+                  cancelTitle: "Resend",
+                  acceptTitle: "Done",
+                  onCancel: resendVerificationEmail,
+                  onAccept: isVerified,
+                );
+                state.isSigningUp.value = false;
+              },
+            );
           },
         );
       },
     );
-  }
-
-  Future<void> handleGoogleSignIn() async {
-    // Prevent double submission
-    if (state.isGoogleSigningIn.value || state.isSigningUp.value) {
-      return;
-    }
-
-    state.isGoogleSigningIn.value = true;
-
-    try {
-      final result = await signupDataSources.googleSignUp();
-
-      await result.fold(
-        (error) async {
-          Snackbars.error(title: "Error", message: error.message);
-        },
-        (user) async {
-          // Check if user profile already exists in Firestore
-          final profileResult = await signupDataSources.getProfile();
-
-          profileResult.fold(
-            (error) {
-              Snackbars.error(title: "Error", message: error.message);
-            },
-            (doc) {
-              if (doc.exists) {
-                // Existing user - navigate based on registration status
-                navigate(doc);
-              } else {
-                // New Google user - pre-fill form and let them complete signup
-                state.nameController.text = user.displayName ?? "";
-                state.emailController.text = user.email ?? "";
-                state.phoneController.text = user.phoneNumber ?? "";
-                state.isGoogleSignUpMode.value = true;
-
-                Snackbars.info(
-                  title: "Complete Your Profile",
-                  message:
-                      "Please add your necessary details and set a password",
-                );
-              }
-            },
-          );
-        },
-      );
-    } finally {
-      state.isGoogleSigningIn.value = false;
-    }
   }
 
   void navigate(DocumentSnapshot doc) {
@@ -226,30 +123,22 @@ class SignupController extends GetxController {
     }
   }
 
-  Future<void> sendVerificationEmail() async {
-    Snackbars.info(
-      title: "Sending email...",
-      message: "Please wait for a few moments",
-    );
-
+  Future<void> resendVerificationEmail() async {
     final result = await signupDataSources.sendVerificationEmail();
-
     result.fold(
       (error) {
         Snackbars.error(title: "Error", message: error.message);
       },
       (value) {
-        Snackbars.success(title: "Success", message: "Verification email sent");
+        Snackbars.success(
+          title: "Success",
+          message: "Verification email resent",
+        );
       },
     );
   }
 
   Future<void> isVerified() async {
-    Snackbars.info(
-      title: "Verifying...",
-      message: "Please wait for a few moments",
-    );
-
     final result = await signupDataSources.getUser();
 
     result.fold(

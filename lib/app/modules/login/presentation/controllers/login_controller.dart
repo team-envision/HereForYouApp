@@ -30,7 +30,6 @@ class LoginController extends GetxController {
   }
 
   Future<void> handleSignIn() async {
-    // Prevent multiple simultaneous login attempts
     if (state.isLogging.value) {
       Snackbars.info(
         title: "Logging in...",
@@ -56,7 +55,6 @@ class LoginController extends GetxController {
           Snackbars.error(title: "Error", message: error.message);
         },
         (user) async {
-          // Check if email is verified
           if (!user.emailVerified) {
             final emailResult = await dataSources.sendVerificationEmail();
             emailResult.fold(
@@ -142,10 +140,7 @@ class LoginController extends GetxController {
 
     statusResult.fold(
       (error) {
-        Snackbars.info(
-          title: "Error",
-          message: error.message,
-        );
+        Snackbars.info(title: "Error", message: error.message);
       },
       (value) {
         _navigateBasedOnStatus(value);

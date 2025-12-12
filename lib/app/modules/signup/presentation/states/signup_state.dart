@@ -13,6 +13,7 @@ class SignUpState {
   final isGoogleSigningIn = false.obs;
   final isSigningUp = false.obs;
   final isGoogleSignUpMode = false.obs;
+  final isResendEmailSent = false.obs;
 
   // Clean up controllers when state is disposed
   void dispose() {

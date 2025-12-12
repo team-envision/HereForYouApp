@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/splashScreen/data/splash_screen_data_source.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/common/firebase/firebase_auth.dart';
-import 'package:here_for_you_app/common/services/deep_link_service.dart';
 import 'package:here_for_you_app/common/utils/snackbars.dart';
 import 'package:logger/logger.dart';
 
@@ -36,7 +35,6 @@ class SplashScreenController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    DeepLink.initialize();
   }
 
   Future<void> check() async {

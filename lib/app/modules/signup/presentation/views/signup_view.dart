@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
@@ -48,16 +46,12 @@ class SignupView extends GetView<SignupController> {
                         validator: Helpers.validateMobileNumber,
                       ),
                       SizedBox(height: 20.h),
-                      Obx(
-                            () => kInputField(
-                          // Email field is readonly when pre-filled from Google
-                          enabled: !controller.state.isGoogleSignUpMode.value,
-                          controller: controller.state.emailController,
-                          title: "Email",
-                          hint: "Enter your email",
-                          inputType: TextInputType.emailAddress,
-                          validator: Helpers.validateEmail,
-                        ),
+                      kInputField(
+                        controller: controller.state.emailController,
+                        title: "Email",
+                        hint: "Enter your email",
+                        inputType: TextInputType.emailAddress,
+                        validator: Helpers.validateEmail,
                       ),
                       SizedBox(height: 20.h),
                       kInputField(
@@ -89,10 +83,10 @@ class SignupView extends GetView<SignupController> {
                   width: double.infinity,
                   height: 47.h,
                   child: Obx(
-                        () => kElevatedButton(
+                    () => kElevatedButton(
                       isLoading: controller.state.isSigningUp.value,
                       text: "Sign up",
-                      onPressed: controller.handleSignUp,
+                      onPressed: controller.signUp,
                     ),
                   ),
                 ),
@@ -102,57 +96,58 @@ class SignupView extends GetView<SignupController> {
                   child: const CustomDivider(),
                 ),
                 SizedBox(height: 15.h),
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: 44.h,
+                //   child: Obx(
+                //     () => ElevatedButton.icon(
+                //       style: ElevatedButton.styleFrom(
+                //         backgroundColor: AppColors.white,
+                //         elevation: 0,
+                //         foregroundColor: AppColors.black,
+                //         shape: RoundedRectangleBorder(
+                //           side: const BorderSide(
+                //             color: AppColors.black,
+                //             width: 1,
+                //           ),
+                //           borderRadius: BorderRadius.circular(30.r),
+                //         ),
+                //       ),
+                //       icon: controller.state.isGoogleSigningIn.value
+                //           ? SizedBox(
+                //               width: 20.w,
+                //               height: 20.h,
+                //               child: const CircularProgressIndicator(
+                //                 color: AppColors.black,
+                //                 strokeWidth: 2,
+                //               ),
+                //             )
+                //           : SvgPicture.asset(
+                //               "assets/icons/googleIcon.svg",
+                //               width: 20.w,
+                //               height: 20.h,
+                //             ),
+                //       onPressed: controller.handleGoogleSignIn,
+                //       label: controller.state.isGoogleSigningIn.value
+                //           ? const SizedBox()
+                //           : Text(
+                //               "Sign in with Google",
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 13.sp,
+                //                 fontWeight: FontWeight.w600,
+                //               ),
+                //             ),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
+                  height: 49.h,
                   width: double.infinity,
-                  height: 44.h,
-                  child: Obx(
-                        () => ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.white,
-                        elevation: 0,
-                        foregroundColor: AppColors.black,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(color: AppColors.black, width: 1),
-                          borderRadius: BorderRadius.circular(30.r),
-                        ),
-                      ),
-                      icon: controller.state.isGoogleSigningIn.value
-                          ? SizedBox(
-                        width: 20.w,
-                        height: 20.h,
-                        child: const CircularProgressIndicator(
-                          color: AppColors.black,
-                          strokeWidth: 2,
-                        ),
-                      )
-                          : SvgPicture.asset(
-                        "assets/icons/googleIcon.svg",
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                      onPressed: controller.handleGoogleSignIn,
-                      label: controller.state.isGoogleSigningIn.value
-                          ? const SizedBox()
-                          : Text(
-                        "Sign in with Google",
-                        style: GoogleFonts.poppins(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 5.h),
-                TextButton(
-                  onPressed: () => Get.offNamed(Routes.LOGIN),
-                  style: TextButton.styleFrom(foregroundColor: AppColors.black),
-                  child: Text(
-                    "Already have an account? Sign in",
-                    style: GoogleFonts.urbanist(
-                      fontSize: 14.96.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  child: kElevatedButton(
+                    text: "Sign in",
+                    backgroundColor: AppColors.white,
+                    borderColor: AppColors.black,
+                    onPressed: () => Get.offNamed(Routes.LOGIN),
                   ),
                 ),
               ],

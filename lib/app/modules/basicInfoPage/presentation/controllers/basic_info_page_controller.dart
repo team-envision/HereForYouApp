@@ -24,16 +24,13 @@ class BasicInfoPageController extends GetxController {
         String height = state.heightController.text;
         String weight = state.weightController.text;
         final result = await dataSource.update(
-          data: {
-            'age': age,
-            'height': height,
-            'weight': weight,
-            'status': 'complete',
-          },
+          age: age,
+          height: height,
+          weight: weight,
         );
         result.fold(
           (error) {
-            Snackbars.error(title: "Error", message: error.message.toString());
+            Snackbars.error(title: "Error", message: error.message);
             state.isLoading.value = false;
           },
           (value) {
