@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/views/question_screen_view.dart';
 
 import '../modules/AiChatBotScreen/presentation/bindings/ai_chat_bot_screen_binding.dart';
 import '../modules/AiChatBotScreen/presentation/views/ai_chat_bot_screen_view.dart';
@@ -10,6 +9,7 @@ import '../modules/ProfilePage/views/profile_page_view.dart';
 import '../modules/QuestionCountDown/presentation/bindings/question_count_down_binding.dart';
 import '../modules/QuestionCountDown/presentation/views/question_count_down_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
+import '../modules/QuestionScreen/views/question_screen_view.dart';
 import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
 import '../modules/SleepDiary/views/sleep_diary_view.dart';
 import '../modules/basicInfoPage/presentation/bindings/basic_info_page_binding.dart';
@@ -20,6 +20,8 @@ import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
 import '../modules/editProfileView/views/edit_profile_view.dart';
 import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
 import '../modules/emergency_contact/views/emergency_contact_view.dart';
+import '../modules/emergency_count_down/bindings/emergency_count_down_binding.dart';
+import '../modules/emergency_count_down/views/emergency_count_down_view.dart';
 import '../modules/faceLoading/bindings/face_loading_binding.dart';
 import '../modules/faceLoading/views/face_loading_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
@@ -55,7 +57,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.EDIT_PROFILE_VIEW;
+  static const INITIAL = Routes.EMERGENCY_CONTACT;
 
   static final routes = [
     GetPage(
@@ -181,6 +183,11 @@ class AppPages {
       name: _Paths.STRESS_INDICATOR,
       page: () => const StressIndicatorView(),
       binding: StressIndicatorBinding(),
+    ),
+    GetPage(
+      name: _Paths.EMERGENCY_COUNT_DOWN,
+      page: () => const EmergencyCountDownView(),
+      binding: EmergencyCountDownBinding(),
     ),
   ];
 }

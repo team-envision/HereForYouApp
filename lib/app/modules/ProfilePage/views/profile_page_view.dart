@@ -226,6 +226,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: kCard(
+                          onTap: () => Get.toNamed(Routes.EMERGENCY_COUNT_DOWN),
                           backGroundColor: AppColors.profileCard4,
                           borderColor: Colors.red,
                           text: 'Emergency?',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Helpers {
   Helpers._();
@@ -117,4 +118,10 @@ class Helpers {
 
     return null;
   }
+
+  static Future<void> openUrl({String? scheme, required String path}) async {
+    final Uri url = Uri(scheme: scheme, path: path);
+    await launchUrl(url);
+  }
+
 }

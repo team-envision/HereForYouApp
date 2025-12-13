@@ -62,10 +62,13 @@ class FirebaseFirestoreService {
 
   Future<DocumentSnapshot> getDocument({
     required String collection,
-    required String doc,
+    String? doc,
   }) async {
     try {
-      return await firestore.collection(collection).doc(doc).get();
+      return await firestore
+          .collection(collection)
+          .doc(doc ?? auth.currentUser!.uid)
+          .get();
     } catch (e) {
       logger.e(e);
       rethrow;
