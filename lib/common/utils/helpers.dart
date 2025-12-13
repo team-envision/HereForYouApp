@@ -49,6 +49,13 @@ class Helpers {
     return null;
   }
 
+  static String? validateNonEmpty(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Data is required";
+    }
+    return null;
+  }
+
   static String? validateConfirmPassword(
     String? value,
     TextEditingController passwordController,
@@ -123,5 +130,4 @@ class Helpers {
     final Uri url = Uri(scheme: scheme, path: path);
     await launchUrl(url);
   }
-
 }

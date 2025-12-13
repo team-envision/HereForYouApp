@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/app/modules/editProfileView/widgets/custom_drop_down.dart';
 import 'package:here_for_you_app/common/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/common/Components/kInputField.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/edit_profile_controller.dart';
+import '../widgets/custom_drop_down.dart';
 
 class EditProfileView extends GetView<EditProfileViewController> {
   EditProfileView({super.key});

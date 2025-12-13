@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/app/modules/editProfileView/views/edit_profile_view.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -17,6 +16,7 @@ import '../../../views/views/MindAnchorView.dart';
 import '../../SleepDiary/controllers/sleep_diary_controller.dart';
 import '../../SleepDiary/views/sleepDiaryHomeView.dart';
 import '../../SleepDiary/views/sleep_diary_view.dart';
+import '../../editProfileView/presentation/views/edit_profile_view.dart';
 import '../../mentalScore/views/mental_score_view.dart';
 import '../../moodQuality/views/mood_quality_view.dart';
 import '../controllers/profile_page_controller.dart';
@@ -72,7 +72,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           color: AppColors.black,
                         ),
                       ),
-                      MenuPopup(),
+                      const MenuPopup(),
                     ],
                   ),
                 ),

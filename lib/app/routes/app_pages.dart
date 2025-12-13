@@ -16,10 +16,10 @@ import '../modules/basicInfoPage/presentation/bindings/basic_info_page_binding.d
 import '../modules/basicInfoPage/presentation/views/basic_info_page_view.dart';
 import '../modules/changePassword/bindings/change_password_binding.dart';
 import '../modules/changePassword/views/change_password_view.dart';
-import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
-import '../modules/editProfileView/views/edit_profile_view.dart';
-import '../modules/emergency_contact/bindings/emergency_contact_binding.dart';
-import '../modules/emergency_contact/views/emergency_contact_view.dart';
+import '../modules/editProfileView/presentation/bindings/edit_profile_view_binding.dart';
+import '../modules/editProfileView/presentation/views/edit_profile_view.dart';
+import '../modules/emergency_contact/presentation/bindings/emergency_contact_binding.dart';
+import '../modules/emergency_contact/presentation/views/emergency_contact_view.dart';
 import '../modules/emergency_count_down/bindings/emergency_count_down_binding.dart';
 import '../modules/emergency_count_down/views/emergency_count_down_view.dart';
 import '../modules/faceLoading/bindings/face_loading_binding.dart';
@@ -57,7 +57,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.EMERGENCY_CONTACT;
+  static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
     GetPage(
@@ -146,7 +146,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EMERGENCY_CONTACT,
-      page: () => EmergencyContactView(),
+      page: () => const EmergencyContactView(),
       binding: EmergencyContactBinding(),
     ),
     GetPage(

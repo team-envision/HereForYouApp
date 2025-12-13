@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:here_for_you_app/app/modules/editProfileView/states/edit_profile_state.dart';
+
+import '../states/edit_profile_state.dart';
 
 class EditProfileViewController extends GetxController {
   EditProfileState state;
