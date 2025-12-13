@@ -1,25 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/editProfileView/states/edit_profile_state.dart';
 
 class EditProfileViewController extends GetxController {
-  final nameController = TextEditingController();
-  final phoneController = TextEditingController();
-  final emailController = TextEditingController();
-  final ageController = TextEditingController();
-  final weightController = TextEditingController();
-  final gender = ''.obs;
+  EditProfileState state;
+
+  EditProfileViewController({required this.state});
 
   void saveDetails() {
-    print("Details Saved!");
+    //TODO: implement logic
   }
+
+  void onChanged(value) => state.gender = value;
 
   @override
   void onClose() {
-    nameController.dispose();
-    phoneController.dispose();
-    emailController.dispose();
-    ageController.dispose();
-    weightController.dispose();
+    state.nameController.dispose();
+    state.phoneController.dispose();
+    state.emailController.dispose();
+    state.ageController.dispose();
+    state.weightController.dispose();
     super.onClose();
   }
 }

@@ -55,7 +55,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH_SCREEN;
+  static const INITIAL = Routes.EDIT_PROFILE_VIEW;
 
   static final routes = [
     GetPage(

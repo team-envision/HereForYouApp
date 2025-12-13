@@ -1,142 +1,116 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/app/modules/editProfileView/widgets/custom_drop_down.dart';
+import 'package:here_for_you_app/common/Components/kElevatedButton.dart';
+import 'package:here_for_you_app/common/Components/kInputField.dart';
+import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
+
 import '../controllers/edit_profile_controller.dart';
-import '../widgets/edit_profile_widgets.dart';
 
-class EditProfileView extends StatelessWidget {
+class EditProfileView extends GetView<EditProfileViewController> {
   EditProfileView({super.key});
-
-  final controller = Get.find<EditProfileViewController>();
-  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         backgroundColor: AppColors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, size: 35),
-          onPressed: () => Navigator.pop(context),
+        scrolledUnderElevation: 0,
+        titleSpacing: 0,
+        leadingWidth: 70.w,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: IconButton(
+            icon: Image.asset(
+              "assets/images/backward_arrow.png",
+              width: 34.18.w,
+              height: 29.91.h,
+            ),
+            onPressed: () => Get.back(),
+          ),
         ),
-        title: const Text(
+        title: Text(
           'Edit Details',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          style: GoogleFonts.urbanist(
+            fontWeight: FontWeight.w800,
+            fontSize: 24.95.sp,
+            letterSpacing: -0.3,
+          ),
         ),
       ),
-      backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         child: SingleChildScrollView(
           child: Form(
-            key: _formKey,
+            key: controller.state.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 10),
-                CustomTextField(
-                  label: 'Name',
-                  hintText: 'Enter your name',
-                  controller: controller.nameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Name cannot be empty';
-                    }
-                    return null;
-                  },
+                kInputField(
+                  inputType: TextInputType.name,
+                  title: "Name",
+                  hint: "Enter your name",
+                  controller: controller.state.nameController,
+                  validator: Helpers.validateName,
                 ),
-                const SizedBox(height: 16),
-                CustomTextField(
-                  label: 'Phone number',
-                  hintText: 'Enter your phone number',
-                  controller: controller.phoneController,
-                  keyboardType: TextInputType.phone,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Phone number is required';
-                    } else if (!RegExp(r'^[0-9]{10}\$').hasMatch(value)) {
-                      return 'Enter a valid 10-digit phone number';
-                    }
-                    return null;
-                  },
+                SizedBox(height: 20.h),
+                kInputField(
+                  inputType: TextInputType.phone,
+                  title: "Phone number",
+                  hint: "Enter your phone number",
+                  controller: controller.state.phoneController,
+                  validator: Helpers.validateMobileNumber,
                 ),
-                const SizedBox(height: 16),
-                CustomTextField(
-                  label: 'Email',
-                  hintText: 'Enter your email',
-                  controller: controller.emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Email cannot be empty';
-                    } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\$').hasMatch(value)) {
-                      return 'Enter a valid email';
-                    }
-                    return null;
-                  },
+                SizedBox(height: 20.h),
+                kInputField(
+                  enabled: false,
+                  inputType: TextInputType.emailAddress,
+                  title: "Email",
+                  hint: "Enter your email",
+                  controller: controller.state.emailController,
+                  validator: Helpers.validateEmail,
                 ),
-                const SizedBox(height: 16),
-                Obx(() => CustomDropdown(
-                  label: 'Gender',
-                  value: controller.gender.value.isEmpty ? null : controller.gender.value,
-                  items: const ['Male', 'Female', 'Other'],
-                  onChanged: (value) {
-                    controller.gender.value = value ?? '';
-                  },
-                  validator: (value) => value == null || value.isEmpty ? 'Please select a gender' : null, // Validation message
-                )),
-                const SizedBox(height: 16),
+                SizedBox(height: 20.h),
+                CustomDropDown(onChanged: controller.onChanged),
+                SizedBox(height: 20.h),
                 Row(
                   children: [
-                    Flexible(
-                      child: CustomTextField(
-                        label: 'Age',
-                        hintText: 'Enter your age',
-                        controller: controller.ageController,
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Age is required';
-                          } else if (int.tryParse(value) == null || int.parse(value) <= 0) {
-                            return 'Enter a valid age';
-                          }
-                          return null;
-                        },
+                    Expanded(
+                      child: kInputField(
+                        inputType: TextInputType.number,
+                        title: "Age",
+                        hint: "Enter your age",
+                        controller: controller.state.ageController,
+                        validator: Helpers.validateAge,
                       ),
                     ),
-                    const SizedBox(width: 16),
-                    Flexible(
-                      child: CustomTextField(
-                        label: 'Weight',
-                        hintText: 'Enter your weight',
-                        controller: controller.weightController,
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Weight is required';
-                          } else if (double.tryParse(value) == null || double.parse(value) <= 0) {
-                            return 'Enter a valid weight';
-                          }
-                          return null;
-                        },
+                    SizedBox(width: 20.w),
+                    Expanded(
+                      child: kInputField(
+                        inputType: TextInputType.number,
+                        title: "Weight",
+                        hint: "Enter your weight",
+                        controller: controller.state.weightController,
+                        validator: Helpers.validateWeight,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 32),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      controller.saveDetails();
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(50),
-                    backgroundColor: Colors.black,
-                  ),
-                  child: const Text(
-                    'Save',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                SizedBox(height: 50.h),
+                SizedBox(
+                  height: 49.h,
+                  width: double.infinity,
+                  child: Obx(
+                    () => kElevatedButton(
+                      isLoading: controller.state.isLoading.value,
+                      text: "Save",
+                      onPressed: controller.saveDetails,
+                      fontSize: 21.07.sp,
+                    ),
                   ),
                 ),
               ],
