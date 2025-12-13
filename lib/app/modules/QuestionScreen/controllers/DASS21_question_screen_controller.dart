@@ -5,7 +5,7 @@ import 'package:here_for_you_app/app/modules/QuestionScreen/views/SDRS_question_
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../models/questions.dart';
-import '../../QuestionCountDown/views/question_count_down_view.dart';
+import '../../QuestionCountDown/presentation/views/question_count_down_view.dart';
 
 class DASS21QuestionController extends GetxController {
   RxList<String> DASS21questions = <String>[].obs;

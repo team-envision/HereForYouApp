@@ -9,7 +9,7 @@ class MainController extends GetxController {
 
   void changePage(int index) {
     if (index == 1) {
-      Get.toNamed(Routes.MIND_TEST);
+      Get.toNamed(Routes.QUESTION_COUNT_DOWN);
       return;
     }
     if (index == 0) {

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/mentalScore/views/mental_score_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../models/questions.dart';
-import '../../QuestionCountDown/views/question_count_down_view.dart';
+import '../../QuestionCountDown/presentation/views/question_count_down_view.dart';
 
 class GAD7QuestionController extends GetxController {
   RxList<String> GAD7questions = <String>[].obs;

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/QuestionScreen/views/question_screen_view.dart';
 
 import '../modules/AiChatBotScreen/presentation/bindings/ai_chat_bot_screen_binding.dart';
 import '../modules/AiChatBotScreen/presentation/views/ai_chat_bot_screen_view.dart';
@@ -6,10 +7,9 @@ import '../modules/MindAnchorMainScreen/bindings/mind_anchor_main_screen_binding
 import '../modules/MindAnchorMainScreen/views/mind_anchor_main_screen_view.dart';
 import '../modules/ProfilePage/bindings/profile_page_binding.dart';
 import '../modules/ProfilePage/views/profile_page_view.dart';
-import '../modules/QuestionCountDown/bindings/question_count_down_binding.dart';
-import '../modules/QuestionCountDown/views/question_count_down_view.dart';
+import '../modules/QuestionCountDown/presentation/bindings/question_count_down_binding.dart';
+import '../modules/QuestionCountDown/presentation/views/question_count_down_view.dart';
 import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
-import '../modules/QuestionScreen/views/DASS21_question_screen_view.dart';
 import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
 import '../modules/SleepDiary/views/sleep_diary_view.dart';
 import '../modules/basicInfoPage/presentation/bindings/basic_info_page_binding.dart';
@@ -75,7 +75,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QUESTION_SCREEN,
-      page: () => DASS21QuestionView(),
+      page: () => const QuestionView(),
       binding: QuestionBinding(),
     ),
     GetPage(
@@ -134,7 +134,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QUESTION_COUNT_DOWN,
-      page: () => QuestionCountdownView(),
+      page: () => const QuestionCountdownView(),
       binding: QuestionCountDownBinding(),
     ),
     GetPage(

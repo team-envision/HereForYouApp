@@ -39,7 +39,7 @@ class HomeView extends GetView<HomeController> {
                 kCard(
                   backGroundColor: AppColors.mindTestBg,
                   borderColor: AppColors.mindTestBorder,
-                  onTap: () => Get.toNamed(Routes.MIND_TEST),
+                  onTap: () => Get.toNamed(Routes.QUESTION_COUNT_DOWN),
                   text: "Start Your\nMind Test",
                   IsSvg: true,
                   ImagePath: "assets/images/StartYourMindCard.svg",
