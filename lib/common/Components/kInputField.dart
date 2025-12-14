@@ -12,6 +12,8 @@ class kInputField extends StatefulWidget {
   final bool isPasswordField;
   final String? Function(String?)? validator;
   final bool enabled;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   const kInputField({
     super.key,
@@ -23,6 +25,8 @@ class kInputField extends StatefulWidget {
     this.isPasswordField = false,
     this.validator,
     this.enabled = true,
+    this.onTap,
+    this.readOnly = false,
   });
 
   @override
@@ -61,6 +65,8 @@ class kInputFieldState extends State<kInputField> {
               ],
             ),
             child: TextFormField(
+              readOnly: widget.readOnly,
+              onTap: widget.onTap,
               enabled: widget.enabled,
               validator: widget.validator,
               autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -9,5 +9,6 @@ class EditProfileState extends GetXState {
   final emailController = TextEditingController();
   final ageController = TextEditingController();
   final weightController = TextEditingController();
-  String gender = '';
+  final heightController = TextEditingController();
+  RxString gender = 'Male'.obs;
 }

@@ -48,10 +48,7 @@ class HomeView extends GetView<HomeController> {
                 _buildSectionTitle("Whats your mood today?"),
                 _buildMoodSelector(controller),
                 _buildSectionTitle("Mental Health Analysis"),
-                SizedBox(
-                  height: 171.h,
-                  child: _buildMentalHealthList(),
-                ),
+                SizedBox(height: 171.h, child: _buildMentalHealthList()),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: kCard(
@@ -140,7 +137,7 @@ class HomeView extends GetView<HomeController> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(
             controller.emojis.length,
-                (index) => _buildEmojiButton(
+            (index) => _buildEmojiButton(
               emoji: controller.emojis[index],
               isSelected: selectedIndex == index,
               onTap: () => controller.selectedIndex.value = index,
@@ -164,10 +161,7 @@ class HomeView extends GetView<HomeController> {
           color: isSelected ? AppColors.moodSelected : AppColors.transparent,
           shape: BoxShape.circle,
         ),
-        child: Text(
-          emoji,
-          style: Get.theme.textTheme.headlineLarge,
-        ),
+        child: Text(emoji, style: Get.theme.textTheme.headlineLarge),
       ),
     );
   }

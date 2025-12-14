@@ -30,7 +30,7 @@ class FirebaseFirestoreService {
 
   Future<void> setDocument({
     required String collection,
-    required String doc,
+    required String? doc,
     required Map<String, dynamic> data,
     bool merge = false,
   }) async {

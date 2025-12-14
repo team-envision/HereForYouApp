@@ -5,13 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/common/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/common/Components/kInputField.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
+import 'package:here_for_you_app/common/utils/snackbars.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/edit_profile_controller.dart';
 import '../widgets/custom_drop_down.dart';
 
 class EditProfileView extends GetView<EditProfileViewController> {
-  EditProfileView({super.key});
+  const EditProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +43,9 @@ class EditProfileView extends GetView<EditProfileViewController> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           child: Form(
             key: controller.state.formKey,
             child: Column(
@@ -67,25 +68,42 @@ class EditProfileView extends GetView<EditProfileViewController> {
                 ),
                 SizedBox(height: 20.h),
                 kInputField(
-                  enabled: false,
+                  readOnly: true,
                   inputType: TextInputType.emailAddress,
+                  onTap: () => Snackbars.info(
+                    title: "Not Allowed",
+                    message: "Email cannot be updated as of now",
+                  ),
                   title: "Email",
                   hint: "Enter your email",
                   controller: controller.state.emailController,
                   validator: Helpers.validateEmail,
                 ),
                 SizedBox(height: 20.h),
-                CustomDropDown(onChanged: controller.onChanged),
+                Obx(
+                  () => CustomDropDown(
+                    onChanged: controller.onChanged,
+                    initialValue: controller.state.gender.value,
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                kInputField(
+                  inputType: TextInputType.number,
+                  title: "Age",
+                  hint: "Enter your age",
+                  controller: controller.state.ageController,
+                  validator: Helpers.validateAge,
+                ),
                 SizedBox(height: 20.h),
                 Row(
                   children: [
                     Expanded(
                       child: kInputField(
                         inputType: TextInputType.number,
-                        title: "Age",
-                        hint: "Enter your age",
-                        controller: controller.state.ageController,
-                        validator: Helpers.validateAge,
+                        title: "Height",
+                        hint: "Enter your height",
+                        controller: controller.state.heightController,
+                        validator: Helpers.validateHeight,
                       ),
                     ),
                     SizedBox(width: 20.w),

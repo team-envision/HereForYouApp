@@ -44,31 +44,10 @@ class MenuPopup extends StatelessWidget {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(23.r)),
       color: AppColors.white,
-      menuPadding: EdgeInsets.zero,
+      menuPadding: EdgeInsets.symmetric(vertical: 10.h),
       icon: const Icon(Icons.menu),
       itemBuilder: (context) => [
-        PopupMenuItem(
-          value: "Close",
-          enabled: false,
-          textStyle: GoogleFonts.urbanist(
-            fontWeight: FontWeight.w700,
-            fontSize: 16.68.sp,
-            letterSpacing: 16.68.sp * 0.02,
-          ),
-          padding: EdgeInsets.zero,
-          child: Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              iconSize: 20,
-              padding: EdgeInsets.zero,
-              constraints: BoxConstraints(),
-              onPressed: () {
-                Get.back();
-              },
-              icon: const Icon(Icons.close, color: AppColors.black),
-            ),
-          ),
-        ),
+
         _buildMenuItem(title: "Articles"),
         _buildMenuItem(title: "Change Password"),
         _buildMenuItem(title: "Emergency Contact"),
@@ -81,7 +60,7 @@ class MenuPopup extends StatelessWidget {
   PopupMenuItem _buildMenuItem({required String title}) {
     return PopupMenuItem(
       value: title,
-      height: 31.h,
+      height: 40.h,
       child: Center(
         child: Text(
           title,
