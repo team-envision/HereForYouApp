@@ -22,7 +22,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    // controller is automatically available via GetView
     return Scaffold(
       backgroundColor: AppColors.white,
       extendBody: true,

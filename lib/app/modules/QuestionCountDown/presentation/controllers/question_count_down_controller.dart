@@ -19,15 +19,18 @@ class QuestionCountDownController extends GetxController {
     );
     result.fold(
       (error) {
-        Snackbars.error(title: "Error", message: error.message);
+        Snackbars.error(title: "Unable to load data", message: error.message);
+        Get.back();
       },
-      (questionnaire) {
+      (questionnaire) async {
         state.progressLabel.value = questionnaire.progressLabel;
         state.description.value = questionnaire.description;
         state.note.value = questionnaire.note;
         state.questions = questionnaire.questions;
         state.options = questionnaire.options;
         state.nextId = questionnaire.nextId;
+        await Future.delayed(const Duration(seconds: 1));
+        state.isLoading.value = false;
       },
     );
   }
