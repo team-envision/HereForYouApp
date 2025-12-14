@@ -62,6 +62,8 @@ class QuestionView extends GetView<QuestionController> {
             width: 324.w,
             child: Obx(
               () => Text(
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
                 controller.state.questions[controller.state.questionNo.value],
                 style: GoogleFonts.urbanist(

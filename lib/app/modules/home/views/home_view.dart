@@ -25,85 +25,99 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       backgroundColor: AppColors.white,
       extendBody: true,
-      appBar: _buildAppBar(),
-      body: Center(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                kCard(
-                  backGroundColor: AppColors.mindTestBg,
-                  borderColor: AppColors.mindTestBorder,
-                  onTap: () => Get.toNamed(Routes.QUESTION_COUNT_DOWN),
-                  text: "Start Your\nMind Test",
-                  IsSvg: true,
-                  ImagePath: "assets/images/StartYourMindCard.svg",
-                  iconPath: "assets/icons/BookIcon.png",
-                ),
-                _buildSectionTitle("Whats your mood today?"),
-                _buildMoodSelector(controller),
-                _buildSectionTitle("Mental Health Analysis"),
-                SizedBox(height: 171.h, child: _buildMentalHealthList()),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: kCard(
-                    onTap: () => Get.toNamed(Routes.AI_CHAT_BOT_SCREEN),
-                    backGroundColor: AppColors.aiChatBg,
-                    borderColor: AppColors.aiChatBorder,
-                    text: "Chat with\nA.I Bot",
-                    IsSvg: false,
-                    ImagePath: "assets/images/AiChatBotCard.png",
-                    iconPath: 'assets/icons/roboIcon.png',
-                  ),
-                ),
-                const SizedBox(height: 100),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      toolbarHeight: 100,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(22),
-          bottomRight: Radius.circular(22),
-        ),
-      ),
-      backgroundColor: AppColors.appBarBg,
-      title: Row(
+      body: Column(
         children: [
-          CircleAvatar(
-            radius: 25,
-            backgroundColor: AppColors.avatarBg,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Image.asset(
-                "assets/images/avatar.png",
-                scale: 0.8,
-                fit: BoxFit.fitHeight,
+          header(),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    kCard(
+                      backGroundColor: AppColors.mindTestBg,
+                      borderColor: AppColors.mindTestBorder,
+                      onTap: () => Get.toNamed(Routes.QUESTION_COUNT_DOWN),
+                      text: "Start Your\nMind Test",
+                      IsSvg: true,
+                      ImagePath: "assets/images/StartYourMindCard.svg",
+                      iconPath: "assets/icons/BookIcon.png",
+                    ),
+                    _buildSectionTitle("Whats your mood today?"),
+                    _buildMoodSelector(controller),
+                    _buildSectionTitle("Mental Health Analysis"),
+                    SizedBox(height: 171.h, child: _buildMentalHealthList()),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: kCard(
+                        onTap: () => Get.toNamed(Routes.AI_CHAT_BOT_SCREEN),
+                        backGroundColor: AppColors.aiChatBg,
+                        borderColor: AppColors.aiChatBorder,
+                        text: "Chat with\nA.I Bot",
+                        IsSvg: false,
+                        ImagePath: "assets/images/AiChatBotCard.png",
+                        iconPath: 'assets/icons/roboIcon.png',
+                      ),
+                    ),
+                    const SizedBox(height: 100),
+                    // Bottom padding for scrolling comfort
+                  ],
+                ),
               ),
-            ),
-          ),
-          const SizedBox(width: 20),
-          Text(
-            "Hi, Priya!",
-            style: Get.theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w600,
             ),
           ),
         ],
       ),
-      centerTitle: true,
+    );
+  }
+
+  Widget header() {
+    return Container(
+      padding: EdgeInsets.only(left: 22.w),
+      height: 143.h,
+      decoration: BoxDecoration(
+        color: const Color(0xFFEEE5FF),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(38.r),
+          bottomRight: Radius.circular(38.r),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF8C6CC9).withOpacity(0.89),
+            offset: const Offset(0, 0),
+            blurRadius: 14.4,
+            spreadRadius: -3,
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: 17.83.h),
+            child: Image.asset(
+              'assets/images/profile_image.png',
+              width: 59.14,
+              height: 59.14,
+            ),
+          ),
+          SizedBox(width: 14.86.w),
+          Padding(
+            padding: EdgeInsets.only(bottom: 28.h),
+            child: Text(
+              "Hi, Rhythm Gupta!",
+              style: GoogleFonts.urbanist(
+                fontWeight: FontWeight.w700,
+                fontSize: 24.95.sp,
+                letterSpacing: 0.02 * 24.95.sp,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -121,7 +135,6 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  // Optimized mood selector with single Obx
   Widget _buildMoodSelector(HomeController controller) {
     return Container(
       height: 60,
@@ -205,7 +218,6 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  // Move async logic out of build and add loading state
   void _handleSleepDiaryTap() async {
     final sleepController = Get.find<SleepDiaryController>();
     final hasSetReminder = await sleepController.hasSetReminder();
@@ -218,7 +230,6 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-// Extract StressLevelGauge as a separate StatelessWidget
 class StressLevelGauge extends StatelessWidget {
   const StressLevelGauge({super.key});
 
