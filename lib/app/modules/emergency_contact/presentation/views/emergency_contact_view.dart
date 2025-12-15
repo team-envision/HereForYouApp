@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/common/Components/kInputField.dart';
+import 'package:here_for_you_app/common/Components/loading_overlay.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
@@ -14,6 +15,17 @@ class EmergencyContactView extends GetView<EmergencyContactController> {
 
   @override
   Widget build(BuildContext context) {
+    return Obx(
+      () => LoadingOverlay(
+        isLoading: controller.state.isDataLoading.value,
+        loadingAnimation: "assets/animations/loadingFace.gif",
+        size: 92,
+        child: content(),
+      ),
+    );
+  }
+
+  Widget content() {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
@@ -58,7 +70,7 @@ class EmergencyContactView extends GetView<EmergencyContactController> {
                   hint: "Enter emergency contact name",
                 ),
                 SizedBox(height: 24.h),
-          
+
                 kInputField(
                   validator: Helpers.validateMobileNumber,
                   inputType: TextInputType.phone,
@@ -67,7 +79,7 @@ class EmergencyContactView extends GetView<EmergencyContactController> {
                   hint: "Enter emergency contact number",
                 ),
                 SizedBox(height: 24.h),
-          
+
                 kInputField(
                   validator: Helpers.validateEmail,
                   inputType: TextInputType.emailAddress,
@@ -76,7 +88,7 @@ class EmergencyContactView extends GetView<EmergencyContactController> {
                   hint: "Enter emergency contact email",
                 ),
                 SizedBox(height: 24.h),
-          
+
                 kInputField(
                   validator: Helpers.validateNonEmpty,
                   inputType: TextInputType.name,

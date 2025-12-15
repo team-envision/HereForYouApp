@@ -8,4 +8,5 @@ class EmergencyContactState extends GetXState {
   final emailController = TextEditingController();
   final relationController = TextEditingController();
   RxBool isLoading = false.obs;
+  RxBool isDataLoading = true.obs;
 }

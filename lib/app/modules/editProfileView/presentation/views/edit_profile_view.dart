@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/common/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/common/Components/kInputField.dart';
+import 'package:here_for_you_app/common/Components/loading_overlay.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/common/utils/snackbars.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
@@ -16,6 +17,17 @@ class EditProfileView extends GetView<EditProfileViewController> {
 
   @override
   Widget build(BuildContext context) {
+    return Obx(
+      () => LoadingOverlay(
+        isLoading: controller.state.isDataLoading.value,
+        loadingAnimation: "assets/animations/loadingFace.gif",
+        size: 92,
+        child: content(),
+      ),
+    );
+  }
+
+  Widget content() {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(

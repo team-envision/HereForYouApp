@@ -21,11 +21,14 @@ class EmergencyContactController extends GetxController {
       state.emailController.text = data.email;
       state.relationController.text = data.relation;
     });
+    await Future.delayed(const Duration(seconds: 1));
+    state.isDataLoading.value = false;
   }
 
   @override
   void onInit() {
     super.onInit();
+    state.isDataLoading.value = true;
     getData();
   }
 
@@ -54,7 +57,6 @@ class EmergencyContactController extends GetxController {
           title: "Success",
           message: "Emergency contact updated successfully",
         );
-
       },
     );
     state.isLoading.value = false;

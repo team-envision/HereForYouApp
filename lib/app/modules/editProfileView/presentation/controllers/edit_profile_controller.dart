@@ -57,7 +57,10 @@ class EditProfileViewController extends GetxController {
     final result = await dataSources.getData();
     result.fold(
       (error) {
-        logger.e(error.message);
+        Snackbars.info(
+          title: "Unable to load data, whatever you enter will be updated",
+          message: error.message,
+        );
       },
       (data) {
         model = data;
@@ -70,6 +73,8 @@ class EditProfileViewController extends GetxController {
         state.gender.value = model.gender;
       },
     );
+    await Future.delayed(const Duration(seconds: 1));
+    state.isDataLoading.value = false;
   }
 
   void onChanged(value) {
@@ -79,6 +84,7 @@ class EditProfileViewController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    state.isDataLoading = true.obs;
     getData();
   }
 

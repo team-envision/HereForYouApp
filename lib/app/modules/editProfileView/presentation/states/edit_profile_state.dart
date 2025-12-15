@@ -11,4 +11,5 @@ class EditProfileState extends GetXState {
   final weightController = TextEditingController();
   final heightController = TextEditingController();
   RxString gender = 'Male'.obs;
+  RxBool isDataLoading = true.obs;
 }
