@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/modules/feedBack/views/feed_back_view.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
-import 'package:here_for_you_app/app/views/views/articles_view.dart';
 
 import '../../resources/app_resources/app_colors.dart';
 import 'customPopup.dart';
@@ -21,7 +20,7 @@ class MenuPopup extends StatelessWidget {
             Get.back();
             break;
           case 'Articles':
-            Get.to(() => ArticlesView());
+            Get.toNamed(Routes.ARTICLES);
             break;
           case 'Feedback':
             Get.to(() => FeedBackView());
@@ -47,7 +46,6 @@ class MenuPopup extends StatelessWidget {
       menuPadding: EdgeInsets.symmetric(vertical: 10.h),
       icon: const Icon(Icons.menu),
       itemBuilder: (context) => [
-
         _buildMenuItem(title: "Articles"),
         _buildMenuItem(title: "Change Password"),
         _buildMenuItem(title: "Emergency Contact"),

@@ -126,8 +126,8 @@ class Helpers {
     return null;
   }
 
-  static Future<void> openUrl({String? scheme, required String path}) async {
-    final Uri url = Uri(scheme: scheme, path: path);
-    await launchUrl(url);
+  static Future<void> openUrl({required String url}) async {
+    final Uri uri = Uri.parse(url);
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 }

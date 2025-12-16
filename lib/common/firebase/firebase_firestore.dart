@@ -102,4 +102,13 @@ class FirebaseFirestoreService {
       rethrow;
     }
   }
+
+  Future<QuerySnapshot> getCollection({required String collection}) {
+    try {
+      return firestore.collection(collection).get();
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
 }

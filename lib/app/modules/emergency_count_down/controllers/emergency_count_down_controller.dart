@@ -37,19 +37,15 @@ class EmergencyCountDownController extends GetxController {
 
   Future<void> initiateCall() async {
     showString.value = true;
-    Helpers.openUrl(scheme: "tel", path: number);
+    Helpers.openUrl(url: "tel:$number");
     Get.back();
   }
 
   Future<void> getData() async {
     final result = await dataSources.getDetails();
-    result.fold(
-      (error) {
-      },
-      (details) {
-        number = details.number;
-      },
-    );
+    result.fold((error) {}, (details) {
+      number = details.number;
+    });
   }
 
   @override

@@ -12,6 +12,8 @@ import '../modules/QuestionScreen/bindings/question_screen_binding.dart';
 import '../modules/QuestionScreen/views/question_screen_view.dart';
 import '../modules/SleepDiary/bindings/sleep_diary_binding.dart';
 import '../modules/SleepDiary/views/sleep_diary_view.dart';
+import '../modules/articles/presentation/bindings/articles_binding.dart';
+import '../modules/articles/presentation/views/articles_view.dart';
 import '../modules/basicInfoPage/presentation/bindings/basic_info_page_binding.dart';
 import '../modules/basicInfoPage/presentation/views/basic_info_page_view.dart';
 import '../modules/changePassword/bindings/change_password_binding.dart';
@@ -188,6 +190,11 @@ class AppPages {
       name: _Paths.EMERGENCY_COUNT_DOWN,
       page: () => const EmergencyCountDownView(),
       binding: EmergencyCountDownBinding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICLES,
+      page: () => const ArticlesView(),
+      binding: ArticlesBinding(),
     ),
   ];
 }
