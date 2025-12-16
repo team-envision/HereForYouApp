@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/ProfilePage/views/profile_page_view.dart';
 import 'package:here_for_you_app/app/modules/home/views/home_view.dart';
-import 'package:here_for_you_app/app/views/views/mind_test_view.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 class bottomNavigation extends StatelessWidget {
@@ -12,7 +11,7 @@ class bottomNavigation extends StatelessWidget {
   final RxInt _selectedIndex = 0.obs;
 
   final RxList<Widget> _screens =
-      [const HomeView(), const MindTestScreenView(), const ProfilePageView()].obs;
+      [const HomeView(), const ProfilePageView()].obs;
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(

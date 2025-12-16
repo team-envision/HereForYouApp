@@ -1,18 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
-class McqOption extends StatelessWidget {
+class SquareMcqOption extends StatelessWidget {
   final bool isSelected;
   final String label;
   final VoidCallback? onTap;
+  final String icon;
 
-  const McqOption({
+  const SquareMcqOption({
     super.key,
     this.isSelected = false,
     required this.onTap,
     required this.label,
+    required this.icon,
   });
 
   @override
@@ -35,6 +38,9 @@ class McqOption extends StatelessWidget {
             ),
           ],
           borderRadius: BorderRadius.circular(24.r),
+          border: BoxBorder.all(
+            color: isSelected ? const Color(0xFFB1D472) : AppColors.transparent,
+          ),
         ),
         child: Stack(
           children: [
@@ -52,14 +58,14 @@ class McqOption extends StatelessWidget {
                 ),
               ),
             ),
-            //TODO: Add icon
-            // Positioned(
-            //   top: 116.h,
-            //   left: 116.w,
-            //   width: 18.w,
-            //   height: 18.h,
-            //   child: Image.asset('assets/icons/cross.png'),
-            // ),
+            icon != ""?
+            Positioned(
+              top: 116.h,
+              left: 116.w,
+              width: 18.w,
+              height: 18.h,
+              child: CachedNetworkImage(imageUrl: icon),
+            ):const SizedBox(),
           ],
         ),
       ),

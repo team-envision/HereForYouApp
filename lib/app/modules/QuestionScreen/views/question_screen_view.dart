@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/modules/QuestionScreen/controllers/question_screen_controller.dart';
-import 'package:here_for_you_app/app/modules/QuestionScreen/widgets/mcq_option.dart';
+import 'package:here_for_you_app/app/modules/QuestionScreen/widgets/linear_mcq_option.dart';
+import 'package:here_for_you_app/app/modules/QuestionScreen/widgets/square_mcq_option.dart';
 import 'package:here_for_you_app/common/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
@@ -74,49 +75,14 @@ class QuestionView extends GetView<QuestionController> {
               ),
             ),
           ),
-          //TODO:Handle SDRS type mcqs
           Positioned(
             top: 284.h,
-            left: 35.w,
-            width: 324.w,
+            left: 36.w,
             height: 324.h,
-            child: Obx(
-              () => Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      McqOption(
-                        label: controller.state.options[0],
-                        onTap: () => controller.selectOption(0),
-                        isSelected: controller.state.selected.value == 0,
-                      ),
-                      McqOption(
-                        label: controller.state.options[1],
-                        onTap: () => controller.selectOption(1),
-                        isSelected: controller.state.selected.value == 1,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      McqOption(
-                        label: controller.state.options[2],
-                        onTap: () => controller.selectOption(2),
-                        isSelected: controller.state.selected.value == 2,
-                      ),
-                      McqOption(
-                        label: controller.state.options[3],
-                        onTap: () => controller.selectOption(3),
-                        isSelected: controller.state.selected.value == 3,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            width: 324.w,
+            child: controller.state.options.length == 4
+                ? squareMcq()
+                : linearMcq(),
           ),
           Positioned(
             top: 711.51.h,
@@ -133,5 +99,119 @@ class QuestionView extends GetView<QuestionController> {
         ],
       ),
     );
+  }
+
+  Widget linearMcq() {
+    return Obx(
+      () => Stack(
+        children: [
+          Positioned(
+            height: 48.h,
+            width: 324.w,
+            top: 0,
+            child: LinearMcqOption(
+              isSelected: controller.state.selected.value == 0,
+              label: controller.state.options[0].label,
+              onTap: () => controller.selectOption(0),
+            ),
+          ),
+          Positioned(
+            height: 48.h,
+            width: 324.w,
+            top: 69.h,
+            child: LinearMcqOption(
+              isSelected: controller.state.selected.value == 1,
+              label: controller.state.options[1].label,
+              onTap: () => controller.selectOption(1),
+            ),
+          ),
+          Positioned(
+            height: 48.h,
+            width: 324.w,
+            top: 138.h,
+            child: LinearMcqOption(
+              isSelected: controller.state.selected.value == 2,
+              label: controller.state.options[2].label,
+              onTap: () => controller.selectOption(2),
+            ),
+          ),
+          Positioned(
+            height: 48.h,
+            width: 324.w,
+            top: 207.h,
+            child: LinearMcqOption(
+              isSelected: controller.state.selected.value == 3,
+              label: controller.state.options[3].label,
+              onTap: () => controller.selectOption(3),
+            ),
+          ),
+          Positioned(
+            height: 48.h,
+            width: 324.w,
+            top: 276.h,
+            child: LinearMcqOption(
+              isSelected: controller.state.selected.value == 4,
+              label: controller.state.options[4].label,
+              onTap: () => controller.selectOption(4),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget squareMcq() {
+    return Obx(() => Stack(
+      children: [
+        Positioned(
+          top: 0.h,
+          left: 0.w,
+          width: 152.w,
+          height: 152.h,
+          child: SquareMcqOption(
+            label: controller.state.options[0].label,
+            icon: controller.state.options[0].icon,
+            onTap: () => controller.selectOption(0),
+            isSelected: controller.state.selected.value == 0,
+          ),
+        ),
+        Positioned(
+          top: 0.h,
+          left: 172.w,
+          width: 152.w,
+          height: 152.h,
+          child: SquareMcqOption(
+            label: controller.state.options[1].label,
+            icon: controller.state.options[1].icon,
+            onTap: () => controller.selectOption(1),
+            isSelected: controller.state.selected.value == 1,
+          ),
+        ),
+        Positioned(
+          top: 172.h,
+          left: 0.w,
+          width: 152.w,
+          height: 152.h,
+          child: SquareMcqOption(
+            label: controller.state.options[2].label,
+            icon: controller.state.options[2].icon,
+            onTap: () => controller.selectOption(2),
+            isSelected: controller.state.selected.value == 2,
+          ),
+        ),
+        Positioned(
+          top: 172.h,
+          left: 172.w,
+          width: 152.w,
+          height: 152.h,
+          child: SquareMcqOption(
+            label: controller.state.options[3].label,
+            icon: controller.state.options[3].icon,
+            onTap: () => controller.selectOption(3),
+            isSelected: controller.state.selected.value == 3,
+          ),
+        ),
+      ],
+    ));
   }
 }

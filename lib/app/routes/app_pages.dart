@@ -52,7 +52,6 @@ import '../modules/stressIndicator/bindings/stress_indicator_binding.dart';
 import '../modules/stressIndicator/views/stress_indicator_view.dart';
 import '../modules/stressLevel/bindings/stress_level_binding.dart';
 import '../modules/stressLevel/views/stress_level_view.dart';
-import '../views/views/mind_test_view.dart';
 
 part 'app_routes.dart';
 
@@ -86,10 +85,6 @@ class AppPages {
       name: _Paths.MENTAL_SCORE,
       page: () => const MentalScoreView(),
       binding: MentalScoreBinding(),
-    ),
-    GetPage(
-      name: _Paths.MindTestScreenView,
-      page: () => const MindTestScreenView(),
     ),
     GetPage(
       name: _Paths.AI_CHAT_BOT_SCREEN,

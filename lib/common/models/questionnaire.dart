@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:here_for_you_app/common/models/option.dart';
 
 class QuestionnaireModel {
   final String description;
   final String nextId;
   final String note;
-  final List<String> options;
+  final List<OptionModel> options;
   final String progressLabel;
   final List<String> questions;
 
@@ -25,7 +26,12 @@ class QuestionnaireModel {
       note: data['note'] ?? "",
       progressLabel: data['progress_label'] ?? "",
       questions: List<String>.from(data['questions'] ?? []),
-      options: List<String>.from(data['options'] ?? []),
+      options: (data['options'] as List<dynamic>? ?? [])
+          .map(
+            (optionData) =>
+                OptionModel.fromJson(optionData as Map<String, dynamic>),
+          )
+          .toList(),
     );
   }
 }
