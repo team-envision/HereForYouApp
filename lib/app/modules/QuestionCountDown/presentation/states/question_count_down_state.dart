@@ -10,4 +10,5 @@ class QuestionCountDownState extends GetXState {
   List<String> questions = [];
   String nextId = "";
   RxBool isLoading = true.obs;
+  String? key;
 }

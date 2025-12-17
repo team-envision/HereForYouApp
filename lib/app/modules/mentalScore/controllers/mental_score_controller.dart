@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:here_for_you_app/app/modules/mentalScore/states/mental_score_state.dart';
+import 'package:here_for_you_app/common/local_storage/class%20LocalStorage.dart';
+import 'package:here_for_you_app/common/utils/snackbars.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MentalScoreController extends GetxController {
-  //TODO: Implement MentalScoreController
+  MentalScoreState state;
+  LocalStorage localStorage = LocalStorage();
 
-  String Textdata = "According to our screening assessment you have symptoms "
+  MentalScoreController({required this.state});
+
+  String Textdata =
+      "According to our screening assessment you have symptoms "
       "suggestive of Depression. Sadness is a human emotion that all "
       "people feel at certain times during their lives. Feeling sad is a "
       "natural reaction to situations that cause emotional upset or pain. "
@@ -31,7 +38,7 @@ class MentalScoreController extends GetxController {
   void onInit() {
     super.onInit();
     scrollController.addListener(scrollListener);
-    getFinalMessage();
+    state.key = Get.arguments?['key'];
   }
 
   void scrollListener() {
@@ -56,40 +63,42 @@ class MentalScoreController extends GetxController {
     print(_AnxietyResult.value);
     print(_StressResult.value);
 
-    msg.value = "According to our screening assessment, we have identified the following:";
+    msg.value =
+        "According to our screening assessment, we have identified the following:";
     endMsg.value = "";
 
     if (_DepressionResult.value == "Moderate" ||
         _DepressionResult.value == "Moderately severe" ||
         _DepressionResult.value == "Severe") {
-      msg.value += "\n\n**Depression**: Symptoms suggestive of Depression have been identified.";
+      msg.value +=
+          "\n\n**Depression**: Symptoms suggestive of Depression have been identified.";
       endMsg.value +=
-      "\nSadness is a natural human emotion, but depression differs. Depression is a medical condition, not just sadness.";
+          "\nSadness is a natural human emotion, but depression differs. Depression is a medical condition, not just sadness.";
     }
-
 
     if (_AnxietyResult.value == "Moderate anxiety" ||
         _AnxietyResult.value == "Severe anxiety") {
-      msg.value += "\n\n**Anxiety**: Symptoms suggestive of an Anxiety disorder have been identified.";
+      msg.value +=
+          "\n\n**Anxiety**: Symptoms suggestive of an Anxiety disorder have been identified.";
       endMsg.value +=
-      "\nIt's normal to feel anxious, but it becomes a problem when symptoms are constant or intense, even without a present danger.";
+          "\nIt's normal to feel anxious, but it becomes a problem when symptoms are constant or intense, even without a present danger.";
     }
-
 
     if (_StressResult.value == "Moderate" ||
         _StressResult.value == "Severe" ||
         _StressResult.value == "Extremely Severe") {
-      msg.value += "\n\n**Stress**: High stress levels that may be challenging to cope with have been identified.";
+      msg.value +=
+          "\n\n**Stress**: High stress levels that may be challenging to cope with have been identified.";
       endMsg.value +=
-      "\nStress is natural and important for growth, but it becomes problematic when it exceeds your ability to cope.";
+          "\nStress is natural and important for growth, but it becomes problematic when it exceeds your ability to cope.";
     }
 
-
-    if (msg.value == "According to our screening assessment, we have identified the following:") {
+    if (msg.value ==
+        "According to our screening assessment, we have identified the following:") {
       msg.value =
-      "According to our screening assessment, you show no significant symptoms of depression, anxiety, or stress.";
+          "According to our screening assessment, you show no significant symptoms of depression, anxiety, or stress.";
       endMsg.value =
-      "Strong mental health is more than the absence of mental health problems; it’s about the presence of positive characteristics.";
+          "Strong mental health is more than the absence of mental health problems; it’s about the presence of positive characteristics.";
       title.value = "No Issues";
       imgUrl.value = "assets/images/icon_noProblems.png";
     } else {
@@ -98,11 +107,16 @@ class MentalScoreController extends GetxController {
     }
   }
 
-
+  Future<void> show() async {
+    Map<String, String> results = {};
+    results = await localStorage.getMap(key: state.key!);
+    Snackbars.info(title: "Results", message: results.toString());
+  }
 
   @override
   void onReady() {
     super.onReady();
+    show();
   }
 
   @override

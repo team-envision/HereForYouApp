@@ -7,4 +7,6 @@ class QuestionState {
   RxList<OptionModel> options = (<OptionModel>[]).obs;
   RxInt selected = (-1).obs;
   RxInt questionNo = 0.obs;
+  RxBool isLoading = false.obs;
+  String? key;
 }

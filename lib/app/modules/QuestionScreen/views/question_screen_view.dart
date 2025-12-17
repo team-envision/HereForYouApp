@@ -89,11 +89,14 @@ class QuestionView extends GetView<QuestionController> {
             left: 24.05.w,
             width: 345.99.w,
             height: 56.49.h,
-            child: kElevatedButton(
-              text: "Next",
-              onPressed: controller.next,
-              fontSize: 21.07.sp,
-              trailingIcon: "assets/images/forward.svg",
+            child: Obx(
+              () => kElevatedButton(
+                isLoading: controller.state.isLoading.value,
+                text: "Next",
+                onPressed: controller.next,
+                fontSize: 21.07.sp,
+                trailingIcon: "assets/images/forward.svg",
+              ),
             ),
           ),
         ],
@@ -161,57 +164,59 @@ class QuestionView extends GetView<QuestionController> {
   }
 
   Widget squareMcq() {
-    return Obx(() => Stack(
-      children: [
-        Positioned(
-          top: 0.h,
-          left: 0.w,
-          width: 152.w,
-          height: 152.h,
-          child: SquareMcqOption(
-            label: controller.state.options[0].label,
-            icon: controller.state.options[0].icon,
-            onTap: () => controller.selectOption(0),
-            isSelected: controller.state.selected.value == 0,
+    return Obx(
+      () => Stack(
+        children: [
+          Positioned(
+            top: 0.h,
+            left: 0.w,
+            width: 152.w,
+            height: 152.h,
+            child: SquareMcqOption(
+              label: controller.state.options[0].label,
+              icon: controller.state.options[0].icon,
+              onTap: () => controller.selectOption(0),
+              isSelected: controller.state.selected.value == 0,
+            ),
           ),
-        ),
-        Positioned(
-          top: 0.h,
-          left: 172.w,
-          width: 152.w,
-          height: 152.h,
-          child: SquareMcqOption(
-            label: controller.state.options[1].label,
-            icon: controller.state.options[1].icon,
-            onTap: () => controller.selectOption(1),
-            isSelected: controller.state.selected.value == 1,
+          Positioned(
+            top: 0.h,
+            left: 172.w,
+            width: 152.w,
+            height: 152.h,
+            child: SquareMcqOption(
+              label: controller.state.options[1].label,
+              icon: controller.state.options[1].icon,
+              onTap: () => controller.selectOption(1),
+              isSelected: controller.state.selected.value == 1,
+            ),
           ),
-        ),
-        Positioned(
-          top: 172.h,
-          left: 0.w,
-          width: 152.w,
-          height: 152.h,
-          child: SquareMcqOption(
-            label: controller.state.options[2].label,
-            icon: controller.state.options[2].icon,
-            onTap: () => controller.selectOption(2),
-            isSelected: controller.state.selected.value == 2,
+          Positioned(
+            top: 172.h,
+            left: 0.w,
+            width: 152.w,
+            height: 152.h,
+            child: SquareMcqOption(
+              label: controller.state.options[2].label,
+              icon: controller.state.options[2].icon,
+              onTap: () => controller.selectOption(2),
+              isSelected: controller.state.selected.value == 2,
+            ),
           ),
-        ),
-        Positioned(
-          top: 172.h,
-          left: 172.w,
-          width: 152.w,
-          height: 152.h,
-          child: SquareMcqOption(
-            label: controller.state.options[3].label,
-            icon: controller.state.options[3].icon,
-            onTap: () => controller.selectOption(3),
-            isSelected: controller.state.selected.value == 3,
+          Positioned(
+            top: 172.h,
+            left: 172.w,
+            width: 152.w,
+            height: 152.h,
+            child: SquareMcqOption(
+              label: controller.state.options[3].label,
+              icon: controller.state.options[3].icon,
+              onTap: () => controller.selectOption(3),
+              isSelected: controller.state.selected.value == 3,
+            ),
           ),
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
 }

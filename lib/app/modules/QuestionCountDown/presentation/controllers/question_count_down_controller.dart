@@ -42,6 +42,7 @@ class QuestionCountDownController extends GetxController {
         'questions': state.questions,
         'options': state.options,
         'nextId': state.nextId,
+        'key': state.key,
       },
     );
   }
@@ -50,6 +51,7 @@ class QuestionCountDownController extends GetxController {
   void onInit() {
     super.onInit();
     state.questionnaire = Get.arguments?['questionnaire'] ?? "DASS_21";
+    state.key = Get.arguments?['key'];
     logger.d(state.questionnaire);
     getData();
   }

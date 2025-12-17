@@ -14,7 +14,6 @@ class MentalScoreView extends GetView<MentalScoreController> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MentalScoreController());
     return Scaffold(
       backgroundColor: AppColors.white,
       body: NotificationListener(
