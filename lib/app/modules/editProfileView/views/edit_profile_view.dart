@@ -17,17 +17,6 @@ class EditProfileView extends GetView<EditProfileViewController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => LoadingOverlay(
-        isLoading: controller.state.isDataLoading.value,
-        loadingAnimation: "assets/animations/loadingFace.gif",
-        size: 92,
-        child: content(),
-      ),
-    );
-  }
-
-  Widget content() {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
@@ -93,7 +82,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
                 ),
                 SizedBox(height: 20.h),
                 Obx(
-                  () => CustomDropDown(
+                      () => CustomDropDown(
                     onChanged: controller.onChanged,
                     initialValue: controller.state.gender.value,
                   ),
@@ -135,7 +124,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
                   height: 49.h,
                   width: double.infinity,
                   child: Obx(
-                    () => kElevatedButton(
+                        () => kElevatedButton(
                       isLoading: controller.state.isLoading.value,
                       text: "Save",
                       onPressed: controller.saveDetails,

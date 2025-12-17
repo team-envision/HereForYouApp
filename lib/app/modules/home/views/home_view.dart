@@ -63,7 +63,6 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     const SizedBox(height: 100),
-                    // Bottom padding for scrolling comfort
                   ],
                 ),
               ),
@@ -107,12 +106,14 @@ class HomeView extends GetView<HomeController> {
           SizedBox(width: 14.86.w),
           Padding(
             padding: EdgeInsets.only(bottom: 28.h),
-            child: Text(
-              "Hi, Rhythm Gupta!",
-              style: GoogleFonts.urbanist(
-                fontWeight: FontWeight.w700,
-                fontSize: 24.95.sp,
-                letterSpacing: 0.02 * 24.95.sp,
+            child: Obx(
+              () => Text(
+                "Hi, ${controller.user.name}!",
+                style: GoogleFonts.urbanist(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24.95.sp,
+                  letterSpacing: 0.02 * 24.95.sp,
+                ),
               ),
             ),
           ),

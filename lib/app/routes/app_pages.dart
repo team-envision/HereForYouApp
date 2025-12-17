@@ -18,14 +18,12 @@ import '../modules/basicInfoPage/presentation/bindings/basic_info_page_binding.d
 import '../modules/basicInfoPage/presentation/views/basic_info_page_view.dart';
 import '../modules/changePassword/bindings/change_password_binding.dart';
 import '../modules/changePassword/views/change_password_view.dart';
-import '../modules/editProfileView/presentation/bindings/edit_profile_view_binding.dart';
-import '../modules/editProfileView/presentation/views/edit_profile_view.dart';
+import '../modules/editProfileView/bindings/edit_profile_view_binding.dart';
+import '../modules/editProfileView/views/edit_profile_view.dart';
 import '../modules/emergency_contact/presentation/bindings/emergency_contact_binding.dart';
 import '../modules/emergency_contact/presentation/views/emergency_contact_view.dart';
 import '../modules/emergency_count_down/bindings/emergency_count_down_binding.dart';
 import '../modules/emergency_count_down/views/emergency_count_down_view.dart';
-import '../modules/faceLoading/bindings/face_loading_binding.dart';
-import '../modules/faceLoading/views/face_loading_view.dart';
 import '../modules/feedBack/bindings/feed_back_binding.dart';
 import '../modules/feedBack/views/feed_back_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
@@ -170,11 +168,6 @@ class AppPages {
       name: _Paths.MAIN,
       page: () => const MainView(),
       binding: MainBinding(),
-    ),
-    GetPage(
-      name: _Paths.FACE_LOADING,
-      page: () => const FaceLoadingView(),
-      binding: FaceLoadingBinding(),
     ),
     GetPage(
       name: _Paths.STRESS_INDICATOR,

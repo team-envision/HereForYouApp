@@ -1,12 +1,14 @@
-
-
 import 'package:get/get.dart';
+import 'package:here_for_you_app/common/models/user.dart';
+
+import '../../../../common/services/user_service.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
-
   final emojis = ["🙁", "😐", "🙂", "😃", "😆"];
   final selectedIndex = 0.obs;
+
+  UserModel get user => UserService.to.userModel.value;
+
   @override
   void onInit() {
     super.onInit();
@@ -21,5 +23,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
 }

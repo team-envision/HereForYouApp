@@ -30,20 +30,24 @@ class ProfilePageView extends GetView<ProfilePageController> {
         child: Column(
           children: [
             header(),
-            Text(
-              "Rhythm Gupta",
-              style: GoogleFonts.urbanist(
-                fontWeight: FontWeight.w700,
-                fontSize: 24.95.sp,
-                letterSpacing: 24.95.sp * 0.02,
+            Obx(
+              () => Text(
+                controller.user.name,
+                style: GoogleFonts.urbanist(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24.95.sp,
+                  letterSpacing: 24.95.sp * 0.02,
+                ),
               ),
             ),
-            Text(
-              "rhythm.gupta360@gmail.com",
-              style: GoogleFonts.urbanist(
-                fontWeight: FontWeight.w700,
-                fontSize: 9.56.sp,
-                letterSpacing: 9.56.sp * 0.02,
+            Obx(
+              () => Text(
+                controller.user.email,
+                style: GoogleFonts.urbanist(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 9.56.sp,
+                  letterSpacing: 9.56.sp * 0.02,
+                ),
               ),
             ),
             SizedBox(height: 7.h),
@@ -269,7 +273,10 @@ class ProfilePageView extends GetView<ProfilePageController> {
           Positioned(
             left: 0,
             top: 0,
-            child: ClipRRect(borderRadius: BorderRadius.circular(30.r),child: Image.asset("assets/images/profile_background.png")),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.r),
+              child: Image.asset("assets/images/profile_background.png"),
+            ),
           ),
           Positioned(
             left: 20.41.w,

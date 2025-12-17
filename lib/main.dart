@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
+import 'package:here_for_you_app/app_bindings.dart';
 
-import 'common/services/deep_link_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -16,6 +16,7 @@ Future<void> main() async {
     ScreenUtilInit(
       designSize: const Size(393, 852),
       builder: (context, child) => GetMaterialApp(
+        initialBinding: AppBindings(),
         debugShowCheckedModeBanner: false,
         title: "Application",
         getPages: AppPages.routes,

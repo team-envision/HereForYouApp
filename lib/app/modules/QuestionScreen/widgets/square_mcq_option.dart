@@ -64,7 +64,7 @@ class SquareMcqOption extends StatelessWidget {
               left: 116.w,
               width: 18.w,
               height: 18.h,
-              child: CachedNetworkImage(imageUrl: icon),
+              child: CachedNetworkImage(imageUrl: icon  ),
             ):const SizedBox(),
           ],
         ),

@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/common/services/user_service.dart';
+import 'package:here_for_you_app/common/utils/snackbars.dart';
 
 import '../../../routes/app_pages.dart';
 
@@ -6,6 +8,8 @@ class MainController extends GetxController {
   final pages = [Routes.HOME, Routes.PROFILE_PAGE];
   var currentIndex = 0.obs;
   final count = 0.obs;
+  RxBool isDataLoading = true.obs;
+  UserService userService = Get.find<UserService>();
 
   void changePage(int index) {
     if (index == 1) {
@@ -21,9 +25,24 @@ class MainController extends GetxController {
     }
   }
 
+  Future<void> fetchData() async {
+    final result = await userService.get(forceRefresh: true);
+    result.fold(
+      (error) {
+        Snackbars.error(title: "Could not fetch data", message: error.message);
+      },
+      (data) async {
+        await Future.delayed(const Duration(seconds: 1));
+        isDataLoading.value = false;
+      },
+    );
+  }
+
   @override
   void onInit() {
     super.onInit();
+    isDataLoading.value = true;
+    fetchData();
   }
 
   @override
