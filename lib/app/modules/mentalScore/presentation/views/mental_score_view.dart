@@ -74,7 +74,10 @@ class MentalScoreView extends GetView<MentalScoreController> {
               child: Center(
                 child: Obx(
                   () => Text(
-                    controller.state.score.value.toString(),
+                    controller.resultsModel.value
+                        .getTodayScore()
+                        .mentalScore
+                        .toString(),
                     style: GoogleFonts.urbanist(
                       fontWeight: FontWeight.w800,
                       fontSize: 128.07.sp,
@@ -151,22 +154,28 @@ class MentalScoreView extends GetView<MentalScoreController> {
 
                               SizedBox(height: 18.h),
 
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 26.5.w,
-                                ),
-                                child: Align(
-                                  alignment: Alignment(alignX, 0),
-                                  child: Text(
-                                    controller.state.analysis.value,
-                                    textAlign: factor > 0.8
-                                        ? TextAlign.center
-                                        : TextAlign.left,
-                                    style: GoogleFonts.urbanist(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16.sp,
-                                      height: 1.5,
-                                    ),
+                              SizedBox(
+                                width: 340.w,
+                                height: 209.h,
+                                child: Text(
+                                  controller.resultsModel.value
+                                              .getTodayScore()
+                                              .mentalScore ==
+                                          0
+                                      ? "You have not taken the test yet."
+                                      : controller
+                                            .resultsModel
+                                            .value
+                                            .mentalRecommendation,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 8,
+                                  textAlign: factor > 0.8
+                                      ? TextAlign.center
+                                      : TextAlign.left,
+                                  style: GoogleFonts.urbanist(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp,
+                                    height: 1.5,
                                   ),
                                 ),
                               ),
@@ -196,7 +205,10 @@ class MentalScoreView extends GetView<MentalScoreController> {
                                   child: Obx(
                                     () => CustomBarGrpah(
                                       leftLabel: controller.state.leftLabels,
-                                      values: controller.state.values.value,
+                                      values: controller
+                                          .resultsModel
+                                          .value
+                                          .mentalScores,
                                       barColor: const Color(0xFF765A48),
                                     ),
                                   ),

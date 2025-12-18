@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomBarGrpah extends StatelessWidget {
   final List<String> leftLabel;
-  final List<double> values;
+  final List<int> values;
   final Color barColor;
 
   const CustomBarGrpah({
@@ -125,12 +125,12 @@ class CustomBarGrpah extends StatelessWidget {
     );
   }
 
-  BarChartGroupData _buildGroup(int x, double y) {
+  BarChartGroupData _buildGroup(int x, int y) {
     return BarChartGroupData(
       x: x,
       barRods: [
         BarChartRodData(
-          toY: y,
+          toY: y.toDouble(),
           color: barColor,
           width: 18.w,
           borderRadius: const BorderRadius.only(

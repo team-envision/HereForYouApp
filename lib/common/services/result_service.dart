@@ -3,15 +3,17 @@ import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:here_for_you_app/common/exceptions/custom_exception.dart';
 import 'package:here_for_you_app/common/firebase/firebase_firestore.dart';
+import 'package:logger/logger.dart';
 
 import '../models/results.dart';
 
-class ResultsService extends GetxController {
+class ResultService extends GetxController {
   final FirebaseFirestoreService firebaseFirestoreService;
+  Logger logger = Logger();
 
-  static ResultsService get to => Get.find();
+  static ResultService get to => Get.find();
 
-  ResultsService({required this.firebaseFirestoreService});
+  ResultService({required this.firebaseFirestoreService});
 
   final resultsModel = ResultsModel.empty().obs;
 
@@ -29,6 +31,7 @@ class ResultsService extends GetxController {
 
       if (response.exists) {
         final data = response.data() as Map<String, dynamic>;
+        logger.d(response.data());
         final fetchedResults = ResultsModel.fromJson(data);
         resultsModel.value = fetchedResults;
         return Right(fetchedResults);

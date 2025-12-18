@@ -132,6 +132,36 @@ class ResultsModel {
       sunday: DailyScore.empty(),
     );
   }
+
+  List<int> get mentalScores => [
+    monday.mentalScore,
+    tuesday.mentalScore,
+    wednesday.mentalScore,
+    thursday.mentalScore,
+    friday.mentalScore,
+    saturday.mentalScore,
+    sunday.mentalScore,
+  ];
+
+  List<int> get moodScores => [
+    monday.moodScore,
+    tuesday.moodScore,
+    wednesday.moodScore,
+    thursday.moodScore,
+    friday.moodScore,
+    saturday.moodScore,
+    sunday.moodScore,
+  ];
+
+  List<int> get stressScores => [
+    monday.stressScore,
+    tuesday.stressScore,
+    wednesday.stressScore,
+    thursday.stressScore,
+    friday.stressScore,
+    saturday.stressScore,
+    sunday.stressScore,
+  ];
 }
 
 class DailyScore {

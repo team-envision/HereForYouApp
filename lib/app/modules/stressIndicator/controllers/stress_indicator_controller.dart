@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
+import 'package:here_for_you_app/common/models/results.dart';
+
+import '../../../../common/services/result_service.dart';
 
 class StressIndicatorController extends GetxController {
-  //TODO: Implement StressIndicatorController
+  Rx<ResultsModel> resultModel = ResultService.to.resultsModel;
 
   final count = 0.obs;
   @override

@@ -11,8 +11,8 @@ class AppBindings extends Bindings {
       UserService(firebaseFirestoreService: FirebaseFirestoreService()),
       permanent: true,
     );
-    Get.put<ResultsService>(
-      ResultsService(firebaseFirestoreService: FirebaseFirestoreService()),
+    Get.put<ResultService>(
+      ResultService(firebaseFirestoreService: FirebaseFirestoreService()),
       permanent: true,
     );
   }

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:here_for_you_app/app/modules/main/controllers/main_controller.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/common/firebase/firebase_auth.dart';
 import 'package:here_for_you_app/common/models/user.dart';
