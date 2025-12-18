@@ -54,7 +54,7 @@ class QuestionController extends GetxController {
       );
       state.isLoading.value = false;
     } else {
-      Get.offAllNamed(Routes.MENTAL_SCORE, arguments: {'key': state.key});
+      Get.offNamed(Routes.MENTAL_SCORE, arguments: {'key': state.key});
     }
   }
 }

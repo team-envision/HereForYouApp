@@ -13,7 +13,6 @@ import '../../../../common/Components/featureContainers.dart';
 import '../../../../common/Components/kElevatedButton.dart';
 import '../../../routes/app_pages.dart';
 import '../../../views/views/MindAnchorView.dart';
-import '../../mentalScore/views/mental_score_view.dart';
 import '../../moodQuality/views/mood_quality_view.dart';
 import '../controllers/profile_page_controller.dart';
 
@@ -100,7 +99,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
                           child: kContainer(
                             color: AppColors.mentalScoreCard,
                             text: "Mental\nScore",
-                            onTap: () => Get.to(() => const MentalScoreView()),
+                            onTap: () => Get.toNamed(Routes.MENTAL_SCORE),
                             icon: SvgPicture.asset(
                               "assets/icons/mentalScoreIcon.svg",
                             ),
