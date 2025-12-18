@@ -92,7 +92,7 @@ class StressLevelView extends GetView<StressLevelController> {
                 maxLines: 5,
                 overflow: TextOverflow.ellipsis,
                 controller.resultModel.value.getTodayScore().stressScore == 0
-                    ? "You have not taken the test yet."
+                    ? "Either you have not taken the test yet or you have no stress"
                     : controller.resultModel.value.stressRecommendation,
                 style: GoogleFonts.urbanist(
                   fontWeight: FontWeight.w600,
