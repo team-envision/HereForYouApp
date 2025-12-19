@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:here_for_you_app/common/firebase/firebase_firestore.dart';
+import 'package:here_for_you_app/common/services/deep_link_service.dart';
 import 'package:here_for_you_app/common/services/result_service.dart';
 
 import 'common/services/user_service.dart';
@@ -15,5 +16,7 @@ class AppBindings extends Bindings {
       ResultService(firebaseFirestoreService: FirebaseFirestoreService()),
       permanent: true,
     );
+
+      DeepLink.initialize();
   }
 }

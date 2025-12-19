@@ -1,0 +1,17 @@
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/splash.png
+  fullscreen: true
+
+  # 1. Branding for iOS & Old Android
+  branding: assets/images/branding.png
+  # Recommended: Add padding so it doesn't touch the very edge of the screen
+  branding_bottom_padding: 24
+
+  # 2. Android 12+ Configuration
+  android_12:
+    image: assets/images/splash.png
+    icon_background_color: "#ffffff"
+
+    # IMPORTANT: You must repeat the branding line here for Android 12
+    branding: assets/images/branding.png

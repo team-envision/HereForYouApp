@@ -51,9 +51,9 @@ class FirebaseAuthService {
       ActionCodeSettings actionCodeSettings = ActionCodeSettings(
         url: 'https://hereforyou-59786.firebaseapp.com',
         handleCodeInApp: true,
-        androidPackageName: 'com.example.here_for_you_app',
+        androidPackageName: 'com.aaruush.HereForYou.here_for_you_app',
       );
-      await firebaseAuth.currentUser?.sendEmailVerification();
+      await firebaseAuth.currentUser?.sendEmailVerification(actionCodeSettings);
       logger.d("Verification email sent successfully");
     } catch (e) {
       logger.e("Send verification email error: $e");
