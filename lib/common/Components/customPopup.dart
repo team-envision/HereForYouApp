@@ -10,6 +10,8 @@ class CustomPopup {
   CustomPopup._();
 
   static void show({
+    String acceptTitle = "YES",
+    String cancelTitle = "NO",
     required String title,
     VoidCallback? onAccept,
     VoidCallback? onCancel,
@@ -40,6 +42,7 @@ class CustomPopup {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
+                textAlign: TextAlign.center,
                 title,
                 style: GoogleFonts.urbanist(
                   fontWeight: FontWeight.w700,
@@ -57,7 +60,7 @@ class CustomPopup {
                     child: kElevatedButton(
                       borderColor: AppColors.black,
                       backgroundColor: AppColors.white,
-                      text: "NO",
+                      text: cancelTitle,
                       onPressed: onCancel ?? () {},
                       fontSize: 16.68.sp,
                     ),
@@ -66,13 +69,13 @@ class CustomPopup {
                     width: 118.w,
                     height: 44.h,
                     child: kElevatedButton(
-                      text: "YES",
+                      text: acceptTitle,
                       onPressed: onAccept ?? () {},
                       fontSize: 16.68.sp,
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

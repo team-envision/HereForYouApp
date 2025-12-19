@@ -31,6 +31,8 @@ abstract class Routes {
   static const MAIN = _Paths.MAIN;
   static const FACE_LOADING = _Paths.FACE_LOADING;
   static const STRESS_INDICATOR = _Paths.STRESS_INDICATOR;
+  static const EMERGENCY_COUNT_DOWN = _Paths.EMERGENCY_COUNT_DOWN;
+  static const ARTICLES = _Paths.ARTICLES;
 }
 
 abstract class _Paths {
@@ -62,4 +64,6 @@ abstract class _Paths {
   static const MAIN = '/main';
   static const FACE_LOADING = '/face-loading';
   static const STRESS_INDICATOR = '/stress-indicator';
+  static const EMERGENCY_COUNT_DOWN = '/emergency-count-down';
+  static const ARTICLES = '/articles';
 }

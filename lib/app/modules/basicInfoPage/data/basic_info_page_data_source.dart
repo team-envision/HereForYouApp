@@ -8,19 +8,26 @@ class BasicInfoPageDataSource {
 
   BasicInfoPageDataSource({required this.firebaseFirestoreService});
 
-  Future<Either<CustomException, bool>> update(
-      {required Map<String, dynamic> data}) async
-  {
+  Future<Either<CustomException, bool>> update({
+    required String age,
+    required String height,
+    required String weight,
+  }) async {
     try {
-      await firebaseFirestoreService.updateProfile(data: data);
+      await firebaseFirestoreService.updateDocument(
+        collection: 'profile',
+        data: {
+          'age': age,
+          'height': height,
+          'weight': weight,
+          'status': 'complete',
+        },
+      );
       return right(true);
-    }
-    on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       return left(CustomException(message: e.message.toString()));
-    }
-    catch (e) {
+    } catch (e) {
       return left(CustomException(message: e.toString()));
     }
   }
-
 }

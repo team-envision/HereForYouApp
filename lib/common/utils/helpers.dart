@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Helpers {
   Helpers._();
@@ -45,23 +46,13 @@ class Helpers {
     if (value == null || value.isEmpty) {
       return "Name is required";
     }
+    return null;
+  }
 
-    // Updated pattern to allow:
-    // - Letters (a-z, A-Z)
-    // - Spaces
-    // - Periods/dots (.)
-    String pattern = r"^[a-zA-Z\s\.]+$";
-    RegExp regex = RegExp(pattern);
-
-    if (!regex.hasMatch(value)) {
-      return "Name should only contain letters, spaces, and periods";
+  static String? validateNonEmpty(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Data is required";
     }
-
-    // Optional: Additional validation to ensure it's not just punctuation
-    if (value.trim().replaceAll(RegExp(r'[\s\.]'), '').isEmpty) {
-      return "Please enter a valid name";
-    }
-
     return null;
   }
 
@@ -133,5 +124,10 @@ class Helpers {
     }
 
     return null;
+  }
+
+  static Future<void> openUrl({required String url}) async {
+    final Uri uri = Uri.parse(url);
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 }

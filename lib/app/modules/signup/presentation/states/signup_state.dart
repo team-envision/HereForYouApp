@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpState extends GetXState {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  RxBool isGoogleSigning = false.obs;
-  RxBool isSigningIn = false.obs;
+class SignUpState {
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  // Reactive variables - these work because GetX provides .obs extension
+  final isGoogleSigningIn = false.obs;
+  final isSigningUp = false.obs;
+  final isGoogleSignUpMode = false.obs;
+  final isResendEmailSent = false.obs;
+
+  // Clean up controllers when state is disposed
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+  }
 }

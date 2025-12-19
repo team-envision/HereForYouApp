@@ -21,10 +21,7 @@ class GenderPageController extends GetxController {
       if (state.selected.value != "") {
         state.isLoading.value = true;
         String gender = state.selected.value.split(' ').last;
-        final result = await dataSource.updateGender({
-          'gender': gender,
-          'status': 'basicInfo',
-        });
+        final result = await dataSource.updateGender(gender: gender);
         result.fold(
           (error) {
             Snackbars.error(title: "Error", message: error.message);

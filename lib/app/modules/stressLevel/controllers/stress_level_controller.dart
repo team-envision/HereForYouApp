@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/states/stress_level_state.dart';
+import 'package:here_for_you_app/common/models/results.dart';
+
+import '../../../../common/services/result_service.dart';
 
 class StressLevelController extends GetxController {
   //TODO: Implement StressLevelController
   final StressLevelState state;
+  Rx<ResultsModel> resultModel = ResultService.to.resultsModel;
+
 
   StressLevelController({required this.state});
 

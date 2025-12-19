@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
+import 'package:here_for_you_app/common/Components/loading_overlay.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../../ProfilePage/bindings/profile_page_binding.dart';
@@ -17,6 +18,17 @@ class MainView extends GetView<MainController> {
 
   @override
   Widget build(BuildContext context) {
+    return Obx(
+      () => LoadingOverlay(
+        isLoading: controller.isDataLoading.value,
+        loadingAnimation: "assets/animations/loadingFace.gif",
+        size: 92,
+        child: content(),
+      ),
+    );
+  }
+
+  Widget content() {
     return Scaffold(
       extendBody: true,
       body: Navigator(
@@ -25,7 +37,6 @@ class MainView extends GetView<MainController> {
         onGenerateRoute: (settings) {
           // Use the route configuration from AppPages
           final routeConfig = _getRouteConfig(settings.name ?? Routes.HOME);
-
 
           return GetPageRoute(
             settings: settings,
@@ -46,14 +57,14 @@ class MainView extends GetView<MainController> {
               color: Colors.black.withOpacity(0.3),
               blurRadius: 17.94,
               spreadRadius: 0,
-              offset: Offset(0, 0),
+              offset: const Offset(0, 0),
             ),
           ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(44.r),
           child: Obx(
-                () => Container(
+            () => Container(
               color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -109,20 +120,20 @@ class MainView extends GetView<MainController> {
           children: [
             isSvg
                 ? SvgPicture.asset(
-              icon,
-              height: 19.12.h,
-              width: 19.12.w,
-              colorFilter: ColorFilter.mode(
-                AppColors.black,
-                BlendMode.srcIn,
-              ),
-            )
+                    icon,
+                    height: 19.12.h,
+                    width: 19.12.w,
+                    colorFilter: ColorFilter.mode(
+                      AppColors.black,
+                      BlendMode.srcIn,
+                    ),
+                  )
                 : Image.asset(
-              icon,
-              height: 19.12.h,
-              width: 19.12.w,
-              color: AppColors.black,
-            ),
+                    icon,
+                    height: 19.12.h,
+                    width: 19.12.w,
+                    color: AppColors.black,
+                  ),
             SizedBox(height: 4.h),
             Text(
               label,

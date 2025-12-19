@@ -97,6 +97,7 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
           ),
         ),
       ),
+
     );
   }
 }

@@ -30,51 +30,82 @@ class FirebaseFirestoreService {
 
   Future<void> setDocument({
     required String collection,
-    required String doc,
+    required String? doc,
     required Map<String, dynamic> data,
     bool merge = false,
   }) async {
-    try {
-      await firestore
-          .collection(collection)
-          .doc(doc)
-          .set(data, SetOptions(merge: merge));
-    } catch (e) {
-      logger.e(e);
-      rethrow;
-    }
+    await firestore
+        .collection(collection)
+        .doc(doc)
+        .set(data, SetOptions(merge: merge));
   }
 
-  Future<void> updateProfile({required Map<String, dynamic> data}) async {
+  Future<void> updateDocument({
+    required String collection,
+    String? document,
+    required Map<String, dynamic> data,
+  }) async {
     try {
       await setDocument(
-        collection: "profile",
-        doc: auth.currentUser!.uid,
+        collection: collection,
+        doc: document ?? auth.currentUser!.uid,
         data: data,
         merge: true,
       );
-      logger.d("Profile Updated (merged) \n$data");
+      logger.d(
+        "Document Updated: \n$collection \n${auth.currentUser!.uid} \n$data",
+      );
     } catch (e) {
       logger.e(e);
-      rethrow;
     }
   }
 
   Future<DocumentSnapshot> getDocument({
     required String collection,
-    required String doc,
+    String? doc,
   }) async {
     try {
-      return await firestore.collection(collection).doc(doc).get();
+      return await firestore
+          .collection(collection)
+          .doc(doc ?? auth.currentUser!.uid)
+          .get();
     } catch (e) {
       logger.e(e);
       rethrow;
+    }
+  }
+
+  Future<void> addDocument({
+    required String collection,
+    String? document,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await setDocument(
+        collection: collection,
+        doc: document ?? auth.currentUser!.uid,
+        data: data,
+      );
+      logger.d(
+        "Document Added: \n$collection \n${auth.currentUser!.uid} \n$data",
+      );
+    } catch (e) {
+      logger.e(e);
     }
   }
 
   Future<DocumentSnapshot> getProfileDocument() async {
     try {
       return getDocument(collection: "profile", doc: auth.currentUser!.uid);
+    } catch (e) {
+      logger.e(e);
+      rethrow;
+    }
+  }
+
+  Future<QuerySnapshot> getCollection({required String collection}) {
+    try {
+      return firestore.collection(collection).get();
     } catch (e) {
       logger.e(e);
       rethrow;

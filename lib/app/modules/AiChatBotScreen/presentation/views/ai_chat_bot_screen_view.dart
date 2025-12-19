@@ -158,7 +158,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
             children: [
               Expanded(
                 child: Obx(
-                  () => DashChat(
+                      () => DashChat(
                     currentUser: controller.state.user,
                     typingUsers: controller.state.isGeminiTyping.value
                         ? [controller.state.geminiUser]
@@ -225,18 +225,18 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                       ),
                       messageTextBuilder:
                           (message, previousMessage, nextMessage) {
-                            return Text(
-                              message.text,
-                              style: GoogleFonts.urbanist(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15.sp,
-                                color:
-                                    message.user.id == controller.state.user.id
-                                    ? AppColors.white
-                                    : AppColors.black,
-                              ),
-                            );
-                          },
+                        return Text(
+                          message.text,
+                          style: GoogleFonts.urbanist(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.sp,
+                            color:
+                            message.user.id == controller.state.user.id
+                                ? AppColors.white
+                                : AppColors.black,
+                          ),
+                        );
+                      },
                       userNameBuilder: (user) {
                         return Text(
                           user.getFullName(),

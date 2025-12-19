@@ -15,23 +15,30 @@ class StressIndicatorView extends GetView<StressIndicatorController> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Get.offAllNamed(Routes.MAIN),
-          icon: Image.asset(
-            "assets/images/backward_arrow.png",
-            height: 22.43.h,
-            width: 17.5.w,
+        backgroundColor: AppColors.transparent,
+        scrolledUnderElevation: 0,
+        titleSpacing: 0,
+        centerTitle: true,
+        leadingWidth: 70.w,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: IconButton(
+            icon: Image.asset(
+              "assets/images/backward_arrow.png",
+              width: 34.18.w,
+              height: 29.91.h,
+            ),
+            onPressed: () => Get.back(),
           ),
         ),
         title: Text(
           'Stress Level',
           style: GoogleFonts.urbanist(
-            fontSize: 24.95.sp,
             fontWeight: FontWeight.w800,
+            fontSize: 24.95.sp,
             letterSpacing: -0.3,
           ),
         ),
-        centerTitle: true,
       ),
       body: Stack(
         children: [
@@ -53,13 +60,15 @@ class StressIndicatorView extends GetView<StressIndicatorController> {
                 color: Color.fromRGBO(78, 115, 9, 1),
               ),
               child: Center(
-                child: Text(
-                  "Stress Level: 80",
-                  style: GoogleFonts.urbanist(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 28.34.sp,
-                    letterSpacing: 0.01 * 28.34.sp,
-                    color: AppColors.white,
+                child: Obx(
+                  () => Text(
+                    "Stress Level: ${controller.resultModel.value.getTodayScore().stressScore}",
+                    style: GoogleFonts.urbanist(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 28.34.sp,
+                      letterSpacing: 0.01 * 28.34.sp,
+                      color: AppColors.white,
+                    ),
                   ),
                 ),
               ),
@@ -72,7 +81,7 @@ class StressIndicatorView extends GetView<StressIndicatorController> {
             width: 76.w,
             child: IconButton(
               icon: Image.asset("assets/images/greenButton.png"),
-              onPressed: () => Get.offAllNamed(Routes.STRESS_LEVEL),
+              onPressed: () => Get.offNamed(Routes.STRESS_LEVEL),
             ),
           ),
         ],

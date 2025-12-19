@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/widgets/custom_circle.dart';
 import 'package:here_for_you_app/app/modules/stressLevel/widgets/custom_heading.dart';
-import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 
 import '../controllers/stress_level_controller.dart';
@@ -17,21 +16,28 @@ class StressLevelView extends GetView<StressLevelController> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: AppColors.transparent,
+        scrolledUnderElevation: 0,
+        titleSpacing: 0,
         centerTitle: true,
-        title: Text(
-          "Stress Level",
-          style: GoogleFonts.urbanist(
-            fontSize: 24.95.sp,
-            letterSpacing: -0.3,
-            fontWeight: FontWeight.w800,
+        leadingWidth: 70.w,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: IconButton(
+            icon: Image.asset(
+              "assets/images/backward_arrow.png",
+              width: 34.18.w,
+              height: 29.91.h,
+            ),
+            onPressed: () => Get.back(),
           ),
         ),
-        leading: IconButton(
-          onPressed: () => Get.offAllNamed(Routes.MAIN),
-          icon: Image.asset(
-            "assets/images/backward_arrow.png",
-            width: 34.18.w,
-            height: 29.91.h,
+        title: Text(
+          'Stress Level',
+          style: GoogleFonts.urbanist(
+            fontWeight: FontWeight.w800,
+            fontSize: 24.95.sp,
+            letterSpacing: -0.3,
           ),
         ),
       ),
@@ -65,7 +71,7 @@ class StressLevelView extends GetView<StressLevelController> {
             child: Obx(
               () => Text(
                 textAlign: TextAlign.center,
-                "Your Stress Level: ${controller.state.stressScore.value}/100 ",
+                "Your Stress Level: ${controller.resultModel.value.getTodayScore().stressScore}/100 ",
                 style: GoogleFonts.urbanist(
                   fontSize: 28.34.sp,
                   fontWeight: FontWeight.w800,
@@ -83,7 +89,11 @@ class StressLevelView extends GetView<StressLevelController> {
             child: Obx(
               () => Text(
                 textAlign: TextAlign.center,
-                controller.state.analysis.value,
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
+                controller.resultModel.value.getTodayScore().stressScore == 0
+                    ? "Either you have not taken the test yet or you have no stress"
+                    : controller.resultModel.value.stressRecommendation,
                 style: GoogleFonts.urbanist(
                   fontWeight: FontWeight.w600,
                   fontSize: 13.91,
@@ -160,7 +170,7 @@ class StressLevelView extends GetView<StressLevelController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "${controller.state.stressScore.value}%",
+                  "${controller.resultModel.value.getTodayScore().stressScore}%",
                   style: GoogleFonts.urbanist(
                     fontSize: 64.sp,
                     fontWeight: FontWeight.w700,
