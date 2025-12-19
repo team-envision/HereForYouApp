@@ -17,6 +17,5 @@ class AppBindings extends Bindings {
       permanent: true,
     );
 
-      DeepLink.initialize();
   }
 }
