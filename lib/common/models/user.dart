@@ -9,8 +9,10 @@ class UserModel {
   final String age;
   final String weight;
   final String height;
+  final String location;
 
   UserModel({
+    required this.location,
     required this.name,
     required this.email,
     required this.phone,
@@ -32,6 +34,7 @@ class UserModel {
       age: data['age'] ?? '',
       weight: data['weight'] ?? '',
       height: data['height'] ?? '',
+      location: data['location'] ?? '',
     );
   }
 
@@ -45,6 +48,7 @@ class UserModel {
       'age': age,
       'weight': weight,
       'height': height,
+      'location': location,
     };
   }
 
@@ -57,6 +61,7 @@ class UserModel {
     String? age,
     String? weight,
     String? height,
+    String? location,
   }) {
     return UserModel(
       name: name ?? this.name,
@@ -67,16 +72,18 @@ class UserModel {
       age: age ?? this.age,
       weight: weight ?? this.weight,
       height: height ?? this.height,
+      location: location ?? this.location,
     );
   }
 
   UserModel.empty()
-    : name = '',
-      email = '',
-      phone = '',
-      status = '',
-      gender = '',
-      age = '',
-      weight = '',
-      height = '';
+      : name = '',
+        email = '',
+        phone = '',
+        status = '',
+        gender = '',
+        age = '',
+        weight = '',
+        height = '',
+        location = '';
 }

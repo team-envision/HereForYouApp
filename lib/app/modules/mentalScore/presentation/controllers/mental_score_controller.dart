@@ -46,6 +46,7 @@ class MentalScoreController extends GetxController {
         state.isDataLoading.value = false;
       },
       (data) {
+        Snackbars.info(title: "loaded", message: "answers loaded");
         analyse(userAnswers: data);
       },
     );
@@ -61,6 +62,7 @@ class MentalScoreController extends GetxController {
         );
       },
       (data) async {
+        Snackbars.info(title: "api res", message: data.mentalTip);
         DailyScore score = DailyScore(
           mentalScore: data.mentalScore,
           moodScore: data.moodQuality,

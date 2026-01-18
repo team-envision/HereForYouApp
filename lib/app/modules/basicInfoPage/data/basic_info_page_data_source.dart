@@ -12,6 +12,7 @@ class BasicInfoPageDataSource {
     required String age,
     required String height,
     required String weight,
+    required String location,
   }) async {
     try {
       await firebaseFirestoreService.updateDocument(
@@ -21,6 +22,7 @@ class BasicInfoPageDataSource {
           'height': height,
           'weight': weight,
           'status': 'complete',
+          'location': location,
         },
       );
       return right(true);

@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/common/Components/loading_overlay.dart';
 
 import '../../../../../resources/app_resources/app_colors.dart';
 import '../controllers/ai_chat_bot_screen_controller.dart';
+import '../widgets/article_message.dart';
+import '../widgets/emergency_message.dart';
+import '../widgets/mcq_message.dart';
+import '../widgets/plain_message.dart';
 import '../widgets/snap_scroll_physics.dart';
 
 class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
@@ -13,6 +18,15 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    return Obx(() => LoadingOverlay(
+      isLoading: controller.state.isLoading.value,
+      loadingAnimation: "assets/animations/loadingFace.gif",
+      size: 92,
+      child: content(),
+    ));
+  }
+
+  Widget content() {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
@@ -158,7 +172,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
             children: [
               Expanded(
                 child: Obx(
-                      () => DashChat(
+                  () => DashChat(
                     currentUser: controller.state.user,
                     typingUsers: controller.state.isGeminiTyping.value
                         ? [controller.state.geminiUser]
@@ -205,7 +219,7 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                           onPressed: onSend,
                           icon: Container(
                             padding: EdgeInsets.all(12.w),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.white,
                             ),
@@ -225,18 +239,29 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
                       ),
                       messageTextBuilder:
                           (message, previousMessage, nextMessage) {
-                        return Text(
-                          message.text,
-                          style: GoogleFonts.urbanist(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15.sp,
-                            color:
-                            message.user.id == controller.state.user.id
-                                ? AppColors.white
-                                : AppColors.black,
-                          ),
-                        );
-                      },
+                            final String type =
+                                message.customProperties?["type"] ?? "plain";
+
+                            switch (type) {
+                              case 'article':
+                                return ArticleMessage(message: message);
+                              case 'emergency':
+                                return EmergencyMessage(message: message);
+                              case 'mcqs':
+                                return McqMessage(
+                                  message: message,
+                                  onOptionSelected: (option) {},
+                                );
+                              case 'plain':
+                              default:
+                                return PlainMessage(
+                                  message: message,
+                                  isCurrentUser:
+                                      message.user.id ==
+                                      controller.state.user.id,
+                                );
+                            }
+                          },
                       userNameBuilder: (user) {
                         return Text(
                           user.getFullName(),
