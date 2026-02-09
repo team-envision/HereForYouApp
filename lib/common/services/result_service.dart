@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
-import 'package:here_for_you_app/common/exceptions/custom_exception.dart';
-import 'package:here_for_you_app/common/firebase/firebase_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
+import '../exceptions/custom_exception.dart';
+import '../firebase/firebase_firestore.dart';
 import '../models/results.dart';
 
 class ResultService extends GetxController {
@@ -15,31 +17,27 @@ class ResultService extends GetxController {
 
   ResultService({required this.firebaseFirestoreService});
 
-  final resultsModel = ResultsModel.empty().obs;
+  final RxList<DailyScore> results = <DailyScore>[].obs;
 
-  Future<Either<CustomException, ResultsModel>> get({
+  /// Fetches all DailyScore documents from the assessments sub-collection
+  Future<Either<CustomException, List<DailyScore>>> fetchAll({
     bool forceRefresh = false,
   }) async {
     try {
-      if (!forceRefresh && resultsModel.value.monday.mentalScore != 0) {
-        return Right(resultsModel.value);
+      if (!forceRefresh && results.isNotEmpty) {
+        return Right(results);
       }
 
-      final response = await firebaseFirestoreService.getDocument(
-        collection: "assessments",
-      );
+      final querySnapshot = await firebaseFirestoreService.getAssessments();
 
-      if (response.exists) {
-        final data = response.data() as Map<String, dynamic>;
-        logger.d(response.data());
-        final fetchedResults = ResultsModel.fromJson(data);
-        resultsModel.value = fetchedResults;
-        return Right(fetchedResults);
-      } else {
-        final emptyResults = ResultsModel.empty();
-        resultsModel.value = emptyResults;
-        return Right(emptyResults);
-      }
+      final fetchedResults = querySnapshot.docs.map((doc) {
+        return DailyScore.fromJson(doc.data() as Map<String, dynamic>);
+      }).toList();
+
+      fetchedResults.sort((a, b) => b.date.compareTo(a.date));
+
+      results.assignAll(fetchedResults);
+      return Right(results);
     } on FirebaseException catch (e) {
       return Left(CustomException(message: e.message ?? "Firebase error"));
     } catch (e) {
@@ -47,23 +45,29 @@ class ResultService extends GetxController {
     }
   }
 
-  Future<Either<CustomException, void>> setToday({
-    required DailyScore dailyScore,
-    String? mentalRecommendation,
-    String? stressRecommendation,
-  }) async {
+  /// Saves today's score and updates local state
+  Future<Either<CustomException, void>> saveDailyScore(
+    DailyScore dailyScore,
+  ) async {
     try {
-      final updatedModel = resultsModel.value
-          .updateToday(dailyScore)
-          .copyWith(
-            mentalRecommendation: mentalRecommendation,
-            stressRecommendation: stressRecommendation,
-          );
-      await firebaseFirestoreService.updateDocument(
-        collection: "assessments",
-        data: updatedModel.toJson(),
+      final String docId = DateFormat('yyyy-MM-dd').format(dailyScore.date);
+
+      await firebaseFirestoreService.firestore
+          .collection('profile')
+          .doc(firebaseFirestoreService.auth.currentUser!.uid)
+          .collection("assessments")
+          .doc(docId)
+          .set(dailyScore.toJson(), SetOptions(merge: true));
+      Logger().d("Rsults updated");
+      final index = results.indexWhere(
+        (item) => DateUtils.isSameDay(item.date, dailyScore.date),
       );
-      resultsModel.value = updatedModel;
+      if (index != -1) {
+        results[index] = dailyScore;
+      } else {
+        results.insert(0, dailyScore);
+      }
+      results.refresh();
 
       return const Right(null);
     } catch (e) {
@@ -72,6 +76,6 @@ class ResultService extends GetxController {
   }
 
   void clear() {
-    resultsModel.value = ResultsModel.empty();
+    results.clear();
   }
 }

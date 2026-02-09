@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:here_for_you_app/common/Components/kElevatedButton.dart';
 import 'package:here_for_you_app/common/Components/kInputField.dart';
-import 'package:here_for_you_app/common/Components/loading_overlay.dart';
 import 'package:here_for_you_app/common/utils/helpers.dart';
 import 'package:here_for_you_app/common/utils/snackbars.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
@@ -46,7 +45,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
           child: Form(
             key: controller.state.formKey,
             child: Column(
@@ -59,7 +58,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
                   controller: controller.state.nameController,
                   validator: Helpers.validateName,
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 15.h),
                 kInputField(
                   inputType: TextInputType.phone,
                   title: "Phone number",
@@ -67,7 +66,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
                   controller: controller.state.phoneController,
                   validator: Helpers.validateMobileNumber,
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 15.h),
                 kInputField(
                   readOnly: true,
                   inputType: TextInputType.emailAddress,
@@ -80,14 +79,14 @@ class EditProfileView extends GetView<EditProfileViewController> {
                   controller: controller.state.emailController,
                   validator: Helpers.validateEmail,
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 15.h),
                 Obx(
-                      () => CustomDropDown(
+                  () => CustomDropDown(
                     onChanged: controller.onChanged,
                     initialValue: controller.state.gender.value,
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 15.h),
                 kInputField(
                   inputType: TextInputType.number,
                   title: "Age",
@@ -95,7 +94,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
                   controller: controller.state.ageController,
                   validator: Helpers.validateAge,
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 15.h),
                 Row(
                   children: [
                     Expanded(
@@ -107,7 +106,7 @@ class EditProfileView extends GetView<EditProfileViewController> {
                         validator: Helpers.validateHeight,
                       ),
                     ),
-                    SizedBox(width: 20.w),
+                    SizedBox(width: 15.w),
                     Expanded(
                       child: kInputField(
                         inputType: TextInputType.number,
@@ -119,12 +118,21 @@ class EditProfileView extends GetView<EditProfileViewController> {
                     ),
                   ],
                 ),
-                SizedBox(height: 50.h),
+                SizedBox(height: 15.h),
+                kInputField(
+                  onTap: controller.getLocation,
+                  readOnly: true,
+                  inputType: TextInputType.number,
+                  title: "Location",
+                  hint: "Tap to fetch location",
+                  controller: controller.state.locationController,
+                ),
+                SizedBox(height: 35.h),
                 SizedBox(
                   height: 49.h,
                   width: double.infinity,
                   child: Obx(
-                        () => kElevatedButton(
+                    () => kElevatedButton(
                       isLoading: controller.state.isLoading.value,
                       text: "Save",
                       onPressed: controller.saveDetails,

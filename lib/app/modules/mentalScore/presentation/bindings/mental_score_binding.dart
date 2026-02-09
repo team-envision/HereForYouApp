@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:here_for_you_app/app/modules/mentalScore/data/mental_score_data_sources.dart';
 import 'package:here_for_you_app/common/firebase/firebase_ai.dart';
 import 'package:here_for_you_app/common/local_storage/class%20LocalStorage.dart';
+import 'package:here_for_you_app/core/dio_client.dart';
 
 import '../controllers/mental_score_controller.dart';
 import '../states/mental_score_state.dart';
@@ -13,6 +14,7 @@ class MentalScoreBinding extends Bindings {
       () => MentalScoreController(
         state: MentalScoreState(),
         dataSources: MentalScoreDataSources(
+          dioClient: DioClient(),
           localStorage: LocalStorage(),
           firebaseAi: FirebaseAi(),
         ),

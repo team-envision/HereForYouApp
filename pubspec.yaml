@@ -18,7 +18,7 @@ dependencies:
   flutter_keyboard_visibility: ^6.0.0
   any_link_preview: ^3.0.2
   shared_preferences: ^2.3.2
-  flutter_markdown: ^0.7.3+2
+  flutter_markdown: ^0.7.7+1
   intl: ^0.19.0
   flutter_native_splash: ^2.4.4
   flutter_svg: ^2.0.17
@@ -35,6 +35,9 @@ dependencies:
   app_links: ^6.4.1
   flutter_tts: ^4.2.3
   change_app_package_name: ^1.5.0
+  dio: ^5.9.0
+  flutter_dotenv: ^6.0.0
+  geolocator: ^14.0.2
 
 dev_dependencies:
   flutter_test:
@@ -49,3 +52,4 @@ flutter:
     - assets/animations/
     - assets/json/questions.json
     - assets/google_fonts/
+    - .env

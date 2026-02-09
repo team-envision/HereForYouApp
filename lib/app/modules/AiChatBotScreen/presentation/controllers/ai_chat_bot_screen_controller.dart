@@ -19,11 +19,18 @@ class AiChatBotScreenController extends GetxController {
     final result = await dataSource.sendMessage(message.text);
     result.fold(
       (error) {
-        Snackbars.error(title: "Something went wrong", message: error.toString());
+        Snackbars.error(
+          title: "Something went wrong",
+          message: error.toString(),
+        );
       },
       (response) {
         ChatMessage responseMessage = ChatMessage(
-          text: response ?? "",
+          text: response.text,
+          customProperties: {
+            ...response.customProperties,
+            "type": response.messageType,
+          },
           user: state.geminiUser,
           createdAt: DateTime.now(),
         );

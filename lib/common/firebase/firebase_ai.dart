@@ -26,4 +26,13 @@ class FirebaseAi extends GetxService {
       rethrow;
     }
   }
+
+  ChatSession startChatSession() {
+    final model = FirebaseAI.googleAI().generativeModel(
+      model: GeminiSettings.model,
+      generationConfig: GeminiSettings.chatResponseConfig,
+      systemInstruction: GeminiSettings.chatPrompt,
+    );
+    return model.startChat();
+  }
 }

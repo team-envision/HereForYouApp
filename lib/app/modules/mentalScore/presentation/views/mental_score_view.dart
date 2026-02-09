@@ -74,10 +74,9 @@ class MentalScoreView extends GetView<MentalScoreController> {
               child: Center(
                 child: Obx(
                   () => Text(
-                    controller.resultsModel.value
-                        .getTodayScore()
-                        .mentalScore
-                        .toString(),
+                    controller.results.isEmpty
+                        ? "0"
+                        : controller.results[0].mentalScore.toString(),
                     style: GoogleFonts.urbanist(
                       fontWeight: FontWeight.w800,
                       fontSize: 128.07.sp,
@@ -98,129 +97,109 @@ class MentalScoreView extends GetView<MentalScoreController> {
               initialChildSize: minExtent,
               minChildSize: minExtent,
               maxChildSize: maxExtent,
-              builder:
-                  (BuildContext context, ScrollController scrollController) {
-                    return Obx(() {
-                      double currentExtent = controller.sheetExtent.value;
-                      double factor =
-                          ((maxExtent - currentExtent) /
-                                  (maxExtent - minExtent))
-                              .clamp(0.0, 1.0);
-                      double alignX = -1.0 * (1.0 - factor);
-                      double topSpaceFactor = (1.0 - factor) * 0.9;
+              builder: (BuildContext context, ScrollController scrollController) {
+                return Obx(() {
+                  double currentExtent = controller.sheetExtent.value;
+                  double factor =
+                      ((maxExtent - currentExtent) / (maxExtent - minExtent))
+                          .clamp(0.0, 1.0);
+                  double alignX = -1.0 * (1.0 - factor);
+                  double topSpaceFactor = (1.0 - factor) * 0.9;
 
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.elliptical(
-                              200 * factor,
-                              50 * factor,
-                            ),
-                            topRight: Radius.elliptical(
-                              200 * factor,
-                              50 * factor,
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.elliptical(200 * factor, 50 * factor),
+                        topRight: Radius.elliptical(200 * factor, 50 * factor),
+                      ),
+                      boxShadow: const [
+                        BoxShadow(
+                          offset: Offset(0, -15),
+                          blurRadius: 30,
+                          color: Color(0x0D4B3425),
+                        ),
+                      ],
+                    ),
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      physics: const ClampingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          SizedBox(height: topPadding * topSpaceFactor),
+                          SizedBox(height: 42.h),
+
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 24.w),
+                            child: Align(
+                              alignment: Alignment(alignX, 0),
+                              child: Text(
+                                "Mental Assessment",
+                                style: GoogleFonts.urbanist(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 20.sp,
+                                ),
+                              ),
                             ),
                           ),
-                          boxShadow: const [
-                            BoxShadow(
-                              offset: Offset(0, -15),
-                              blurRadius: 30,
-                              color: Color(0x0D4B3425),
+
+                          SizedBox(height: 18.h),
+
+                          SizedBox(
+                            width: 340.w,
+                            height: 209.h,
+                            child: Text(
+                              controller.results.isEmpty
+                                  ? "It seems you have not taken any test yet!"
+                                  : controller.results[0].mentalRecommendation,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 8,
+                              textAlign: factor > 0.8
+                                  ? TextAlign.center
+                                  : TextAlign.left,
+                              style: GoogleFonts.urbanist(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.sp,
+                                height: 1.5,
+                              ),
                             ),
-                          ],
-                        ),
-                        child: SingleChildScrollView(
-                          controller: scrollController,
-                          physics: const ClampingScrollPhysics(),
-                          child: Column(
-                            children: [
-                              SizedBox(height: topPadding * topSpaceFactor),
-                              SizedBox(height: 42.h),
-
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                                child: Align(
-                                  alignment: Alignment(alignX, 0),
-                                  child: Text(
-                                    "Mental Assessment",
-                                    style: GoogleFonts.urbanist(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 20.sp,
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(height: 18.h),
-
-                              SizedBox(
-                                width: 340.w,
-                                height: 209.h,
-                                child: Text(
-                                  controller.resultsModel.value
-                                              .getTodayScore()
-                                              .mentalScore ==
-                                          0
-                                      ? "You have not taken the test yet."
-                                      : controller
-                                            .resultsModel
-                                            .value
-                                            .mentalRecommendation,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 8,
-                                  textAlign: factor > 0.8
-                                      ? TextAlign.center
-                                      : TextAlign.left,
-                                  style: GoogleFonts.urbanist(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.sp,
-                                    height: 1.5,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 200 * (1 - topSpaceFactor)),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 26.5.w,
-                                ),
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    "Previous Results",
-                                    style: GoogleFonts.urbanist(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 20.sp,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 20.h),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 26.5.w,
-                                ),
-                                child: SizedBox(
-                                  height: 170.h,
-                                  child: Obx(
-                                    () => CustomBarGrpah(
-                                      leftLabel: controller.state.leftLabels,
-                                      values: controller
-                                          .resultsModel
-                                          .value
-                                          .mentalScores,
-                                      barColor: const Color(0xFF765A48),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 20.h),
-                            ],
                           ),
-                        ),
-                      );
-                    });
-                  },
+                          SizedBox(height: 200 * (1 - topSpaceFactor)),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 26.5.w),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Previous Results",
+                                style: GoogleFonts.urbanist(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 20.sp,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20.h),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 26.5.w),
+                            child: SizedBox(
+                              height: 170.h,
+                              child: Obx(
+                                () => CustomGraph(
+                                  valueMapper: (data) => data.mentalScore,
+                                  leftLabel: controller.state.leftLabels,
+                                  values: controller.results.value,
+                                  barColor: const Color(0xFF765A48),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20.h),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+              },
             ),
           ),
           Positioned(

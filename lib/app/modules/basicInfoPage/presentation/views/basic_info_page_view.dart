@@ -35,7 +35,7 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 125.h),
+              SizedBox(height: 100.h),
               Center(
                 child: Text(
                   'Some Basic Info',
@@ -75,6 +75,15 @@ class BasicInfoView extends GetView<BasicInfoPageController> {
                       controller: controller.state.heightController,
                       title: 'Height (in metres)',
                       hint: 'Enter your height in metres',
+                    ),
+                    const SizedBox(height: 20),
+                    kInputField(
+                      onTap: controller.getLocation,
+                      readOnly: true,
+                      inputType: TextInputType.number,
+                      title: "Location",
+                      hint: "Tap to fetch location",
+                      controller: controller.state.locationController,
                     ),
                   ],
                 ),

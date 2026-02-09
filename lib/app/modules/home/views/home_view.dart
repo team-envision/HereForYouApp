@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/app/modules/moodQuality/views/mood_quality_view.dart';
 import 'package:here_for_you_app/app/routes/app_pages.dart';
 import 'package:here_for_you_app/resources/app_resources/app_colors.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -198,7 +197,7 @@ class HomeView extends GetView<HomeController> {
         ),
         kContainer(
           color: AppColors.moodQualityCard,
-          onTap: () => Get.to(() => const MoodQualityView()),
+          onTap: () => Get.toNamed(Routes.MOOD_QUALITY),
           text: "Mood\nQuality",
           icon: SvgPicture.asset("assets/icons/moodQulatiyIcon.svg"),
         ),

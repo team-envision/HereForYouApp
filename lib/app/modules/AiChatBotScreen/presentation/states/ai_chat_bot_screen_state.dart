@@ -3,9 +3,7 @@ import 'package:firebase_ai/firebase_ai.dart';
 import 'package:get/get.dart';
 
 class AiChatBotScreenState extends GetXState {
-  GenerativeModel model = FirebaseAI.googleAI().generativeModel(
-    model: "gemini-2.5-flash",
-  );
+
 
   String Textdata =
       "Our AI Chatbot is here to help you navigate "
@@ -24,4 +22,5 @@ class AiChatBotScreenState extends GetXState {
     profileImage: "assets/icons/botIcon.png",
   );
   var scrollController;
+  RxBool isLoading = true.obs;
 }

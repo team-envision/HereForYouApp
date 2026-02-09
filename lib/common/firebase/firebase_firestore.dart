@@ -75,6 +75,22 @@ class FirebaseFirestoreService {
     }
   }
 
+  Future<QuerySnapshot> getAssessments({String? doc}) async {
+    try {
+      return await firestore
+          .collection('profile')
+          .doc(doc ?? auth.currentUser!.uid)
+          .collection("assessments")
+          .get();
+    } catch (e) {
+      logger.e(
+        "Error in Firestore Service while getting assessments.",
+        error: e,
+      );
+      rethrow;
+    }
+  }
+
   Future<void> addDocument({
     required String collection,
     String? document,
