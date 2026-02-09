@@ -40,27 +40,9 @@ class AiChatBotScreenController extends GetxController {
     state.isGeminiTyping.value = false;
   }
 
-  Future<void> verifyUser() async {
-    final result = await dataSource.verifyUser();
-    result.fold(
-      (error) {
-        Snackbars.error(
-          title: "Something went wrong",
-          message: error.toString(),
-        );
-        Get.back();
-        state.isLoading.value = false;
-      },
-      (_) {
-        state.isLoading.value = false;
-      },
-    );
-  }
-
   @override
   void onInit() {
     super.onInit();
-    verifyUser();
     state.scrollController = ScrollController();
     KeyboardVisibilityController().onChange.listen((isVisible) {
       scrollToSpecificPosition();

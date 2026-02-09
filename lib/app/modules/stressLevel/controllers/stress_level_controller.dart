@@ -7,7 +7,7 @@ import '../../../../common/services/result_service.dart';
 class StressLevelController extends GetxController {
   //TODO: Implement StressLevelController
   final StressLevelState state;
-  Rx<ResultsModel> resultModel = ResultService.to.resultsModel;
+  RxList<DailyScore> results = ResultService.to.results;
 
 
   StressLevelController({required this.state});

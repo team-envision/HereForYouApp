@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:here_for_you_app/common/Components/loading_overlay.dart';
 
 import '../../../../../resources/app_resources/app_colors.dart';
 import '../controllers/ai_chat_bot_screen_controller.dart';
@@ -18,15 +17,6 @@ class AiChatBotScreenView extends GetView<AiChatBotScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => LoadingOverlay(
-      isLoading: controller.state.isLoading.value,
-      loadingAnimation: "assets/animations/loadingFace.gif",
-      size: 92,
-      child: content(),
-    ));
-  }
-
-  Widget content() {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,

@@ -1,36 +1,30 @@
+import 'dart:convert';
+
+import 'package:firebase_ai/firebase_ai.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:here_for_you_app/common/exceptions/custom_exception.dart';
+import 'package:here_for_you_app/common/firebase/firebase_ai.dart';
 import 'package:here_for_you_app/common/models/message.dart';
-import 'package:here_for_you_app/common/utils/api_endpoints.dart';
-import 'package:here_for_you_app/core/dio_client.dart';
 import 'package:logger/logger.dart';
 
 class AiChatBotScreenDataSource {
-  final DioClient dioClient;
+  final FirebaseAi firebaseAI;
+  late ChatSession chatSession;
   Logger logger = Logger();
 
-  AiChatBotScreenDataSource({required this.dioClient});
+  AiChatBotScreenDataSource({required this.firebaseAI}) {
+    chatSession = firebaseAI.startChatSession();
+  }
 
   Future<Either<CustomException, MessageModel>> sendMessage(
     String userMessage,
   ) async {
     try {
-      final response = await dioClient.post(
-        path: APIEndpoints.chat,
-        data: {"message": userMessage},
-      );
-      logger.d("AI response: ${response.data}");
-      return Right(MessageModel.fromJson(response.data["response"]));
-    } catch (e) {
-      logger.e("Error parsing AI response: $e");
-      return Left(CustomException(message: e.toString()));
-    }
-  }
-
-  Future<Either<CustomException, void>> verifyUser() async {
-    try {
-      final response = await dioClient.post(path: APIEndpoints.verifyUser);
-      return const Right(null);
+      Content message = Content.text(userMessage);
+      final response = await chatSession.sendMessage(message);
+      logger.d("AI response: ${response.text}");
+      final Map<String, dynamic> jsonMap = jsonDecode(response.text!);
+      return Right(MessageModel.fromJson(jsonMap));
     } catch (e) {
       logger.e("Error parsing AI response: $e");
       return Left(CustomException(message: e.toString()));

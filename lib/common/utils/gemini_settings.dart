@@ -82,5 +82,5 @@ You are **MentAid**, the AI companion inside the **HereForYou** app. You were de
 * **Concise & Human:** Keep responses short, simple, and conversational. Avoid robotic or overly formal language.
 ''');
 
-  static const String model = "gemini-3-pro-preview";
+  static const String model = "gemini-2.5-flash";
 }

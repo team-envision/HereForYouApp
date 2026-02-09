@@ -62,7 +62,7 @@ class StressIndicatorView extends GetView<StressIndicatorController> {
               child: Center(
                 child: Obx(
                   () => Text(
-                    "Stress Level: ${controller.resultModel.value.getTodayScore().stressScore}",
+                    "Stress Level: ${controller.results.isEmpty ? 0 : controller.results[0].stressScore}",
                     style: GoogleFonts.urbanist(
                       fontWeight: FontWeight.w800,
                       fontSize: 28.34.sp,

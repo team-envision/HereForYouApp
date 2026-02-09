@@ -31,13 +31,13 @@ class MainController extends GetxController {
   Future<void> fetchData() async {
     final userResult = await userService.get(forceRefresh: true);
     userResult.fold((error) {}, (data) async {
-      final resultsResult = await ResultService.to.get(forceRefresh: true);
+      final resultsResult = await ResultService.to.fetchAll(forceRefresh: true);
       resultsResult.fold(
         (error) {
           Snackbars.error(title: "Error", message: "Could not load data");
         },
         (data) async {
-          logger.d(data.mentalRecommendation);
+          Snackbars.info(title: "Results", message: data.toString());
           await Future.delayed(const Duration(seconds: 1));
           isDataLoading.value = false;
         },

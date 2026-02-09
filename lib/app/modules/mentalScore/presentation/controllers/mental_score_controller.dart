@@ -15,7 +15,7 @@ class MentalScoreController extends GetxController {
       DraggableScrollableController();
 
   var sheetExtent = 0.43.obs;
-  Rx<ResultsModel> resultsModel = ResultService.to.resultsModel;
+  RxList<DailyScore> results = ResultService.to.results;
 
   MentalScoreController({required this.state, required this.dataSources});
 
@@ -62,17 +62,15 @@ class MentalScoreController extends GetxController {
         );
       },
       (data) async {
-        Snackbars.info(title: "api res", message: data.mentalTip);
         DailyScore score = DailyScore(
+          date: DateTime.now(),
+          mentalRecommendation: data.mentalTip,
+          stressRecommendation: data.stressTip,
           mentalScore: data.mentalScore,
           moodScore: data.moodQuality,
           stressScore: data.stressLevel,
         );
-        await ResultService.to.setToday(
-          dailyScore: score,
-          mentalRecommendation: data.mentalTip,
-          stressRecommendation: data.stressTip,
-        );
+        await ResultService.to.saveDailyScore(score);
       },
     );
     state.isDataLoading.value = false;

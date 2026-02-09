@@ -71,7 +71,7 @@ class StressLevelView extends GetView<StressLevelController> {
             child: Obx(
               () => Text(
                 textAlign: TextAlign.center,
-                "Your Stress Level: ${controller.resultModel.value.getTodayScore().stressScore}/100 ",
+                "Your Stress Level: ${controller.results.isEmpty ? 0 : controller.results[0].stressScore}/100 ",
                 style: GoogleFonts.urbanist(
                   fontSize: 28.34.sp,
                   fontWeight: FontWeight.w800,
@@ -88,12 +88,12 @@ class StressLevelView extends GetView<StressLevelController> {
             height: 110.h,
             child: Obx(
               () => Text(
+                controller.results.isEmpty
+                    ? "It seems you have not taken any tests yet!"
+                    : controller.results[0].mentalRecommendation,
                 textAlign: TextAlign.center,
                 maxLines: 5,
                 overflow: TextOverflow.ellipsis,
-                controller.resultModel.value.getTodayScore().stressScore == 0
-                    ? "Either you have not taken the test yet or you have no stress"
-                    : controller.resultModel.value.stressRecommendation,
                 style: GoogleFonts.urbanist(
                   fontWeight: FontWeight.w600,
                   fontSize: 13.91,
@@ -170,7 +170,7 @@ class StressLevelView extends GetView<StressLevelController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "${controller.resultModel.value.getTodayScore().stressScore}%",
+                  "${controller.results.isEmpty ? 0 : controller.results[0].stressScore}%",
                   style: GoogleFonts.urbanist(
                     fontSize: 64.sp,
                     fontWeight: FontWeight.w700,

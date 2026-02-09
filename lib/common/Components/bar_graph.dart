@@ -2,27 +2,36 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:here_for_you_app/common/models/results.dart';
+import 'package:intl/intl.dart';
 
-class CustomBarGrpah extends StatelessWidget {
+class CustomGraph extends StatelessWidget {
   final List<String> leftLabel;
-  final List<int> values;
+  final List<DailyScore> values;
   final Color barColor;
+  // 👇 Add this: A function to extract the specific score you want
+  final int Function(DailyScore) valueMapper;
 
-  const CustomBarGrpah({
+  const CustomGraph({
     super.key,
     required this.leftLabel,
     required this.values,
     required this.barColor,
+    required this.valueMapper, // Require it in the constructor
   });
 
   @override
   Widget build(BuildContext context) {
+    // Logic to get latest 7 items reversed (Oldest -> Newest)
+    final List<DailyScore> displayData = values.length > 7
+        ? values.take(7).toList().reversed.toList()
+        : values.reversed.toList();
+
     return BarChart(
       BarChartData(
         alignment: BarChartAlignment.spaceAround,
         maxY: 105,
         minY: 0,
-
         gridData: FlGridData(
           show: true,
           drawVerticalLine: false,
@@ -36,7 +45,6 @@ class CustomBarGrpah extends StatelessWidget {
                 dashArray: null,
               );
             }
-
             return const FlLine(
               color: Color(0xA8000000),
               strokeWidth: 1.0,
@@ -44,7 +52,6 @@ class CustomBarGrpah extends StatelessWidget {
             );
           },
         ),
-
         borderData: FlBorderData(
           show: true,
           border: const Border(
@@ -54,27 +61,22 @@ class CustomBarGrpah extends StatelessWidget {
             top: BorderSide(color: Colors.transparent),
           ),
         ),
-
         titlesData: FlTitlesData(
           show: true,
-          topTitles: const AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          rightTitles: const AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
+          topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              reservedSize: 25.w,
+              reservedSize: 35.w,
               interval: 20,
               getTitlesWidget: (value, meta) {
-                if (value == 0 || value > 100) {
+                int index = (value / 20).toInt();
+                if (value == 0 || value > 100 || index >= leftLabel.length) {
                   return const SizedBox.shrink();
                 }
-
                 return Text(
-                  leftLabel[(value / 20).toInt()],
+                  leftLabel[index],
                   style: GoogleFonts.raleway(
                     fontWeight: FontWeight.w700,
                     fontSize: 14.1.sp,
@@ -90,15 +92,18 @@ class CustomBarGrpah extends StatelessWidget {
               showTitles: true,
               reservedSize: 30.h,
               getTitlesWidget: (value, meta) {
-                const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-                if (value.toInt() < 0 || value.toInt() >= days.length) {
+                final index = value.toInt();
+                if (index < 0 || index >= displayData.length) {
                   return const SizedBox.shrink();
                 }
+
+                String dateStr = DateFormat('dd/MM').format(displayData[index].date);
+
                 return SideTitleWidget(
                   axisSide: meta.axisSide,
                   space: 8.h,
                   child: Text(
-                    days[value.toInt()],
+                    dateStr,
                     style: GoogleFonts.raleway(
                       fontWeight: FontWeight.w700,
                       fontSize: 14.1.sp,
@@ -111,16 +116,11 @@ class CustomBarGrpah extends StatelessWidget {
             ),
           ),
         ),
-
-        barGroups: [
-          _buildGroup(0, values[0]),
-          _buildGroup(1, values[1]),
-          _buildGroup(2, values[2]),
-          _buildGroup(3, values[3]),
-          _buildGroup(4, values[4]),
-          _buildGroup(5, values[5]),
-          _buildGroup(6, values[6]),
-        ],
+        barGroups: List.generate(
+          displayData.length,
+          // 👇 Use the valueMapper here instead of hardcoding .mentalScore
+              (index) => _buildGroup(index, valueMapper(displayData[index])),
+        ),
       ),
     );
   }

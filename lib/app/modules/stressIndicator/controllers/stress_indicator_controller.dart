@@ -4,7 +4,7 @@ import 'package:here_for_you_app/common/models/results.dart';
 import '../../../../common/services/result_service.dart';
 
 class StressIndicatorController extends GetxController {
-  Rx<ResultsModel> resultModel = ResultService.to.resultsModel;
+  RxList<DailyScore> results = ResultService.to.results;
 
   final count = 0.obs;
   @override

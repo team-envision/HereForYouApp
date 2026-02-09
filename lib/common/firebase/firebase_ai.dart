@@ -33,7 +33,6 @@ class FirebaseAi extends GetxService {
       generationConfig: GeminiSettings.chatResponseConfig,
       systemInstruction: GeminiSettings.chatPrompt,
     );
-
     return model.startChat();
   }
 }

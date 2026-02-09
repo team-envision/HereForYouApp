@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 
-class MoodQualityController extends GetxController {
-  //TODO: Implement MoodQualityController
+import '../../../../common/models/results.dart';
+import '../../../../common/services/result_service.dart';
 
-  final emojis = ["🙁", "😐", "🙂", "😃", "😆"];
+class MoodQualityController extends GetxController {
+  RxList<DailyScore> results = ResultService.to.results;
+  final emojis = ["", "🙁", "😐", "🙂", "😃", "😆"];
+
   @override
   void onInit() {
     super.onInit();
@@ -18,5 +21,4 @@ class MoodQualityController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
 }

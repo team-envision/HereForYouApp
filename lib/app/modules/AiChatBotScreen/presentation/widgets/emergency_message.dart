@@ -24,7 +24,6 @@ class EmergencyMessage extends StatelessWidget {
         // 2. The Emergency Action Card
         Material(
           color: const Color(0xFFFEF2F2),
-          // Very light red background (Safety Red)
           borderRadius: BorderRadius.circular(12.r),
           clipBehavior: Clip.hardEdge,
           child: InkWell(
@@ -66,10 +65,11 @@ class EmergencyMessage extends StatelessWidget {
                   // Bold Action Text
                   Text(
                     message.customProperties?['label'] ?? "Call Helpline",
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.urbanist(
                       fontWeight: FontWeight.w800,
-                      fontSize: 16.sp, // Slightly larger for importance
-                      color: const Color(0xFFDC2626), // Stronger red text
+                      fontSize: 12.sp,
+                      color: const Color(0xFFDC2626),
                       letterSpacing: 0.5,
                     ),
                   ),
