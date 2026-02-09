@@ -9,7 +9,6 @@ class CustomGraph extends StatelessWidget {
   final List<String> leftLabel;
   final List<DailyScore> values;
   final Color barColor;
-  // 👇 Add this: A function to extract the specific score you want
   final int Function(DailyScore) valueMapper;
 
   const CustomGraph({

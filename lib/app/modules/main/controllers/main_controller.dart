@@ -37,7 +37,6 @@ class MainController extends GetxController {
           Snackbars.error(title: "Error", message: "Could not load data");
         },
         (data) async {
-          Snackbars.info(title: "Results", message: data.toString());
           await Future.delayed(const Duration(seconds: 1));
           isDataLoading.value = false;
         },

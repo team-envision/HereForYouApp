@@ -4,7 +4,6 @@ import 'package:here_for_you_app/app/modules/mentalScore/data/mental_score_data_
 import 'package:here_for_you_app/common/models/results.dart';
 import 'package:here_for_you_app/common/services/result_service.dart';
 
-import '../../../../../common/utils/snackbars.dart';
 import '../states/mental_score_state.dart';
 
 class MentalScoreController extends GetxController {
@@ -39,14 +38,9 @@ class MentalScoreController extends GetxController {
     final result = await dataSources.getLocalData(key: state.key!);
     result.fold(
       (error) {
-        Snackbars.error(
-          title: "Showing previous results",
-          message: error.message,
-        );
         state.isDataLoading.value = false;
       },
       (data) {
-        Snackbars.info(title: "loaded", message: "answers loaded");
         analyse(userAnswers: data);
       },
     );
@@ -54,25 +48,17 @@ class MentalScoreController extends GetxController {
 
   Future<void> analyse({required Map<String, String> userAnswers}) async {
     final result = await dataSources.analyzeUserState(userAnswers: userAnswers);
-    result.fold(
-      (error) {
-        Snackbars.error(
-          title: "Showing previous results",
-          message: error.message,
-        );
-      },
-      (data) async {
-        DailyScore score = DailyScore(
-          date: DateTime.now(),
-          mentalRecommendation: data.mentalTip,
-          stressRecommendation: data.stressTip,
-          mentalScore: data.mentalScore,
-          moodScore: data.moodQuality,
-          stressScore: data.stressLevel,
-        );
-        await ResultService.to.saveDailyScore(score);
-      },
-    );
+    result.fold((error) {}, (data) async {
+      DailyScore score = DailyScore(
+        date: DateTime.now(),
+        mentalRecommendation: data.mentalTip,
+        stressRecommendation: data.stressTip,
+        mentalScore: data.mentalScore,
+        moodScore: data.moodQuality,
+        stressScore: data.stressLevel,
+      );
+      await ResultService.to.saveDailyScore(score);
+    });
     state.isDataLoading.value = false;
   }
 

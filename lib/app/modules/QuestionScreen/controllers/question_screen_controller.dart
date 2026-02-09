@@ -45,7 +45,6 @@ class QuestionController extends GetxController {
       final result = await localStorage.addResults(results, state.key);
       result.fold((error) {}, (result) {
         state.key = result;
-        Snackbars.info(title: "saved", message: state.key.toString());
       });
 
       Get.offNamed(
